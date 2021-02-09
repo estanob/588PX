@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  skip_before_action :very_authenticity_token
+  # skip_before_action :very_authenticity_token
   helper_method :current_user, :logged_in?
 
   def current_user
@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in!
-    render json: {error: ['Not Logged In']}, status 404 unless logged_in?
+    render json: {error: ['Not Logged In']}, status: 404 unless logged_in?
   end
 
   def login(user)
