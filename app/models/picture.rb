@@ -5,6 +5,7 @@
 #  id          :bigint           not null, primary key
 #  caption     :string
 #  location    :string           not null
+#  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  uploader_id :integer          not null
@@ -18,7 +19,7 @@
 #  fk_rails_...  (uploader_id => users.id)
 #
 class Picture < ApplicationRecord
-  validates :location, presence: true
+  validates :location, :title, presence: true
   validates :uploader_id, uniqueness: true
 
   belongs_to :uploader,

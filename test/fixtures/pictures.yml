@@ -5,6 +5,7 @@
 #  id          :bigint           not null, primary key
 #  caption     :string
 #  location    :string           not null
+#  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  uploader_id :integer          not null

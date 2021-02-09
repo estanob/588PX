@@ -37,6 +37,6 @@ class Api::GalleriesController < ApplicationController
   private
 
   def gallery_params
-    params.require(:gallery).permit(:id, :title)
+    params.require(:gallery).permit(:id, :title, :creator_id)
   end
 end
