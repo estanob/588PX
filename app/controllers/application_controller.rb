@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(session_token: session[:session_token])
   end
 
-  def require_logged_in
+  def require_logged_in!
     render json: {error: ['Not Logged In']}, status 404 unless logged_in?
   end
 
