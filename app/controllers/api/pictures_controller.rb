@@ -1,4 +1,4 @@
-class PicturesController < ApplicationController
+class Api::PicturesController < ApplicationController
   before_action :require_logged_in!, only: [:create, :update, :destroy]
 
   def index
@@ -20,7 +20,7 @@ class PicturesController < ApplicationController
   end
 
   def update
-    @picture = Picture.find_by(id: params[:post][:id])
+    @picture = Picture.find_by(id: params[:picture][:id])
     if @picture.uploader_id == current_user.id && @picture && @picture.update(picture_params)
       render 'api/pictures/show'
     end
