@@ -14,6 +14,25 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  # helper methods for guest user:
+  def create_guest
+    session[:guest_user_id] = save_guest.id
+  end
+
+  def save_guest
+    user = User.create(username: 'guest', password: '123456')
+    user.save(validate: false)
+    user
+  end
+
+  def guest_user
+    User.find(session[:guest_user_id]) if session[:guest_user_id]
+  end
+
+  def guest?
+    !!guest_user
+  end
+
   private
 
   def user_params
