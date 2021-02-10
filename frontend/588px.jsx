@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from './store/store'
 import Root from './components/root'
+import { login, logout, register} from './actions/session_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
@@ -19,13 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
   
-  const closeDropdown = (e) => {
-    if(e.target.className !== '#profilepointer') {
-      $('#profiledropdown').removeClass('trigger')
-    }
-  } 
+  // const closeDropdown = (e) => {
+  //   if(e.target.className !== '#profilepointer') {
+  //     $('#profiledropdown').removeClass('trigger')
+  //   }
+  // } 
 
-  document.addEventListener('click', closeDropdown)
-  
+  // document.addEventListener('click', closeDropdown)
+
+  window.login = login;
+  window.logout = logout;
+  window.register = register;
   ReactDOM.render(<h1>Hello!</h1>, root);
 });
