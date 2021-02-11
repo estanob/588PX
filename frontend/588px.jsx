@@ -5,7 +5,7 @@ import Root from './components/root'
 import { login, logout, register} from './actions/session_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
-  const root = document.getElementById('root');
+  const rootEle = document.getElementById('root');
   let store;
   if (window.currentUser) {
     const preloadedState = {
@@ -31,5 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.login = login;
   window.logout = logout;
   window.register = register;
-  ReactDOM.render(<h1>Hello!</h1>, root);
+  ReactDOM.render(<Root store={store}/>, rootEle);
+  // ReactDOM.render(<h1>Hello!</h1>, rootEle);
 });

@@ -36,10 +36,10 @@ class SessionForm extends React.Component {
     this.props.clearErrors()
   }
 
-  signUp() {
+  register() {
     return (
       <div>
-        <p>Don't have an account? <Link to='/signup'>Sign Up</Link></p>
+        <p>Don't have an account? <Link to='/register'>Register</Link></p>
       </div>
     )
   }
@@ -67,13 +67,13 @@ class SessionForm extends React.Component {
   render() {
     const { formType, errors } = this.props
 
-    const LoginLink = (formType === 'signup') ? this.login() : this.signUp()
+    const LoginLink = (formType === 'register') ? this.login() : this.register()
 
     const err = errors.map((error, i) => {
       return <label key={i}> {error}</label>
     })
 
-    const submitButton = (formType === 'signup') ? 'Sign up' : 'Log in'
+    const submitButton = (formType === 'register') ? 'Register' : 'Log in'
 
     return (
       <>
@@ -88,7 +88,7 @@ class SessionForm extends React.Component {
 
           <form onSubmit={this.handleSubmit} className="login_form">
             <h3>
-              {formType === 'login' ? 'Log in to Pinhole' : 'Join Pinhole'}
+              {formType === 'login' ? 'Log in to 588PX' : 'Join 588PX'}
             </h3>
             <br />
             <br />

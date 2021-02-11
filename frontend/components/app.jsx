@@ -4,6 +4,9 @@ import {
   Switch,
   Link
 } from 'react-router-dom';
+import LoginFormContainer from '../components/session_form/login_form_container';
+import RegisterFormContainer from './session_form/register_form_container';
+// import Modal from './modal/modal';
 
 const App = () => {
   return (
@@ -13,7 +16,12 @@ const App = () => {
           <h1>588PX</h1>
         </Link>
       </header>
-      {/* <Switch></Switch> */}
+      {/* <Modal /> */}
+      <Switch>
+        <Route exact path="/login" component={LoginFormContainer}/>
+        <Route exact path="/register" component={RegisterFormContainer}/>
+        {/* <Route exact path="/" component={FrontPage}/> */}
+      </Switch>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 const { OPEN_MODAL, CLOSE_MODAL } = require("../actions/modal_actions");
 
-const modalReducer = (oldState = null, action) => {
+export default function modalReducer(oldState = null, action) {
   switch (action.type) {
     case OPEN_MODAL:
       return action.modal;
@@ -10,5 +10,3 @@ const modalReducer = (oldState = null, action) => {
       return oldState;
   };
 };
-
-export default modalReducer;
