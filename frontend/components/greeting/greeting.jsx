@@ -1,23 +1,28 @@
 import React from 'react';
+import { openModal, closeModal } from '../../actions/modal_actions'
 
 
-
-const Greeting = ({ currentUser, logout, openModal }) => {
-
+const Greeting = ({ currentUser, logout, openModal, users }) => {
+  // need conditional statement to change buttons when user is logged in
   const sessionLinks = () => (
-    <nav className="login-register">
+    <nav className="login-register"> 
       <button onClick={() => openModal('login')}>Login</button>
       &nbsp;or&nbsp;
       <button onClick={() => openModal('register')}>Register</button>
+      &nbsp;or&nbsp;
+      <button>Demo Login</button>
     </nav>
   );
-  const personalGreeting = () => (
-    <hgroup className="header-group">
-      <h2 className="header-name">Hello, {currentUser.username}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
-    </hgroup>
-  );
 
+  const personalGreeting = () => (
+    <div>
+      <hgroup className="header-group">
+        <h2 className="header-name">Hello, {users[currentUser].username}!</h2>
+        <button className="header-button" onClick={logout}>Log Out</button>
+      </hgroup>
+    </div>
+  );
+  
   return (
     currentUser ?
       personalGreeting(currentUser, logout) :

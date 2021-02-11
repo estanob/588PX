@@ -11,12 +11,12 @@ import RegisterFormContainer from './session_form/register_form_container';
 
 const App = () => {
   return (
-    <div>
+    <div className="app">
       <header>
         <Link to="/" className="header-link">
           <h1>588PX</h1>
         </Link>
-        <GreetingContainer/>
+        <GreetingContainer />
       </header>
       <Modal />
       <Switch>
