@@ -19,14 +19,14 @@ export const receiveErrors = errors => {
 
 export const register = user => dispatch => {
   return APIUtil.register(user)
-    .then(user => dispatch(receiveCurrentUser(user))
-    , err => dispatch(receiveErrors(err.responseJSON)))
+    .then(user => dispatch(receiveCurrentUser(user)))
+    .fail(err => dispatch(receiveErrors(err.responseJSON)))
 };
 
 export const login = user => dispatch => {
   return APIUtil.login(user)
-    .then(user => dispatch(login(user)
-    ), err => dispatch(receiveErrors(err.responseJSON)))
+    .then(user => dispatch(login(user)))
+    .fail(err => dispatch(receiveErrors(err.responseJSON)))
 };
 
 export const logout = () => dispatch => {

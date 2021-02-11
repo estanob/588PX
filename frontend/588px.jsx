@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // } 
 
   // document.addEventListener('click', closeDropdown)
-
+  window.getState = store.getState;
   window.login = login;
   window.logout = logout;
   window.register = register;

@@ -1,133 +1,73 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       username: '',
       password: ''
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.guestUserSubmit = this.guestUserSubmit.bind(this)
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleField(field) {
-    return e => {
-      this.setState({ [field]: e.target.value })
-    }
-  }
-
-  guestUserSubmit(e) {
-    e.preventDefault()
-    const guestUser = {
-      username: 'guest',
-      password: '123456'
-    }
-    this.props.processForm(guestUser)
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state);
+    const user = Object.assign({}, this.state);
+    this.props.processForm(user).then(this.props.closeModal);
   }
 
-  componentDidMount() {
-    this.props.clearErrors()
-  }
-
-  register() {
+  renderErrors() {
     return (
-      <div>
-        <p>Don't have an account? <Link to='/register'>Register</Link></p>
-      </div>
-    )
-  }
-
-  login() {
-    return (
-      <div>
-        <p>Already have an account? <Link to='/login'>Log In</Link></p>
-      </div>
-    )
-  }
-
-  usernameError() {
-    return (this.props.errors.map((error, i) => (
-      error.includes('Username') ? <ul className="error" key={i}>{error}</ul> : ''
-    )))
-  }
-
-  passwordError() {
-    return (this.props.errors.map((error, i) => (
-      error.includes('Password') ? <ul className="error" key={i}>{error}</ul> : ''
-    )))
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   render() {
-    const { formType, errors } = this.props
-
-    const LoginLink = (formType === 'register') ? this.login() : this.register()
-
-    const err = errors.map((error, i) => {
-      return <label key={i}> {error}</label>
-    })
-
-    const submitButton = (formType === 'register') ? 'Register' : 'Log in'
-
     return (
-      <>
-
-
-        <div className="login_form_div">
-          {formType === 'login' && err.length > 0 &&
-            <div onClick={this.props.closeModal} className="modal-errors">
-              {err}
-            </div>
-          }
-
-          <form onSubmit={this.handleSubmit} className="login_form">
-            <h3>
-              {formType === 'login' ? 'Log in to 588PX' : 'Join 588PX'}
-            </h3>
+      <div className="login-form-container">
+        Welcome to 588PX!
+        <form onSubmit={this.handleSubmit} className="login-form-box">
+          <br />
+          Please {this.props.formType} or {this.props.otherForm}
+          <div onClick={this.props.closeModal} className="close-x">X</div>
+          {this.renderErrors()}
+          <div className="login-form">
             <br />
-            <br />
-            <label>Email or Username*
-              <br />
-              <input
-                type="text"
-                onChange={this.handleField('username')}
-                value={this.state.username} />
+            <label>Username:
+              <input type="text"
+                value={this.state.username}
+                onChange={this.update('username')}
+                className="login-input"
+              />
             </label>
-            <div className='errors-box'>{this.usernameError()}</div>
-            <br /><br />
-            <label>Password*
-              <br />
-              <input
-                type="password"
-                onChange={this.handleField('password')}
-                value={this.state.password} />
+            <br />
+            <label>Password:
+              <input type="password"
+                value={this.state.password}
+                onChange={this.update('password')}
+                className="login-input"
+              />
             </label>
-            <div className='errors-box'>{this.passwordError()}</div>
-            <br /><br />
-            <input
-              type="submit"
-              className="login_button"
-              value={submitButton} />
             <br />
-            {formType === 'login' && <input
-              type="submit"
-              onClick={this.guestUserSubmit}
-              className="login_button"
-              value='Demo User Login' />}
-            <br />
-            <div className='form_question'>
-              {LoginLink}
-            </div>
-          </form>
-        </div>
-      </>
-    )
+            <input className="session-submit" type="submit" value={this.props.formType} />
+          </div>
+        </form>
+      </div>
+    );
   }
 }
-export default SessionForm;
+
+export default withRouter(SessionForm);
