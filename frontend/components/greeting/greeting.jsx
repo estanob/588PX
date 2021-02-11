@@ -10,7 +10,7 @@ const Greeting = ({ currentUser, logout, openModal, users }) => {
       &nbsp;or&nbsp;
       <button onClick={() => openModal('register')}>Register</button>
       &nbsp;or&nbsp;
-      <button>Demo Login</button>
+      <button className='demo'>Demo Login</button>
     </nav>
   );
 
@@ -18,7 +18,7 @@ const Greeting = ({ currentUser, logout, openModal, users }) => {
     <div>
       <hgroup className="header-group">
         <h2 className="header-name">Hello, {users[currentUser].username}!</h2>
-        <button className="header-button" onClick={logout}>Log Out</button>
+        <button class="header-button" onClick={logout}>Log Out</button>
       </hgroup>
     </div>
   );

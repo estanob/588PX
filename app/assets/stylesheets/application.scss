@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+@import "./base/reset.scss";
+@import './base/colors.scss';
+@import "./api/navbar.scss";
+
+.app {
+  background: grey;
+}
+
+// .button > demo {
+//   color: $lightest-blue;
+// }
+
+.demo {
+  background-color: $lightest-blue;
+  text-decoration-color: $darkest-blue;
+}

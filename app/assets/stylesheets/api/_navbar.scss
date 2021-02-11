@@ -1,0 +1,11 @@
+@import "../base/colors.scss";
+
+.demo {
+  background-color: $lightest-blue;
+  text-decoration-color: $darkest-blue;
+}
+
+.close-x {
+  background-color: white;
+  color: $blue;
+}
