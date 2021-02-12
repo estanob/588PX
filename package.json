@@ -2,8 +2,9 @@
   "name": "px",
   "private": true,
   "dependencies": {
-    "@babel/core": "^7.10.3",
-    "@babel/preset-env": "^7.10.3",
+    "@babel/core": "^7.12.16",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/preset-env": "^7.12.16",
     "@babel/preset-react": "^7.10.1",
     "babel-loader": "^8.1.0",
     "file-loader": "^6.0.0",

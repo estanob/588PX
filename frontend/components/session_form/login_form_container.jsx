@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import SessionForm from './session_form';
-import { login } from '../../actions/session_actions';
+import { clearErrors, login } from '../../actions/session_actions';
 
-const mSTP = state => {
+const mSTP = ({ errors }) => {
   return {
-    errors: Object.values(state.errors.session),
+    errors: Object.values(errors.session),
     formType: 'login'
   };
 };
@@ -14,6 +14,7 @@ const mSTP = state => {
 const mDTP = dispatch => {
   return {
     processForm: user => dispatch(login(user)),
+    clearErrors: () => dispatch(clearErrors()),
     otherForm: (
       <button onClick={() => dispatch(openModal('register'))}>
         Register

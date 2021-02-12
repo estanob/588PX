@@ -20,16 +20,16 @@ const App = () => {
         {/* <Link to="/" className="header-link">
           <h1>588PX</h1>
         </Link> */}
-        {/* <nav>
+        <nav>
           <GreetingContainer />
-        </nav> */}
+        </nav>
         <li><Header/></li>
       </header>
       <Modal />
       <Switch>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
-        <Route exact path="/register" component={RegisterFormContainer}/>
-        <Route path="/" component={HomePage} />
+        <AuthRoute exact path="/register" component={RegisterFormContainer}/>
+        <AuthRoute path="/" component={HomePage} />
 
         <Redirect to='/'/>
         <Route path='/' component={HomePage}/>
