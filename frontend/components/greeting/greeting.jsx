@@ -19,7 +19,7 @@ const Greeting = ({ currentUser, demoLogin, logout, openModal, users }) => {
     <div>
       <hgroup className="header-group">
         <h2 className="header-name">Hello, {users[currentUser].username}!</h2>
-        <p>Add some more photos to your portfolio!</p>
+        <p>Get noticed! Add more photos to your portfolio!</p>
         <button className="header-button" onClick={logout}>Log Out</button>
       </hgroup>
     </div>
@@ -27,7 +27,7 @@ const Greeting = ({ currentUser, demoLogin, logout, openModal, users }) => {
   
   return (
     currentUser ?
-      personalGreeting(currentUser, logout) :
+      personalGreeting(currentUser, login) :
       sessionLinks()
   );
 };

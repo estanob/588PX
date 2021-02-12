@@ -8,6 +8,7 @@ import Modal from './modal/modal';
 import GreetingContainer from './greeting/greeting_container';
 import LoginFormContainer from '../components/session_form/login_form_container';
 import RegisterFormContainer from './session_form/register_form_container';
+import HomePage from './home_page';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
       <Switch>
         <Route exact path="/login" component={LoginFormContainer}/>
         <Route exact path="/register" component={RegisterFormContainer}/>
+        <Route path="/" component={HomePage} />
       </Switch>
     </div>
   )
