@@ -9,20 +9,30 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.guestDemoSubmit  = this.guestDemoSubmit.bind(this)
     // this.renderErrors = this.renderErrors.bind(this);
-  }
+  };
 
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
-  }
+  };
 
+  guestDemoSubmit(e) {
+    e.preventDefault();
+    const demoUser = {
+      username: 'jenny95611',
+      password: '123456'
+    };
+    this.props.processForm(demoUser);
+  };
+  
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user).then(this.props.closeModal);
-  }
+  };
 
   renderErrors() {
     return (
@@ -34,7 +44,7 @@ class SessionForm extends React.Component {
         ))}
       </ul>
     );
-  }
+  };
 
   render() {
     return (
@@ -46,29 +56,32 @@ class SessionForm extends React.Component {
           {this.renderErrors()}
           <div className="login-form">
             <br />
-            <label>Username:
-              <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
-                className="login-input"
-              />
-            </label>
-            <br />
-            <label>Password:
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-              />
-            </label>
-            <br />
-            {/* <input className="session-submit" type="submit" value={this.props.formType} /> */}
-            <button onClick={this.props.closeModal} className="close-x">X</button>
+              <div>
+                <label>Username:
+                  <input type="text"
+                    value={this.state.username}
+                    onChange={this.update('username')}
+                    className="login-input"
+                  />
+                </label>
+                <br />
+                <label>Password:
+                  <input type="password"
+                    value={this.state.password}
+                    onChange={this.update('password')}
+                    className="login-input"
+                  />
+                </label>
+                <br />
+                <input className="session-submit" type="submit" value={this.props.formType} />
+                <br />
+                <button onClick={this.props.closeModal} className="close-x">X</button>
+              </div>
           </div>
-        </form>
-      </div>
-    );
+      </form>
+    </div>
+    )
   }
 }
 
-export default withRouter(SessionForm);
+export default SessionForm;

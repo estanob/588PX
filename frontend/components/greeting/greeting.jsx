@@ -1,8 +1,9 @@
 import React from 'react';
 import { openModal, closeModal } from '../../actions/modal_actions'
+import { demoLogin } from '../../actions/session_actions';
 
 
-const Greeting = ({ currentUser, logout, openModal, users }) => {
+const Greeting = ({ currentUser, demoLogin, logout, openModal, users }) => {
   // need conditional statement to change buttons when user is logged in
   const sessionLinks = () => (
     <nav className="login-register"> 
@@ -10,7 +11,7 @@ const Greeting = ({ currentUser, logout, openModal, users }) => {
       &nbsp;or&nbsp;
       <button onClick={() => openModal('register')}>Register</button>
       &nbsp;or&nbsp;
-      <button className='demo'>Demo Login</button>
+      <button className='demo' onClick={() => demoLogin()}>Demo Login</button>
     </nav>
   );
 
@@ -18,7 +19,8 @@ const Greeting = ({ currentUser, logout, openModal, users }) => {
     <div>
       <hgroup className="header-group">
         <h2 className="header-name">Hello, {users[currentUser].username}!</h2>
-        <button class="header-button" onClick={logout}>Log Out</button>
+        <p>Add some more photos to your portfolio!</p>
+        <button className="header-button" onClick={logout}>Log Out</button>
       </hgroup>
     </div>
   );

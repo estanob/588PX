@@ -16,6 +16,8 @@ function Modal({ modal, closeModal }) {
     case 'register':
       component = <RegisterFormContainer/>;
       break;
+    case 'demo':
+      component = <LoginFormContainer/>;
     default:
       return null;
   }
