@@ -10,8 +10,8 @@ import Modal from './modal/modal';
 import GreetingContainer from './greeting/greeting_container';
 import LoginFormContainer from '../components/session_form/login_form_container';
 import RegisterFormContainer from './session_form/register_form_container';
+import HomeFeed from './home_feed';
 import HomePage from './home_page';
-import Header from './header/header';
 
 const App = () => {
   return (
@@ -23,10 +23,11 @@ const App = () => {
         <nav>
           <GreetingContainer />
         </nav>
-        <li><Header/></li>
       </header>
       <Modal />
       <Switch>
+        <ProtectedRoute exact path='/home' component={HomeFeed}/>
+        
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
         <AuthRoute exact path="/register" component={RegisterFormContainer}/>
         <AuthRoute path="/" component={HomePage} />
