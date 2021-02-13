@@ -6,12 +6,11 @@ import HomeIndex from '../home_feed/home';
 
 
 const Greeting = ({ currentUser, demoLogin, logout, openModal, users }) => {
-  // need conditional statement to change buttons when user is logged in
   const sessionLinks = () => (
     <nav className="login-register"> 
-      <button onClick={() => openModal('login')}>Login</button>
+      <button className="greeting-prompts login" onClick={() => openModal('login')}>Login</button>
       &nbsp;or&nbsp;
-      <button onClick={() => openModal('register')}>Register</button>
+      <button className="greeting-prompts register" onClick={() => openModal('register')}>Register</button>
     </nav>
   );
 
