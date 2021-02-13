@@ -5,7 +5,7 @@ import { fetchLikes, createLike, deleteLike } from '../../actions/like_actions';
 
 const mSTP = state => {
   return {
-    posts: Object.values(state.entities.posts),
+    pictures: Object.values(state.entities.pictures),
     like: Object.values(state.entities.like),
     session: state.session.id
   }
@@ -21,4 +21,4 @@ const mDTP = dispatch => {
 }
 
 
-export default connect(mSTP, mDTP)(HomeIndex)
+export default connect(mSTP, mDTP)(HomeIndex);

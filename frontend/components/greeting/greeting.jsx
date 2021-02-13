@@ -1,6 +1,8 @@
 import React from 'react';
 import { openModal, closeModal } from '../../actions/modal_actions'
 import { demoLogin } from '../../actions/session_actions';
+import HomeFeed from '../home_feed';
+import HomeIndex from '../home_feed/home';
 
 
 const Greeting = ({ currentUser, demoLogin, logout, openModal, users }) => {
@@ -10,8 +12,6 @@ const Greeting = ({ currentUser, demoLogin, logout, openModal, users }) => {
       <button onClick={() => openModal('login')}>Login</button>
       &nbsp;or&nbsp;
       <button onClick={() => openModal('register')}>Register</button>
-      &nbsp;or&nbsp;
-      <button className='demo' onClick={() => demoLogin()}>Demo Login</button>
     </nav>
   );
 
@@ -19,8 +19,12 @@ const Greeting = ({ currentUser, demoLogin, logout, openModal, users }) => {
     <div>
       <hgroup className="header-group">
         <h2 className="header-name">Hello, {users[currentUser].username}!</h2>
+        {/* <HomeFeed/> */}
+        <HomeIndex/>
         <p>Get noticed! Add more photos to your portfolio!</p>
         <button className="header-button" onClick={logout}>Log Out</button>
+        <div>
+        </div>
       </hgroup>
     </div>
   );

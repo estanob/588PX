@@ -170,6 +170,7 @@
 
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { demoLogin } from '../../actions/session_actions';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -196,7 +197,7 @@ class SessionForm extends React.Component {
   demoUserSubmit(e) {
     e.preventDefault()
     const demoUser = {
-      username: 'jenny95611',
+      username: 'bobby555',
       password: '123456'
     }
     this.props.processForm(demoUser)
@@ -215,12 +216,17 @@ class SessionForm extends React.Component {
   };
 
   render() {
+    const demoLogIn = () => {
+      this.props.demoLogin()
+      this.props.closeModal()
+    }
+
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
           Welcome to 588PX!
           <br />
-          Please {this.props.formType} or {this.props.otherForm} or {this.props.demoUser}
+          Please {this.props.formType} or {this.props.otherForm}
           <div onClick={this.props.closeModal} className="close-x">X</div>
           {this.renderErrors()}
           <div className="login-form">
@@ -242,6 +248,16 @@ class SessionForm extends React.Component {
             </label>
             <br />
             <input className="session-submit" type="submit" value={this.props.formType} />
+            {/* {(this.props.formType === 'login') ? <input className="session-submit" type="submit" value='demo'/> : null} */}
+            {this.props.formType === 'login' && <button 
+              className='demo' 
+              onClick={() => demoLogIn()}
+              value='demo'>Demo Login</button>}
+            {/* {this.props.formType === 'login' && <input
+              type="submit"
+              onClick={this.props.demoUserSubmit}
+              className="login-input"
+              value='demo' />} */}
           </div>
         </form>
       </div>

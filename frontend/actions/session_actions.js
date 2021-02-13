@@ -5,7 +5,7 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-const demoUser = {username: "jenny95611", password: "123456"};
+const demoUser = {username: "bobby555", password: "123456"};
 
 export const receiveCurrentUser = currentUser => {
   return {
@@ -49,12 +49,15 @@ export const login = user => dispatch => {
       dispatch(clearErrors())
     }) 
     .fail(err => dispatch(receiveErrors(err.responseJSON)))
-};
-
-export const demoLogin = () => dispatch => {
-  // debugger
-  return APIUtil.login(demoUser)
-    .then(user => dispatch(receiveCurrentUser(user)));
+  };
+  
+  export const demoLogin = () => dispatch => {
+    return APIUtil.login(demoUser)
+    .then(user => {
+      dispatch(receiveCurrentUser(user))
+      dispatch(clearErrors())
+    })
+    .fail(err => dispatch(receiveErrors(err.responseJSON)))
 };
 
 export const logout = () => dispatch => {

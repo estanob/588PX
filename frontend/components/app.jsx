@@ -30,7 +30,7 @@ const App = () => {
         
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
         <AuthRoute exact path="/register" component={RegisterFormContainer}/>
-        <AuthRoute path="/" component={HomePage} />
+        <AuthRoute exact path="/" component={HomePage} />
 
         <Redirect to='/'/>
         <Route path='/' component={HomePage}/>
