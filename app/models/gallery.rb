@@ -17,4 +17,10 @@
 #  fk_rails_...  (creator_id => users.id)
 #
 class Gallery < ApplicationRecord
+  validates :title, presence: true
+  validates :creator_id, uniqueness: true
+
+  belongs_to :cretor,
+    foreign_key: :creator_id,
+    class_name: User
 end
