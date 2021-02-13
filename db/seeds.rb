@@ -28,6 +28,6 @@ picture5 = Picture.new(title: 'Chocolate Hills', location: 'Carmen, Bohol, Phili
 
 picture6 = Picture.new(title: 'Cruz Daku', location: 'Loboc, Bohol, Philippines', caption: 'Hike up the hill to see this giant cross', uploader_id: user3.id)
 
-gallery1 = Gallery.create!(title: 'TaiWan Trip', creator_id: user2.id)
-gallery2 = Gallery.create!(title: 'Okinawa Travel', creator_id: user1.id)
-gallery3 = Gallery.create!(title: 'Better in the Philippines', creator_id: user3.id)
+gallery1 = Gallery.new(title: 'TaiWan Trip', creator_id: user2.id)
+gallery2 = Gallery.new(title: 'Okinawa Travel', creator_id: user1.id)
+gallery3 = Gallery.new(title: 'Better in the Philippines', creator_id: user3.id)
