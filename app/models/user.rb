@@ -14,7 +14,6 @@
 #  index_users_on_session_token  (session_token) UNIQUE
 #  index_users_on_username       (username) UNIQUE
 #
-# require 'bcrypt'
 class User < ApplicationRecord
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
@@ -26,6 +25,11 @@ class User < ApplicationRecord
   has_many :pictures,
     foreign_key: :uploader_id,
     class_name: :Picture,
+    dependent: :destroy
+
+  has_many :galleries,
+    foreign_key: :creator_id,
+    class_name: :Gallery,
     dependent: :destroy
 
   def self.find_by_credentials(username, password)

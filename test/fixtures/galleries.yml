@@ -8,10 +8,6 @@
 #  updated_at :datetime         not null
 #  creator_id :integer          not null
 #
-# Indexes
-#
-#  index_galleries_on_creator_id  (creator_id) UNIQUE
-#
 # Foreign Keys
 #
 #  fk_rails_...  (creator_id => users.id)
