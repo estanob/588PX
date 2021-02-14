@@ -17,9 +17,6 @@ const App = () => {
   return (
     <div className="app">
       <header>
-        {/* <Link to="/" className="header-link">
-          <h1>588PX</h1>
-        </Link> */}
         <nav>
           <GreetingContainer />
         </nav>
