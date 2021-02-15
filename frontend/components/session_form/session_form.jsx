@@ -32,6 +32,22 @@ class SessionForm extends React.Component {
     })
   }
 
+  register() {
+    return (
+      <div>
+        <p>Don't have an account? <Link to='/register'>Register</Link></p>
+      </div>
+    )
+  }
+
+  login() {
+    return (
+      <div>
+        <p>Already have an account? <Link to='/login'>Log In</Link></p>
+      </div>
+    )
+  }
+
   renderErrors() {
     return (
       <ul>
@@ -45,6 +61,8 @@ class SessionForm extends React.Component {
   };
 
   render() {
+    const LoginLink = (this.props.formType === 'register') ? this.login() : this.register()
+    
     return (
       <div className="login-form-container">
         <form className="login_form_div">
@@ -72,10 +90,18 @@ class SessionForm extends React.Component {
             </label>
             <br />
             <button onClick={this.handleSubmit} className="session-submit">{this.props.formType === 'login' ? 'Login' : 'Register'}</button>
-            {this.props.formType === 'login' ? <button 
-              className='session-submit' 
-              onClick={this.handleDemoLogin}
-              value='demo'>Demo Login</button> : ""}
+            {
+              this.props.formType === 'login' ? 
+              <button 
+                className='session-submit' 
+                onClick={this.handleDemoLogin}
+                value='demo'>Demo Login
+              </button> : ""
+            }
+            <br/>
+            <div className='form_question'>
+              {LoginLink}
+            </div>
           </div>
         </form>
       </div>
