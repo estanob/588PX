@@ -17,6 +17,8 @@
 @import "./base/reset.scss";
 @import './base/colors.scss';
 @import "./layout/root";
+@import "./layout/header";
+@import "./layout/session_form";
 @import "./api/navbar.scss";
 @import "./api/greeting.scss";
 

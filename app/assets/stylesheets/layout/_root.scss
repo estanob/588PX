@@ -1,8 +1,23 @@
 @import "../base/colors.scss";
 
+
+.body_box {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.top-image {
+  background-image: image-url('front_page/temple-heaven-768.png');
+  background-size: cover;
+  display: inline-block;
+  position: relative;
+  width: 100vw;
+  padding-top: calc(0.46 * 100vw);
+}
+
 .top-image .top-image-content {
-  // display: inline-block;
-  // position: absolute;
+  display: inline-block;
+  position: absolute;
   top: 30%;
   left: 15%;
   max-width: 30%;
@@ -33,7 +48,7 @@
   font-size: 1vw;
 }
 
-div footer {
+.div footer {
   display: block;
   font-family: Oswald;
   font-size: 16px;
@@ -41,7 +56,7 @@ div footer {
   max-width: 600px;
   padding: 24px;
   position: relative;
-  // martin-top: -180px;
-  // height: 180px;
+  margin-top: -180px;
+  height: 180px;
   clear: both;
 }

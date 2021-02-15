@@ -18,7 +18,16 @@ const HomePage = () => {
               Register
             </Link>
           </button>
+          {/* <div id="wave">
+          </div> */}
         </div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path 
+              fill="#f3f4f5" 
+              fill-opacity="1" 
+              d="M0,192L60,165.3C120,139,240,85,360,80C480,75,600,117,720,149.3C840,181,960,203,1080,181.3C1200,160,1320,96,1380,64L1440,32L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+            </path>
+          </svg>
       </div>
       <div className="about-pinhole">
         <h3>What makes us different?</h3>

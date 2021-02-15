@@ -1,0 +1,137 @@
+.login_form_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(247, 248, 250);
+  min-height: 600px;
+  height: 100vh;
+}
+
+.login_form {
+  padding: 25px;
+  background-color: white;
+  width: 340px;
+  height: 500px;
+}
+
+.login_form > h3 {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.login_form > label {
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: gray;
+}
+
+.login_form  input[type=text],input[type=password]{
+  display: flex;
+  justify-content: center;
+  width: 325px;
+  height: 30px;
+  padding: 5px;
+  margin: 5px auto;
+}
+
+// .login_button {
+.session-submit {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: white;
+  background-color:  #1890ff;
+  border-radius: 25px;
+  border: 1px solid #1890ff;
+  padding: 10px 0px 10px 0px;
+  outline: none;
+}
+
+.login_button:hover {
+  background-color: #3c94cf;
+  border: 1px solid #3c94cf;
+}
+
+ .fb_button {
+   display: flex;
+  justify-content: center;
+  width: 100%;
+  color: white;
+  background-color:  #3b5998;
+  border-radius: 25px;
+  border: 1px solid #3b5998;
+  padding: 10px 0px 10px 0px;
+  font-weight: bold;
+}
+
+.fb_button:hover{
+  background-color: #2d4475;
+  border: 1px solid #2d4475;
+}
+
+ .google_button {
+   display: flex;
+  justify-content: center;
+  width: 100%;
+  color: darkgray;
+  background-color:  white;
+  border-radius: 25px;
+  border: 1px solid darkgray;
+  padding: 10px 0px 10px 0px;
+  font-weight: bold;
+}
+
+.google_button:hover {
+  background-color: #e3e3e3;
+  border: 1px solid #e3e3e3;
+}
+
+.form_question {
+  display: flex;
+  justify-content: center;
+  color: darkgray;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+input[type=submit] {
+  cursor: pointer;
+}
+
+.modal-errors {
+  position: absolute;
+  top: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  z-index: 15;
+  background: #ff5c57;
+  box-sizing: border-box;
+  padding: 10px 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px 1px rgba(0,0,0,.2);
+  animation: fadeIn ease 0.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+.error {
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+.errors-box {
+  position: absolute;
+  margin-top: -15px;
+}
