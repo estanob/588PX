@@ -4,9 +4,9 @@ import SessionForm from './session_form';
 import { register, clearErrors } from '../../actions/session_actions';
 import { closeModal, openModal } from '../../actions/modal_actions';
 
-const mSTP = state => {
+const mSTP = ({ errors }) => {
   return {
-    errors: Object.values(state.errors.session),
+    errors: Object.values(errors.session),
     formType: 'register'
   };
 };

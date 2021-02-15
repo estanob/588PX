@@ -16,10 +16,9 @@
 
 @import "./base/reset.scss";
 @import './base/colors.scss';
+@import "./layout/root";
 @import "./api/navbar.scss";
 @import "./api/greeting.scss";
-@import "./api/homepage.scss";
-@import "./layout/root";
 
 .app {
   background: $floral-white;

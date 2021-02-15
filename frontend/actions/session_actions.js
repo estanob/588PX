@@ -5,7 +5,10 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-const demoUser = {username: "bobby555", password: "123456"};
+const demoUser = {
+  username: "bobby555", 
+  password: "123456"
+};
 
 export const receiveCurrentUser = currentUser => {
   return {
@@ -43,8 +46,10 @@ export const register = user => dispatch => {
 };
 
 export const login = user => dispatch => {
+  // debugger
   return APIUtil.login(user)
     .then(user => {
+      // debugger
       dispatch(receiveCurrentUser(user)) //calling login will stay here
       dispatch(clearErrors())
     }) 

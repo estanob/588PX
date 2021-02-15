@@ -14,12 +14,12 @@ const ProfileDropdown = ({ logout }) => {
         <i className="fas fa-user-alt fa-lg"></i>
       </div> */}
       <button id="profiledropdown" onClick={logout}>Logout</button>
-      {/* <ul id="profiledropdown">
-        <li><Link to={`/user/${userId.id}`} className="profileLink">Profile</Link></li>
+      <ul id="profiledropdown">
+        {/* <li><Link to={`/user/${userId.id}`} className="profileLink">Profile</Link></li>
         <li><Link to={`/posts`} className="profileLink">Galleries</Link></li>
-        <br />
+        <br /> */}
         <li onClick={this.props.logout}>Logout</li>
-      </ul> */}
+      </ul>
     </div>
   );
 };

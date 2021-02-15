@@ -2,6 +2,7 @@ class Api::SessionsController < ApplicationController
   before_action :require_logged_in!, only: [:destroy]
 
   def create
+    # debugger
     @user = User.find_by_credentials(
       params[:user][:username],
       params[:user][:password]

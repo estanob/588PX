@@ -1,8 +1,8 @@
-import React from 'react';
 import { connect } from 'react-redux';
+import React from 'react';
 import { openModal, closeModal } from '../../actions/modal_actions';
+import { login, clearErrors, demoLogin } from '../../actions/session_actions';
 import SessionForm from './session_form';
-import { clearErrors, demoLogin, login } from '../../actions/session_actions';
 
 const mSTP = ({ errors }) => {
   return {

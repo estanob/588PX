@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import HomeIndex from "./home";
+import HomeIndex from "./home_index";
 import { fetchPictures } from "../../actions/picture_actions";
 import { fetchLikes, createLike, deleteLike } from '../../actions/like_actions';
 

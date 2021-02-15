@@ -1,3 +1,38 @@
+@import "../base/colors.scss";
+
+.top-image .top-image-content {
+  // display: inline-block;
+  // position: absolute;
+  top: 30%;
+  left: 15%;
+  max-width: 30%;
+  text-align: left;
+  background-color: gray;
+  opacity: 0.9;
+  padding: 30px 30px;
+  font-size: 1vw;
+  border-radius: 10px;
+}
+
+.top-image-content > h2 {
+  font-size: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  color: white;
+  margin-bottom: 15px;
+  line-height: 110%;
+  font-size: 2vw;
+}
+
+.top-image-content > p {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  margin-bottom: 10px;
+  line-height: 120%;
+  font-size: 1vw;
+}
+
 div footer {
   display: block;
   font-family: Oswald;
@@ -5,4 +40,8 @@ div footer {
   text-transform: uppercase;
   max-width: 600px;
   padding: 24px;
+  position: relative;
+  // martin-top: -180px;
+  // height: 180px;
+  clear: both;
 }

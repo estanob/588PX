@@ -7,14 +7,13 @@ class HomeIndex extends React.Component {
   // }
 
   render() {
-    // const { posts, like, createLike, deleteLike, session } = this.props
-    // const { posts } = this.props
-    // if (!posts) return null;
+    // const { pictures, like, createLike, deleteLike, session } = this.props
+    // if (!pictures) return null;
 
-    // const photos = posts.map(post => {
+    // const posts = pictures.map(picture => {
     //   return <PostIndexPhotos
-    //     key={post.id}
-    //     post={post}
+    //     key={picture.id}
+    //     picture={picture}
     //     like={like}
     //     createLike={createLike}
     //     deleteLike={deleteLike}
