@@ -28,8 +28,8 @@ const App = () => {
         <AuthRoute path="/register" component={RegisterFormContainer}/>
         <AuthRoute path="/" component={HomePage} />
 
-        <Redirect to='/'/>
-        <Route path='/' component={HomePage}/>
+        {/* <Redirect to='/'/> */}
+        <Route path='*' component={HomePage}/>
       </Switch>
     </div>
   )

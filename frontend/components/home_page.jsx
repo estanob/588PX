@@ -57,10 +57,10 @@ const HomePage = () => {
 
       <div className="bottom-bar">
         <div className="bottom-bar-content">
-          <h3>Join our photography community today</h3>
-          <p>We want fresh, creative talent like you. Join our global network of
-          like-minded creators to be inspired by incredible photos daily, and get
-      rewarded for your talents.</p>
+          <h3>Join our community today</h3>
+          <p>Do you love photography? Want to constantly stay inspired and be surrounded by millions of like-minded creators?
+            <br/>
+          Then sign-up today and get rewarded for your love of photography.</p>
           <button>
             <Link
               to='/register'
