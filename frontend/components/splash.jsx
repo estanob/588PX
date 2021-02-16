@@ -13,9 +13,9 @@ const Splash = () => {
           </p>
           <button>
             <Link
-              to='/register'
+              to='/signup'
               style={{ color: 'inherit', textDecoration: 'inherit' }}>
-              Register
+              Sign Up
             </Link>
           </button>
           {/* <div id="wave">
@@ -63,9 +63,9 @@ const Splash = () => {
           Then sign-up today and get rewarded for your love of photography.</p>
           <button>
             <Link
-              to='/register'
+              to='/signup'
               style={{ color: 'inherit', textDecoration: 'inherit' }}>
-              Register
+              Sign Up
             </Link>
           </button>
         </div>

@@ -36,8 +36,8 @@ export const clearErrors = () => {
   };
 };
 
-export const register = user => dispatch => {
-  return APIUtil.register(user)
+export const signup = user => dispatch => {
+  return APIUtil.signup(user)
     .then(user => {
       dispatch(receiveCurrentUser(user))
       dispatch(clearErrors())

@@ -1,45 +1,44 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
-import LoginFormContainer from '../session_form/login_form_container';
-import RegisterFormContainer from '../session_form/register_form_container';
+import { connect } from 'react-redux';
+import CancelModal from './cancel_modal'
+import RemoveModal from './remove_modal'
 
 function Modal({ modal, closeModal }) {
-  if(!modal) {
+
+  if (!modal) {
     return null;
   }
   let component;
   switch (modal) {
-    case 'login':
-      component = <LoginFormContainer/>;
+    case 'cancel':
+      component = <CancelModal closeModal={closeModal} />;
       break;
-    case 'register':
-      component = <RegisterFormContainer/>;
+    case 'remove':
+      component = <RemoveModal closeModal={closeModal} />;
       break;
-    case 'demo':
-      component = <LoginFormContainer/>;
     default:
       return null;
   }
   return (
-    <div className="modal-background" onClick={closeModal}>
+    <div className="modal-background">
       <div className="modal-child" onClick={e => e.stopPropagation()}>
-        { component }
+        {component}
       </div>
     </div>
   );
-};
+}
 
-const mSTP = state => {
+const mapStateToProps = state => {
   return {
     modal: state.ui.modal
   };
 };
 
-const mDTP = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal())
   };
 };
 
-export default connect(mSTP, mDTP)(Modal);
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);

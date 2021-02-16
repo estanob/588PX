@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from './store/store'
 import Root from './components/root'
-import { login, logout, register} from './actions/session_actions';
+import { login, logout, signup} from './actions/session_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const rootEle = document.getElementById('root');
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.getState = store.getState;
   window.login = login;
   window.logout = logout;
-  window.register = register;
+  window.signup = signup;
   ReactDOM.render(<Root store={store}/>, rootEle);
   // ReactDOM.render(<h1>Hello!</h1>, rootEle);
 });

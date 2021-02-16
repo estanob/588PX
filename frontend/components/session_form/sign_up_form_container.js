@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
-import { register, clearErrors } from '../../actions/session_actions';
+import { signup, clearErrors } from '../../actions/session_actions';
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mSTP = ({ errors }) => {
   return {
     errors: Object.values(errors.session),
-    formType: 'register'
+    formType: 'signup'
   };
 };
 
 const mDTP = dispatch => {
   return {
-    processForm: user => dispatch(register(user)),
+    processForm: user => dispatch(signup(user)),
     otherForm: (
       <button onClick={() => dispatch(openModal('login'))}>
         Login

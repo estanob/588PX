@@ -32,10 +32,10 @@ class SessionForm extends React.Component {
     })
   }
 
-  register() {
+  signUp() {
     return (
       <div>
-        <p>Don't have an account? <Link to='/register'>Register</Link></p>
+        <p>Don't have an account? <Link to='/signup'>Sign Up</Link></p>
       </div>
     )
   }
@@ -47,18 +47,6 @@ class SessionForm extends React.Component {
       </div>
     )
   }
-
-  // renderErrors() {
-  //   return (
-  //     <ul>
-  //       {this.props.errors.map((error, i) => (
-  //         <li key={`error-${i}`}>
-  //           {error}
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   )
-  // };
 
   usernameError() {
     return (this.props.errors.map((error, i) => (
@@ -73,7 +61,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const LoginLink = (this.props.formType === 'register') ? this.login() : this.register()
+    const LoginLink = (this.props.formType === 'signUp') ? this.login() : this.signUp()
     const err = this.props.errors.map((error, i) => {
       return <label key={i}>{error}</label>
     })
@@ -81,11 +69,12 @@ class SessionForm extends React.Component {
     return (
       <div className="login-form-container">
         <form className="login_form_div">
-          <br />
-          <div className="modalErrors" onClick={this.props.closeModal}>
-            {/* {this.renderErrors()} */}
-            {err}
-          </div>
+          {this.props.formType === 'login' && err.length > 0 &&
+            <div className="modal-errors" onClick={this.props.closeModal}>
+              {/* {this.renderErrors()} */}
+              {err}
+            </div>
+          }
           <div className="login_form" onClick={this.props.closeModal}>
             <h3>
               {this.props.formType === 'login' ? 'Log in to 588PX' : 'Join 588PX'}
@@ -93,6 +82,7 @@ class SessionForm extends React.Component {
             <br />
             <label>Username:
               <input type="text"
+                onClick={this.props.closeModal}
                 value={this.state.username}
                 onChange={this.update('username')}
                 className="login-input"
@@ -109,7 +99,7 @@ class SessionForm extends React.Component {
             </label>
             <div className='errors-box'>{this.passwordError()}</div>
             <br />
-            <button onClick={this.handleSubmit} className="session-submit">{this.props.formType === 'login' ? 'Login' : 'Register'}</button>
+            <button onClick={this.handleSubmit} className="session-submit">{this.props.formType === 'login' ? 'Login' : 'Sign Up'}</button>
             <br/>
             {
               this.props.formType === 'login' ? 

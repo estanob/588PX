@@ -18,7 +18,7 @@ class Header extends React.Component {
       <div>
         <Link onClick={this.props.clearErrors} to='/login' className='header_comps'>Login</Link>
         &nbsp; &nbsp;
-        <Link onClick={this.props.clearErrors} to='/register' className='header_comps register'>Register</Link>
+        <Link onClick={this.props.clearErrors} to='/signup' className='header_comps sign-up'>Sign Up</Link>
       </div>
     )
   }
