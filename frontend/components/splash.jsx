@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HomePage = () => {
+const Splash = () => {
   return (
     <div className="body-box">
       <div className="top-image">
@@ -79,4 +79,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage;
+export default Splash;

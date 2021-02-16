@@ -66,11 +66,6 @@
   font-size: 14px;
 }
 
-// input[type=submit] {
-// button[type=submit] {
-//   cursor: pointer;
-// }
-
 .modal-errors {
   position: absolute;
   top: 15px;
@@ -92,6 +87,20 @@
   100% {
     opacity:1;
   }
+}
+
+.modal-errors {
+  position: absolute;
+  top: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  z-index: 15;
+  background: #ff5c57;
+  box-sizing: border-box;
+  padding: 10px 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px 1px rgba(0,0,0,.2);
+  animation: fadeIn ease 0.5s;
 }
 
 .error {

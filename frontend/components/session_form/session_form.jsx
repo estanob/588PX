@@ -48,27 +48,45 @@ class SessionForm extends React.Component {
     )
   }
 
-  renderErrors() {
-    return (
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    )
-  };
+  // renderErrors() {
+  //   return (
+  //     <ul>
+  //       {this.props.errors.map((error, i) => (
+  //         <li key={`error-${i}`}>
+  //           {error}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   )
+  // };
+
+  usernameError() {
+    return (this.props.errors.map((error, i) => (
+      error.includes('Username') ? <ul className='error' key={i}>{error}</ul> : ''
+    )))
+  }
+
+  passwordError() {
+    return (this.props.errors.map((error, i) => (
+      error.includes('Password') ? <ul className='error' key={i}>{error}</ul> : ''
+    )))
+  }
 
   render() {
     const LoginLink = (this.props.formType === 'register') ? this.login() : this.register()
+    const err = this.props.errors.map((error, i) => {
+      return <label key={i}>{error}</label>
+    })
     
     return (
       <div className="login-form-container">
         <form className="login_form_div">
           <br />
-          {this.renderErrors()}
-          <div className="login_form">
+          <div className="modalErrors" onClick={this.props.closeModal}>
+            {/* {this.renderErrors()} */}
+            {err}
+          </div>
+          <div className="login_form" onClick={this.props.closeModal}>
             <h3>
               {this.props.formType === 'login' ? 'Log in to 588PX' : 'Join 588PX'}
             </h3>
@@ -80,6 +98,7 @@ class SessionForm extends React.Component {
                 className="login-input"
               />
             </label>
+            <div className='errors-box'>{this.usernameError()}</div>
             <br />
             <label>Password:
               <input type="password"
@@ -88,8 +107,10 @@ class SessionForm extends React.Component {
                 className="login-input"
               />
             </label>
+            <div className='errors-box'>{this.passwordError()}</div>
             <br />
             <button onClick={this.handleSubmit} className="session-submit">{this.props.formType === 'login' ? 'Login' : 'Register'}</button>
+            <br/>
             {
               this.props.formType === 'login' ? 
               <button 

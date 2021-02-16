@@ -9,7 +9,7 @@ import Modal from './modal/modal';
 import LoginFormContainer from '../components/session_form/login_form_container';
 import RegisterFormContainer from './session_form/register_form_container';
 // import HomeFeed from './home_feed';
-import HomePage from './home_page';
+import Splash from './splash';
 import HeaderContainer from './header/header_container';
 import Navbar from './navbar/navbar';
 
@@ -26,10 +26,10 @@ const App = () => {
         
         <AuthRoute path="/login" component={LoginFormContainer}/>
         <AuthRoute path="/register" component={RegisterFormContainer}/>
-        <AuthRoute path="/" component={HomePage} />
+        <AuthRoute path="/" component={Splash} />
 
         {/* <Redirect to='/'/> */}
-        <Route path='*' component={HomePage}/>
+        <Route path='*' component={Splash}/>
       </Switch>
     </div>
   )
