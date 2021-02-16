@@ -10,7 +10,6 @@ const HomeFeed = () => {
       <div className="home-page-images">
         <HomeContainer />
       </div>
-
     </div>
   )
 }

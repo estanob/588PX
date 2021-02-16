@@ -7,7 +7,7 @@ const mSTP = state => {
   return {
     pictures: Object.values(state.entities.pictures),
     like: Object.values(state.entities.like),
-    session: state.session.id
+    session: state.session.id,
   }
 }
 

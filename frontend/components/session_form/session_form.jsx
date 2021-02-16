@@ -26,10 +26,7 @@ class SessionForm extends React.Component {
 
   handleDemoLogin(e) {
     e.preventDefault()
-    this.props.processForm({
-      username: 'bobby555',
-      password: '123456'
-    })
+    this.props.demoLogin();
   }
 
   signUp() {
@@ -61,7 +58,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const LoginLink = (this.props.formType === 'signUp') ? this.login() : this.signUp()
+    const LoginLink = (this.props.formType === 'signup') ? this.login() : this.signUp()
     const err = this.props.errors.map((error, i) => {
       return <label key={i}>{error}</label>
     })
@@ -71,7 +68,6 @@ class SessionForm extends React.Component {
         <form className="login_form_div">
           {this.props.formType === 'login' && err.length > 0 &&
             <div className="modal-errors" onClick={this.props.closeModal}>
-              {/* {this.renderErrors()} */}
               {err}
             </div>
           }
@@ -102,7 +98,7 @@ class SessionForm extends React.Component {
             <button onClick={this.handleSubmit} className="session-submit">{this.props.formType === 'login' ? 'Login' : 'Sign Up'}</button>
             <br/>
             {
-              this.props.formType === 'login' ? 
+              this.props.formType === 'signup' ? 
               <button 
                 className='session-submit' 
                 onClick={this.handleDemoLogin}

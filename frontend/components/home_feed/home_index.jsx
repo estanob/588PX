@@ -23,10 +23,12 @@ class HomeIndex extends React.Component {
 
     return (
       <div>
-        <h3>You're logged in!</h3>
-        {/* <ul className="home-grid-container-pictures" >
-          {photos}
-        </ul> */}
+        <div className='home-feed'>
+          <h3>Success, You're logged in!</h3>
+          {/* <ul className="home-grid-container-pictures" >
+            {photos}
+          </ul> */}
+        </div>
       </div>
     )
   }
