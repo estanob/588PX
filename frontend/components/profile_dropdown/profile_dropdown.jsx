@@ -18,7 +18,7 @@ const ProfileDropdown = ({ logout }) => {
         {/* <li><Link to={`/user/${userId.id}`} className="profileLink">Profile</Link></li>
         <li><Link to={`/posts`} className="profileLink">Galleries</Link></li>
         <br /> */}
-        <li onClick={this.props.logout}>Logout</li>
+        <li onClick={logout}>Logout</li>
       </ul>
     </div>
   );

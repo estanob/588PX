@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import ProfileDropdown from '../profile_dropdown/profile_dropdown'
+import ProfileDropdown from '../profile_dropdown/profile_dropdown'
 
 class Header extends React.Component {
   isLoggedIn() {
     return (
       <div>
-        {/* <h2>Welcome! Log in successful!</h2> */}
-        {/* <ProfileDropdown logout={this.props.logout} userId={this.props.currentUser}/> */}
+        <ProfileDropdown logout={this.props.logout} userId={this.props.currentUser}/>
         <button onClick={() => this.props.logout()}>Logout</button>
+        <Link onClick={this.props.createPicture} to='/upload' className='upload'>Upload</Link>
       </div>
     )
   }

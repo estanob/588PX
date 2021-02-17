@@ -1,0 +1,2 @@
+module Api::PicturesToGalleriesHelper
+end

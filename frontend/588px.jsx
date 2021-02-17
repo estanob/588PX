@@ -20,13 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
   
-  // const closeDropdown = (e) => {
-  //   if(e.target.className !== '#profilepointer') {
-  //     $('#profiledropdown').removeClass('trigger')
-  //   }
-  // } 
+  const closeDropdown = (e) => {
+    if(e.target.className !== '#profilepointer') {
+      $('#profiledropdown').removeClass('trigger')
+    }
+  } 
 
-  // document.addEventListener('click', closeDropdown)
+  document.addEventListener('click', closeDropdown)
   
   window.dispatch = store.dispatch;
   window.getState = store.getState;

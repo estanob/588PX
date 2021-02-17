@@ -11,6 +11,7 @@ import SignupFormContainer from './session_form/sign_up_form_container';
 import HomeFeed from './home_feed';
 import Splash from './splash';
 import HeaderContainer from './header/header_container';
+import ProfileHeaderContainer from './profile/profile_header_container';
 import Navbar from './navbar/navbar';
 import FourOhFour from './four_oh_four';
 
@@ -24,6 +25,7 @@ const App = () => {
       <Modal/>
       <Switch>
         <ProtectedRoute path='/home' component={HomeFeed}/>
+        <ProtectedRoute exact path="/users/:userId" component={ProfileHeaderContainer} />
         
         <AuthRoute exact path="/" component={Splash} />
         <AuthRoute path="/login" component={LoginFormContainer}/>
