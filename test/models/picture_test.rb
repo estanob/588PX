@@ -12,7 +12,7 @@
 #
 # Indexes
 #
-#  index_pictures_on_uploader_id  (uploader_id) UNIQUE
+#  index_pictures_on_uploader_id  (uploader_id)
 #
 # Foreign Keys
 #

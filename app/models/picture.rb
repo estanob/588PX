@@ -12,7 +12,7 @@
 #
 # Indexes
 #
-#  index_pictures_on_uploader_id  (uploader_id) UNIQUE
+#  index_pictures_on_uploader_id  (uploader_id)
 #
 # Foreign Keys
 #
@@ -20,11 +20,12 @@
 #
 class Picture < ApplicationRecord
   validates :location, :title, presence: true
-  validates :uploader_id, uniqueness: true
 
   belongs_to :uploader,
     foreign_key: :uploader_id,
     class_name: :User
+
+  has_one_attached :photo
 
   has_many :pictures_to_galleries,
     foreign_key: :picture_id,
