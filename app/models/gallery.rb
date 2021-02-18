@@ -17,7 +17,8 @@ class Gallery < ApplicationRecord
 
   belongs_to :creator,
     foreign_key: :creator_id,
-    class_name: to_s
+    class_name: :User
+    # class_name: to_s
 
   has_many :pictures_to_galleries,
     foreign_key: :gallery_id,
