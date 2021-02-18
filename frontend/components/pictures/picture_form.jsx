@@ -56,16 +56,30 @@ class PictureForm extends React.Component{
   
   render() {
     return(
-      <div>
+      <div className='picture-body'>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="picture-body">Body of Picture</label>
+          <label htmlFor="picture-body">Picture Title</label>
           <input type="text"
             id='picture-body'
             value={this.state.title}
             onChange={this.handleInput} />
+          <br/>
+          <label htmlFor="picture-location">Location</label>
+          <input type="text"
+            id='picture-location'
+            value={this.state.location}
+            onChange={this.handleInput} />
+          <br/>
+          <label htmlFor='picture-caption'>Caption (optional)</label>
+          <input type="text"
+            id='picture-caption'
+            value={this.state.caption}
+            onChange={this.handleInput} />
+          <br/>
           <input type='file'
             onChange={this.handleFile} />
-          <button>Upload a new Picture!</button>
+          <br/>
+          <button>Upload new picture!</button>
         </form>
       </div>
     )
