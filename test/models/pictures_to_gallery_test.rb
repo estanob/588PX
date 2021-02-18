@@ -8,6 +8,11 @@
 #  gallery_id :integer          not null
 #  picture_id :integer          not null
 #
+# Indexes
+#
+#  index_pictures_to_galleries_on_gallery_id  (gallery_id)
+#  index_pictures_to_galleries_on_picture_id  (picture_id)
+#
 require 'test_helper'
 
 class PicturesToGalleryTest < ActiveSupport::TestCase

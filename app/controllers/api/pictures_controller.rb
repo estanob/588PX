@@ -3,7 +3,8 @@ class Api::PicturesController < ApplicationController
 
   def index
     @pictures = Picture.all
-    render 'api/pictures/index'
+    render :index
+    # render 'api/pictures/index'
   end
 
   def show 
