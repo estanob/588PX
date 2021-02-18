@@ -13,6 +13,7 @@ import Splash from './splash';
 import HeaderContainer from './header/header_container';
 import ProfileHeaderContainer from './profile/profile_header_container';
 import Navbar from './navbar/navbar';
+import UploadForm from './pictures/upload_form';
 import FourOhFour from './four_oh_four';
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
       <Modal/>
       <Switch>
         <ProtectedRoute path='/home' component={HomeFeed}/>
+        <ProtectedRoute path='/upload' component={UploadForm} />
         <ProtectedRoute exact path="/users/:userId" component={ProfileHeaderContainer} />
         
         <AuthRoute exact path="/" component={Splash} />

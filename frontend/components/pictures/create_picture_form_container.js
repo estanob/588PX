@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PictureForm from './picture_form';
 
 const mSTP = ({ errors, session }) => {
   return {
@@ -8,7 +9,6 @@ const mSTP = ({ errors, session }) => {
       title: '',
       location: '',
       caption: '',
-      gallery: '',
       uploader_id: session.id
     },
     formType: 'Upload Picture'
