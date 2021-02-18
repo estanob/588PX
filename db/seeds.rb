@@ -15,6 +15,7 @@ Gallery.destroy_all
 user1 = User.create!(username: 'appacademy', password: '123456')
 user2 = User.create!(username: 'jenny95611', password: '123456')
 user3 = User.create!(username: 'rick901', password: '123456')
+user4 = User.create!(username: 'bobby555', password: '123456')
 
 
 picture1 = Picture.create!(
