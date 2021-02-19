@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ProfileDropdown from '../profile_dropdown/profile_dropdown'
+import ProfileDropdown from '../profile_dropdown/profile_dropdown';
 
 class Header extends React.Component {
   isLoggedIn() {
@@ -11,7 +11,7 @@ class Header extends React.Component {
         <button onClick={() => this.props.logout()} 
           className='header_comps'>Logout</button>
         <Link onClick={this.props.createPicture} 
-          to='/upload' 
+          to='/upload'
           className='header_comps sign-up'>
             Upload
         </Link>

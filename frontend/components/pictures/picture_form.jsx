@@ -9,7 +9,7 @@ class PictureForm extends React.Component{
       title: "",
       caption: "",
       location: "",
-      uploader_id: this.props.uploader_id,
+      uploader_id: this.props.picture.uploader_id,
       photoFile: null,
       photoUrl: null
     };
@@ -18,8 +18,10 @@ class PictureForm extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
-  handleInput(e) {
-    this.setState({title: e.currentTarget.value})
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    })
   };
 
   handleFile(e) {
@@ -35,15 +37,17 @@ class PictureForm extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault()
-    const formData = new formData()
-    formData.append('picture[title]', this.state.title)
+    const picForm = new FormData();
+    picForm.append('picture[title]', this.state.title)
+    picForm.append('picture[location]', this.state.location)
+    picForm.append('picture[uploader_id]', this.state.uploader_id)
     if (this.state.photoFile) {
-      formData.append('picture[photo]', this.state.photoFile)
+      picForm.append('picture[photo]', this.state.photoFile)
     }
     $.ajax({
       url: '/api/pictures',
       method: 'POST',
-      data: formData,
+      data: picForm,
       contentType: false,
       processData: false
     }).then(
@@ -55,31 +59,37 @@ class PictureForm extends React.Component{
   };
   
   render() {
+    let whatButton = this.props.formType === 'Upload Picture' ? 'Upload' : 'Save Changes'
+    
     return(
-      <div className='picture-body'>
+      <div className='picture'>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="picture-body">Picture Title</label>
+          <label htmlFor="picture-title">Picture Title</label>
           <input type="text"
             id='picture-body'
             value={this.state.title}
-            onChange={this.handleInput} />
+            onChange={this.update('title')} />
           <br/>
           <label htmlFor="picture-location">Location</label>
           <input type="text"
             id='picture-location'
             value={this.state.location}
-            onChange={this.handleInput} />
+            onChange={this.update('location')} />
           <br/>
           <label htmlFor='picture-caption'>Caption (optional)</label>
           <input type="text"
             id='picture-caption'
             value={this.state.caption}
-            onChange={this.handleInput} />
+            onChange={this.update('caption')} />
           <br/>
           <input type='file'
-            onChange={this.handleFile} />
+            onChange={this.handleFile} 
+            accept='image/*'/>
           <br/>
-          <button>Upload new picture!</button>
+          <input type='submit'
+            className='upload-button'
+            value={whatButton}
+            disabled={this.state.title.length < 1, this.state.location.length < 1} />
         </form>
       </div>
     )

@@ -21,6 +21,8 @@
 class Picture < ApplicationRecord
   validates :location, :title, presence: true
 
+  validate :ensure_photo
+
   belongs_to :uploader,
     foreign_key: :uploader_id,
     class_name: :User
@@ -34,4 +36,10 @@ class Picture < ApplicationRecord
   has_many :galleries,
     through: :pictures_to_galleries,
     source: :gallery
+
+  def ensure_photo
+    unless self.photo.attached?
+      errors[:photo] << "must be attached"
+    end
+  end
 end
