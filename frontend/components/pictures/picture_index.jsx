@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PictureIndexItem from './picture_index_item';
 
 class PictureIndex extends React.Component {
   constructor(props) {
@@ -11,15 +13,14 @@ class PictureIndex extends React.Component {
 
   render() {
     return(
-      <div className='hello container'>
-        <h3>You're here!</h3>
+      <div className='hello'>
         <ul className='pic-index'>
           {this.props.pictures.map((picture, i) => {
             return (
               <li key={picture.id}
                 className={i % 2 === 0 ? "a" : "b" }>
-                <h2>{picture.title}</h2>
                 <img className='display-img' src={picture.photoUrl} />
+                <h2>{picture.title}</h2>
               </li>
             );
           })}

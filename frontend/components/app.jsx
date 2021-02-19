@@ -11,11 +11,11 @@ import SignupFormContainer from './session_form/sign_up_form_container';
 import HomeFeed from './home_feed';
 import Splash from './splash';
 import HeaderContainer from './header/header_container';
-import ProfileHeaderContainer from './profile/profile_header_container';
 import Navbar from './navbar/navbar';
 import UploadForm from './pictures/upload_form';
 import FourOhFour from './four_oh_four';
 import PictureIndexContainer from './pictures/picture_index_container';
+import PictureShowContainer from './pictures/picture_show_container';
 
 const App = () => {
   return (
@@ -29,8 +29,8 @@ const App = () => {
         <ProtectedRoute path='/home' component={HomeFeed}/>
         <ProtectedRoute path='/upload' component={UploadForm} />
         <ProtectedRoute path='/pictures' component={PictureIndexContainer}/>
-        <ProtectedRoute exact path="/users/:userId" component={ProfileHeaderContainer} />
-        
+        <Route exact path='/pictures/:pictureId' component={PictureShowContainer} />
+
         <AuthRoute exact path="/" component={Splash} />
         <AuthRoute path="/login" component={LoginFormContainer}/>
         <AuthRoute path="/signup" component={SignupFormContainer}/>
