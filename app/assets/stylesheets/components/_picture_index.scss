@@ -1,0 +1,23 @@
+.hello {
+  margin-top: 80px;
+  margin-left: 20px;
+  font-family: Tahoma;
+}
+
+
+.pic-index {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.pic-index > .a {
+  grid-column: 1 / span 2;
+}
+
+.pic-index > .b {
+  grid-column: 3 / span 1;
+}
+
+.display-img {
+  width: 100%;
+}

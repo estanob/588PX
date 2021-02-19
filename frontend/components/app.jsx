@@ -15,6 +15,7 @@ import ProfileHeaderContainer from './profile/profile_header_container';
 import Navbar from './navbar/navbar';
 import UploadForm from './pictures/upload_form';
 import FourOhFour from './four_oh_four';
+import PictureIndexContainer from './pictures/picture_index_container';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
       <Switch>
         <ProtectedRoute path='/home' component={HomeFeed}/>
         <ProtectedRoute path='/upload' component={UploadForm} />
+        <ProtectedRoute path='/pictures' component={PictureIndexContainer}/>
         <ProtectedRoute exact path="/users/:userId" component={ProfileHeaderContainer} />
         
         <AuthRoute exact path="/" component={Splash} />
