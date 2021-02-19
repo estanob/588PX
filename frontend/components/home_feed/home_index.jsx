@@ -2,6 +2,10 @@ import React from 'react';
 import PictureIndexContainer from '../pictures/picture_index_container';
 
 class HomeIndex extends React.Component {
+  componentDidMount() {
+    this.props.fetchPictures()
+  }
+  
   render() {
     return (
       <div>
