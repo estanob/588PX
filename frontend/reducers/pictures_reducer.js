@@ -21,4 +21,4 @@ const PicturesReducer = (state = {}, action) => {
   }
 }
 
-export default PicturesReducer
+export default PicturesReducer;

@@ -15,13 +15,14 @@ class PictureIndex extends React.Component {
     return(
       <div className='hello'>
         <ul className='pic-index'>
-          {this.props.pictures.map((picture, i) => {
+          {this.props.pictures.map((picture) => {
             return (
-              <li key={picture.id}
-                className={i % 2 === 0 ? "a" : "b" }>
-                <img className='display-img' src={picture.photoUrl} />
-                <h2>{picture.title}</h2>
-              </li>
+              <PictureIndexItem picture={picture} key={picture.id} />
+              // <li picture={picture} key={picture.id}
+              //   className="a">
+              //   <img onClick={() => this.props.fetchPicture(picture.id)} className='display-img' src={picture.photoUrl} />
+              //   <h2>{picture.title}</h2>
+              // </li>
             );
           })}
         </ul>
