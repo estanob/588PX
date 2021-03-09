@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 class PictureIndexItem extends React.Component {
   render() {
     const { picture } = this.props;
-    // debugger
     return(
       <>
         <Link to={`/pictures/${picture.id}`}>

@@ -13,13 +13,14 @@ class PictureShow extends React.Component {
   render() {
     const { picture } = this.props;
     if (!picture) return null;
-
     return(
       <>
         <div>
           <HeaderContainer />
-          <div className='show'>
-            <img src={picture.photoUrl} alt={picture.title} />
+          <div className='show display-img'>
+            <img className='display-img' src={picture.photoUrl} alt={picture.title} />
+            <p>Location: {picture.location}</p>
+            <p>{picture.caption ? 'Caption: ' + picture.caption : ''}</p>
           </div>
         </div>
       </>

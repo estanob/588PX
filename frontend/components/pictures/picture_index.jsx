@@ -13,7 +13,6 @@ class PictureIndex extends React.Component {
   };
 
   render() {
-    // debugger
     return(
       <div className='hello'>
         <ul className='pic-index'>
