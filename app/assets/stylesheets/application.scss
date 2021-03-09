@@ -15,15 +15,16 @@
  */
 
 @import "./base/reset";
-@import './base/colors';
-@import './components/four_oh_four';
-@import './components/picture_form';
-@import './components/picture_index';
+@import "./base/colors";
+@import "./components/four_oh_four";
+@import "./components/picture_form";
+@import "./components/picture_index";
+@import "./components/picture_show";
 @import "./layout/root";
 @import "./layout/header";
-@import './layout/home_page';
+@import "./layout/home_page";
 @import "./layout/profile";
-@import './layout/profile_dropdown';
+@import "./layout/profile_dropdown";
 @import "./layout/session_form";
 @import "./api/navbar";
 @import "./api/greeting";

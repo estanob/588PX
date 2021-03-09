@@ -8,6 +8,8 @@
 .pic-index {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  flex-flow: row wrap;
 }
 
 .pic-index > .a {
@@ -20,4 +22,5 @@
 
 .display-img {
   width: 100%;
+  height: calc(0.4 * 100vh);
 }

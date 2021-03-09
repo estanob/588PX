@@ -9,20 +9,17 @@ class PictureIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchPictures();
+    this.props.fetchPicture(this.props.pictureId);
   };
 
   render() {
+    // debugger
     return(
       <div className='hello'>
         <ul className='pic-index'>
           {this.props.pictures.map((picture) => {
             return (
               <PictureIndexItem picture={picture} key={picture.id} />
-              // <li picture={picture} key={picture.id}
-              //   className="a">
-              //   <img onClick={() => this.props.fetchPicture(picture.id)} className='display-img' src={picture.photoUrl} />
-              //   <h2>{picture.title}</h2>
-              // </li>
             );
           })}
         </ul>

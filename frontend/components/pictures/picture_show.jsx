@@ -1,19 +1,26 @@
 import React from 'react';
+import HeaderContainer from '../header/header_container';
 
 class PictureShow extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    this.props.fetchPicture()
+  }
+  
   render() {
     const { picture } = this.props;
     if (!picture) return null;
 
-    const pictureArray = Array.isArray(picture.photoUrl) ? picture.photoUrl : [picture.photoUrl];
-    const photo = pictureArray.map((url, i) => {
-      return <img src={url} key={i} className='picture-show-img'/>
-    })
-
     return(
       <>
         <div>
-          {photo}
+          <HeaderContainer />
+          <div className='show'>
+            <img src={picture.photoUrl} alt={picture.title} />
+          </div>
         </div>
       </>
     ) 

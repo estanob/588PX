@@ -28,8 +28,8 @@ const App = () => {
       <Switch>
         <ProtectedRoute path='/home' component={HomeFeed}/>
         <ProtectedRoute path='/upload' component={UploadForm} />
+        <ProtectedRoute exact path='/pictures/:id' component={PictureShowContainer} />
         <ProtectedRoute path='/pictures' component={PictureIndexContainer}/>
-        <Route exact path='/pictures/:pictureId' component={PictureShowContainer} />
 
         <AuthRoute exact path="/" component={Splash} />
         <AuthRoute path="/login" component={LoginFormContainer}/>
