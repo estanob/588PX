@@ -1,6 +1,6 @@
 .hello {
-  margin-top: 80px;
-  margin-left: 20px;
+  margin-top: 60px;
+  // margin-left: 20px;
   font-family: Tahoma;
   background: #ebeef5;
 }
@@ -10,17 +10,20 @@
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
   flex-flow: row wrap;
+  align-items: center;
 }
 
 .pic-index > .a {
   grid-column: 1 / span 2;
+  align-items: center;
 }
 
 .pic-index > .b {
   grid-column: 3 / span 1;
+  align-items: center;
 }
 
 .display-img {
   width: 100%;
-  height: calc(0.4 * 100vh);
+  height: 100%;
 }
