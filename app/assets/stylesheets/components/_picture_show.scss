@@ -3,18 +3,22 @@
   margin-left: 40px;
 }
 
-.img-container {
-  background: black;
-  align-items: center;
-}
-
-.display-img > h1 {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 img {
   display: block;
   width: 100vw;
   object-fit: contain;
   max-height: 600px;
+}
+
+.img-container {
+  background: black;
+  align-items: center;
+}
+
+.img-info > h1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.img-info > p {
+  font-family: Arial, Helvetica, sans-serif;
 }

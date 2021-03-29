@@ -28,11 +28,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener('click', closeDropdown)
   
-  window.dispatch = store.dispatch;
-  window.getState = store.getState;
-  window.login = login;
-  window.logout = logout;
-  window.signup = signup;
   ReactDOM.render(<Root store={store}/>, rootEle);
-  // ReactDOM.render(<h1>Hello!</h1>, rootEle);
 });

@@ -19,9 +19,11 @@ class PictureShow extends React.Component {
         <div className='img-container'>
           <img src={picture.photoUrl} alt={picture.title} />
         </div>
-        <div className='show display-img'>
+        <div className='show img-info'>
           <h1>{picture.title}</h1>
+          <br/>
           <p>Location: {picture.location}</p>
+          <br/>
           <p>{picture.caption ? 'Caption: ' + picture.caption : ''}</p>
         </div>
       </div>
