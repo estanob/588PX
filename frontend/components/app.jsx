@@ -16,6 +16,7 @@ import UploadForm from './pictures/upload_form';
 import FourOhFour from './four_oh_four';
 import PictureIndexContainer from './pictures/picture_index_container';
 import PictureShowContainer from './pictures/picture_show_container';
+import EditPictureFormContainer from './pictures/edit_picture_form_container';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
       <Switch>
         <ProtectedRoute path='/home' component={HomeFeed}/>
         <ProtectedRoute path='/upload' component={UploadForm} />
+        <ProtectedRoute exact path='/pictures/:id/edit' component={EditPictureFormContainer}/>
         <ProtectedRoute exact path='/pictures/:id' component={PictureShowContainer} />
         <ProtectedRoute path='/pictures' component={PictureIndexContainer}/>
 

@@ -1,8 +1,12 @@
 import React from 'react';
 
 class EditPictureForm extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
-    this.props.fetchPicture(this.props.match.params.pictureId)
+    this.props.fetchPicture()
   }
 
   render() {
@@ -16,20 +20,28 @@ class EditPictureForm extends React.Component {
       closeModal
     } = this.props;
 
-    if (!picture || picture.uploader_id !== session) return null;
+    // if (!picture || picture.uploader_id !== session) return null;
+    if (!picture) return "Picture does not exist";
 
+    debugger
     return(
-      <div>
-        <div>
-          <PictureForm
-            action={action}
-            formType={formType}
-            picture={picture}
-            deletePicture={deletePicture}
-            cancelModal={cancelModal}
-            closeModal={closeModal} />
+      <>
+        <div className="edit-show">
+          <div>Hello World</div>
+          <img src={picture.photoUrl} alt={picture.title}/>
         </div>
-      </div>
+        {/* <div className="show img-info">
+          <div>
+            <PictureForm
+              action={action}
+              formType={formType}
+              picture={picture}
+              deletePicture={deletePicture}
+              cancelModal={cancelModal}
+              closeModal={closeModal} />
+          </div>
+        </div> */}
+      </>
     )
   }
 };

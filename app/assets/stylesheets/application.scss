@@ -17,9 +17,10 @@
 @import "./base/reset";
 @import "./base/colors";
 @import "./components/four_oh_four";
-@import "./components/picture_form";
-@import "./components/picture_index";
-@import "./components/picture_show";
+@import "./components/picture/picture_form";
+@import "./components/picture/picture_index";
+@import "./components/picture/picture_show";
+@import "./components/picture/edit_picture_form";
 @import "./layout/root";
 @import "./layout/header";
 @import "./layout/home_page";

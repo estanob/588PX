@@ -1,23 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import EditPictureForm from '';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { deletePicture, fetchPicture, updatePicture } from '../../actions/picture_actions';
+import EditPictureForm from './edit_picture_form';
 
 const mSTP = ( state, ownProps ) => {
   return {
     errors: Object.values(state.errors.pictures),
-    picture: state.entities.pictures[ownProps.match.params.pictureId],
+    picture: state.entities.pictures[ownProps.match.params.id],
     session: state.session.id,
     formType: 'Edit Picture'
   };
 };
 
-const mDTP = dispatch => {
+const mDTP = (dispatch, ownProps) => {
   return {
-    fetchPicture: pictureId => dispatch(fetchPicture(pictureId)),
+    fetchPicture: () => dispatch(fetchPicture(parseInt(ownProps.match.params.id))),
     deletePicture: pictureId => dispatch(deletePicture(pictureId)),
-    action: post => dispatch(updatePicture(picture)),
+    action: picture => dispatch(updatePicture(picture)),
     cancelModal: (
       <input type="button"
         className='cancel-button'
