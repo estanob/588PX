@@ -30,6 +30,9 @@ class EditPictureForm extends React.Component {
           <div>Hello World</div>
           <img src={picture.photoUrl} alt={picture.title}/>
         </div>
+        <div>
+          {formType}
+        </div>
         {/* <div className="show img-info">
           <div>
             <PictureForm

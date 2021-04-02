@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { deletePicture, fetchPicture, updatePicture } from '../../actions/picture_actions';
-import EditPictureForm from './edit_picture_form';
+import PictureForm from './picture_form';
 
 const mSTP = ( state, ownProps ) => {
   return {
@@ -28,4 +28,4 @@ const mDTP = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mSTP, mDTP)(EditPictureForm);
+export default connect(mSTP, mDTP)(PictureForm);
