@@ -29,6 +29,7 @@ class EditPictureForm extends React.Component {
         <div className="edit-show">
           <div>Hello World</div>
           <img src={picture.photoUrl} alt={picture.title}/>
+          {/* {picture.location} */}
         </div>
         <div>
           {formType}

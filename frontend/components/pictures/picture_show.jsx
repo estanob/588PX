@@ -24,7 +24,7 @@ class PictureShow extends React.Component {
           <br/>
           <p>Location: {picture.location}</p>
           <br/>
-          <p>{picture.caption ? 'Caption: ' + picture.caption : ''}</p>
+          <p>{picture.caption ? picture.caption : ''}</p>
         </div>
       </div>
     ) 
