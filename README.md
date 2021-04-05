@@ -1,6 +1,6 @@
 # 588PX
 
-[Live Link](five88px.herokuapp.com/#/)
+[Live Link](http://five88px.herokuapp.com/#/)
 
 ## Technologies Used
 
