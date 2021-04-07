@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
-import { deletePicture, fetchPicture, updatePicture } from '../../actions/picture_actions';
 import PictureForm from './picture_form';
+import { deletePicture, fetchPicture, updatePicture } from '../../actions/picture_actions';
 
 const mSTP = ( state, ownProps ) => {
   return {
     errors: Object.values(state.errors.pictures),
-    picture: state.entities.pictures[ownProps.match.params.id],
+    picture: state.entities.pictures[ownProps.match.params.pictureId],
     session: state.session.id,
     formType: 'Edit Picture'
   };

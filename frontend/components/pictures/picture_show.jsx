@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import HeaderContainer from '../header/header_container';
 
 class PictureShow extends React.Component {
@@ -20,6 +21,7 @@ class PictureShow extends React.Component {
           <img src={picture.photoUrl} alt={picture.title} />
         </div>
         <div className='show img-info'>
+          <Link to={`/pictures/${picture.id}/edit`}><p>Edit</p></Link>
           <h1>{picture.title}</h1>
           <br/>
           <p>Location: {picture.location}</p>

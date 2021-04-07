@@ -9,7 +9,7 @@ class PictureForm extends React.Component{
       title: "",
       caption: "",
       location: "",
-      uploader_id: this.props.picture.uploader_id,
+      uploader_id: props.picture.uploader_id,
       photoFile: null,
       photoUrl: null
     };
@@ -61,6 +61,7 @@ class PictureForm extends React.Component{
   render() {
     let whatButton = this.props.formType === 'Upload Picture' ? 'Upload' : 'Save Changes'
     
+    debugger
     return(
       <div className='picture'>
         <form onSubmit={this.handleSubmit}>

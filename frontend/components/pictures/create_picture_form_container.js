@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PictureForm from './picture_form';
+import { createPicture } from '../../actions/picture_actions';
 
 const mSTP = ({ errors, session }) => {
   return {
