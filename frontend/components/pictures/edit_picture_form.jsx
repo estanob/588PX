@@ -2,12 +2,25 @@ import React from 'react';
 import PictureForm from './picture_form';
 
 class EditPictureForm extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      title: '',
+      location: '',
+      caption: '',
+    }
+  }
 
   componentDidMount() {
-    this.props.fetchPicture(this.props.match.params.pictureId)
+    this.props.fetchPicture(this.props.match.params.id)
+      .then(() => (
+        this.setState({
+          title: this.props.picture.title,
+          location: this.props.picture.location,
+          caption: this.props.picture.caption,
+        })
+      ))
   }
 
   render() {
@@ -18,40 +31,32 @@ class EditPictureForm extends React.Component {
       deletePicture, 
     } = this.props;
 
-    // if (!picture || picture.uploader_id !== session) return null;
-    // if (!picture) return "Picture does not exist";
-    if (!picture) return null;
+    const {
+      title,
+      location,
+      caption,
+    } = this.state;
 
-    debugger
+    let photoFile = picture ? picture.photoFile : '';
+    let uploader_id = picture ? picture.uploader_id : '';
+
+    console.log(picture);
+    console.log(photoFile);
+    console.log(uploader_id);
     return(
-      <>
-        {/* <div className="edit-show">
-          <div>Hello World</div>
-          <img src={picture.photoUrl} alt={picture.title}/>
-          {picture.location}
-        </div>
-        <div>
-          {formType}
-        </div>
-        <div className="show img-info">
-          <div>
-            <PictureForm
-              action={action}
-              formType={formType}
-              picture={picture}
-              deletePicture={deletePicture}
-              cancelModal={cancelModal}
-              closeModal={closeModal} />
-          </div>
-        </div> */}
+      <div>
 
         <PictureForm 
           action={action}
           formType={formType}
           picture={picture}
-          deletePicture={deletePicture}
-          uploader_id={picture.uploader_id} />
-      </>
+          title={title}
+          location={location}
+          caption={caption}
+          photoFile={photoFile}
+          uploader_id={uploader_id}
+          deletePicture={deletePicture} />
+      </div>
     )
   }
 };

@@ -1,21 +1,21 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
-import PictureForm from './picture_form';
 import { deletePicture, fetchPicture, updatePicture } from '../../actions/picture_actions';
+import React from 'react';
+import EditPictureForm from './edit_picture_form';
 
 const mSTP = ( state, ownProps ) => {
   return {
     errors: Object.values(state.errors.pictures),
-    picture: state.entities.pictures[ownProps.match.params.pictureId],
+    picture: state.entities.pictures[ownProps.match.params.id],
     session: state.session.id,
     formType: 'Edit Picture'
   };
 };
 
-const mDTP = (dispatch, ownProps) => {
+const mDTP = dispatch => {
   return {
-    fetchPicture: () => dispatch(fetchPicture(parseInt(ownProps.match.params.id))),
+    fetchPicture: (pictureId) => dispatch(fetchPicture(pictureId)),
     deletePicture: pictureId => dispatch(deletePicture(pictureId)),
     action: picture => dispatch(updatePicture(picture)),
     cancelModal: (
@@ -28,4 +28,4 @@ const mDTP = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mSTP, mDTP)(PictureForm);
+export default connect(mSTP, mDTP)(EditPictureForm);

@@ -1,22 +1,42 @@
 import React from 'react'
-import modal from '../modal/modal'
-import { Redirect } from 'react-router-dom'
+// import modal from '../modal/modal'
+// import { Redirect } from 'react-router-dom'
 
 class PictureForm extends React.Component{
   constructor(props) {
     super(props)
+
+    let uploaderId = this.props.pictures ? this.props.pictures.uploader_id : '';
+    let title = this.props.title ? this.props.title : '';
+    let caption = this.props.caption ? this.props.caption : '';
+    let location = this.props.location ? this.props.location : '';
+    let photoFile = this.props.photoFile ? this.props.photoFile : '';
+
     this.state = {
-      title: "",
-      caption: "",
-      location: "",
-      uploader_id: props.picture.uploader_id,
-      photoFile: null,
+      title: title,
+      caption: caption,
+      location: location,
+      uploader_id: uploaderId,
+      photoFile: photoFile,
       photoUrl: null
     };
 
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
+
+  componentDidUpdate(prevProps) {
+    let uploaderId = this.props.pictures ? this.props.pictures.uploader_id : '';
+    let photoFile = this.props.photoFile ? this.props.photoFile : '';
+    if (prevProps.title !== this.props.title) {
+      this.setState({ 
+        title: this.props.title, 
+        location: this.props.location, 
+        caption: this.props.caption, 
+        photoFile: photoFile, 
+        uploader_id: uploaderId })
+    }
+  }
 
   update(field) {
     return e => this.setState({
@@ -35,6 +55,7 @@ class PictureForm extends React.Component{
     }
   };
 
+  // if statement to check form type POST vs PUT/PATCH
   handleSubmit(e) {
     e.preventDefault()
     const picForm = new FormData();
@@ -44,9 +65,12 @@ class PictureForm extends React.Component{
     if (this.state.photoFile) {
       picForm.append('picture[photo]', this.state.photoFile)
     }
+    debugger
+    let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.id}/edit`;
+    let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PUT';
     $.ajax({
-      url: '/api/pictures',
-      method: 'POST',
+      url: url,
+      method: method,
       data: picForm,
       contentType: false,
       processData: false
@@ -61,7 +85,6 @@ class PictureForm extends React.Component{
   render() {
     let whatButton = this.props.formType === 'Upload Picture' ? 'Upload' : 'Save Changes'
     
-    debugger
     return(
       <div className='picture'>
         <form onSubmit={this.handleSubmit}>
