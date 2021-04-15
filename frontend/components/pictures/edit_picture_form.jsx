@@ -19,6 +19,7 @@ class EditPictureForm extends React.Component {
           title: this.props.picture.title,
           location: this.props.picture.location,
           caption: this.props.picture.caption,
+          photoUrl: this.props.picture.photoUrl
         })
       ))
   }
@@ -33,6 +34,7 @@ class EditPictureForm extends React.Component {
 
     const {
       title,
+      photoUrl,
       location,
       caption,
     } = this.state;
@@ -40,23 +42,24 @@ class EditPictureForm extends React.Component {
     let photoFile = picture ? picture.photoFile : '';
     let uploader_id = picture ? picture.uploader_id : '';
 
-    console.log(picture);
-    console.log(photoFile);
-    console.log(uploader_id);
     console.log("You have reached the edit page!")
-    return(
-      <div>
 
-        <PictureForm 
-          action={action}
-          formType={formType}
-          picture={picture}
-          title={title}
-          location={location}
-          caption={caption}
-          photoFile={photoFile}
-          uploader_id={uploader_id}
-          deletePicture={deletePicture} />
+    return(
+      <div className="edit-show">
+        <h1>Picture manager</h1>
+        <img className='edit' src={photoUrl} alt={title} />
+        <div className='edit-info'>
+          <PictureForm 
+            action={action}
+            formType={formType}
+            picture={picture}
+            title={title}
+            location={location}
+            caption={caption}
+            photoFile={photoFile}
+            uploader_id={uploader_id}
+            deletePicture={deletePicture} />
+        </div>
       </div>
     )
   }

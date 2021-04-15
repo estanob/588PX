@@ -21,7 +21,6 @@ class Api::PicturesController < ApplicationController
   end
 
   def update
-    debugger
     @picture = Picture.find(params[:picture][:id])
     # if @picture.uploader_id == current_user.id && @picture && @picture.update(picture_params) # change picture params, access params directly
     # if @picture && @picture.update(picture_params) # change picture params, access params directly

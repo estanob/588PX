@@ -25,6 +25,7 @@ class PictureForm extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
+
   componentDidUpdate(prevProps) {
     let uploaderId = this.props.pictures ? this.props.pictures.uploader_id : '';
     let photoFile = this.props.photoFile ? this.props.photoFile : '';
@@ -67,7 +68,6 @@ class PictureForm extends React.Component{
     if (this.state.photoFile) {
       picForm.append('picture[photo]', this.state.photoFile)
     }
-    debugger
     let id = this.props.picture.id ? this.props.picture.id : '';
     let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.picture.id}`;
     let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PATCH';
@@ -87,8 +87,10 @@ class PictureForm extends React.Component{
   };
   
   render() {
-    let whatButton = this.props.formType === 'Upload Picture' ? 'Upload' : 'Save Changes'
-    
+    const { picture, formType } = this.props;
+
+    let whatButton = formType === 'Upload Picture' ? 'Upload' : 'Save Changes'
+
     return(
       <div className='picture'>
         <form onSubmit={this.handleSubmit}>
