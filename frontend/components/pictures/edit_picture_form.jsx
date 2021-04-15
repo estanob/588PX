@@ -46,19 +46,21 @@ class EditPictureForm extends React.Component {
 
     return(
       <div className="edit-show">
-        <h1>Picture manager</h1>
-        <img className='edit' src={photoUrl} alt={title} />
-        <div className='edit-info'>
-          <PictureForm 
-            action={action}
-            formType={formType}
-            picture={picture}
-            title={title}
-            location={location}
-            caption={caption}
-            photoFile={photoFile}
-            uploader_id={uploader_id}
-            deletePicture={deletePicture} />
+        <h1 className='manager'>Picture manager</h1>
+        <div className='edit-not-header'>
+          <img className='edit' src={photoUrl} alt={title} />
+          <div className='edit-info'>
+            <PictureForm 
+              action={action}
+              formType={formType}
+              picture={picture}
+              title={title}
+              location={location}
+              caption={caption}
+              photoFile={photoFile}
+              uploader_id={uploader_id}
+              deletePicture={deletePicture} />
+          </div>
         </div>
       </div>
     )
