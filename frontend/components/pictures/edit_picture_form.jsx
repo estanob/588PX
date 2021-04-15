@@ -43,6 +43,7 @@ class EditPictureForm extends React.Component {
     console.log(picture);
     console.log(photoFile);
     console.log(uploader_id);
+    console.log("You have reached the edit page!")
     return(
       <div>
 

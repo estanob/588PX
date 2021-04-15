@@ -22,8 +22,10 @@ class Api::PicturesController < ApplicationController
 
   def update
     debugger
-    @picture = Picture.find_by(id: params[:picture][:id])
-    if @picture.uploader_id == current_user.id && @picture && @picture.update(picture_params) # change picture params, access params directly
+    @picture = Picture.find(params[:picture][:id])
+    # if @picture.uploader_id == current_user.id && @picture && @picture.update(picture_params) # change picture params, access params directly
+    # if @picture && @picture.update(picture_params) # change picture params, access params directly
+    if @picture && @picture.update(picture_params) # change picture params, access params directly
       render 'api/pictures/show'
     end
   end
@@ -39,6 +41,7 @@ class Api::PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit(:id, :title, :location, :caption, :uploader_id, :photo)
+    params.require(:picture).permit(:title, :location, :caption)
+    # params.require(:picture).permit(:id, :title, :location, :caption, :uploader_id, :photo)
   end
 end

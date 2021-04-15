@@ -59,16 +59,20 @@ class PictureForm extends React.Component{
   handleSubmit(e) {
     e.preventDefault()
     const picForm = new FormData();
+    picForm.append('picture[id]', this.props.picture.id)
     picForm.append('picture[title]', this.state.title)
     picForm.append('picture[location]', this.state.location)
+    picForm.append('picture[caption]', this.state.caption)
     picForm.append('picture[uploader_id]', this.state.uploader_id)
     if (this.state.photoFile) {
       picForm.append('picture[photo]', this.state.photoFile)
     }
     debugger
-    let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.id}/edit`;
-    let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PUT';
+    let id = this.props.picture.id ? this.props.picture.id : '';
+    let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.picture.id}`;
+    let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PATCH';
     $.ajax({
+      id: id,
       url: url,
       method: method,
       data: picForm,
