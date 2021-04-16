@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PictureForm from './picture_form';
 
 class EditPictureForm extends React.Component {
@@ -39,16 +40,20 @@ class EditPictureForm extends React.Component {
       caption,
     } = this.state;
 
+    picture ? picture : '';
     let photoFile = picture ? picture.photoFile : '';
     let uploader_id = picture ? picture.uploader_id : '';
 
     console.log("You have reached the edit page!")
 
+    debugger
     return(
       <div className="edit-show">
         <h1 className='manager'>Picture manager</h1>
         <div className='edit-not-header'>
-          <img className='edit' src={photoUrl} alt={title} />
+          <Link to={`/pictures/${picture.id}`}>
+            <img className='edit' src={photoUrl} alt={title} />
+          </Link>
           <div className='edit-info'>
             <PictureForm 
               action={action}
