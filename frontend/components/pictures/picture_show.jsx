@@ -13,7 +13,6 @@ class PictureShow extends React.Component {
   };
 
   handleDelete(e) {
-    debugger
     e.preventDefault()
     this.props.deletePicture();
   };

@@ -28,10 +28,9 @@ class Api::PicturesController < ApplicationController
   end
 
   def destroy
-    debugger
     @picture = Picture.find_by(id: params[:id])
     @picture.destroy
-    render 'api/pictures/show'
+    render 'api/pictures7'
     # if @picture.uploader_id == current_user.id
     #   @picture.destroy
     #   render 'api/posts/show'
