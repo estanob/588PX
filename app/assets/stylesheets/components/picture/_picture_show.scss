@@ -29,3 +29,34 @@ img {
   font-size: 24px;
   font-weight: 900;
 }
+
+.edit-update {
+  background-color: #1890ff;
+  border: 1px #333 solid;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  width: 127.22px;
+  height: 32.22px;
+  font-family: sans-serif;
+  font-size: 16px;
+  // font-color: white;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+}
+
+.edit-delete {
+  background-color: #db2f23;
+  border: 1px #333 solid;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  width: 127.22px;
+  height: 32.22px;
+  font-family: sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+}

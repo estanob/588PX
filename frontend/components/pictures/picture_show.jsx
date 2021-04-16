@@ -21,7 +21,10 @@ class PictureShow extends React.Component {
           <img src={picture.photoUrl} alt={picture.title} />
         </div>
         <div className='show img-info'>
-          <Link to={`/pictures/${picture.id}/edit`}><p>Edit</p></Link>
+          <button className='edit-update'>
+            <Link style={{ color: 'white', textDecoration: 'none' }} to={`/pictures/${picture.id}/edit`}><p>Edit</p></Link>
+          </button>
+          <button className='edit-delete'>Delete</button>
           <h1>{picture.title}</h1>
           <br/>
           <p>Location: {picture.location}</p>
