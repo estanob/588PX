@@ -22,25 +22,25 @@ class Api::PicturesController < ApplicationController
 
   def update
     @picture = Picture.find(params[:picture][:id])
-    # if @picture.uploader_id == current_user.id && @picture && @picture.update(picture_params) # change picture params, access params directly
-    # if @picture && @picture.update(picture_params) # change picture params, access params directly
-    if @picture && @picture.update(picture_params) # change picture params, access params directly
+    if @picture && @picture.update(picture_params)
       render 'api/pictures/show'
     end
   end
 
   def destroy
+    debugger
     @picture = Picture.find_by(id: params[:id])
-    if @picture.uploader_id == current_user.id
-      @picture.destroy
-      render 'api/posts/show'
-    end
+    @picture.destroy
+    render 'api/pictures/show'
+    # if @picture.uploader_id == current_user.id
+    #   @picture.destroy
+    #   render 'api/posts/show'
+    # end
   end
 
   private
 
   def picture_params
     params.require(:picture).permit(:title, :location, :caption)
-    # params.require(:picture).permit(:id, :title, :location, :caption, :uploader_id, :photo)
   end
 end
