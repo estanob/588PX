@@ -46,7 +46,6 @@ class EditPictureForm extends React.Component {
 
     console.log("You have reached the edit page!")
 
-    debugger
     return(
       <div className="edit-show">
         <h1 className='manager'>Picture manager</h1>
@@ -57,6 +56,7 @@ class EditPictureForm extends React.Component {
           <div className='edit-info'>
             <PictureForm 
               action={action}
+              id={picture.id}
               formType={formType}
               picture={picture}
               title={title}

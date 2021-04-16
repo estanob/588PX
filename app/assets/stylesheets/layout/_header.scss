@@ -37,6 +37,10 @@ header > li:last-child {
   padding: 0px 60px 0px 0px; 
 }
 
+.active:hover {
+  color: #1890ff;
+}
+
 .navbar {
   display: flex;
   flex-direction: row;
@@ -48,6 +52,10 @@ header > li:last-child {
   text-decoration: none;
   color: black;
   padding-right: 60px;
+}
+
+.navbar a:hover {
+  color: #1890ff;
 }
 
 .header_comps {
