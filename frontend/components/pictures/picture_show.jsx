@@ -34,7 +34,10 @@ class PictureShow extends React.Component {
                 <p>Edit</p>
             </Link>
           </button>
-          <button className='edit-delete' onClick={this.handleDelete}>Delete</button>
+          <button 
+            className='edit-delete' 
+            onClick={this.handleDelete}>Delete
+          </button>
           <h1>{picture.title}</h1>
           <br/>
           <p>Location: {picture.location}</p>

@@ -1,6 +1,4 @@
 import React from 'react'
-// import modal from '../modal/modal'
-// import { Redirect } from 'react-router-dom'
 
 class PictureForm extends React.Component{
   constructor(props) {
@@ -87,9 +85,13 @@ class PictureForm extends React.Component{
   };
   
   render() {
-    const { picture, formType } = this.props;
-
+    const { formType } = this.props;
+    const { title, location, caption } = this.state;
     let whatButton = formType === 'Upload Picture' ? 'Upload' : 'Save Changes'
+
+    title ? title : '';
+    location ? location : '';
+    caption ? caption : '';
 
     return(
       <div className='picture'>
@@ -97,19 +99,19 @@ class PictureForm extends React.Component{
           <label htmlFor="picture-title">Picture Title</label>
           <input type="text"
             id='picture-body'
-            value={this.state.title}
+            value={title}
             onChange={this.update('title')} />
           <br/>
           <label htmlFor="picture-location">Location</label>
           <input type="text"
             id='picture-location'
-            value={this.state.location}
+            value={location}
             onChange={this.update('location')} />
           <br/>
           <label htmlFor='picture-caption'>Caption (optional)</label>
           <input type="text"
             id='picture-caption'
-            value={this.state.caption}
+            value={caption}
             onChange={this.update('caption')} />
           <br/>
           <input type='file'

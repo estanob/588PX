@@ -6,8 +6,13 @@ class PictureIndexItem extends React.Component {
     const { picture } = this.props;
     return(
       <>
-        <Link to={`/pictures/${picture.id}`}>
-          <img className='display-img' src={picture.photoUrl} alt={picture.title} />
+        <Link 
+          to={`/pictures/${picture.id}`} 
+          style={{ color: 'black', textDecoration: 'none' }}>
+          <img 
+            className='display-img' 
+            src={picture.photoUrl} 
+            alt={picture.title} />
           <p>{picture.title}</p>
         </Link>
       </>
