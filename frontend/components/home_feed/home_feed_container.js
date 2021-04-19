@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import HomeIndex from "./home_index";
+import HomeFeed from "./home_feed";
 import { fetchPictures } from "../../actions/picture_actions";
 
 const mSTP = state => {
@@ -16,4 +16,4 @@ const mDTP = dispatch => {
 }
 
 
-export default connect(mSTP, mDTP)(HomeIndex);
+export default connect(mSTP, mDTP)(HomeFeed);

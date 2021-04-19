@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeIndexContainer from './home_feed/home_index_container';
+import HomeFeedContainer from './home_feed/home_feed_container';
 
 class HomeFeed extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class HomeFeed extends React.Component {
         </div>
   
         <div className="home-page-images">
-          <HomeIndexContainer />
+          <HomeFeedContainer />
         </div>
       </div>
     )

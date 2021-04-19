@@ -1,7 +1,7 @@
 import React from 'react';
 import PictureIndexContainer from '../pictures/picture_index_container';
 
-class HomeIndex extends React.Component {
+class HomeFeed extends React.Component {
   componentDidMount() {
     this.props.fetchPictures()
   }
@@ -17,4 +17,4 @@ class HomeIndex extends React.Component {
     )
   }
 }
-export default HomeIndex;
+export default HomeFeed;

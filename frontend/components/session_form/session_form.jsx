@@ -81,28 +81,33 @@ class SessionForm extends React.Component {
                 onClick={this.props.closeModal}
                 value={this.state.username}
                 onChange={this.update('username')}
-                className="login-input"
-              />
+                className="login-input" />
             </label>
-            <div className='errors-box'>{this.usernameError()}</div>
+            <div className='errors-box'>
+              {this.usernameError()}
+            </div>
             <br />
             <label>Password:
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                className="login-input"
-              />
+                className="login-input" />
             </label>
             <div className='errors-box'>{this.passwordError()}</div>
             <br />
-            <button onClick={this.handleSubmit} className="session-submit">{this.props.formType === 'login' ? 'Login' : 'Sign Up'}</button>
+            <button 
+              onClick={this.handleSubmit} 
+              className="session-submit" >
+              {this.props.formType === 'login' ? 'Login' : 'Sign Up'}
+            </button>
             <br/>
             {
               this.props.formType === 'signup' ? 
               <button 
                 className='session-submit' 
                 onClick={this.handleDemoLogin}
-                value='demo'>Demo Login
+                value='demo' >
+                Demo Login
               </button> : ""
             }
             <br/>
@@ -117,4 +122,3 @@ class SessionForm extends React.Component {
 }
 
 export default withRouter(SessionForm);
-// export default SessionForm;

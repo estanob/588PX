@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
-import { deletePicture, fetchPicture, updatePicture } from '../../actions/picture_actions';
+import { clearErrors, deletePicture, fetchPicture, updatePicture } from '../../actions/picture_actions';
 import React from 'react';
 import EditPictureForm from './edit_picture_form';
 
@@ -15,7 +15,7 @@ const mSTP = ( state, ownProps ) => {
 
 const mDTP = dispatch => {
   return {
-    fetchPicture: (pictureId) => dispatch(fetchPicture(pictureId)),
+    fetchPicture: pictureId => dispatch(fetchPicture(pictureId)),
     deletePicture: pictureId => dispatch(deletePicture(pictureId)),
     action: picture => dispatch(updatePicture(picture)),
     cancelModal: (
@@ -24,7 +24,8 @@ const mDTP = dispatch => {
         value='Cancel'
         onClick={() => dispatch(openModal('cancel'))} />
     ),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    clearErrors: () => dispatch(clearErrors()),
   };
 };
 
