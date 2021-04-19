@@ -6,6 +6,7 @@ class Header extends React.Component {
   isLoggedIn() {
     return (
       <div>
+        <Link to='/profile'>Profile</Link>
         <ProfileDropdown logout={this.props.logout} 
           userId={this.props.currentUser} />
         <button onClick={() => this.props.logout()} 

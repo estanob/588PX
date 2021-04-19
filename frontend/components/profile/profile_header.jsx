@@ -1,6 +1,4 @@
 import React from 'react'
-// import PostIndex from '../posts/post_index'
-// import PostIndexPhotos from '../posts/post_index_photos'
 
 class ProfileHeader extends React.Component {
   constructor(props) {
@@ -13,26 +11,7 @@ class ProfileHeader extends React.Component {
   }
 
   render() {
-
-    // const photos = this.props.pictures.map(picture => {
-    //   if (picture.uploader_id === this.props.session) {
-    //     return <PostIndexPhotos key={picture.id} picture={picture} />
-    //   }
-    // })
-
-    let count = 0
-    photos.forEach(photo => {
-      if (photo) count++
-    })
-
-
-    for (let i = (photos.length - 1); i > 0; i--) {
-      const j = Math.floor(Math.random() * i)
-      const temp = photos[i]
-      photos[i] = photos[j]
-      photos[j] = temp
-    }
-
+    debugger
     return (
       <div className="profile-parent-container">
         <div className="profile-header">
@@ -45,20 +24,6 @@ class ProfileHeader extends React.Component {
         <div className="profile-user-info">
           {this.props.user.username}
         </div>
-        {/* <div>
-          <div className="post-index-photos-conatiner">
-            <div className="post-index-grid-container">
-              <div className="post-index-grid-inner">
-                <div className="your-uploads">
-                  Galleries({count})
-              </div>
-                <ul className="post-index-grid-container-photos" >
-                  {photos}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
     )
   }
