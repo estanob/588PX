@@ -16,7 +16,7 @@ class PictureForm extends React.Component{
       location: location,
       uploader_id: uploaderId,
       photoFile: photoFile,
-      photoUrl: null
+      photoUrl: null,
     };
 
     this.handleFile = this.handleFile.bind(this);
@@ -54,7 +54,6 @@ class PictureForm extends React.Component{
     }
   };
 
-  // if statement to check form type POST vs PUT/PATCH
   handleSubmit(e) {
     e.preventDefault()
     const picForm = new FormData();
@@ -83,6 +82,18 @@ class PictureForm extends React.Component{
       }
     )
   };
+
+  titleError() {
+    return (this.props.errors.map((err, i) => (
+      err.includes('Title') ? <ul className='error'>{err}</ul> : ''
+    )))
+  }
+  
+  locationError() {
+    return (this.props.errors.map((err, i) => (
+      err.includes('Location') ? <ul className='error'>{err}</ul> : ''
+    )))
+  }
   
   render() {
     const { formType } = this.props;
@@ -93,20 +104,29 @@ class PictureForm extends React.Component{
     location ? location : '';
     caption ? caption : '';
 
+    debugger
     return(
       <div className='picture'>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="picture-title">Picture Title</label>
-          <input type="text"
-            id='picture-body'
-            value={title}
-            onChange={this.update('title')} />
+          <label htmlFor="picture-title">Picture Title
+            <input type="text"
+              id='picture-body'
+              value={title}
+              onChange={this.update('title')} />
+          </label>
+          <div className='errors-box'>
+            {this.titleError()}
+          </div>
           <br/>
-          <label htmlFor="picture-location">Location</label>
-          <input type="text"
-            id='picture-location'
-            value={location}
-            onChange={this.update('location')} />
+          <label htmlFor="picture-location">Location
+            <input type="text"
+              id='picture-location'
+              value={location}
+              onChange={this.update('location')} />
+          </label>
+          <div className='errors-box'>
+            {this.locationError()}
+          </div>
           <br/>
           <label htmlFor='picture-caption'>Caption (optional)</label>
           <input type="text"

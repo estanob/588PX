@@ -5,7 +5,7 @@ class PictureIndexItem extends React.Component {
   render() {
     const { picture } = this.props;
     return(
-      <>
+      <div>
         <Link 
           to={`/pictures/${picture.id}`} 
           style={{ color: 'black', textDecoration: 'none' }}>
@@ -15,7 +15,7 @@ class PictureIndexItem extends React.Component {
             alt={picture.title} />
           <p>{picture.title}</p>
         </Link>
-      </>
+      </div>
     )
   };
 };

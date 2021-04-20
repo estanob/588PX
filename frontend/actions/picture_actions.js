@@ -3,7 +3,7 @@ import * as PictureAPIUtils from '../util/picture_api_util';
 export const RECEIVE_ALL_PICTURES = 'RECEIVE_ALL_PICTURES';
 export const RECEIVE_PICTURE = 'RECEIVE_PICTURE';
 export const REMOVE_PICTURE = 'REMOVE_PICTURE';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_PICTURE_ERRORS = 'RECEIVE_PICTURE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 const receivePictures = pictures => ({
@@ -21,14 +21,20 @@ const removePicture = pictureId => ({
   pictureId
 })
 
-export const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS,
-  errors: errors.responseJSON
-})
+export const receiveErrors = errors => {
+  debugger
+  return {
+    type: RECEIVE_PICTURE_ERRORS,
+    errors,
+  }
+}
 
-export const clearErrors = () => ({
-  type: CLEAR_ERRORS
-});
+export const clearErrors = () => {
+  debugger
+  return {
+    type: CLEAR_ERRORS
+  }
+};
 
 export const fetchPictures = () => dispatch => {
   return PictureAPIUtils.fetchPictures()

@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import PictureForm from './picture_form';
 import { createPicture } from '../../actions/picture_actions';
 
-const mSTP = ({ errors, session }) => {
+const mSTP = ({ state, session }) => {
   return {
-    errors: Object.values(errors.pictures),
+    errors: Object.values(state.errors.pictures),
     picture: {
       title: '',
       location: '',

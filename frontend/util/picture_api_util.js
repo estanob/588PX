@@ -1,13 +1,16 @@
 export const fetchPictures = () => (
   $.ajax({
-    url: `/api/pictures`
+    url: `/api/pictures`,
+    method: 'GET',
   })
-)
+);
+
 export const fetchPicture = pictureId => (
   $.ajax({
-    url: `/api/pictures/${pictureId}`
+    url: `/api/pictures/${pictureId}`,
+    method: 'GET',
   })
-)
+);
 
 export const createPicture = picture => (
   $.ajax({
@@ -17,7 +20,7 @@ export const createPicture = picture => (
     contentType: false,
     processData: false
   })
-)
+);
 
 export const updatePicture = picture => (
   $.ajax({
@@ -27,11 +30,11 @@ export const updatePicture = picture => (
     contentType: false,
     processData: false
   })
-)
+);
 
 export const deletePicture = pictureId => (
   $.ajax({
     url: `/api/pictures/${pictureId}`,
     method: 'DELETE'
   })
-)
+);
