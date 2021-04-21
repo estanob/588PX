@@ -26,7 +26,7 @@ class EditPictureForm extends React.Component {
   }
 
   render() {
-    const { 
+    let { 
       action, 
       formType, 
       picture, 
@@ -40,7 +40,7 @@ class EditPictureForm extends React.Component {
       caption,
     } = this.state;
 
-    picture ? picture : '';
+    picture = picture ? picture : {};
     let photoFile = picture ? picture.photoFile : '';
     let uploader_id = picture ? picture.uploader_id : '';
 

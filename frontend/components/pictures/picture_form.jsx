@@ -83,17 +83,17 @@ class PictureForm extends React.Component{
     )
   };
 
-  titleError() {
-    return (this.props.errors.map((err, i) => (
-      err.includes('Title') ? <ul className='error'>{err}</ul> : ''
-    )))
-  }
+  // titleError() {
+  //   return (this.props.errors.map((err, i) => (
+  //     err.includes('Title') ? <ul className='error'>{err}</ul> : ''
+  //   )))
+  // }
   
-  locationError() {
-    return (this.props.errors.map((err, i) => (
-      err.includes('Location') ? <ul className='error'>{err}</ul> : ''
-    )))
-  }
+  // locationError() {
+  //   return (this.props.errors.map((err, i) => (
+  //     err.includes('Location') ? <ul className='error'>{err}</ul> : ''
+  //   )))
+  // }
   
   render() {
     const { formType } = this.props;
@@ -114,9 +114,9 @@ class PictureForm extends React.Component{
               value={title}
               onChange={this.update('title')} />
           </label>
-          <div className='errors-box'>
+          {/* <div className='errors-box'>
             {this.titleError()}
-          </div>
+          </div> */}
           <br/>
           <label htmlFor="picture-location">Location
             <input type="text"
@@ -124,9 +124,9 @@ class PictureForm extends React.Component{
               value={location}
               onChange={this.update('location')} />
           </label>
-          <div className='errors-box'>
+          {/* <div className='errors-box'>
             {this.locationError()}
-          </div>
+          </div> */}
           <br/>
           <label htmlFor='picture-caption'>Caption (optional)</label>
           <input type="text"

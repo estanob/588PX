@@ -4,18 +4,20 @@ import { clearErrors, deletePicture, fetchPicture, updatePicture } from '../../a
 import React from 'react';
 import EditPictureForm from './edit_picture_form';
 
-const mSTP = ( state, ownProps, errors ) => {
+const mSTP = ( state, ownProps ) => {
   debugger
+  let picture = state.entities ? state.entities.pictures[ownProps.match.params.id] : '';
+  let err = state.errors.picture ? Object.values(state.errors.picture) : [];
+
   return {
-    errors: Object.values(errors.picture),
-    picture: state.entities.pictures[ownProps.match.params.id],
+    errors: err,
+    picture: picture,
     session: state.session.id,
     formType: 'Edit Picture'
   };
 };
 
 const mDTP = dispatch => {
-  debugger
   return {
     fetchPicture: pictureId => dispatch(fetchPicture(pictureId)),
     deletePicture: pictureId => dispatch(deletePicture(pictureId)),

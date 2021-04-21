@@ -4,8 +4,9 @@ import PictureForm from './picture_form';
 import { createPicture } from '../../actions/picture_actions';
 
 const mSTP = ({ state, session }) => {
+  let errs = state.errors.picture ? Object.values(state.errors.picture) : [];
   return {
-    errors: Object.values(state.errors.pictures),
+    errors: errs,
     picture: {
       title: '',
       location: '',

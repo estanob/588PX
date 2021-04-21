@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import HeaderContainer from '../header/header_container';
 
 class PictureShow extends React.Component {

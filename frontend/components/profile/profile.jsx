@@ -3,6 +3,8 @@ import ProfileHeader from './profile_header'
 
 const Profile = ({ user, userId }) => {
   debugger
+  console.log(`user = ${user}`);
+  console.log(`userId = ${userId}`);
   return (
     <div>
       <div className='profile'>
