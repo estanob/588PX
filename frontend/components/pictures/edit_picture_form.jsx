@@ -48,7 +48,9 @@ class EditPictureForm extends React.Component {
 
     return(
       <div className="edit-show">
-        <h1 className='manager'>Picture manager</h1>
+        <div className='edit-header'>
+          <h1 className='manager'>Picture manager</h1>
+        </div>
         <div className='edit-not-header'>
           <Link to={`/pictures/${picture.id}`}>
             <img className='edit' src={photoUrl} alt={title} />

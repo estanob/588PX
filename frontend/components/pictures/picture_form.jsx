@@ -134,14 +134,18 @@ class PictureForm extends React.Component{
             value={caption}
             onChange={this.update('caption')} />
           <br/>
-          <input type='file'
-            onChange={this.handleFile} 
-            accept='image/*'/>
+          {
+            formType === 'Upload Picture' ? 
+              <input 
+                type='file'
+                onChange={this.handleFile} 
+                accept='image/*' /> : ''
+          }
           <br/>
           <input type='submit'
             className='upload-button'
             value={whatButton}
-            disabled={this.state.title.length < 1, this.state.location.length < 1} />
+            disabled={this.state.title.length < 2, this.state.location.length < 2} />
         </form>
       </div>
     )

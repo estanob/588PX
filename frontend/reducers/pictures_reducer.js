@@ -11,7 +11,6 @@ const PicturesReducer = (state = {}, action) => {
     case RECEIVE_ALL_PICTURES:
       return action.pictures
     case RECEIVE_PICTURE:
-      debugger
       nextState[action.picture.id] = action.picture
       return nextState
     case REMOVE_PICTURE:

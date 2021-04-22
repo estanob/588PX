@@ -1,9 +1,15 @@
 .edit-show {
-  // margin-top: 70px;
-  // margin-left: 40px;
+  background-color: #f7f8fa;
+  height: 500px;
+}
+
+.edit-header {
+  background-color: #f7f8fa;
+  padding-bottom: 20px;
 }
 
 .manager {
+  background-color: #ffffff;
   margin-top: 80px;
   font-family: Arial;
   font-size: 24px;
@@ -17,6 +23,7 @@
   max-width: 300px;
   margin-top: 100px;
   margin-left: 100px;
+  background-color: #f7f8fa;
 }
 
 .edit:hover {
