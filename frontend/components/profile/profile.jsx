@@ -3,6 +3,8 @@ import ProfileHeader from './profile_header'
 
 const Profile = ({ user, userId }) => {
   debugger
+  user = user ? user : {};
+  userId = userId ? userId : '';
   console.log(`user = ${user}`);
   console.log(`userId = ${userId}`);
   return (
@@ -10,6 +12,7 @@ const Profile = ({ user, userId }) => {
       <div className='profile'>
         <p>Hello World</p>
       </div>
+      <ProfileHeader user={user} userId={userId} />
     </div>
   )
 };

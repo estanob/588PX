@@ -18,8 +18,10 @@ class PictureShow extends React.Component {
   };
   
   render() {
-    const { picture } = this.props;
-    if (!picture) return null;
+    let { picture } = this.props;
+    picture = picture ? picture : {};
+    console.log(`picture uploader is: ${picture.uploader_id}`);
+    debugger
     return(
       <div>
         <HeaderContainer />
@@ -40,6 +42,7 @@ class PictureShow extends React.Component {
           </button>
           <h1>{picture.title}</h1>
           <br/>
+          <p>Uploaded by: {picture.uploader}</p>
           <p>Location: {picture.location}</p>
           <br/>
           <p>{picture.caption ? picture.caption : ''}</p>

@@ -2,8 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class PictureIndexItem extends React.Component {
+  componentDidMount() {
+    this.props.fetchUser(this.props.picture.userId);
+  }
+
   render() {
-    const { picture } = this.props;
+    const { picture, users } = this.props;
     return(
       <div>
         <Link 
