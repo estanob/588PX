@@ -20,8 +20,10 @@ class PictureShow extends React.Component {
   render() {
     let { picture } = this.props;
     picture = picture ? picture : {};
+    let uploader = picture.uploader ? picture.uploader.username : '';
     console.log(`picture uploader is: ${picture.uploader_id}`);
     debugger
+    // backend don't pass password digest & session token
     return(
       <div>
         <HeaderContainer />
@@ -41,10 +43,8 @@ class PictureShow extends React.Component {
             onClick={this.handleDelete}>Delete
           </button>
           <h1>{picture.title}</h1>
-          <br/>
-          <p>Uploaded by: {picture.uploader}</p>
+          <p>Uploaded by: {uploader}</p>
           <p>Location: {picture.location}</p>
-          <br/>
           <p>{picture.caption ? picture.caption : ''}</p>
         </div>
       </div>

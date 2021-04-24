@@ -3,18 +3,17 @@ import ProfileHeader from './profile_header'
 import { fetchUser } from '../../actions/profile_actions'
 import { fetchPictures } from '../../actions/picture_actions'
 
-const mSTP = (state, ownProps) => {
+const mSTP = (state, ownProps ) => {
   debugger
-  let user = state.entities.users[ownProps.match.params.userId];
   return {
-    user: user,
+    user: state.entities.users[ownProps.match.params.userId],
     pictures: Object.values(state.entities.pictures),
     session: state.session.id
   }
 }
 
-const mDTP = dispatch => ({
-  fetchUser: userId => dispatch(fetchUser(userId)),
+const mDTP = (dispatch, ownProps) => ({
+  fetchUser: () => dispatch(fetchUser(parseInt(ownProps.match.params.id))),
   fetchPictures: () => dispatch(fetchPictures()),
 })
 

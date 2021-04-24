@@ -68,6 +68,8 @@ class PictureForm extends React.Component{
     let id = this.props.picture.id ? this.props.picture.id : '';
     let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.picture.id}`;
     let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PATCH';
+    debugger
+    // need to create thunk action instead of ajax here
     $.ajax({
       id: id,
       url: url,
@@ -76,7 +78,7 @@ class PictureForm extends React.Component{
       contentType: false,
       processData: false
     }).then(
-      (response) => console.log(response.message),
+      (response) => console.log(response),
       (response) => {
         console.log(response.responseJSON);
       }

@@ -1,10 +1,10 @@
-import React from 'react'
-import ProfileHeader from './profile_header'
+import React from 'react';
+import ProfileHeader from './profile_header';
 
 const Profile = ({ user, userId }) => {
   debugger
-  user = user ? user : {};
-  userId = userId ? userId : '';
+  const user = props.user;
+  const userId = props.userId;
   console.log(`user = ${user}`);
   console.log(`userId = ${userId}`);
   return (

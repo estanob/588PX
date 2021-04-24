@@ -17,7 +17,7 @@ import FourOhFour from './four_oh_four';
 import PictureIndexContainer from './pictures/picture_index_container';
 import PictureShowContainer from './pictures/picture_show_container';
 import EditPictureFormContainer from './pictures/edit_picture_form_container';
-import Profile from './profile/profile';
+import ProfileHeaderContainer from './profile/profile_header_container';
 
 const App = () => {
   return (
@@ -33,7 +33,7 @@ const App = () => {
         <ProtectedRoute exact path='/pictures/:id/edit' component={EditPictureFormContainer} />
         <ProtectedRoute exact path='/pictures/:id' component={PictureShowContainer} />
         <ProtectedRoute path='/pictures' component={PictureIndexContainer} />
-        <ProtectedRoute path='/profile' component={Profile} />
+        <ProtectedRoute path='/profile' component={ProfileHeaderContainer} />
 
         <AuthRoute exact path="/" component={Splash} />
         <AuthRoute path="/login" component={LoginFormContainer} />
