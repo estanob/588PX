@@ -20,10 +20,8 @@ class PictureShow extends React.Component {
   render() {
     let { picture } = this.props;
     picture = picture ? picture : {};
-    let uploader = picture.uploader ? picture.uploader.username : '';
-    console.log(`picture uploader is: ${picture.uploader_id}`);
-    debugger
-    // backend don't pass password digest & session token
+    let uploader = picture.uploader ? picture.uploader : '';
+
     return(
       <div>
         <HeaderContainer />
