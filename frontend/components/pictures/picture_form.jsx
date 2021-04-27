@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom';
 
 class PictureForm extends React.Component{
   constructor(props) {
@@ -54,46 +55,60 @@ class PictureForm extends React.Component{
     }
   };
 
-  handleSubmit(e) {
-    e.preventDefault()
-    const picForm = new FormData();
-    picForm.append('picture[id]', this.props.picture.id)
-    picForm.append('picture[title]', this.state.title)
-    picForm.append('picture[location]', this.state.location)
-    picForm.append('picture[caption]', this.state.caption)
-    picForm.append('picture[uploader_id]', this.state.uploader_id)
-    if (this.state.photoFile) {
-      picForm.append('picture[photo]', this.state.photoFile)
-    }
-    let id = this.props.picture.id ? this.props.picture.id : '';
-    let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.picture.id}`;
-    let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PATCH';
-    debugger
-    // need to create thunk action instead of ajax here
-    $.ajax({
-      id: id,
-      url: url,
-      method: method,
-      data: picForm,
-      contentType: false,
-      processData: false
-    }).then(
-      (response) => console.log(response),
-      (response) => {
-        console.log(response.responseJSON);
-      }
-    )
-  };
+  // handleSubmit(e) {
+  //   e.preventDefault()
+  //   const picForm = new FormData();
+  //   picForm.append('picture[id]', this.props.picture.id)
+  //   picForm.append('picture[title]', this.state.title)
+  //   picForm.append('picture[location]', this.state.location)
+  //   picForm.append('picture[caption]', this.state.caption)
+  //   picForm.append('picture[uploader_id]', this.state.uploader_id)
+  //   if (this.state.photoFile) {
+  //     picForm.append('picture[photo]', this.state.photoFile)
+  //   }
+  //   let id = this.props.picture.id ? this.props.picture.id : '';
+  //   let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.picture.id}`;
+  //   let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PATCH';
+  //   debugger
+  //   // need to create thunk action instead of ajax here
+  //   $.ajax({
+  //     id: id,
+  //     url: url,
+  //     method: method,
+  //     data: picForm,
+  //     contentType: false,
+  //     processData: false
+  //   }).then(
+  //     (response) => console.log(response),
+  //     (response) => {
+  //       console.log(response.responseJSON);
+  //     }
+  //   )
+  // };
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const updatedPic = {
+      title: this.state.title,
+      location: this.state.location,
+      caption: this.state.caption,
+      id: this.props.match.params.id,
+    }
+    this.props.updatePicture(updatedPic)
+      .then(() => (
+        this.props.history.push(`/pictures/${this.props.match.params.id}`)
+      ))
+  }
+  
   // titleError() {
   //   return (this.props.errors.map((err, i) => (
-  //     err.includes('Title') ? <ul className='error'>{err}</ul> : ''
+  //     err.includes('Title') ? <ul className='error' key={i}>{err}</ul> : ''
   //   )))
   // }
   
   // locationError() {
   //   return (this.props.errors.map((err, i) => (
-  //     err.includes('Location') ? <ul className='error'>{err}</ul> : ''
+  //     err.includes('Location') ? <ul className='error' key={i}>{err}</ul> : ''
   //   )))
   // }
   
@@ -106,6 +121,11 @@ class PictureForm extends React.Component{
     location ? location : '';
     caption ? caption : '';
 
+    const errors = this.props.errors.map((err, i) => {
+      return (
+        <li className='errors' key={i}>{err}</li>
+      )
+    })
     debugger
     return(
       <div className='picture'>
@@ -149,9 +169,10 @@ class PictureForm extends React.Component{
             value={whatButton}
             disabled={this.state.title.length < 2, this.state.location.length < 2} />
         </form>
+        <ul className='errors'>{errors}</ul>
       </div>
     )
   }
 };
 
-export default PictureForm;
+export default withRouter(PictureForm);

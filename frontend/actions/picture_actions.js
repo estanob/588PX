@@ -54,7 +54,7 @@ export const createPicture = picture => dispatch => {
       dispatch(receivePicture(createPicture))
       dispatch(clearErrors())
     })
-    .fail(err => dispatch(receiveErrors(err)))
+    .fail(err => dispatch(receiveErrors(err.responseJSON)))
 }
 
 export const updatePicture = picture => dispatch => (
@@ -63,7 +63,7 @@ export const updatePicture = picture => dispatch => (
       dispatch(receivePicture(updatePicture))
       dispatch(clearErrors())
     })
-    .fail(err => dispatch(receiveErrors(err)))
+    .fail(err => dispatch(receiveErrors(err.responseJSON)))
 )
 
 export const deletePicture = pictureId => dispatch => (
