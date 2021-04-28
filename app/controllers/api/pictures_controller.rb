@@ -12,9 +12,11 @@ class Api::PicturesController < ApplicationController
   end
 
   def create
+    debugger
     @picture = Picture.new(picture_params)
+    @picture.uploader_id = current_user.id
     if @picture && @picture.save
-      render 'api/pictures/show'
+      render :show
     else
       render json: @picture.errors.full_messages, status: 422
     end
@@ -43,6 +45,6 @@ class Api::PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit(:title, :location, :caption)
+    params.require(:picture).permit(:title, :location, :caption, :photo)
   end
 end

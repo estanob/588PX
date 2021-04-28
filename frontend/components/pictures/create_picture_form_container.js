@@ -5,14 +5,14 @@ import { createPicture } from '../../actions/picture_actions';
 
 const mSTP = (state) => {
   debugger
-  let errs = state.errors.pictures ? Object.values(state.errors.pictures) : [];
+  // let errs = state.errors.pictures ? Object.values(state.errors.pictures) : [];
   return {
-    errors: errs,
+    errors: state.errors.pictures,
+    // errors: errs,
     picture: {
       title: '',
       location: '',
       caption: '',
-      uploader_id: state.entities.users.id,
     },
     formType: 'Upload Picture',
   }

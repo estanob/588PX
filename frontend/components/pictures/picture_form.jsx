@@ -66,9 +66,9 @@ class PictureForm extends React.Component{
     if (this.state.photoFile) {
       picForm.append('picture[photo]', this.state.photoFile)
     }
-    let id = this.props.picture.id ? this.props.picture.id : '';
-    let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.picture.id}`;
-    let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PATCH';
+    // let id = this.props.picture.id ? this.props.picture.id : '';
+    // let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.picture.id}`;
+    // let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PATCH';
     debugger
     // need to create thunk action instead of ajax here
     // $.ajax({
@@ -85,7 +85,15 @@ class PictureForm extends React.Component{
     //   }
     // )
 
-    this.props.action(picForm);
+    this.props.action(picForm)
+      .then(
+        this.setState({
+          title: '',
+          caption: '',
+          location: '',
+          redirect: true,
+        })
+      );
   };
 
   // titleError() {

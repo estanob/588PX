@@ -49,6 +49,7 @@ export const fetchPicture = pictureId => dispatch => {
 }
 
 export const createPicture = picture => dispatch => {
+  debugger
   return PictureAPIUtils.createPicture(picture)
     .then(createPicture => {
       dispatch(receivePicture(createPicture))
