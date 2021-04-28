@@ -71,19 +71,21 @@ class PictureForm extends React.Component{
     let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PATCH';
     debugger
     // need to create thunk action instead of ajax here
-    $.ajax({
-      id: id,
-      url: url,
-      method: method,
-      data: picForm,
-      contentType: false,
-      processData: false
-    }).then(
-      (response) => console.log(response),
-      (response) => {
-        console.log(response.responseJSON);
-      }
-    )
+    // $.ajax({
+    //   id: id,
+    //   url: url,
+    //   method: method,
+    //   data: picForm,
+    //   contentType: false,
+    //   processData: false
+    // }).then(
+    //   (response) => console.log(response),
+    //   (response) => {
+    //     console.log(response.responseJSON);
+    //   }
+    // )
+
+    this.props.action(picForm);
   };
 
   // titleError() {

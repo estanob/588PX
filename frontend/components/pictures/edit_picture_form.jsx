@@ -44,7 +44,6 @@ class EditPictureForm extends React.Component {
     let photoFile = picture ? picture.photoFile : '';
     let uploader_id = picture ? picture.uploader_id : '';
 
-    console.log("You have reached the edit page!")
     debugger
     return(
       <div className="edit-show">
