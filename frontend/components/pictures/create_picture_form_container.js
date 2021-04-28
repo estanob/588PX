@@ -4,7 +4,6 @@ import PictureForm from './picture_form';
 import { createPicture } from '../../actions/picture_actions';
 
 const mSTP = (state) => {
-  debugger
   // let errs = state.errors.pictures ? Object.values(state.errors.pictures) : [];
   return {
     errors: state.errors.pictures,
@@ -19,7 +18,6 @@ const mSTP = (state) => {
 }
 
 const mDTP = dispatch => {
-  debugger
   return {
     action: picture => dispatch(createPicture(picture)),
     cancelModal: (

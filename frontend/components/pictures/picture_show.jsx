@@ -41,7 +41,7 @@ class PictureShow extends React.Component {
             onClick={this.handleDelete}>Delete
           </button>
           <h1>{picture.title}</h1>
-          <p>Uploaded by: {uploader}</p>
+          <p>by {uploader}</p>
           <p>Location: {picture.location}</p>
           <p>{picture.caption ? picture.caption : ''}</p>
         </div>

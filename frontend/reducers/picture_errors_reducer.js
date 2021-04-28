@@ -4,7 +4,6 @@ const PictureErrorsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_PICTURE_ERRORS:
-      debugger
       return action.errors;
     case CLEAR_ERRORS:
       return {};

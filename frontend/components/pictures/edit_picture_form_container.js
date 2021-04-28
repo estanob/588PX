@@ -5,7 +5,6 @@ import React from 'react';
 import EditPictureForm from './edit_picture_form';
 
 const mSTP = ( state, ownProps ) => {
-  debugger
   let picture = state.entities ? state.entities.pictures[ownProps.match.params.id] : '';
   let err = state.errors.picture ? Object.values(state.errors.picture) : [];
 

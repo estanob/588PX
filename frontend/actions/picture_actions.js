@@ -22,7 +22,6 @@ const removePicture = pictureId => ({
 })
 
 export const receiveErrors = errors => {
-  debugger
   return {
     type: RECEIVE_PICTURE_ERRORS,
     errors,
@@ -30,7 +29,6 @@ export const receiveErrors = errors => {
 }
 
 export const clearErrors = () => {
-  debugger
   return {
     type: CLEAR_ERRORS
   }
@@ -49,7 +47,6 @@ export const fetchPicture = pictureId => dispatch => {
 }
 
 export const createPicture = picture => dispatch => {
-  debugger
   return PictureAPIUtils.createPicture(picture)
     .then(createPicture => {
       dispatch(receivePicture(createPicture))

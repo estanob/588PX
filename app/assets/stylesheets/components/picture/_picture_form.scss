@@ -3,3 +3,16 @@
   margin-left: 20px;
   font-family: Tahoma;
 }
+
+.picture-preview > h1 {
+  text-align: center;
+}
+
+.preview {
+  height: 200px;
+  transition: transform .5s ease;
+}
+
+.preview:hover {
+  transform: scale(2);
+}

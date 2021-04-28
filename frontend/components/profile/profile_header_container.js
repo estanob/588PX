@@ -4,7 +4,6 @@ import { fetchUser } from '../../actions/profile_actions'
 import { fetchPictures } from '../../actions/picture_actions'
 
 const mSTP = (state, ownProps ) => {
-  debugger
   return {
     user: state.entities.users[ownProps.match.params.userId],
     pictures: Object.values(state.entities.pictures),

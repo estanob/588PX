@@ -35,55 +35,39 @@ class PictureForm extends React.Component{
         caption: this.props.caption, 
         photoFile: photoFile, 
         uploader_id: uploaderId })
-    }
-  }
+    };
+  };
 
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
-    })
+    });
   };
 
   handleFile(e) {
     const file = e.currentTarget.files[0]
     const fileReader = new FileReader()
+
     fileReader.onloadend = () => {
-      this.setState({photoFile : file, photoUrl: fileReader.result})
-    }
+      this.setState({photoFile : file, photoUrl: fileReader.result});
+    };
     if (file) {
-      fileReader.readAsDataURL(file)
-    }
+      fileReader.readAsDataURL(file);
+    };
   };
 
   handleSubmit(e) {
     e.preventDefault()
     const picForm = new FormData();
-    picForm.append('picture[id]', this.props.picture.id)
-    picForm.append('picture[title]', this.state.title)
-    picForm.append('picture[location]', this.state.location)
-    picForm.append('picture[caption]', this.state.caption)
-    picForm.append('picture[uploader_id]', this.state.uploader_id)
+    picForm.append('picture[id]', this.props.picture.id);
+    picForm.append('picture[title]', this.state.title);
+    picForm.append('picture[location]', this.state.location);
+    picForm.append('picture[caption]', this.state.caption);
+    picForm.append('picture[uploader_id]', this.state.uploader_id);
+
     if (this.state.photoFile) {
       picForm.append('picture[photo]', this.state.photoFile)
-    }
-    // let id = this.props.picture.id ? this.props.picture.id : '';
-    // let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.picture.id}`;
-    // let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PATCH';
-    debugger
-    // need to create thunk action instead of ajax here
-    // $.ajax({
-    //   id: id,
-    //   url: url,
-    //   method: method,
-    //   data: picForm,
-    //   contentType: false,
-    //   processData: false
-    // }).then(
-    //   (response) => console.log(response),
-    //   (response) => {
-    //     console.log(response.responseJSON);
-    //   }
-    // )
+    };
 
     this.props.action(picForm)
       .then(
@@ -117,9 +101,11 @@ class PictureForm extends React.Component{
     location ? location : '';
     caption ? caption : '';
 
-    console.log(location);
-
-    debugger
+    const preview = this.state.photoUrl ? 
+      <img 
+        className='preview' 
+        src={this.state.photoUrl} /> : null;
+    
     return(
       <div className='picture'>
         <form onSubmit={this.handleSubmit}>
@@ -162,6 +148,13 @@ class PictureForm extends React.Component{
             value={whatButton}
             disabled={this.state.title.length < 2, this.state.location.length < 2} />
         </form>
+        {this.state.photoUrl ? 
+          <div className='picture-preview'>
+            <h1>Your picture:</h1>
+          </div> : ''
+        }
+        <br />
+        {preview}
       </div>
     )
   }
