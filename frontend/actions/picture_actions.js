@@ -59,8 +59,8 @@ export const createPicture = picture => dispatch => {
 
 export const updatePicture = picture => dispatch => (
   PictureAPIUtils.updatePicture(picture)
-    .then(updatePicture => {
-      dispatch(receivePicture(updatePicture))
+    .then(updatedPicture => {
+      dispatch(receivePicture(updatedPicture))
       dispatch(clearErrors())
     })
     .fail(err => dispatch(receiveErrors(err.responseJSON)))

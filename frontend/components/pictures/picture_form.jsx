@@ -8,13 +8,13 @@ class PictureForm extends React.Component{
     let uploaderId = this.props.pictures ? this.props.pictures.uploader_id : '';
     let title = this.props.title ? this.props.title : '';
     let caption = this.props.caption ? this.props.caption : '';
-    let location = this.props.location ? this.props.location : '';
+    let position = this.props.picture.location ? this.props.picture.location : '';
     let photoFile = this.props.photoFile ? this.props.photoFile : '';
 
     this.state = {
       title: title,
       caption: caption,
-      location: location,
+      location: position,
       uploader_id: uploaderId,
       photoFile: photoFile,
       photoUrl: null,
@@ -31,7 +31,7 @@ class PictureForm extends React.Component{
     if (prevProps.title !== this.props.title) {
       this.setState({ 
         title: this.props.title, 
-        location: this.props.location, 
+        location: this.props.picture.location, 
         caption: this.props.caption, 
         photoFile: photoFile, 
         uploader_id: uploaderId })
@@ -55,51 +55,37 @@ class PictureForm extends React.Component{
     }
   };
 
-  // handleSubmit(e) {
-  //   e.preventDefault()
-  //   const picForm = new FormData();
-  //   picForm.append('picture[id]', this.props.picture.id)
-  //   picForm.append('picture[title]', this.state.title)
-  //   picForm.append('picture[location]', this.state.location)
-  //   picForm.append('picture[caption]', this.state.caption)
-  //   picForm.append('picture[uploader_id]', this.state.uploader_id)
-  //   if (this.state.photoFile) {
-  //     picForm.append('picture[photo]', this.state.photoFile)
-  //   }
-  //   let id = this.props.picture.id ? this.props.picture.id : '';
-  //   let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.picture.id}`;
-  //   let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PATCH';
-  //   debugger
-  //   // need to create thunk action instead of ajax here
-  //   $.ajax({
-  //     id: id,
-  //     url: url,
-  //     method: method,
-  //     data: picForm,
-  //     contentType: false,
-  //     processData: false
-  //   }).then(
-  //     (response) => console.log(response),
-  //     (response) => {
-  //       console.log(response.responseJSON);
-  //     }
-  //   )
-  // };
-
   handleSubmit(e) {
-    e.preventDefault();
-    const updatedPic = {
-      title: this.state.title,
-      location: this.state.location,
-      caption: this.state.caption,
-      id: this.props.match.params.id,
+    e.preventDefault()
+    const picForm = new FormData();
+    picForm.append('picture[id]', this.props.picture.id)
+    picForm.append('picture[title]', this.state.title)
+    picForm.append('picture[location]', this.state.location)
+    picForm.append('picture[caption]', this.state.caption)
+    picForm.append('picture[uploader_id]', this.state.uploader_id)
+    if (this.state.photoFile) {
+      picForm.append('picture[photo]', this.state.photoFile)
     }
-    this.props.updatePicture(updatedPic)
-      .then(() => (
-        this.props.history.push(`/pictures/${this.props.match.params.id}`)
-      ))
-  }
-  
+    let id = this.props.picture.id ? this.props.picture.id : '';
+    let url = this.props.formType === 'Upload Picture' ? '/api/pictures' : `/api/pictures/${this.props.picture.id}`;
+    let method = this.props.formType === 'Upload Picture' ? 'POST' : 'PATCH';
+    debugger
+    // need to create thunk action instead of ajax here
+    $.ajax({
+      id: id,
+      url: url,
+      method: method,
+      data: picForm,
+      contentType: false,
+      processData: false
+    }).then(
+      (response) => console.log(response),
+      (response) => {
+        console.log(response.responseJSON);
+      }
+    )
+  };
+
   // titleError() {
   //   return (this.props.errors.map((err, i) => (
   //     err.includes('Title') ? <ul className='error' key={i}>{err}</ul> : ''
@@ -115,24 +101,21 @@ class PictureForm extends React.Component{
   render() {
     const { formType } = this.props;
     const { title, location, caption } = this.state;
-    let whatButton = formType === 'Upload Picture' ? 'Upload' : 'Save Changes'
+    let whatButton = formType === 'Upload Picture' ? 'Upload' : 'Save Changes';
 
     title ? title : '';
     location ? location : '';
     caption ? caption : '';
 
-    const errors = this.props.errors.map((err, i) => {
-      return (
-        <li className='errors' key={i}>{err}</li>
-      )
-    })
+    console.log(location);
+
     debugger
     return(
       <div className='picture'>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="picture-title">Picture Title
             <input type="text"
-              id='picture-body'
+              id='picture-title'
               value={title}
               onChange={this.update('title')} />
           </label>
@@ -169,7 +152,6 @@ class PictureForm extends React.Component{
             value={whatButton}
             disabled={this.state.title.length < 2, this.state.location.length < 2} />
         </form>
-        <ul className='errors'>{errors}</ul>
       </div>
     )
   }
