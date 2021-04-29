@@ -9,13 +9,14 @@ const PicturesReducer = (state = {}, action) => {
   let nextState = Object.assign({}, state)
   switch (action.type) {
     case RECEIVE_ALL_PICTURES:
-      return action.pictures
+      nextState = Object.assign({}, action.pictures)
+      return action.pictures;
     case RECEIVE_PICTURE:
       nextState[action.picture.id] = action.picture
-      return nextState
+      return nextState;
     case REMOVE_PICTURE:
       delete nextState[action.pictureId]
-      return nextState
+      return nextState;
     default:
       return state;
   }

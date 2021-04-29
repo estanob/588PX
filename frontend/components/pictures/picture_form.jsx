@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 class PictureForm extends React.Component{
   constructor(props) {
@@ -106,6 +106,12 @@ class PictureForm extends React.Component{
         className='preview' 
         src={this.state.photoUrl} /> : null;
     
+    const redirectToHomeFeed = this.state.redirect;
+
+    if (redirectToHomeFeed) {
+      return <Redirect to='/home' />
+    }
+        
     return(
       <div className='picture'>
         <form onSubmit={this.handleSubmit}>
