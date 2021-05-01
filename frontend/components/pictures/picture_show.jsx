@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import HeaderContainer from '../header/header_container';
 
@@ -13,6 +14,7 @@ class PictureShow extends React.Component {
   };
 
   handleDelete(e) {
+    debugger
     e.preventDefault()
     this.props.deletePicture();
   };
@@ -22,6 +24,7 @@ class PictureShow extends React.Component {
     picture = picture ? picture : {};
     let uploader = picture.uploader ? picture.uploader : '';
 
+    debugger
     return(
       <div>
         <HeaderContainer />
@@ -50,4 +53,4 @@ class PictureShow extends React.Component {
   };
 };
 
-export default PictureShow;
+export default withRouter(PictureShow);
