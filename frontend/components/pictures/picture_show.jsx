@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
+import { Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import HeaderContainer from '../header/header_container';
 
@@ -10,13 +10,16 @@ class PictureShow extends React.Component {
   };
 
   componentDidMount() {
-    this.props.fetchPicture()
+    this.props.fetchPicture();
   };
 
   handleDelete(e) {
     debugger
-    e.preventDefault()
+    e.preventDefault();
     this.props.deletePicture();
+    return (
+      <Redirect to='/home' />
+    );
   };
   
   render() {
@@ -24,7 +27,6 @@ class PictureShow extends React.Component {
     picture = picture ? picture : {};
     let uploader = picture.uploader ? picture.uploader : '';
 
-    debugger
     return(
       <div>
         <HeaderContainer />

@@ -1,14 +1,9 @@
 import React from 'react'
-import PictureIndexPhotos from '../pictures/picture_index_photos';
+import PictureIndexItem from '../pictures/picture_index_item';
 
 class ProfileHeader extends React.Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      user: {},
-      userId: null,
-    }
   }
 
   componentDidMount() {
@@ -20,17 +15,20 @@ class ProfileHeader extends React.Component {
   render() {
     const pics = this.props.pictures.map(pic => {
       if (pic.id === this.props.session) {
-        return <PictureIndexPhotos key={pic.id} pic={pic} />
+        return <PictureIndexItem key={pic.id} pic={pic} />
       }
     })
-    console.log(pics)
+    // console.log(pics)
+    let { users, session } = this.props;
+    console.log(this.props)
+    console.log(users)
+    let username = users[session].username;
+    username ? username : '';
     debugger
-    let { user } = this.props;
-    user = user ? user : {};
     return (
       <div className="profile">
         <div className="user-info">
-          <p>Hello, {user.username}!</p>
+          <p>Hello, {username}!</p>
         </div>
         <div>
           {pics.length > 0 ? pics : <p>You don't have any pictures yet!</p>}

@@ -1,19 +1,23 @@
 import { connect } from 'react-redux'
-import ProfileHeader from './profile_header'
 import { fetchUser } from '../../actions/profile_actions'
 import { fetchPictures } from '../../actions/picture_actions'
+import ProfileHeader from './profile_header'
 
-const mSTP = (state, ownProps ) => {
+const mSTP = (state, ownProps) => {
+  debugger
   return {
-    user: state.entities.users[ownProps.match.params.userId],
+    users: state.entities.users,
     pictures: Object.values(state.entities.pictures),
     session: state.session.id
   }
 }
 
-const mDTP = (dispatch, ownProps) => ({
-  fetchUser: () => dispatch(fetchUser(parseInt(ownProps.match.params.id))),
-  fetchPictures: () => dispatch(fetchPictures()),
-})
+const mDTP = (dispatch, ownProps) => {
+  debugger
+  return {
+    fetchUser: () => dispatch(fetchUser(parseInt(ownProps.match.params.id))),
+    fetchPictures: () => dispatch(fetchPictures()),
+  }
+}
 
 export default connect(mSTP, mDTP)(ProfileHeader);
