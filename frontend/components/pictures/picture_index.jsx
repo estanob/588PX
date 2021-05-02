@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PictureIndexItem from './picture_index_item';
 
 class PictureIndex extends React.Component {

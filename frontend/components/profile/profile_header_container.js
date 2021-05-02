@@ -4,7 +4,6 @@ import { fetchPictures } from '../../actions/picture_actions'
 import ProfileHeader from './profile_header'
 
 const mSTP = (state, ownProps) => {
-  debugger
   return {
     users: state.entities.users,
     pictures: Object.values(state.entities.pictures),
@@ -13,7 +12,6 @@ const mSTP = (state, ownProps) => {
 }
 
 const mDTP = (dispatch, ownProps) => {
-  debugger
   return {
     fetchUser: () => dispatch(fetchUser(parseInt(ownProps.match.params.id))),
     fetchPictures: () => dispatch(fetchPictures()),
