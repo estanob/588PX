@@ -13,7 +13,7 @@ class PictureIndex extends React.Component {
 
   render() {
     return(
-      <div className='hello'>
+      <div className='pic-index-container'>
         <ul className='pic-index'>
           {this.props.pictures.map((picture, i) => {
             return (

@@ -20,6 +20,7 @@
 @import "./components/picture/picture_form";
 @import "./components/picture/picture_index";
 @import "./components/picture/picture_index_item";
+@import "./components/picture/picture_index_photos";
 @import "./components/picture/picture_show";
 @import "./components/picture/edit_picture_form";
 @import "./layout/root";
@@ -27,6 +28,7 @@
 @import "./layout/home_feed";
 @import "./layout/profile";
 @import "./layout/profile_dropdown";
+@import "./components/profile/profile_header";
 @import "./layout/session_form";
 @import "./api/navbar";
 @import "./api/greeting";
