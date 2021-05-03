@@ -20,6 +20,8 @@ class ProfileHeader extends React.Component {
         return <PictureIndexPhotos key={ownPic.id} picture={ownPic} />
       }
     });
+    let following = 0;
+    let followers = 0;
     let ownCount = 0;
     pictures.forEach(pic => {
       if (pic.uploader_id === session) ownCount++;
@@ -28,6 +30,7 @@ class ProfileHeader extends React.Component {
       <div className="profile">
         <div className="user-info">
           <h1>{username}</h1>
+          <p>{following} Following {followers} Followers</p>
         </div>
         <h1>Pictures ({ownCount})</h1>
         <ul className='pic-index profile-pics'>
