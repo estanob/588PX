@@ -23,9 +23,10 @@ class PictureShow extends React.Component {
   };
   
   render() {
-    let { picture } = this.props;
+    let { picture, session } = this.props;
     picture = picture ? picture : {};
     let uploader = picture.uploader ? picture.uploader : '';
+    const otherUploader = picture.uploader_id !== session ? 'Follow' : '';
     return(
       <div>
         <HeaderContainer />
@@ -45,7 +46,9 @@ class PictureShow extends React.Component {
             onClick={this.handleDelete}>Delete
           </button>
           <h1>{picture.title}</h1>
-          <p>by {uploader}</p>
+          <p>
+            by {<Link to={`/profile/${session}`}>{uploader}</Link>} {otherUploader}
+          </p>
           <p>Uploaded: {picture.created_at}</p>
           <p>Location: {picture.location}</p>
           <p>{picture.caption ? picture.caption : ''}</p>

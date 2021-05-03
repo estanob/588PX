@@ -33,7 +33,7 @@ const App = () => {
         <ProtectedRoute exact path='/pictures/:id/edit' component={EditPictureFormContainer} />
         <ProtectedRoute exact path='/pictures/:id' component={PictureShowContainer} />
         <ProtectedRoute path='/pictures' component={PictureIndexContainer} />
-        <ProtectedRoute path='/profile' component={ProfileHeaderContainer} />
+        <ProtectedRoute path='/profile/:id' component={ProfileHeaderContainer} />
 
         <AuthRoute exact path="/" component={Splash} />
         <AuthRoute path="/login" component={LoginFormContainer} />

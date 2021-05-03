@@ -6,7 +6,7 @@ class Header extends React.Component {
   isLoggedIn() {
     return (
       <div>
-        <Link to='/profile'>Profile</Link>
+        <Link to={`/profile/${this.props.currentUser}`}>Profile</Link>
         <ProfileDropdown logout={this.props.logout} 
           userId={this.props.currentUser} />
         <button onClick={() => this.props.logout()} 
@@ -31,6 +31,7 @@ class Header extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div>
         {this.props.currentUser ? this.isLoggedIn() : this.isLoggedOut()}
