@@ -12,8 +12,8 @@ class ProfileHeader extends React.Component {
   };
 
   render() {
-    let { users, session, pictures } = this.props;
-    let username = users[session].username;
+    const { users, session, pictures } = this.props;
+    const username = users[session].username;
     username ? username : '';
     const ownPics = pictures.map(ownPic => {
       if (ownPic.uploader_id === session) {
@@ -30,10 +30,10 @@ class ProfileHeader extends React.Component {
       <div className="profile">
         <div className="user-info">
           <h1>{username}</h1>
-          <p>{following} Following {followers} Followers</p>
+          <p>{followers} Followers {following} Following</p>
         </div>
         <h1>Pictures ({ownCount})</h1>
-        <ul className='pic-index profile-pics'>
+        <ul className='pic-index pics-on-profile'>
           {ownPics}
         </ul>
       </div>

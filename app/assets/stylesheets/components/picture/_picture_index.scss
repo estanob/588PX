@@ -1,4 +1,5 @@
 .pic-index-container {
+  display: grid;
   margin-top: 30px;
   font-family: Tahoma;
   background: #ebeef5;
@@ -6,12 +7,11 @@
 
 .pic-index {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   flex-flow: row wrap;
   align-items: center;
-  column-gap: 20px;
-  row-gap: 30px;
+  column-gap: 1em;
   object-fit: contain;
   padding-top: 50px;
   padding-bottom: 50px;

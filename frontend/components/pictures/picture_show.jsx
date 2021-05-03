@@ -46,7 +46,7 @@ class PictureShow extends React.Component {
           </button>
           <h1>{picture.title}</h1>
           <p>by {uploader}</p>
-          <p>Taken: {picture.created_at}</p>
+          <p>Uploaded: {picture.created_at}</p>
           <p>Location: {picture.location}</p>
           <p>{picture.caption ? picture.caption : ''}</p>
         </div>

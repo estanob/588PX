@@ -5,7 +5,7 @@ const PictureIndexItem = (props) => {
   const picture = props.picture;
 
   return (
-    <div>
+    <div className="individual-pic">
       <Link 
         to={`/pictures/${picture.id}`} 
         style={{ color: 'black', textDecoration: 'none' }}>
