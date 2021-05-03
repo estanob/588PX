@@ -20,12 +20,17 @@ class ProfileHeader extends React.Component {
         return <PictureIndexPhotos key={ownPic.id} picture={ownPic} />
       }
     });
+    let ownCount = 0;
+    pictures.forEach(pic => {
+      if (pic.uploader_id === session) ownCount++;
+    });
+    console.log(ownCount)
     return (
       <div className="profile">
         <div className="user-info">
           <p>Hello, {username}!</p>
         </div>
-        <h1>Pictures:</h1>
+        <h1>Pictures ({ownCount}):</h1>
         <ul className='pic-index profile-pics'>
           {ownPics}
         </ul>
