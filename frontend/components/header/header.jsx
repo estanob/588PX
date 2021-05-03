@@ -31,7 +31,6 @@ class Header extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <div>
         {this.props.currentUser ? this.isLoggedIn() : this.isLoggedOut()}

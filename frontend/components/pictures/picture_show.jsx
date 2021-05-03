@@ -14,7 +14,6 @@ class PictureShow extends React.Component {
   };
 
   handleDelete(e) {
-    debugger
     e.preventDefault();
     this.props.deletePicture();
     return (
@@ -47,7 +46,11 @@ class PictureShow extends React.Component {
           </button>
           <h1>{picture.title}</h1>
           <p>
-            by {<Link to={`/profile/${session}`}>{uploader}</Link>} {otherUploader}
+            by {<Link 
+                  to={`/profile/${picture.uploader_id}`} 
+                  style={{ color: 'black', textDecoration: 'none'}}>
+                    {uploader}
+                </Link>} {otherUploader}
           </p>
           <p>Uploaded: {picture.created_at}</p>
           <p>Location: {picture.location}</p>

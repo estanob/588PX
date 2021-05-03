@@ -2,7 +2,6 @@ import React from 'react';
 import ProfileHeader from './profile_header';
 
 const Profile = ({ user, userId }) => {
-  debugger
   const user = props.user;
   const userId = props.userId;
   return (
