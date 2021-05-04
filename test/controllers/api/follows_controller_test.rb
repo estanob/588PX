@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::FollowingsControllerTest < ActionDispatch::IntegrationTest
+class Api::FollowsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
