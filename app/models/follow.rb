@@ -10,8 +10,6 @@
 #
 # Indexes
 #
-#  index_follows_on_followee_id              (followee_id) UNIQUE
-#  index_follows_on_user_id                  (user_id) UNIQUE
 #  index_follows_on_user_id_and_followee_id  (user_id,followee_id) UNIQUE
 #
 class Follow < ApplicationRecord

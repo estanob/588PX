@@ -6,7 +6,7 @@ class Api::FollowsController < ApplicationController
 
     if @follow.save
       # render :show
-      render 'api/users/show'
+      render 'api/follows'
     else
       render json: @follow.errors.full_messages, status: 422
     end
@@ -23,7 +23,9 @@ class Api::FollowsController < ApplicationController
   end
 
   def destroy
-    @follow = Follow.find_by(id: params[:id])
+    debugger
+    @follow = Follow.find_by(follow_params)
+    # @follow = Follow.find_by(id: params[:id])
     @follow.destroy
     render 'api/follows'
   end

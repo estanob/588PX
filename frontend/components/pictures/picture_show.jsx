@@ -8,12 +8,14 @@ class PictureShow extends React.Component {
     super(props)
     this.handleDelete =this.handleDelete.bind(this);
     this.createFollow = this.createFollow.bind(this);
+    this.deleteFollow = this.deleteFollow.bind(this);
+    this.refreshPage = this.refreshPage.bind(this);
   };
 
   componentDidMount() {
     this.props.fetchPicture();
   };
-
+  
   handleDelete(e) {
     e.preventDefault();
     this.props.deletePicture();
@@ -25,27 +27,79 @@ class PictureShow extends React.Component {
   createFollow(e) {
     debugger
     e.preventDefault()
-    let currentUserId = this.props.session;
     let userIdToFollow = this.props.picture.uploader_id;
+    // this.props.createFollow(userIdToFollow)
+    // this.props.createFollow()
     this.props.createFollow({ followee_id: userIdToFollow })
-      .then(() => this.props.fetchUser(this.props.currentUserId))
+    .then(() => this.props.fetchUser(userIdToFollow))
+    // .then(() => this.props.fetchUser(this.props.currentUserId))
+  }
+  
+  deleteFollow(e) {
+    debugger
+    e.preventDefault()
+    let userIdToUnfollow = this.props.picture.uploader_id;
+    // this.props.deleteFollow()
+    // this.props.deleteFollow({ user_id: currentUser, followee_id: userIdToUnfollow })
+    this.props.deleteFollow(this.props.picture.uploader_id)
+      .then(() => this.props.fetchUser(this.props.session))
   }
 
-  // deleteFollow(e) {
+  refreshPage() {
+    window.location.reload()
+  }
 
-  // }
-  
+  ownPicture() {
+    this.props.session === this.props.picture.uploader_id ? (
+      <>
+        <button className='edit-update'>
+          <Link 
+            style={{ color: 'white', textDecoration: 'none' }} 
+            to={`/pictures/${this.props.picture.id}/edit`} >
+              <p>Edit</p>
+          </Link>
+        </button>
+        <button 
+          className='edit-delete' 
+          onClick={this.handleDelete}>Delete
+        </button>
+      </>
+    ) : '';
+  };
+
   render() {
-    let { picture, session } = this.props;
+    let { picture, session, users } = this.props;
     picture = picture ? picture : {};
     let uploader = picture.uploader ? picture.uploader : '';
-    const otherUploader = picture.uploader_id !== session ?
-      <button 
-        className='follow-button' 
-        onClick={this.createFollow}>Follow</button> : '';
-    // let currentUserId = session;
-    // let userIdToFollow = picture.uploader_id;
-    debugger
+    let currentUser = users[session];
+    const otherUploader = () => {
+      // if (picture.uploader_id !== session && !currentUser.followees.includes(picture.uploader_id)) {
+      //   return <button 
+      //             className='follow-button' 
+      //             onClick={this.createFollow, this.refreshPage}>Follow</button>
+      // } else if (picture.uploader_id !== session && currentUser.followees.includes(picture.uploader_id)) {
+      //   return <button 
+      //             className='follow-button' 
+      //             onClick={this.deleteFollow, this.refreshPage}>Unfollow</button>
+      // } else {
+      //   return '';
+      // }
+      debugger
+      if (picture.uploader_id!== session) {
+        if (!currentUser.followees.includes(picture.uploader_id)) {
+          return <button 
+                  className='follow-button' 
+                  onClick={this.createFollow, this.refreshPage}>Follow</button>;
+        } else {
+          return <button 
+                  className='follow-button' 
+                  onClick={this.deleteFollow, this.refreshPage}>Unfollow</button>;
+        }
+      } else {
+        return '';
+      }
+    };
+    console.log(currentUser);
     return(
       <div>
         <HeaderContainer />
@@ -53,7 +107,8 @@ class PictureShow extends React.Component {
           <img src={picture.photoUrl} alt={picture.title} />
         </div>
         <div className='show img-info'>
-          <button className='edit-update'>
+          {this.ownPicture()}
+          {/* <button className='edit-update'>
             <Link 
               style={{ color: 'white', textDecoration: 'none' }} 
               to={`/pictures/${picture.id}/edit`} >
@@ -63,14 +118,14 @@ class PictureShow extends React.Component {
           <button 
             className='edit-delete' 
             onClick={this.handleDelete}>Delete
-          </button>
+          </button> */}
           <h1>{picture.title}</h1>
           <p>
             by {<Link 
                   to={`/profile/${picture.uploader_id}`} 
                   style={{ color: 'black', textDecoration: 'none'}}>
                     {uploader}
-                </Link>} {otherUploader}
+                </Link>} {otherUploader()}
           </p>
           <p>Uploaded: {picture.created_at}</p>
           <p>Location: {picture.location}</p>
