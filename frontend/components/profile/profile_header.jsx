@@ -32,7 +32,7 @@ class ProfileHeader extends React.Component {
           <h1>{username}</h1>
           <p>{followers} Followers {following} Following</p>
         </div>
-        <h1>Pictures ({ownCount})</h1>
+        <h1>Pictures {ownCount}</h1>
         <ul className='pic-index pics-on-profile'>
           {ownPics}
         </ul>

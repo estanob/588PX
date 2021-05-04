@@ -10,8 +10,13 @@
 #
 # Indexes
 #
-#  index_followings_on_followed_user_id  (followed_user_id)
-#  index_followings_on_user_id           (user_id)
+#  index_followings_on_followed_user_id              (followed_user_id)
+#  index_followings_on_user_id                       (user_id)
+#  index_followings_on_user_id_and_followed_user_id  (user_id,followed_user_id) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
 #
 class Following < ApplicationRecord
   validates :user_id, uniqueness: { scope: :followed_user_id }

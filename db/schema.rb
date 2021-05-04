@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_000527) do
+ActiveRecord::Schema.define(version: 2021_05_04_004158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_000527) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followed_user_id"], name: "index_followings_on_followed_user_id"
+    t.index ["user_id", "followed_user_id"], name: "index_followings_on_user_id_and_followed_user_id", unique: true
     t.index ["user_id"], name: "index_followings_on_user_id"
   end
 
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_000527) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "followings", "users"
   add_foreign_key "galleries", "users", column: "creator_id"
   add_foreign_key "pictures", "users", column: "uploader_id"
 end
