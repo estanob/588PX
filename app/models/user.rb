@@ -32,6 +32,26 @@ class User < ApplicationRecord
     class_name: :Gallery,
     dependent: :destroy
 
+  has_many :outward_follows,
+    foreign_key: :user_id,
+    class_name: :Follow,
+    dependent: :destroy
+
+  has_many :inward_follows,
+    foreign_key: :followee_id,
+    class_name: :Follow,
+    dependent: :destroy
+
+  has_many :followees,
+    through: :outward_follows,
+    source: :followee,
+    dependent: :destroy
+
+  has_many :followers,
+    through: :inward_follows,
+    source: :follower,
+    dependent: :destroy
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil if user.nil?

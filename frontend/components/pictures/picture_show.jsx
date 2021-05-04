@@ -7,6 +7,7 @@ class PictureShow extends React.Component {
   constructor(props) {
     super(props)
     this.handleDelete =this.handleDelete.bind(this);
+    this.createFollow = this.createFollow.bind(this);
   };
 
   componentDidMount() {
@@ -20,12 +21,31 @@ class PictureShow extends React.Component {
       <Redirect to='/home' />
     );
   };
+
+  createFollow(e) {
+    debugger
+    e.preventDefault()
+    let currentUserId = this.props.session;
+    let userIdToFollow = this.props.picture.uploader_id;
+    this.props.createFollow({ followee_id: userIdToFollow })
+      .then(() => this.props.fetchUser(this.props.currentUserId))
+  }
+
+  // deleteFollow(e) {
+
+  // }
   
   render() {
     let { picture, session } = this.props;
     picture = picture ? picture : {};
     let uploader = picture.uploader ? picture.uploader : '';
-    const otherUploader = picture.uploader_id !== session ? 'Follow' : '';
+    const otherUploader = picture.uploader_id !== session ?
+      <button 
+        className='follow-button' 
+        onClick={this.createFollow}>Follow</button> : '';
+    // let currentUserId = session;
+    // let userIdToFollow = picture.uploader_id;
+    debugger
     return(
       <div>
         <HeaderContainer />
