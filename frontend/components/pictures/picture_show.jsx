@@ -6,10 +6,21 @@ import HeaderContainer from '../header/header_container';
 class PictureShow extends React.Component {
   constructor(props) {
     super(props)
+
+    // let picture = this.props.picture ? this.props.picture : {};
+    // let users = this.props.users ? this.props.users : [];
+    // let session = this.props.session ? this.props.session : '';
+    // this.state = {
+    //   picture: picture,
+    //   users: users,
+    //   session: session,
+    // };
+
     this.handleDelete =this.handleDelete.bind(this);
     this.createFollow = this.createFollow.bind(this);
     this.deleteFollow = this.deleteFollow.bind(this);
     this.refreshPage = this.refreshPage.bind(this);
+    // this.ownPicture = this.ownPicture.bind(this);
   };
 
   componentDidMount() {
@@ -48,42 +59,52 @@ class PictureShow extends React.Component {
   refreshPage() {
     window.location.reload()
   }
-
-  ownPicture() {
-    this.props.session === this.props.picture.uploader_id ? (
-      <>
-        <button className='edit-update'>
-          <Link 
-            style={{ color: 'white', textDecoration: 'none' }} 
-            to={`/pictures/${this.props.picture.id}/edit`} >
-              <p>Edit</p>
-          </Link>
-        </button>
-        <button 
-          className='edit-delete' 
-          onClick={this.handleDelete}>Delete
-        </button>
-      </>
-    ) : '';
-  };
-
+  
   render() {
     let { picture, session, users } = this.props;
     picture = picture ? picture : {};
     let uploader = picture.uploader ? picture.uploader : '';
     let currentUser = users[session];
+
+    const ownPicture = () => {
+      debugger
+
+      if (session === picture.uploader_id) {
+        return (
+          <>
+            <button className='edit-update'>
+              <Link 
+                style={{ color: 'white', textDecoration: 'none' }} 
+                to={`/pictures/${picture.id}/edit`} >
+                  <p>Edit</p>
+              </Link>
+            </button>
+            <button 
+              className='edit-delete' 
+              onClick={this.handleDelete}>Delete
+            </button>
+          </>
+        )
+      }
+
+      // session === picture.uploader_id ? (
+      //   <>
+      //     <button className='edit-update'>
+      //       <Link 
+      //         style={{ color: 'white', textDecoration: 'none' }} 
+      //         to={`/pictures/${picture.id}/edit`} >
+      //           <p>Edit</p>
+      //       </Link>
+      //     </button>
+      //     <button 
+      //       className='edit-delete' 
+      //       onClick={this.handleDelete}>Delete
+      //     </button>
+      //   </>
+      // ) : '';
+    };
+
     const otherUploader = () => {
-      // if (picture.uploader_id !== session && !currentUser.followees.includes(picture.uploader_id)) {
-      //   return <button 
-      //             className='follow-button' 
-      //             onClick={this.createFollow, this.refreshPage}>Follow</button>
-      // } else if (picture.uploader_id !== session && currentUser.followees.includes(picture.uploader_id)) {
-      //   return <button 
-      //             className='follow-button' 
-      //             onClick={this.deleteFollow, this.refreshPage}>Unfollow</button>
-      // } else {
-      //   return '';
-      // }
       debugger
       if (picture.uploader_id!== session) {
         if (!currentUser.followees.includes(picture.uploader_id)) {
@@ -99,7 +120,8 @@ class PictureShow extends React.Component {
         return '';
       }
     };
-    console.log(currentUser);
+    console.log(currentUser.followees);
+    console.log(`state: ${this.state}`);
     return(
       <div>
         <HeaderContainer />
@@ -107,7 +129,7 @@ class PictureShow extends React.Component {
           <img src={picture.photoUrl} alt={picture.title} />
         </div>
         <div className='show img-info'>
-          {this.ownPicture()}
+          {ownPicture()}
           {/* <button className='edit-update'>
             <Link 
               style={{ color: 'white', textDecoration: 'none' }} 
