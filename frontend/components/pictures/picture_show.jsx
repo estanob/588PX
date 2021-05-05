@@ -8,11 +8,6 @@ class PictureShow extends React.Component {
     super(props)
 
     this.handleDelete =this.handleDelete.bind(this);
-    // this.createNewFollow = this.createNewFollow.bind(this);
-    // this.destroyFollow = this.destroyFollow.bind(this);
-    this.refreshPage = this.refreshPage.bind(this);
-    // this.newFollow = this.newFollow.bind(this);
-    // this.unfollow = this.unfollow.bind(this);
   };
 
   componentDidMount() {
@@ -27,46 +22,20 @@ class PictureShow extends React.Component {
     );
   };
 
-  // createNewFollow() {
-  // // createNewFollow(e) {
-  //   debugger
-  //   // e.preventDefault()
-  //   let currentUserId = this.props.session;
-  //   let userIdToFollow = this.props.picture.uploader_id;
-  //   // this.props.createFollow(userIdToFollow)
-  //   // this.props.createFollow()
-  //   this.props.createFollow({ followee_id: userIdToFollow })
-  //   .then(() => this.props.fetchUser(currentUserId))
-
-  //   // const followForm = new Follow();
-  //   // followForm.append('follow[user_id', this.props.session);
-  //   // followForm.append('follow[followee_id]', this.props.picture.uploader_id);
-
-  //   // this.props.createFollow(followForm);
-  // }
-  
-  // destroyFollow() {
-  // // destroyFollow(e) {
-  //   debugger
-  //   // e.preventDefault()
-  //   let userIdToUnfollow = this.props.picture.uploader_id;
-  //   // this.props.deleteFollow()
-  //   // this.props.deleteFollow({ user_id: currentUser, followee_id: userIdToUnfollow })
-  //   this.props.deleteFollow(this.props.picture.uploader_id)
-  //     .then(() => this.props.fetchUser(this.props.session))
-  // }
-
-  refreshPage() {
-    window.location.reload()
+  // componentDidUpdate instead
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Current Props:")
+    console.log(this.props)
+    console.log("Previous Props:")
+    console.log(prevProps)
   }
-  
-  
+
   render() {
     let { picture, session, users, createFollow, deleteFollow } = this.props;
     picture = picture ? picture : {};
     let uploader = picture.uploader ? picture.uploader : '';
     let currentUser = users[session];
-    let numGalleries = picture.galleries.length;
+    let numGalleries = picture.galleries ? picture.galleries.length : 0;
     
     const ownPicture = () => {
       if (session === picture.uploader_id) {
@@ -89,21 +58,13 @@ class PictureShow extends React.Component {
     };
 
     const createNewFollow = () => {
-      debugger
       const userIdToFollow = picture.uploader_id;
       const currentUserId = session;
       createFollow({ followee_id: userIdToFollow })
         .then(() => this.props.fetchUser(currentUserId));
-      
-      // const followForm = new Follow();
-      // followForm.append('follow[user_id', this.props.session);
-      // followForm.append('follow[followee_id]', this.props.picture.uploader_id);
-      
-      // this.props.createFollow(followForm);
     };
     
     const destroyFollow = () => {
-      debugger
       const userIdToUnfollow = picture.uploader_id;
       const currentUserId = session;
       deleteFollow(userIdToUnfollow)
@@ -112,25 +73,22 @@ class PictureShow extends React.Component {
     
     const newFollow = () => {
       createNewFollow();
-      this.refreshPage();
     };
     
     const unfollow = () => {
       destroyFollow();
-      this.refreshPage();
     };
     
     const otherUploader = () => {
-      debugger
       if (picture.uploader_id!== session) {
         if (!currentUser.followees.includes(picture.uploader_id)) {
           return <button 
           className='follow-button' 
-          onClick={newFollow()}>Follow</button>;
+          onClick={newFollow}>Follow</button>;
         } else {
           return <button 
           className='follow-button' 
-          onClick={unfollow()}>Unfollow</button>;
+          onClick={unfollow}>Unfollow</button>;
         }
       } else {
         return '';
@@ -140,7 +98,7 @@ class PictureShow extends React.Component {
     console.log(`Following: ${currentUser.followees.length}`);
     console.log(`Followers: ${currentUser.followers.length}`);
     console.log(`Galleries: ${numGalleries}`);
-    debugger
+    console.log('Update followed!')
     return(
       <div>
         <HeaderContainer />
