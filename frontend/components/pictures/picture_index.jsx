@@ -18,13 +18,13 @@ class PictureIndex extends React.Component {
           {this.props.pictures.map((picture, i) => {
             return (
               <PictureIndexItem 
-              picture={picture} 
-              key={i} />
-            );
+                picture={picture} 
+                key={i} />
+            )
           })}
         </ul>
       </div>
-    )
+    );
   };
 };
 

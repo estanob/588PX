@@ -13,6 +13,17 @@ class Api::PicturesToGalleriesController < ApplicationController
     render :index
   end
 
+  def show
+    @pictures_to_gallery = PicturesToGallery.find_by(id: params[:id])
+    render :show
+  end
+
+  def destroy
+    @pictures_to_gallery = PicturesToGallery.find_by(id: params[:id])
+    @pictures_to_gallery.destroy
+    render :index
+  end
+
   private
 
   def pictures_to_gallery_params

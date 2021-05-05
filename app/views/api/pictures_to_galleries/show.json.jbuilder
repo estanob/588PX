@@ -1,0 +1,1 @@
+json.partial! "pictures_to_gallery", pictures_to_gallery: @pictures_to_gallery

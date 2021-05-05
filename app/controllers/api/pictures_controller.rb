@@ -25,7 +25,6 @@ class Api::PicturesController < ApplicationController
     @picture = Picture.find(params[:picture][:id])
     if @picture && @picture.update(picture_params)
       render :show
-      # render 'api/pictures/show'
     else
       render json: @picture.errors.full_messages, status: 422
     end

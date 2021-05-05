@@ -148,6 +148,7 @@ class PictureShow extends React.Component {
         <div className='show img-info'>
           {ownPicture()}
           <h1>{picture.title}</h1>
+          <h3>Galleries:</h3>
           <p>
             by {<Link 
                   to={`/profile/${picture.uploader_id}`} 

@@ -1,0 +1,23 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const GalleryIndexItem = (props) => {
+  const gallery = props.gallery;
+  console.log(gallery);
+  console.log(props);
+  return (
+    <div className="individual-gal">
+      <Link 
+        to={`/galleries/${gallery.id}`} 
+        style={{ color: 'black', textDecoration: 'none' }}>
+        {/* <img 
+          className='display-img' 
+          src={gallery.photoUrl} 
+          alt={gallery.title} /> */}
+        <p>{gallery.title}</p>
+      </Link>
+    </div>
+  )
+};
+
+export default GalleryIndexItem;

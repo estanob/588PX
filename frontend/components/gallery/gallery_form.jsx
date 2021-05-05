@@ -24,6 +24,7 @@ class GalleryForm extends React.Component {
     galForm.append('gallery[title]', this.state.title);
     galForm.append('gallery[creator_id]', this.state.creator_id);
 
+    console.log(galForm)
     this.props.action(galForm)
       .then(
         this.setState({
