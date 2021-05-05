@@ -26,6 +26,7 @@ class Api::UsersController < ApplicationController
   end
 
   def profile_params
-    params.require(:user).permit(:id)
+    params.permit(:id)
+    # params.require(:user).permit(:id)
   end
 end

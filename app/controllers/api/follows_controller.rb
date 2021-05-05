@@ -5,8 +5,8 @@ class Api::FollowsController < ApplicationController
     @follow.user_id = current_user.id
 
     if @follow.save
-      # render :show
-      render 'api/follows'
+      render :show
+      # render 'api/follows'
     else
       render json: @follow.errors.full_messages, status: 422
     end
@@ -27,7 +27,7 @@ class Api::FollowsController < ApplicationController
     @follow = Follow.find_by(follow_params)
     # @follow = Follow.find_by(id: params[:id])
     @follow.destroy
-    render 'api/follows'
+    render :show
   end
 
   private
