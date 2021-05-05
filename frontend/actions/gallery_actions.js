@@ -6,17 +6,17 @@ export const REMOVE_GALLERY = 'REMOVE_GALLERY';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-const receivePictures = galleries => ({
+const receiveGalleries = galleries => ({
   type: RECEIVE_ALL_GALLERIES,
   galleries
 })
 
-const receivePicture = gallery => ({
+const receiveGallery = gallery => ({
   type: RECEIVE_GALLERY,
   gallery
 })
 
-const removePicture = galleryId => ({
+const removeGallery = galleryId => ({
   type: REMOVE_GALLERY,
   galleryId
 })
@@ -30,37 +30,37 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const fetchPictures = () => dispatch => {
-  return PictureAPIUtils.fetchPictures()
+export const fetchGalleries = () => dispatch => {
+  return GalleryAPIUtils.fetchGalleries()
     .then(galleries => {
-      dispatch(receivePictures(galleries))
+      dispatch(receiveGalleries(galleries))
     })
 }
 
-export const fetchPicture = galleryId => dispatch => {
-  return PictureAPIUtils.fetchPicture(galleryId)
-    .then(gallery => dispatch(receivePicture(gallery)))
+export const fetchGallery = galleryId => dispatch => {
+  return GalleryAPIUtils.fetchGallery(galleryId)
+    .then(gallery => dispatch(receiveGallery(gallery)))
 }
 
-export const createPicture = gallery => dispatch => {
-  return PictureAPIUtils.createPicture(gallery)
-    .then(createPicture => {
-      dispatch(receivePicture(createPicture))
+export const createGallery = gallery => dispatch => {
+  return GalleryAPIUtils.createGallery(gallery)
+    .then(createGallery => {
+      dispatch(receiveGallery(createGallery))
       dispatch(clearErrors())
     })
     .fail(err => dispatch(receiveErrors(err)))
 }
 
-export const updatePicture = gallery => dispatch => (
-  PictureAPIUtils.updatePicture(gallery)
-    .then(updatePicture => {
-      dispatch(receivePicture(updatePicture))
+export const updateGallery = gallery => dispatch => (
+  GalleryAPIUtils.updateGallery(gallery)
+    .then(updateGallery => {
+      dispatch(receiveGallery(updateGallery))
       dispatch(clearErrors())
     })
     .fail(err => dispatch(receiveErrors(err)))
 )
 
-export const deletePicture = galleryId => dispatch => (
-  PictureAPIUtils.deletePicture(galleryId)
-    .then(() => dispatch(removePicture(galleryId)))
+export const deleteGallery = galleryId => dispatch => (
+  GalleryAPIUtils.deleteGallery(galleryId)
+    .then(() => dispatch(removeGallery(galleryId)))
 )
