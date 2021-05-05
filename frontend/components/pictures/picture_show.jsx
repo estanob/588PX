@@ -66,6 +66,7 @@ class PictureShow extends React.Component {
     picture = picture ? picture : {};
     let uploader = picture.uploader ? picture.uploader : '';
     let currentUser = users[session];
+    let numGalleries = picture.galleries.length;
     
     const ownPicture = () => {
       if (session === picture.uploader_id) {
@@ -138,6 +139,7 @@ class PictureShow extends React.Component {
 
     console.log(`Following: ${currentUser.followees.length}`);
     console.log(`Followers: ${currentUser.followers.length}`);
+    console.log(`Galleries: ${numGalleries}`);
     debugger
     return(
       <div>
@@ -148,7 +150,7 @@ class PictureShow extends React.Component {
         <div className='show img-info'>
           {ownPicture()}
           <h1>{picture.title}</h1>
-          <h3>Galleries:</h3>
+          <h3>Galleries: {numGalleries}</h3>
           <p>
             by {<Link 
                   to={`/profile/${picture.uploader_id}`} 

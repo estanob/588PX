@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+// import { Link } from 'react-router-dom';
 
 
 // const ProfileDropdown = ({ logout, userId }) => {
@@ -10,9 +10,7 @@ const ProfileDropdown = ({ logout }) => {
 
   return (
     <div id="profilepointer" onClick={triggerDropdown}>
-      {/* <div >
-        <i className="fas fa-user-alt fa-lg"></i>
-      </div> */}
+      <span className='user-pic'></span>
       <button id="profiledropdown" onClick={logout}>Logout</button>
       <ul id="profiledropdown">
         {/* <li><Link to={`/user/${userId.id}`} className="profileLink">Profile</Link></li>

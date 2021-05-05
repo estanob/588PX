@@ -5,15 +5,16 @@ import ProfileDropdown from '../profile_dropdown/profile_dropdown';
 class Header extends React.Component {
   isLoggedIn() {
     return (
-      <div>
-        <Link to={`/profile/${this.props.currentUser}`}>Profile</Link>
-        <ProfileDropdown logout={this.props.logout} 
+      <div className="header">
+        <ProfileDropdown 
+          logout={this.props.logout} 
           userId={this.props.currentUser} />
+        {/* <Link to={`/profile/${this.props.currentUser}`}>Profile</Link>
         <button onClick={() => this.props.logout()} 
-          className='header_comps'>Logout</button>
+          className='header_comps'>Logout</button> */}
         <Link onClick={this.props.createPicture} 
           to='/upload'
-          className='header_comps sign-up'>
+          className='header_comps sign-up upload'>
             Upload
         </Link>
       </div>
@@ -22,11 +23,11 @@ class Header extends React.Component {
 
   isLoggedOut() {
     return (
-      <div>
+      <>
         <Link onClick={this.props.clearErrors} to='/login' className='header_comps'>Login</Link>
         &nbsp; &nbsp;
         <Link onClick={this.props.clearErrors} to='/signup' className='header_comps sign-up'>Sign Up</Link>
-      </div>
+      </>
     )
   }
 

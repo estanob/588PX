@@ -24,6 +24,18 @@
   }
 }
 
+.user-pic {
+  display: block;
+  background-image: image-url('userpic.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: calc(0.05 * 673.67px);
+  height: calc(0.05 * 673.67px);
+  // padding: 5px 15px 5px 15px;
+  margin: 0px 10px;
+  border-radius: 50%;
+}
+
 .profileLink {
   text-decoration: none;
   color:  black;
