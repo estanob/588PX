@@ -8,10 +8,8 @@ class Header extends React.Component {
       <div className="header">
         <ProfileDropdown 
           logout={this.props.logout} 
-          userId={this.props.currentUser} />
-        {/* <Link to={`/profile/${this.props.currentUser}`}>Profile</Link>
-        <button onClick={() => this.props.logout()} 
-          className='header_comps'>Logout</button> */}
+          currentUserId={this.props.currentUserId}
+          users={this.props.users} />
         <Link onClick={this.props.createPicture} 
           to='/upload'
           className='header_comps sign-up upload'>
@@ -34,7 +32,7 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        {this.props.currentUser ? this.isLoggedIn() : this.isLoggedOut()}
+        {this.props.currentUserId ? this.isLoggedIn() : this.isLoggedOut()}
       </div>
     )
   }

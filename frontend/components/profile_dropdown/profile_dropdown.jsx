@@ -1,22 +1,21 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
-// const ProfileDropdown = ({ logout, userId }) => {
-const ProfileDropdown = ({ logout }) => {
+const ProfileDropdown = ({ logout, currentUserId, users }) => {
   const triggerDropdown = () => {
     $('#profiledropdown').toggleClass('trigger')
   };
-
+  console.log(currentUserId)
+  console.log(users)
   return (
     <div id="profilepointer" onClick={triggerDropdown}>
       <span className='user-pic'></span>
       <button id="profiledropdown" onClick={logout}>Logout</button>
       <ul id="profiledropdown">
-        {/* <li><Link to={`/user/${userId.id}`} className="profileLink">Profile</Link></li>
-        <li><Link to={`/posts`} className="profileLink">Galleries</Link></li>
-        <br /> */}
-        <li onClick={logout}>Logout</li>
+        <li><Link to="/profile">Profile</Link></li>
+        <li><button>Hello</button></li>
+        <li><button onClick={logout}>Logout</button></li>
       </ul>
     </div>
   );
