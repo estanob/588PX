@@ -14,6 +14,7 @@ import HeaderContainer from './header/header_container';
 import Navbar from './navbar/navbar';
 import UploadForm from './pictures/upload_form';
 import FourOhFour from './four_oh_four';
+import NewGallery from './gallery/new_gallery';
 import GalleryShow from './gallery/gallery_show';
 import GalleryIndexContainer from './gallery/gallery_index_container';
 import PictureIndexContainer from './pictures/picture_index_container';
@@ -32,6 +33,7 @@ const App = () => {
       <Switch>
         <ProtectedRoute path='/home' component={HomeFeed} />
         <ProtectedRoute path='/upload' component={UploadForm} />
+        <ProtectedRoute path='/gallery_new' component={NewGallery} />
         <ProtectedRoute exact path='/pictures/:id/edit' component={EditPictureFormContainer} />
         <ProtectedRoute exact path='/pictures/:id' component={PictureShowContainer} />
         <ProtectedRoute path='/pictures' component={PictureIndexContainer} />

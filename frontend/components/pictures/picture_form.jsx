@@ -152,7 +152,10 @@ class PictureForm extends React.Component{
           <input type='submit'
             className='upload-button'
             value={whatButton}
-            disabled={this.state.title.length < 2, this.state.location.length < 2} />
+            disabled={
+              title.length < 2, 
+              location.length < 2
+            } />
         </form>
         {this.state.photoUrl ? 
           <div className='picture-preview'>

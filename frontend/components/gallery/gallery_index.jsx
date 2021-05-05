@@ -15,7 +15,7 @@ class GalleryIndex extends React.Component {
     debugger
     return (
       <div className='galleries'>
-        <h1>Hello, here are the galleries</h1>
+        <h1>Hello, here are the galleries of all users</h1>
       </div>
     )
   }
