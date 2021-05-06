@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
+import GalleryIndexGalleries from './gallery_index_galleries';
 
 class GalleryShow extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class GalleryShow extends React.Component {
   };
 
   render() {
-    let { gallery, session, users } = this.props;
+    let { gallery, session, users, galleries } = this.props;
     gallery = gallery ? gallery : {};
     let creator = gallery.creator ? gallery.creator : '';
     let currentUser = users[session];
@@ -28,8 +29,8 @@ class GalleryShow extends React.Component {
     const ownGallery = () => {
       if (session === gallery.creator_id) {
         return (
-          <>
-            <button className='edit-update'>
+          <div className="">
+            <button className='edit-update own-gallery'>
               <Link 
                 style={{ color: 'white', textDecoration: 'none' }} 
                 to={`/galleries/${gallery.id}/edit`} >
@@ -37,19 +38,30 @@ class GalleryShow extends React.Component {
               </Link>
             </button>
             <button 
-              className='edit-delete' 
+              className='edit-delete own-gallery' 
               onClick={this.handleDelete}>Delete
             </button>
-          </>
+          </div>
         )
       }
     };
 
-    debugger
+    const ownGals = galleries.map(ownGal => {
+      if (ownGal.creator === creator) {(
+        <GalleryIndexGalleries key={ownGal.id} gallery={ownGal} />
+      )}
+    });
+
+    // debugger
     return(
       <div className='gallery-show'>
         <h1>{gallery.title}</h1>
-
+        <p>Curated by {creator}</p>
+        {ownGallery()}
+        <div className='more-galleries'>
+          <p>More Galleries by {creator}</p>
+          {ownGals}
+        </div>
       </div>
       
       // <div>
