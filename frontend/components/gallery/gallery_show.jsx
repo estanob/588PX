@@ -58,8 +58,10 @@ class GalleryShow extends React.Component {
         <h1>{gallery.title}</h1>
         <p>Curated by {creator}</p>
         {ownGallery()}
+        <h2>Pics in the gallery will go here</h2>
         <div className='more-galleries'>
           <p>More Galleries by {creator}</p>
+          <h4>The other galleries will show up here</h4>
           {ownGals}
         </div>
       </div>
