@@ -12,9 +12,9 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
   return {
-    fetchUser: id => dispatch(fetchUser(id)),
-    fetchGalleries: () => dispatch(fetchGalleries()),
     fetchGallery: galleryId => dispatch(fetchGallery(galleryId)),
+    fetchGalleries: () => dispatch(fetchGalleries()),
+    fetchUser: id => dispatch(fetchUser(id)),
   };
 };
 

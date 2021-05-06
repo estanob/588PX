@@ -1,11 +1,14 @@
 export const fetchGalleries = () => (
   $.ajax({
-    url: `/api/galleries`
+    url: `/api/galleries`,
+    method: 'GET'
   })
 )
+
 export const fetchGallery = galleryId => (
   $.ajax({
-    url: `/api/galleries/${galleryId}`
+    url: `/api/galleries/${galleryId}`,
+    method: 'GET'
   })
 )
 

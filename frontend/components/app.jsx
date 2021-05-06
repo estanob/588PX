@@ -15,7 +15,7 @@ import Navbar from './navbar/navbar';
 import UploadForm from './pictures/upload_form';
 import FourOhFour from './four_oh_four';
 import NewGallery from './gallery/new_gallery';
-import GalleryShow from './gallery/gallery_show';
+import GalleryShowContainer from './gallery/gallery_show_container';
 import GalleryIndexContainer from './gallery/gallery_index_container';
 import PictureIndexContainer from './pictures/picture_index_container';
 import PictureShowContainer from './pictures/picture_show_container';
@@ -37,7 +37,7 @@ const App = () => {
         <ProtectedRoute exact path='/pictures/:id/edit' component={EditPictureFormContainer} />
         <ProtectedRoute exact path='/pictures/:id' component={PictureShowContainer} />
         <ProtectedRoute path='/pictures' component={PictureIndexContainer} />
-        <ProtectedRoute exact path='/galleries/:id' component={GalleryShow} />
+        <ProtectedRoute exact path='/galleries/:id' component={GalleryShowContainer} />
         <ProtectedRoute path='/galleries' component={GalleryIndexContainer} />
         <ProtectedRoute path='/profile/:userId' component={ProfileHeaderContainer} />
 

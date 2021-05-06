@@ -9,6 +9,7 @@ const GalleriesReducer = (state = {}, action) => {
   let nextState = Object.assign({}, state)
   switch (action.type) {
     case RECEIVE_ALL_GALLERIES:
+      nextState = Object.assign({}, action.galleries)
       return action.galleries
     case RECEIVE_GALLERY:
       nextState[action.gallery.id] = action.gallery
@@ -21,4 +22,4 @@ const GalleriesReducer = (state = {}, action) => {
   }
 }
 
-export default GalleriesReducer
+export default GalleriesReducer;
