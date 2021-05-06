@@ -1,9 +1,48 @@
 .galleries {
   margin-top: 100px;
   margin-left: 50px;
+  text-align: center;
+}
+
+.galleries > h1 {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  color: black;
+  margin-bottom: 15px;
+  line-height: 110%;
+}
+
+.galleries > p {
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  margin-bottom: 10px;
+  line-height: 120%;
+}
+
+.new-gallery {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Helvetica Neue", HelveticaNeue, Helvetica, FreeSans, Arial, sansserif;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  width: 150px;
+  padding: 0px 24px;
+  margin: 0px;
+  background-color: rgb(8, 112, 209);
+  border-width: 2px;
+  border-color: rgb(8, 112, 209);
+  color: rgb(255, 255, 255);
+  border-radius: 28px;
+  border-style: solid;
+  height: 30px;
 }
 
 .gallery-index{
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-content: center;
@@ -11,4 +50,5 @@
   align-items: center;
   column-gap: 1em;
   object-fit: contain;
+  text-align: center;
 }
