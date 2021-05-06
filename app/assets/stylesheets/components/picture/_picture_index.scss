@@ -6,15 +6,18 @@
 }
 
 .pic-index {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: center;
-  flex-flow: row wrap;
-  align-items: center;
+  padding: 50px;
+  column-count: 3;
   column-gap: 1em;
+}
+
+.pic-index-item {
+  display: inline-block;
+}
+
+.pic-index-container img {
+  display: block;
+  max-width: 100%;
   object-fit: contain;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  padding-left: 50px;
-  padding-right: 50px;
+  max-height: fit-content;
 }

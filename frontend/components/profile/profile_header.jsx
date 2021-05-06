@@ -37,6 +37,10 @@ class ProfileHeader extends React.Component {
         <ul className='pic-index pics-on-profile'>
           {ownPics}
         </ul>
+        <p>This is my test index</p>
+        <ul className='pic-index pics-on-profile'>
+          {}
+        </ul>
       </div>
     )
   };
