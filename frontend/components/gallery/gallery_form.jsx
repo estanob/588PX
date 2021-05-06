@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class GalleryForm extends React.Component {
   constructor(props) {
@@ -9,6 +10,8 @@ class GalleryForm extends React.Component {
     this.state = {
       title: title,
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   update(field) {
@@ -18,6 +21,7 @@ class GalleryForm extends React.Component {
   };
 
   handleSubmit(e) {
+    debugger
     e.preventDefault()
     const galForm = new FormData();
     galForm.append('gallery[id]', this.props.gallery.id);
@@ -25,24 +29,26 @@ class GalleryForm extends React.Component {
     galForm.append('gallery[creator_id]', this.state.creator_id);
 
     console.log(galForm)
-    this.props.action(galForm)
-      .then(
-        this.setState({
-          title: '',
-          redirect: true,
-        })
-      );
+    if (galForm) {
+      this.props.action(galForm)
+        .then(
+          this.setState({
+            title: '',
+            redirect: true,
+          })
+        );
+    }
   };
   
   render() {
+    debugger
     const { formType } = this.props;
     const { title } = this.state;
     let whatButton = formType === 'Create Gallery' ? 'Create' : 'Save Changes';
-    // console.log(formType);
-    // console.log(title);
+    const redirectToHomeFeed = this.state.redirect;
+    if (redirectToHomeFeed) return <Redirect to='/galleries' />
     console.log(this.props);
     console.log(this.state);
-    debugger
     return (
       <div className='gallery-create'>
         <h1>Create a Gallery</h1>

@@ -12,8 +12,9 @@ class Api::GalleriesController < ApplicationController
 
   def create
     @gallery = Gallery.new(gallery_params)
+    @gallery.creator_id = current_user.id
     if @gallery && @gallery.save
-      render 'api/galleries/show'
+      render :show
     else
       render json: @gallery.errors.full_messages, status:422
     end
