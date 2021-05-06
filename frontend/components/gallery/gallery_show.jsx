@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const GalleryShow = (props) => {
   // const gallery = props.gallery;
+  console.log("Gallery props:")
   console.log(props)
   return (
     <div className='gallery-show'>

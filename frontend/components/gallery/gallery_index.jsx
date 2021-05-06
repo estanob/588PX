@@ -23,7 +23,9 @@ class GalleryIndex extends React.Component {
             return (
               <GalleryIndexItem
                 gallery={gal}
-                key={i} />
+                key={i}>
+                  {gal.title}
+              </GalleryIndexItem>
             )
           })}
         </ul>

@@ -10,9 +10,10 @@ const GalleryIndexItem = (props) => {
       <Link 
         to={`/galleries/${gallery.id}`} 
         style={{ color: 'black', textDecoration: 'none' }}>
+        {/* className='gal-link'> */}
         {/* <img 
           className='display-img' 
-          src={gallery.photoUrl} 
+          src={GalleryPic} 
           alt={gallery.title} /> */}
         <p>{gallery.title}</p>
       </Link>

@@ -4,5 +4,11 @@
 }
 
 .gallery-index{
-  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  flex-flow: row wrap;
+  align-items: center;
+  column-gap: 1em;
+  object-fit: contain;
 }

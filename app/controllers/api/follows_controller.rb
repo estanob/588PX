@@ -3,7 +3,7 @@ class Api::FollowsController < ApplicationController
     @follow = Follow.new(follow_params)
     @follow.user_id = current_user.id
 
-    if @follow.save
+    if @follow && @follow.save
       render :show
     else
       render json: @follow.errors.full_messages, status: 422
