@@ -13,10 +13,10 @@ const ProfileDropdown = ({ logout, currentUserId, users }) => {
       <span className='user-pic'></span>
       <ul id="profiledropdown">
         <li>
-          <Link to={`/profile/${currentUserId}`}>Profile</Link>
+          <Link to={`/profile/${currentUserId}`} className='dropdown-link'>Profile</Link>
         </li>
         <li>
-          <Link to='/galleries'>Galleries</Link>
+          <Link to='/galleries' className='dropdown-link'>Galleries</Link>
         </li>
         <br/>
         <li onClick={logout}>Logout</li>

@@ -31,11 +31,15 @@
   background-size: contain;
   width: calc(0.05 * 673.67px);
   height: calc(0.05 * 673.67px);
-  margin: 0px 10px;
+  margin: 0px 10px 20px 0px;
   border-radius: 50%;
 }
 
-.profileLink {
+.user-pic:hover {
+  filter: brightness(70%)
+}
+
+.dropdown-link {
   text-decoration: none;
   color:  black;
 }
@@ -47,7 +51,7 @@
   
 }
 #profiledropdown > li:hover {
-  background: #216feb;
+  background: #1890ff;
 }
 
 .fa-user-alt, .fa-paper-plane, .fa-bell{

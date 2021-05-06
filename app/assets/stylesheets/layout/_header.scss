@@ -18,7 +18,7 @@ header > li {
 
 header > li:last-child {
   float: right;
-  margin: 25px 60px 25px 30px;
+  margin: 15px 30px 15px 60px;
 }
 
 .five88px_header {
@@ -63,7 +63,7 @@ header > li:last-child {
   font-size: 14;
   font-weight: bold;
   color: black;
-  margin: 0px 10px;
+  margin: 0px;
   text-decoration: none;
 }
 
@@ -73,6 +73,12 @@ header > li:last-child {
   padding: 5px 15px 5px 15px;
   width: 90px;
   height: 15px;
+  margin: 0px;
+}
+
+.upload {
+  margin: 0px;
+  align-items: center;
 }
 
 .header_comps:hover {

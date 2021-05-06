@@ -12,7 +12,8 @@ class Header extends React.Component {
           users={this.props.users} />
         <Link onClick={this.props.createPicture} 
           to='/upload'
-          className='header_comps sign-up upload'>
+          // className='header_comps sign-up'>
+          className='header_comps sign-up upload'> 
             Upload
         </Link>
       </div>
