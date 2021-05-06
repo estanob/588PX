@@ -29,8 +29,8 @@ class GalleryShow extends React.Component {
     const ownGallery = () => {
       if (session === gallery.creator_id) {
         return (
-          <div className="">
-            <button className='edit-update own-gallery'>
+          <div className="own-gallery">
+            <button className='edit-update'>
               <Link 
                 style={{ color: 'white', textDecoration: 'none' }} 
                 to={`/galleries/${gallery.id}/edit`} >
@@ -38,7 +38,7 @@ class GalleryShow extends React.Component {
               </Link>
             </button>
             <button 
-              className='edit-delete own-gallery' 
+              className='edit-delete' 
               onClick={this.handleDelete}>Delete
             </button>
           </div>
@@ -63,29 +63,6 @@ class GalleryShow extends React.Component {
           {ownGals}
         </div>
       </div>
-      
-      // <div>
-      //   <HeaderContainer />
-      //   <div className='img-container'>
-      //     <img src={gallery.photoUrl} alt={gallery.title} />
-      //   </div>
-      //   <div className='show img-info'>
-      //     {ownGallery()}
-      //     <h1>{gallery.title}</h1>
-      //     <h3>Galleries: {numGalleries}</h3>
-      //     <p>
-      //       by {<Link 
-      //             to={`/profile/${gallery.creator_id}`} 
-      //             style={{ color: 'black', textDecoration: 'none'}}>
-      //               {creator}
-      //           {/* </Link>} */}
-      //           </Link>} {otherUploader()}
-      //     </p>
-      //     <p>Uploaded: {gallery.created_at}</p>
-      //     <p>Location: {gallery.location}</p>
-      //     <p>{gallery.caption ? gallery.caption : ''}</p>
-      //   </div>
-      // </div>
     ) 
   };
 }
