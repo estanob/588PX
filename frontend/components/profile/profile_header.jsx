@@ -17,7 +17,11 @@ class ProfileHeader extends React.Component {
     username ? username : '';
     const ownPics = pictures.map(ownPic => {
       if (ownPic.uploader_id === session) {
-        return <PictureIndexPhotos key={ownPic.id} picture={ownPic} />
+        return <li className="pics-on-profile-li">
+                  <PictureIndexPhotos 
+                    key={ownPic.id} 
+                    picture={ownPic} />
+                </li>
       }
     });
     let following = users[session].followees.length;
@@ -36,10 +40,6 @@ class ProfileHeader extends React.Component {
         <h1>Pictures {picCount} Galleries {galleryCount}</h1>
         <ul className='pic-index pics-on-profile'>
           {ownPics}
-        </ul>
-        <p>This is my test index</p>
-        <ul className='pic-index pics-on-profile'>
-          {}
         </ul>
       </div>
     )

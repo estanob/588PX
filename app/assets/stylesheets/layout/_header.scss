@@ -59,6 +59,7 @@ header > li:last-child {
 
 .header {
   margin: 0;
+  display: flex;
 }
 
 .header_comps {
@@ -82,8 +83,8 @@ header > li:last-child {
 .upload {
   margin: 0;
   top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  width: 55px;
+  text-align: center;
 }
 
 .header_comps:hover {

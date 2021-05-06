@@ -6,3 +6,22 @@
   font-weight: bold;
   font-size: 21px;
 }
+
+.profile {
+  display: grid;
+  flex-flow: row wrap;
+}
+
+.pics-on-profile {
+  background: #ebeef5;
+  display: grid;
+  column-count: 3;
+  column-gap: 1em;
+}
+
+// .pics-on-profile-li img {
+//   display: block;
+//   max-width: 100%;
+//   object-fit: contain;
+//   max-height: fit-content;
+// }
