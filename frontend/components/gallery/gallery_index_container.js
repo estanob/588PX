@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import GalleryIndex from './gallery_index';
-import { fetchUser } from "../../actions/profile_actions";
 import { fetchGalleries, fetchGallery } from "../../actions/gallery_actions";
+import { fetchUser } from "../../actions/profile_actions";
 
 const mSTP = state => {
   return {

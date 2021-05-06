@@ -41,6 +41,10 @@
   height: 30px;
 }
 
+.new-gallery:hover {
+  background-color: rgb(8, 159, 209);
+}
+
 .gallery-index{
   margin-top: 20px;
   display: grid;
@@ -51,4 +55,8 @@
   column-gap: 1em;
   object-fit: contain;
   text-align: center;
+}
+
+.individual-gal:hover {
+  color: #1890ff;
 }
