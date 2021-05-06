@@ -15,18 +15,13 @@ class Api::UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(profile_params)
+    @user = User.find_by(id: params[:id])
     render :show
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
-  end
-
-  def profile_params
-    params.permit(:id)
-    # params.require(:user).permit(:id)
+    params.except(:format).require(:user).permit(:id, :username, :password)
   end
 end

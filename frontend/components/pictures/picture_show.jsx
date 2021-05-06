@@ -23,12 +23,12 @@ class PictureShow extends React.Component {
   };
 
   // componentDidUpdate instead
-  componentDidUpdate(prevProps, prevState) {
-    console.log("Current Props:")
-    console.log(this.props)
-    console.log("Previous Props:")
-    console.log(prevProps)
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log("Current Props:")
+  //   console.log(this.props)
+  //   console.log("Previous Props:")
+  //   console.log(prevProps)
+  // }
 
   render() {
     let { picture, session, users, createFollow, deleteFollow } = this.props;
@@ -61,14 +61,16 @@ class PictureShow extends React.Component {
       const userIdToFollow = picture.uploader_id;
       const currentUserId = session;
       createFollow({ followee_id: userIdToFollow })
-        .then(() => this.props.fetchUser(currentUserId));
+        .then(() => this.props.fetchUser(currentUserId),
+        this.render())
     };
     
     const destroyFollow = () => {
       const userIdToUnfollow = picture.uploader_id;
       const currentUserId = session;
       deleteFollow(userIdToUnfollow)
-        .then(() => this.props.fetchUser(currentUserId));
+        .then(() => this.props.fetchUser(currentUserId),
+          this.props.fetchPicture());
     };
     
     const newFollow = () => {
@@ -98,7 +100,7 @@ class PictureShow extends React.Component {
     console.log(`Following: ${currentUser.followees.length}`);
     console.log(`Followers: ${currentUser.followers.length}`);
     console.log(`Galleries: ${numGalleries}`);
-    console.log('Update followed!')
+    console.log(this.props)
     return(
       <div>
         <HeaderContainer />

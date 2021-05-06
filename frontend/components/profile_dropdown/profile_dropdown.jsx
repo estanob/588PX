@@ -11,13 +11,15 @@ const ProfileDropdown = ({ logout, currentUserId, users }) => {
   return (
     <div id="profilepointer" onClick={triggerDropdown}>
       <span className='user-pic'></span>
-      <ul>
-        <li id="profiledropdown">
+      <ul id="profiledropdown">
+        <li>
           <Link to={`/profile/${currentUserId}`}>Profile</Link>
         </li>
         <li>
-          <button id="profiledropdown" onClick={logout}>Logout</button>
+          <Link to='/galleries'>Galleries</Link>
         </li>
+        <br/>
+        <li onClick={logout}>Logout</li>
       </ul>
       {/* <ul id="profiledropdown">
         <Link to='/profile'>Profile</Link>
