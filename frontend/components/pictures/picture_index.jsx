@@ -12,19 +12,21 @@ class PictureIndex extends React.Component {
   };
 
   render() {
+    let pics = this.props.pictures.map((pic, i) => {
+      return (
+        <li className="pic-index-item">
+          <PictureIndexItem 
+            picture={pic} 
+            key={i} />
+        </li>
+      )
+    })
+
+    pics = pics.sort(() => Math.random() - 0.5)
+
     return(
       <div className='pic-index-container'>
-        <ul className='pic-index'>
-          {this.props.pictures.map((picture, i) => {
-            return (
-              <li className="pic-index-item">
-                <PictureIndexItem 
-                  picture={picture} 
-                  key={i} />
-              </li>
-            )
-          })}
-        </ul>
+        <ul className='pic-index'>{pics}</ul>
       </div>
     );
   };

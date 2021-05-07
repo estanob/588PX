@@ -36,7 +36,6 @@ class PictureShow extends React.Component {
     picture = picture ? picture : {};
     let uploader = picture.uploader ? picture.uploader : '';
     let currentUser = users[session];
-    let numGalleries = picture.galleries ? picture.galleries.length : 0;
     
     const ownPicture = () => {
       if (session === picture.uploader_id) {
@@ -86,12 +85,14 @@ class PictureShow extends React.Component {
       if (picture.uploader_id!== session) {
         if (!currentUser.followees.includes(picture.uploader_id)) {
           return <button 
-          className='follow-button' 
-          onClick={newFollow}>Follow</button>;
+                    className='follow-button' 
+                    onClick={newFollow}>Follow
+                  </button>;
         } else {
           return <button 
-          className='follow-button' 
-          onClick={unfollow}>Unfollow</button>;
+                    className='follow-button' 
+                    onClick={unfollow}>Unfollow
+                  </button>;
         }
       } else {
         return '';
@@ -100,7 +101,6 @@ class PictureShow extends React.Component {
 
     console.log(`Following: ${currentUser.followees.length}`);
     console.log(`Followers: ${currentUser.followers.length}`);
-    console.log(`Galleries: ${numGalleries}`);
     console.log(this.props)
     return(
       <div>
@@ -111,11 +111,11 @@ class PictureShow extends React.Component {
         <div className='show img-info'>
           {ownPicture()}
           <h1>{picture.title}</h1>
-          <h3>Galleries: {numGalleries}</h3>
-          <p>
+          <p className='uploader'>
             by {<Link 
                   to={`/profile/${picture.uploader_id}`} 
-                  style={{ color: 'black', textDecoration: 'none'}}>
+                  style={{ color: 'black', textDecoration: 'none'}}
+                  className='pic-show-uploader'>
                     {uploader}
                 {/* </Link>} */}
                 </Link>} {otherUploader()}

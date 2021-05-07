@@ -10,12 +10,13 @@ const PictureIndexItem = (props) => {
     <div className="individual-pic">
       <Link 
         to={`/pictures/${picture.id}`} 
-        style={{ color: 'black', textDecoration: 'none' }}>
+        style={{ color: 'black', textDecoration: 'none' }}
+        className='pic-link'>
         <img 
           className='display-img' 
           src={picture.photoUrl} 
           alt={picture.title} />
-        <p>{picture.title}</p>
+        <p className='pic-idx-itm-title'>{picture.title}</p>
       </Link>
     </div>
   )

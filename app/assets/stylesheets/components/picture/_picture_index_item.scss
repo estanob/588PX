@@ -2,6 +2,11 @@
   display: inline-block;
 }
 
+.pic-link > p:hover {
+// .pic-idx-itm-title:hover {
+  text-decoration-color: #1890ff;
+}
+
 .display-img {
   display: inline-block;
   object-fit: cover;

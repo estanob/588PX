@@ -75,6 +75,14 @@ img {
   filter: brightness(50%);
 }
 
-// .follow-button {
+.pic-show-uploader:hover {
+  text-decoration-color: #1890ff;
+}
 
-// }
+.uploader {
+  display: inline-block;
+}
+
+.follow-button:hover {
+  filter: brightness(50%);
+}
