@@ -22,22 +22,22 @@ class Api::GalleriesController < ApplicationController
 
   def update
     @gallery = Gallery.find_by(id: params[:gallery][:id])
-    if @gallery.creator_id == current_user.id && @gallery && @gallery.update(gallery_params)
-      render 'api/galleries/show'
+    if @gallery && @gallery.update(gallery_params)
+      render :show
+    else
+      render json: @gallery.errors.full_messages, status: 422
     end
   end
 
   def destroy
     @gallery = Gallery.find_by(id: params[:id])
-    if @gallery.creator_id == current_user.id
-      @gallery.destroy
-      render 'api/galleries/show'
-    end
+    @gallery.destroy
+    render 'api/galleries'
   end
 
   private
 
   def gallery_params
-    params.require(:gallery).permit(:id, :title, :creator_id)
+    params.require(:gallery).permit(:title)
   end
 end

@@ -53,7 +53,6 @@ class GalleryForm extends React.Component {
   };
   
   render() {
-    debugger
     let { formType, gallery } = this.props;
     gallery = gallery ? gallery : {};
     const { title } = this.state;
