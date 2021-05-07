@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchUser } from '../../actions/profile_actions'
+import { fetchAllUsers, fetchUser } from '../../actions/profile_actions'
 import { fetchPictures } from '../../actions/picture_actions'
 import ProfileHeader from './profile_header'
 
@@ -14,6 +14,7 @@ const mSTP = (state, ownProps) => {
 const mDTP = (dispatch, ownProps) => {
   return {
     fetchUser: () => dispatch(fetchUser(parseInt(ownProps.match.params.id))),
+    fetchAllUsers: () => dispatch(fetchAllUsers()),
     fetchPictures: () => dispatch(fetchPictures()),
   }
 }

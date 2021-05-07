@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchPicture, deletePicture } from '../../actions/picture_actions';
-import { fetchUser } from '../../actions/profile_actions';
+import { fetchAllUsers, fetchUser } from '../../actions/profile_actions';
 import { createFollow, deleteFollow } from '../../actions/follow_actions';
 import PictureShow from './picture_show';
 
@@ -17,6 +17,7 @@ const mDTP = (dispatch, ownProps)=> {
     fetchPicture: () => dispatch(fetchPicture(parseInt(ownProps.match.params.id))),
     deletePicture: () => dispatch(deletePicture(parseInt(ownProps.match.params.id))),
     fetchUser: () => dispatch(fetchUser(parseInt(ownProps.match.params.id))),
+    fetchAllUsers: () => dispatch(fetchAllUsers()),
     createFollow: follow => dispatch(createFollow(follow)),
     deleteFollow: id => dispatch(deleteFollow(id)),
   };

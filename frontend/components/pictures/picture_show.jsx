@@ -11,6 +11,7 @@ class PictureShow extends React.Component {
   };
 
   componentDidMount() {
+    this.props.fetchAllUsers();
     this.props.fetchPicture();
   };
   

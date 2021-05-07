@@ -8,6 +8,7 @@ class ProfileHeader extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser()
+    this.props.fetchAllUsers()
     this.props.fetchPictures()
   };
 
