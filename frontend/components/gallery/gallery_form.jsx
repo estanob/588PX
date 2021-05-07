@@ -33,7 +33,6 @@ class GalleryForm extends React.Component {
   };
 
   handleSubmit(e) {
-    debugger
     e.preventDefault()
     const galForm = new FormData();
     galForm.append('gallery[id]', this.props.gallery.id);

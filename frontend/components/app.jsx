@@ -21,7 +21,7 @@ import GalleryIndexContainer from './gallery/gallery_index_container';
 import PictureIndexContainer from './pictures/picture_index_container';
 import PictureShowContainer from './pictures/picture_show_container';
 import EditPictureFormContainer from './pictures/edit_picture_form_container';
-import ProfileHeaderContainer from './profile/profile_header_container';
+import ProfileContainer from './profile/profile_container';
 
 const App = () => {
   return (
@@ -41,7 +41,7 @@ const App = () => {
         <ProtectedRoute exact path='/galleries/:id/edit' component={GalleryEditFormContainer} />
         <ProtectedRoute exact path='/galleries/:id' component={GalleryShowContainer} />
         <ProtectedRoute path='/galleries' component={GalleryIndexContainer} />
-        <ProtectedRoute path='/profile/:userId' component={ProfileHeaderContainer} />
+        <ProtectedRoute path='/profile/:userId' component={ProfileContainer} />
 
         <AuthRoute exact path="/" component={Splash} />
         <AuthRoute path="/login" component={LoginFormContainer} />

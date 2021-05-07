@@ -1,21 +1,22 @@
-import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/profile_actions';
-import { fetchPictures } from '../../actions/picture_actions';
-import Profile from './profile';
+import { connect } from 'react-redux'
+import { fetchAllUsers, fetchUser } from '../../actions/profile_actions'
+import { fetchPictures } from '../../actions/picture_actions'
+import Profile from './profile'
 
-const mSTP = ( state, ownProps ) => {
+const mSTP = (state, ownProps) => {
   return {
-    user: state.entities.users[ownProps.match.params.userId],
+    users: state.entities.users,
     pictures: Object.values(state.entities.pictures),
-    session: state.session.userId
-  };
-};
+    session: state.session.id
+  }
+}
 
-const mDTP = dispatch => {
+const mDTP = (dispatch, ownProps) => {
   return {
-    fetchUser: userId => dispatch(fetchUser(userId)),
+    fetchUser: () => dispatch(fetchUser(parseInt(ownProps.match.params.id))),
+    fetchAllUsers: () => dispatch(fetchAllUsers()),
     fetchPictures: () => dispatch(fetchPictures()),
-  };
-};
+  }
+}
 
 export default connect(mSTP, mDTP)(Profile);

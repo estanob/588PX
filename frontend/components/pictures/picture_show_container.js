@@ -5,7 +5,6 @@ import { createFollow, deleteFollow, fetchFollows } from '../../actions/follow_a
 import PictureShow from './picture_show';
 
 const mSTP = ( state, ownProps ) => {
-  debugger
   return {
     picture: state.entities.pictures[ownProps.match.params.id],
     follows: state.entities.follows,

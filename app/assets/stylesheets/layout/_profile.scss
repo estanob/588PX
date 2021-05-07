@@ -1,3 +1,21 @@
 .profile {
   margin-top: 100px;
 }
+
+.user-info {
+  text-align: center;
+}
+
+.user-info > h1 {
+  font-weight: bold;
+  font-size: 21px;
+}
+
+.pics-on-profile {
+  row-gap: 1em;
+  background: #ebeef5;
+}
+
+.pics-on-profile-li {
+  display: inline-block;
+}
