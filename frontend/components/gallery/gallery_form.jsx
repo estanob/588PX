@@ -6,13 +6,25 @@ class GalleryForm extends React.Component {
     super(props)
 
     let title = this.props.title ? this.props.title : '';
+    let creatorId = this.props.galleries ? this.props.galleries.creator_id : '';
 
     this.state = {
       title: title,
+      creator_id: creatorId,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
   };
+
+  componentDidUpdate(prevProps) {
+    let creatorId = this.props.galleries ? this.props.galleries.creator_id : '';
+    if (prevProps.title !== this.props.title) {
+      this.setState({
+        title: this.props.title,
+        creator_id: creatorId,
+      })
+    }
+  }
 
   update(field) {
     return e => this.setState({
@@ -42,8 +54,10 @@ class GalleryForm extends React.Component {
   
   render() {
     debugger
-    const { formType } = this.props;
+    let { formType, gallery } = this.props;
+    gallery = gallery ? gallery : {};
     const { title } = this.state;
+    let whichHeader = formType === 'Create Gallery' ? 'Create a Gallery' : 'Edit Gallery';
     let whatButton = formType === 'Create Gallery' ? 'Create' : 'Save Changes';
     const redirectToHomeFeed = this.state.redirect;
     if (redirectToHomeFeed) return <Redirect to='/galleries' />
@@ -51,7 +65,7 @@ class GalleryForm extends React.Component {
     console.log(this.state);
     return (
       <div className='gallery-create'>
-        <h1>Create a Gallery</h1>
+        <h1>{whichHeader}</h1>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="gallery-title">Gallery Title
             <input type="text"

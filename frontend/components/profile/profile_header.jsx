@@ -31,7 +31,7 @@ class ProfileHeader extends React.Component {
     pictures.forEach(pic => {
       if (pic.uploader_id === session) picCount++;
     });
-    let galleryCount = 0;
+    let galleryCount = users[session].galleries.length;
     return (
       <div className="profile">
         <div className="user-info">

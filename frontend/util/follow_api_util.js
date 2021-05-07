@@ -1,3 +1,10 @@
+export const fetchFollows = () => {
+  $.ajax({
+    url: `/api/follows`,
+    method: 'GET'
+  });
+};
+
 export const createFollow = follow => {
   return $.ajax({
     method: 'POST',
@@ -20,9 +27,9 @@ export const fetchFollow = id => {
   });
 };
 
-export const fetchFollows = userId => {
-  return $.ajax({
-    method: "GET",
-    url: `api/users/${userId}/follows`,
-  });
-};
+// export const fetchFollows = userId => {
+//   return $.ajax({
+//     method: "GET",
+//     url: `api/users/${userId}/follows`,
+//   });
+// };
