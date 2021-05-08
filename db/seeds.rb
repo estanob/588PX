@@ -11,11 +11,14 @@ require 'open-uri'
 User.destroy_all
 Picture.destroy_all
 Gallery.destroy_all
+Follow.destroy_all
 
 user1 = User.create!(username: 'appacademy', password: '123456')
 user2 = User.create!(username: 'jenny95611', password: '123456')
 user3 = User.create!(username: 'rick901', password: '123456')
 user4 = User.create!(username: 'bobby555', password: '123456')
+user5 = User.create!(username: 'demo123', password: '123456')
+user6 = User.create!(username: 'estanob', password: 'password123456')
 
 
 picture1 = Picture.create(
@@ -110,4 +113,39 @@ gallery2 = Gallery.create!(
 gallery3 = Gallery.create!(
   title: 'Better in the Philippines', 
   creator_id: user3.id
+)
+
+follow1 = Follow.create!(
+  # user_id: 10,
+  # followee_id: 11,
+  followee: user6,
+  follower: user1
+)
+
+follow2 = Follow.create!(
+  # user_id: 11,
+  # followee_id: 10,
+  followee: user6,
+  follower: user2
+)
+  
+follow3 = Follow.create!(
+  # user_id: 11,
+  # followee_id: 9,
+  followee: user6,
+  follower: user3
+)
+
+follow4 = Follow.create!(
+  # user_id: 10,
+  # followee_id: 9,
+  followee: user6,
+  follower: user4
+)
+
+follow5 = Follow.create!(
+  # user_id: 10,
+  # followee_id: 9,
+  followee: user6,
+  follower: user5
 )

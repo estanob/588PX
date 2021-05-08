@@ -6,7 +6,7 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 const demoUser = {
-  username: "bobby555", 
+  username: "demo123", 
   password: "123456"
 };
 

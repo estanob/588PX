@@ -7,6 +7,10 @@ class PictureShow extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      redirect: false,
+    }
+
     this.handleDelete = this.handleDelete.bind(this);
   };
 
@@ -17,10 +21,12 @@ class PictureShow extends React.Component {
   
   handleDelete(e) {
     e.preventDefault();
-    this.props.deletePicture();
-    return (
-      <Redirect to='/home' />
-    );
+    this.props.deletePicture()
+      .then(
+        this.setState({
+          redirect: true,
+        })
+      )
   };
 
   // componentDidUpdate instead
@@ -98,6 +104,9 @@ class PictureShow extends React.Component {
         return '';
       }
     };
+
+    const redirectToHomeFeed = this.state.redirect;
+    if (redirectToHomeFeed) return <Redirect to='/home' />
 
     console.log(`Following: ${currentUser.followees.length}`);
     console.log(`Followers: ${currentUser.followers.length}`);
