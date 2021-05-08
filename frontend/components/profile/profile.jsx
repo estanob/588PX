@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import GalleryIndexItem from '../gallery/gallery_index_item';
-// import OwnGallery from '../gallery/own_gallery';
 import PictureIndexPhotos from '../pictures/picture_index_photos';
 
 class Profile extends React.Component {
@@ -27,14 +25,14 @@ class Profile extends React.Component {
   toggleGalleries(e) {
     e.preventDefault()
     this.setState({
-      profileContent: 'Galleries'
+      profileContent: 'Galleries',
     })
   };
 
   togglePictures(e) {
     e.preventDefault()
     this.setState({
-      profileContent: 'Pictures'
+      profileContent: 'Pictures',
     })
   };
 
@@ -72,6 +70,7 @@ class Profile extends React.Component {
       }
     });
 
+    console.log(profileContent)
     return (
       <div className="profile">
         <div className="user-info">
@@ -81,15 +80,14 @@ class Profile extends React.Component {
           </p>
         </div>
         <div className="profile-nav-tabs">
-          <button className="profile-tab" onClick={this.togglePictures}>
+          <button className={profileContent === 'Pictures' ? 'profile-tab clicked' : 'profile-tab'} onClick={this.togglePictures}>
             Pictures {picCount}
           </button>
-          <button className="profile-tab" onClick={this.toggleGalleries}>
+          <button className={profileContent === 'Pictures' ? 'profile-tab' : 'profile-tab clicked'} onClick={this.toggleGalleries}>
             Galleries {galleryCount}
           </button>
         </div>
         <ul className='pic-index pics-on-profile'>
-          {/* {ownPics} */}
           {profileContent === 'Pictures' ? ownPics : ownGals}
         </ul>
       </div>
