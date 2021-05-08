@@ -7,7 +7,7 @@ class PictureShow extends React.Component {
   constructor(props) {
     super(props)
 
-    this.handleDelete =this.handleDelete.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   };
 
   componentDidMount() {

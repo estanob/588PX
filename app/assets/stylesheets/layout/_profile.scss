@@ -11,11 +11,19 @@
   font-size: 21px;
 }
 
+// .profile-nav-tabs {
+  
+// }
+
 .pics-on-profile {
   row-gap: 1em;
   background: #ebeef5;
 }
 
 .pics-on-profile-li {
+  display: inline-block;
+}
+
+.gals-on-profile-li {
   display: inline-block;
 }
