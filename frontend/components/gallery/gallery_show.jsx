@@ -52,7 +52,6 @@ class GalleryShow extends React.Component {
       )}
     });
 
-    // debugger
     return(
       <div className='gallery-show'>
         <h1>{gallery.title}</h1>

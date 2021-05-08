@@ -11,9 +11,26 @@
   font-size: 21px;
 }
 
-// .profile-nav-tabs {
-  
-// }
+.profile-nav-tabs {
+  display: flex;
+  width: 18%;
+  margin: 0 auto;
+}
+
+.profile-tab {
+  background-color: white;
+  border: 1px #333 solid;
+  color: rgb(109, 115, 120);
+  text-align: center;
+  border-radius: 5px;
+  width: 127.22px;
+  height: 32.22px;
+  font-family: sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+}
 
 .pics-on-profile {
   row-gap: 1em;

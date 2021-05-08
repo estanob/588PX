@@ -81,14 +81,12 @@ class Profile extends React.Component {
           </p>
         </div>
         <div className="profile-nav-tabs">
-          <h1>
-            <button onClick={this.togglePictures}>
-              Pictures {picCount}
-            </button>
-            <button onClick={this.toggleGalleries}>
-              Galleries {galleryCount}
-            </button>
-          </h1>
+          <button className="profile-tab" onClick={this.togglePictures}>
+            Pictures {picCount}
+          </button>
+          <button className="profile-tab" onClick={this.toggleGalleries}>
+            Galleries {galleryCount}
+          </button>
         </div>
         <ul className='pic-index pics-on-profile'>
           {/* {ownPics} */}
