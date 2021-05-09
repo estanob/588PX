@@ -19,6 +19,7 @@ user3 = User.create!(username: 'rick901', password: '123456')
 user4 = User.create!(username: 'bobby555', password: '123456')
 user5 = User.create!(username: 'demo123', password: '123456')
 user6 = User.create!(username: 'estanob', password: 'password123456')
+user7 = User.create!(username: 'rabbit262', password: 'password123456')
 
 
 picture1 = Picture.create(
@@ -32,7 +33,7 @@ picture1.photo.attach(io: file, filename: 'taiwan_food_stall.jpg')
 picture1.save!
 
 picture2 = Picture.create(
-  title: 'Taiwanese Street Food', 
+  title: 'Stinky Tofu', 
   location: 'Hsi Men Ting, Taipei, TaiWan', 
   caption: "Ever had stinky tofu before? It's great!", 
   uploader_id: user2.id
@@ -100,14 +101,95 @@ file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/IMG-1532.jpg")
 picture8.photo.attach(io: file, filename: 'infinity_pool_view.jpg')
 picture8.save!
 
+picture9 = Picture.create(
+  title: 'My boy Tofu', 
+  location: "Bay Area, CA, USA", 
+  uploader_id: user6.id
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/estanob/tofu+with+boba.png")
+picture9.photo.attach(io: file, filename: 'tofu with boba.png')
+picture9.save!
+
+picture10 = Picture.create(
+  title: 'Lanterns with wishes', 
+  location: "Foster City, CA, USA", 
+  uploader_id: user6.id
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/estanob/foster+city+lantern+festival.png")
+picture10.photo.attach(io: file, filename: 'lantern_festival.png')
+picture10.save!
+
+picture11 = Picture.create(
+  title: 'Ferris Wheel', 
+  location: "Downtown, Seattle, WA, USA", 
+  uploader_id: user6.id
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/estanob/seattle+ferris+wheel.png")
+picture11.photo.attach(io: file, filename: 'ferris_wheel.png')
+picture11.save!
+
+picture12 = Picture.create(
+  title: 'Cheese Board', 
+  location: "Elk Grove, CA, USA", 
+  uploader_id: user7.id
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/rabbit626/cheese+board.png")
+picture12.photo.attach(io: file, filename: 'cheese board.png')
+picture12.save!
+
+picture13 = Picture.create(
+  title: 'Beautiful Mural', 
+  location: "Downtown Sacramento, CA, USA", 
+  uploader_id: user7.id
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/rabbit626/dt+sac+blue+mural.png")
+picture13.photo.attach(io: file, filename: 'blue mural.png')
+picture13.save!
+
+picture14 = Picture.create(
+  title: 'So Green', 
+  location: "Seoul, South Korea", 
+  uploader_id: user7.id
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/rabbit626/korea+green.png")
+picture14.photo.attach(io: file, filename: 'nature in korea.png')
+picture14.save!
+
+picture15 = Picture.create(
+  title: 'Sakura', 
+  location: "Sacramento State University, Sacramento, CA, USA", 
+  uploader_id: user7.id
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/rabbit626/sac+state+sakura.png")
+picture15.photo.attach(io: file, filename: 'sakura.png')
+picture15.save!
+
+picture16 = Picture.create(
+  title: 'My baby Tofu with flowers', 
+  location: "Bay Area, CA, USA", 
+  uploader_id: user7.id
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/rabbit626/tofu+with+flowers.png")
+picture16.photo.attach(io: file, filename: 'tofu flowers.png')
+picture16.save!
+
+picture17 = Picture.create(
+  title: 'Japan Trip', 
+  location: "NaritaSan Temple, Narita, Japan", 
+  uploader_id: user6.id
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/fspimagespti/naritasan+with+mom.JPG")
+picture17.photo.attach(io: file, filename: 'naritasan.png')
+picture17.save!
+
 gallery1 = Gallery.create!(
   title: 'TaiWan Trip', 
   creator_id: user2.id
 )
 
 gallery2 = Gallery.create!(
-  title: 'Okinawa Travel', 
-  creator_id: user1.id
+  title: 'My Photography', 
+  creator_id: user7.id
 )
 
 gallery3 = Gallery.create!(
@@ -115,37 +197,61 @@ gallery3 = Gallery.create!(
   creator_id: user3.id
 )
 
+gallery4 = Gallery.create!(
+  title: "All Photos",
+  creator_id: user6.id
+)
+
 follow1 = Follow.create!(
-  # user_id: 10,
-  # followee_id: 11,
   followee: user6,
   follower: user1
 )
 
 follow2 = Follow.create!(
-  # user_id: 11,
-  # followee_id: 10,
   followee: user6,
   follower: user2
 )
   
 follow3 = Follow.create!(
-  # user_id: 11,
-  # followee_id: 9,
   followee: user6,
   follower: user3
 )
 
 follow4 = Follow.create!(
-  # user_id: 10,
-  # followee_id: 9,
   followee: user6,
   follower: user4
 )
 
 follow5 = Follow.create!(
-  # user_id: 10,
-  # followee_id: 9,
   followee: user6,
   follower: user5
+)
+
+follow6 = Follow.create!(
+  followee: user6,
+  follower: user7
+)
+
+follow7 = Follow.create!(
+  followee: user7,
+  follower: user6
+)
+
+picToGal1 = PicturesToGallery.create!(
+  picture_id: picture9.id,
+  gallery_id: gallery4.id
+)
+picToGal2 = PicturesToGallery.create!(
+  picture_id: picture10.id,
+  gallery_id: gallery4.id
+)
+
+picToGal3 = PicturesToGallery.create!(
+  picture_id: picture11.id,
+  gallery_id: gallery4.id
+)
+
+picToGal4 = PicturesToGallery.create!(
+  picture_id: picture17.id,
+  gallery_id: gallery4.id
 )

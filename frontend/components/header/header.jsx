@@ -21,11 +21,11 @@ class Header extends React.Component {
 
   isLoggedOut() {
     return (
-      <>
+      <div className="header">
         <Link onClick={this.props.clearErrors} to='/login' className='header_comps'>Login</Link>
         &nbsp; &nbsp;
         <Link onClick={this.props.clearErrors} to='/signup' className='header_comps sign-up'>Sign Up</Link>
-      </>
+      </div>
     )
   }
 

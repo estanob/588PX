@@ -4,4 +4,5 @@ json.id picture.id
 json.uploader_id picture.uploader_id
 json.uploader picture.uploader.username
 json.location picture.location
-json.galleries picture.pictures_to_galleries
+json.galleries picture.galleries
+json.pictures_to_galleries picture.pictures_to_galleries
