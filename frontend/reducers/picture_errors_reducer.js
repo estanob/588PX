@@ -1,15 +1,23 @@
-const { RECEIVE_PICTURE_ERRORS, CLEAR_ERRORS } = require("../actions/picture_actions");
+import {
+  RECEIVE_PICTURE_ERRORS,
+  RECEIVE_CURRENT_USER,
+  CLEAR_ERRORS,
+} from '../actions/picture_actions';
 
-const PictureErrorsReducer = (oldState = {}, action) => {
-  Object.freeze(oldState);
+import { CLOSE_MODAL } from '../actions/modal_actions';
+
+export default (state = {}, action ) => {
+  Object.freeze(state);
   switch (action.type) {
     case RECEIVE_PICTURE_ERRORS:
       return action.errors;
+    case RECEIVE_CURRENT_USER:
+      return {};
     case CLEAR_ERRORS:
+      return [];
+    case CLOSE_MODAL:
       return {};
     default:
-      return oldState;
+      return state;
   }
 };
-
-export default PictureErrorsReducer;

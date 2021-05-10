@@ -1,8 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import CancelModal from './cancel_modal'
-import RemoveModal from './remove_modal'
+import FollowersModal from './followers_modal';
 
 function Modal({ modal, closeModal }) {
 
@@ -11,11 +10,8 @@ function Modal({ modal, closeModal }) {
   }
   let component;
   switch (modal) {
-    case 'cancel':
-      component = <CancelModal closeModal={closeModal} />;
-      break;
-    case 'remove':
-      component = <RemoveModal closeModal={closeModal} />;
+    case 'followers':
+      component = <FollowersModal closeModal={closeModal} />;
       break;
     default:
       return null;
@@ -29,16 +25,16 @@ function Modal({ modal, closeModal }) {
   );
 }
 
-const mapStateToProps = state => {
+const mSTP = state => {
   return {
     modal: state.ui.modal
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mDTP = dispatch => {
   return {
     closeModal: () => dispatch(closeModal())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(mSTP, mDTP)(Modal);

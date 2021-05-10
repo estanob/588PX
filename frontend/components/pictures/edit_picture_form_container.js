@@ -6,10 +6,10 @@ import EditPictureForm from './edit_picture_form';
 
 const mSTP = ( state, ownProps ) => {
   let picture = state.entities ? state.entities.pictures[ownProps.match.params.id] : '';
-  let err = state.errors.picture ? Object.values(state.errors.picture) : [];
-
+  let errors = state.errors.pictures ? Object.values(state.errors.pictures) : [];
+  // debugger
   return {
-    errors: err,
+    errors: errors,
     picture: picture,
     session: state.session.id,
     formType: 'Edit Picture'

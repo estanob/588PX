@@ -5,7 +5,7 @@ import pictures from './picture_errors_reducer';
 
 const ErrorsReducer = combineReducers({
   session,
-  pictures
+  pictures,
 });
 
 export default ErrorsReducer;

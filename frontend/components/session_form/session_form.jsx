@@ -58,7 +58,7 @@ class SessionForm extends React.Component {
       error.includes('Last name') ? <ul className='error' key={i}>{error}</ul> : ''
     )))
   }
-//
+  
   usernameError() {
     return (this.props.errors.map((error, i) => (
       error.includes('Username') ? <ul className='error' key={i}>{error}</ul> : ''

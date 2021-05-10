@@ -1,6 +1,7 @@
 import React from 'react'
 import GalleryIndexItem from '../gallery/gallery_index_item';
 import PictureIndexPhotos from '../pictures/picture_index_photos';
+import Modal from '../modal/modal';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class Profile extends React.Component {
   };
 
   render() {
-    const { allUsers, users, session, pictures, galleries } = this.props;
+    const { allUsers, users, session, pictures, galleries, followersModal } = this.props;
     let profileContent = this.state.profileContent;
 
     const currentUser = users[session];
@@ -77,9 +78,9 @@ class Profile extends React.Component {
         <div className="user-info">
           <h1>{`${currentUser.firstName} ${currentUser.lastName}`}</h1>
           <p>
-            {/* Followers Following */}
             {followers} Followers {following} Following
           </p>
+          {followersModal}
         </div>
         <div className="profile-nav-tabs">
           <button className={profileContent === 'Pictures' ? 'profile-tab clicked' : 'profile-tab'} onClick={this.togglePictures}>

@@ -28,6 +28,7 @@ class EditPictureForm extends React.Component {
   render() {
     let { 
       action, 
+      errors,
       formType, 
       picture, 
       deletePicture, 
@@ -44,6 +45,8 @@ class EditPictureForm extends React.Component {
     let photoFile = picture ? picture.photoFile : '';
     let uploader_id = picture ? picture.uploader_id : '';
 
+    console.log("Edit Picture Form: ")
+    console.log(errors)
     return(
       <div className="edit-show">
         <div className='edit-header'>
@@ -64,6 +67,7 @@ class EditPictureForm extends React.Component {
               caption={caption}
               photoFile={photoFile}
               uploader_id={uploader_id}
+              errors={errors}
               deletePicture={deletePicture} />
           </div>
         </div>

@@ -77,30 +77,34 @@ class PictureForm extends React.Component{
           location: '',
           redirect: true,
         })
-      );
+      )
+      // .fail(
+      //   this.titleError(),
+      //   this.locationError()
+      // )
   };
 
   // titleError() {
   //   return (this.props.errors.map((err, i) => (
-  //     err.includes('Title') ? <ul className='error' key={i}>{err}</ul> : ''
-  //   )))
-  // }
-  
+  //     err.includes('Title') ? <ul className='error pic-err' key={i}>{err}</ul> : ''
+  //     )))
+  //   }
+    
   // locationError() {
   //   return (this.props.errors.map((err, i) => (
-  //     err.includes('Location') ? <ul className='error' key={i}>{err}</ul> : ''
-  //   )))
-  // }
-  
+  //     err.includes('Location') ? <ul className='error pic-err' key={i}>{err}</ul> : ''
+  //     )))
+  //   }
+    
   render() {
-    const { formType } = this.props;
+    let { errors, formType } = this.props;
     const { title, location, caption } = this.state;
     let whatButton = formType === 'Upload Picture' ? 'Upload' : 'Save Changes';
 
     title ? title : '';
     location ? location : '';
     caption ? caption : '';
-
+    errors = errors ? errors : [];
     const preview = this.state.photoUrl ? 
       <img 
         className='preview' 
@@ -111,14 +115,17 @@ class PictureForm extends React.Component{
     if (redirectToHomeFeed) {
       return <Redirect to='/home' />
     }
-        
-    return(
+
+    // console.log(errors)
+    // debugger
+    return (
       <div className='picture'>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="picture-title">Picture Title
             <input type="text"
               id='picture-title'
               value={title}
+              onClick={this.props.closeModal}
               onChange={this.update('title')} />
           </label>
           {/* <div className='errors-box'>
@@ -129,6 +136,7 @@ class PictureForm extends React.Component{
             <input type="text"
               id='picture-location'
               value={location}
+              onClick={this.props.closeModal}
               onChange={this.update('location')} />
           </label>
           {/* <div className='errors-box'>
@@ -139,6 +147,7 @@ class PictureForm extends React.Component{
           <input type="text"
             id='picture-caption'
             value={caption}
+            onClick={this.props.closeModal}
             onChange={this.update('caption')} />
           <br/>
           {

@@ -1,10 +1,18 @@
 import * as PictureAPIUtils from '../util/picture_api_util';
 
+export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ALL_PICTURES = 'RECEIVE_ALL_PICTURES';
 export const RECEIVE_PICTURE = 'RECEIVE_PICTURE';
 export const REMOVE_PICTURE = 'REMOVE_PICTURE';
 export const RECEIVE_PICTURE_ERRORS = 'RECEIVE_PICTURE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+export const receiveCurrentUser = currentUser => {
+  return {
+    type: RECEIVE_CURRENT_USER,
+    currentUser,
+  }
+}
 
 const receivePictures = pictures => ({
   type: RECEIVE_ALL_PICTURES,
@@ -22,6 +30,7 @@ const removePicture = pictureId => ({
 })
 
 export const receiveErrors = errors => {
+  // debugger
   return {
     type: RECEIVE_PICTURE_ERRORS,
     errors,
