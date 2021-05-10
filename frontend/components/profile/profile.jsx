@@ -72,9 +72,6 @@ class Profile extends React.Component {
       }
     });
 
-    console.log(profileContent)
-    console.log(users)
-    debugger
     return (
       <div className="profile">
         <div className="user-info">

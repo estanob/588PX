@@ -41,7 +41,6 @@ class PictureShow extends React.Component {
   render() {
     let { picture, session, users, createFollow, deleteFollow } = this.props;
     picture = picture ? picture : {};
-    let uploader = picture.uploader ? picture.uploader : '';
     let currentUser = users[session];
     
     const ownPicture = () => {
@@ -115,9 +114,6 @@ class PictureShow extends React.Component {
     const redirectToHomeFeed = this.state.redirect;
     if (redirectToHomeFeed) return <Redirect to='/home' />
 
-    console.log(`Following: ${currentUser.followees.length}`);
-    console.log(`Followers: ${currentUser.followers.length}`);
-    console.log(this.props)
     return(
       <div>
         <HeaderContainer />
@@ -132,7 +128,7 @@ class PictureShow extends React.Component {
                   to={`/p/${picture.username}`} 
                   style={{ color: 'black', textDecoration: 'none'}}
                   className='pic-show-uploader'>
-                    {uploader}
+                    {`${picture.uploaderFirstName} ${picture.uploaderLastName}`}
                 {/* </Link>} */}
                 </Link>} {otherUploader()}
           </p>
