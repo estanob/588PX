@@ -3,6 +3,7 @@ import { Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import GalleryIndexGalleries from './gallery_index_galleries';
 import PictureIndexPhotos from '../pictures/picture_index_photos';
+import PictureIndexItem from '../pictures/picture_index_item';
 
 class GalleryShow extends React.Component {
   constructor(props) {
@@ -23,21 +24,12 @@ class GalleryShow extends React.Component {
   };
 
   render() {
-    debugger
+    // debugger
     let { gallery, session, users, galleries, pictures } = this.props;
     pictures = pictures ? pictures : [];
     gallery = gallery ? gallery : {};
     let picsInGal = gallery.pics ? gallery.pics : [];
     let creator = gallery.creator ? gallery.creator : '';
-    // let galPics = pictures.map(picture => {
-    //   if (gallery.pics.includes(picture)) {
-    //     return (
-    //       <li className="pics-on-profile-li">
-    //         <PictureIndexPhotos key={picture.id} picture={picture} />
-    //       </li>
-    //     )
-    //   }
-    // });
     console.log(picsInGal)
     const ownGallery = () => {
       if (session === gallery.creator_id) {
@@ -59,12 +51,30 @@ class GalleryShow extends React.Component {
       }
     };
 
+    // let galPics = picsInGal.map(picture => {
+    //   return (
+    //     <li className="pics-on-profile-li">
+    //       <PictureIndexPhotos 
+    //         picture={picture} 
+    //         key={picture.id}>
+    //           <img className='display-img for-profile'
+    //             src={picture.photoUrl}
+    //             alt={picture} />
+    //       </PictureIndexPhotos>
+    //     </li>
+    //   )
+    // })
+    
     let galPics = picsInGal.map(picture => {
-      return (
-        <li className="pics-on-profile-li">
-          <PictureIndexPhotos picture={picture} key={picture.id} />
-        </li>
-      )
+      if (picsInGal.includes(picture)) {
+        return (
+          <li className="pics-on-profile-li">
+            <PictureIndexPhotos 
+              picture={picture} 
+              key={picture.id} />
+          </li>
+        )
+      }
     })
 
     const ownGals = galleries.map(ownGal => {
@@ -75,7 +85,7 @@ class GalleryShow extends React.Component {
 
     console.log(gallery)
     console.log(picsInGal)
-    debugger
+    // debugger
     return(
       <div className='gallery-show'>
         <h1>{gallery.title}</h1>

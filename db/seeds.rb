@@ -13,14 +13,14 @@ Picture.destroy_all
 Gallery.destroy_all
 Follow.destroy_all
 
-user1 = User.create!(username: 'appacademy', password: '123456')
-user2 = User.create!(username: 'jenny95611', password: '123456')
-user3 = User.create!(username: 'rick901', password: '123456')
-user4 = User.create!(username: 'bobby555', password: '123456')
-user5 = User.create!(username: 'demo123', password: '123456')
-user6 = User.create!(username: 'estanob', password: 'password123456')
-user7 = User.create!(username: 'rabbit262', password: 'password123456')
-
+user1 = User.create!(first_name: 'App', last_name: 'Academy', username: 'appacademy', password: '123456')
+user2 = User.create!(first_name: 'Jenny', last_name: 'Jenny', username: 'jenny95611', password: '123456')
+user3 = User.create!(first_name: 'Rickety', last_name: 'Rick', username: 'rick901', password: '123456')
+user4 = User.create!(first_name: 'Bobby', last_name: 'Five', username: 'bobby555', password: '123456')
+user5 = User.create!(first_name: 'Demo', last_name: 'Guest', username: 'demo123', password: '123456')
+user6 = User.create!(first_name: 'Brandon', last_name: 'Estaño', username: 'estanob', password: 'password123456')
+user7 = User.create!(first_name: 'Rabbit', last_name: 'Bunny', username: 'rabbit262', password: 'password123456')
+user8 = User.create!(first_name: 'Five', last_name: 'Eight-eight', username: 'five88', password: 'password')
 
 picture1 = Picture.create(
   title: 'Taiwanese Food Stall', 

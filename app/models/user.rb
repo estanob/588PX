@@ -3,6 +3,8 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
+#  first_name      :string
+#  last_name       :string
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  username        :string           not null
@@ -15,7 +17,7 @@
 #  index_users_on_username       (username) UNIQUE
 #
 class User < ApplicationRecord
-  validates :username, :password_digest, :session_token, presence: true
+  validates :username, :password_digest, :session_token, :first_name, :last_name, presence: true
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6}, allow_nil: true
   after_initialize :ensure_session_token

@@ -40,7 +40,9 @@ class Profile extends React.Component {
     const { users, session, pictures, galleries } = this.props;
     let profileContent = this.state.profileContent;
 
-    const username = users[session].username;
+    const currentUser = users[session];
+    const username = currentUser.username;
+    currentUser ? currentUser : {};
     username ? username: '';
     const ownPics = pictures.map((ownPic, i) => {
       if (ownPic.uploader_id === session) {
@@ -71,10 +73,12 @@ class Profile extends React.Component {
     });
 
     console.log(profileContent)
+    console.log(users)
+    debugger
     return (
       <div className="profile">
         <div className="user-info">
-          <h1>{username}</h1>
+          <h1>{`${currentUser.firstName} ${currentUser.lastName}`}</h1>
           <p>
             {followers} Followers {following} Following
           </p>
@@ -87,7 +91,8 @@ class Profile extends React.Component {
             Galleries {galleryCount}
           </button>
         </div>
-        <ul className='pic-index pics-on-profile'>
+        <ul className='pic-index'>
+        {/* <ul className='pic-index pics-on-profile'> */}
           {profileContent === 'Pictures' ? ownPics : ownGals}
         </ul>
       </div>

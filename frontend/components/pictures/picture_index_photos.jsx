@@ -7,15 +7,13 @@ class PictureIndexPhotos extends React.Component {
     const { picture } = this.props;
     return (
       <div>
-        <li>
-          <Link to={`/pictures/${picture.id}`}>
-            <img 
-              className='display-img for-profile' 
-              // className='picture-index-img' 
-              src={picture.photoUrl} 
-              alt={picture.title} />
-          </Link>
-        </li>
+        <Link to={`/pictures/${picture.id}`}>
+          <img 
+            className='display-img for-profile' 
+            // className='picture-index-img' 
+            src={picture.photoUrl} 
+            alt={picture.title} />
+        </Link>
       </div>
     )
   }

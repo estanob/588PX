@@ -9,6 +9,7 @@ class PictureShow extends React.Component {
 
     this.state = {
       redirect: false,
+      changeFollow: false,
     }
 
     this.handleDelete = this.handleDelete.bind(this);
@@ -81,22 +82,28 @@ class PictureShow extends React.Component {
     
     const newFollow = () => {
       createNewFollow();
+      this.setState({
+        changeFollow: true,
+      })
     };
     
     const unfollow = () => {
       destroyFollow();
+      this.setState({
+        changeFollow: true,
+      })
     };
     
     const otherUploader = () => {
       if (picture.uploader_id!== session) {
         if (!currentUser.followees.includes(picture.uploader_id)) {
           return <button 
-                    className='follow-button' 
+                    className='header-comps sign-up upload follow-button' 
                     onClick={newFollow}>Follow
                   </button>;
         } else {
           return <button 
-                    className='follow-button' 
+                    className='header-comps sign-up upload follow-button' 
                     onClick={unfollow}>Unfollow
                   </button>;
         }
@@ -122,7 +129,7 @@ class PictureShow extends React.Component {
           <h1>{picture.title}</h1>
           <p className='uploader'>
             by {<Link 
-                  to={`/profile/${picture.uploader_id}`} 
+                  to={`/p/${picture.username}`} 
                   style={{ color: 'black', textDecoration: 'none'}}
                   className='pic-show-uploader'>
                     {uploader}

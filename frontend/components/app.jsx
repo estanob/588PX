@@ -43,7 +43,7 @@ const App = () => {
         <ProtectedRoute exact path='/galleries/:id/edit' component={GalleryEditFormContainer} />
         <ProtectedRoute exact path='/galleries/:id' component={GalleryShowContainer} />
         <ProtectedRoute path='/galleries' component={GalleryIndexContainer} />
-        <ProtectedRoute path='/profile/:userId' component={ProfileContainer} />
+        <ProtectedRoute path='/p/:username' component={ProfileContainer} />
 
         <AuthRoute exact path="/" component={Splash} />
         <AuthRoute path="/login" component={LoginFormContainer} />
