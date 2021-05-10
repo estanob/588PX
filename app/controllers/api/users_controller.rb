@@ -22,6 +22,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.except(:format).require(:user).permit(:id, :username, :password)
+    params.except(:format).require(:user).permit(:id, :username, :password, :first_name, :last_name)
   end
 end

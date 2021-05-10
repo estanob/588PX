@@ -97,12 +97,12 @@ class PictureShow extends React.Component {
       if (picture.uploader_id!== session) {
         if (!currentUser.followees.includes(picture.uploader_id)) {
           return <button 
-                    className='header-comps sign-up upload follow-button' 
+                    className='follow-button' 
                     onClick={newFollow}>Follow
                   </button>;
         } else {
           return <button 
-                    className='header-comps sign-up upload follow-button' 
+                    className='follow-button' 
                     onClick={unfollow}>Unfollow
                   </button>;
         }
@@ -125,12 +125,14 @@ class PictureShow extends React.Component {
           <h1>{picture.title}</h1>
           <p className='uploader'>
             by {<Link 
-                  to={`/p/${picture.username}`} 
+                  to={`/p/${picture.uploader}`} 
                   style={{ color: 'black', textDecoration: 'none'}}
                   className='pic-show-uploader'>
-                    {`${picture.uploaderFirstName} ${picture.uploaderLastName}`}
+                    <p>
+                      {`${picture.uploaderFirstName} ${picture.uploaderLastName}`}
+                    </p>
                 {/* </Link>} */}
-                </Link>} {otherUploader()}
+                </Link>}&nbsp; {otherUploader()}
           </p>
           <p>Uploaded: {picture.created_at}</p>
           <p>Location: {picture.location}</p>

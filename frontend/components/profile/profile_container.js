@@ -10,6 +10,7 @@ const mSTP = (state, ownProps) => {
     pictures: Object.values(state.entities.pictures),
     galleries: Object.values(state.entities.galleries),
     session: state.session.id,
+    allUsers: state.entities.user,
     profileContent: 'Pictures',
   }
 }

@@ -37,11 +37,12 @@ class Profile extends React.Component {
   };
 
   render() {
-    const { users, session, pictures, galleries } = this.props;
+    const { allUsers, users, session, pictures, galleries } = this.props;
     let profileContent = this.state.profileContent;
 
     const currentUser = users[session];
     const username = currentUser.username;
+    allUsers ? allUsers : [];
     currentUser ? currentUser : {};
     username ? username: '';
     const ownPics = pictures.map((ownPic, i) => {
@@ -71,12 +72,12 @@ class Profile extends React.Component {
                 </li>
       }
     });
-
     return (
       <div className="profile">
         <div className="user-info">
           <h1>{`${currentUser.firstName} ${currentUser.lastName}`}</h1>
           <p>
+            {/* Followers Following */}
             {followers} Followers {following} Following
           </p>
         </div>

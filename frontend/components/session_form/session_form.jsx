@@ -5,6 +5,8 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      first_name: '',
+      last_name:'',
       username: '',
       password: ''
     };
@@ -45,6 +47,18 @@ class SessionForm extends React.Component {
     )
   }
 
+  firstNameError() {
+    return (this.props.errors.map((error, i) => (
+      error.includes('First name') ? <ul className='error' key={i}>{error}</ul> : ''
+    )))
+  }
+
+  lastNameError() {
+    return (this.props.errors.map((error, i) => (
+      error.includes('Last name') ? <ul className='error' key={i}>{error}</ul> : ''
+    )))
+  }
+//
   usernameError() {
     return (this.props.errors.map((error, i) => (
       error.includes('Username') ? <ul className='error' key={i}>{error}</ul> : ''
@@ -76,6 +90,31 @@ class SessionForm extends React.Component {
               {this.props.formType === 'login' ? 'Log in to 588PX' : 'Join 588PX'}
             </h3>
             <br />
+            {this.props.formType !== 'login' ? 
+              <>
+                <label>First Name:
+                  <input type="text"
+                    onClick={this.props.closeModal}
+                    value={this.state.firstName}
+                    onChange={this.update('first_name')}
+                    className={'login-input'} />
+                </label>
+                <div className='errors-box'>
+                  {this.firstNameError()}
+                </div>
+                <br/>
+                <label>Last Name:
+                  <input type="text"
+                    onClick={this.props.closeModal}
+                    value={this.state.LastName}
+                    onChange={this.update('last_name')}
+                    className={'login-input'} />
+                </label>
+                <div className='errors-box'>
+                  {this.lastNameError()}
+                </div>
+                <br/>
+              </> : ''}
             <label>Username:
               <input type="text"
                 onClick={this.props.closeModal}

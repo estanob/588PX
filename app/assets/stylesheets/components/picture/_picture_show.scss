@@ -88,11 +88,28 @@ img {
   font-weight: bold;
   padding: 0px 16px;
   margin: 0px;
-  height: 32px;
-  width: 55px;
+  height: 20px;
+  width: 85px;
   border-width: 2px;
   border-radius: 28px;
   border-style: solid;
+  color: rgb(8, 112, 209);
   border-color: rgb(8, 112, 209);
   background-color: rgb(255, 255, 255);
+}
+
+.uploader {
+  display: flex;
+}
+
+.pic-show-uploader {
+  font-weight: bold;
+}
+
+.pic-show-uploader > p {
+  margin-left: 5px;
+}
+
+.pic-show-uploader > p:hover {
+  color: rgb(8, 112, 209);
 }
