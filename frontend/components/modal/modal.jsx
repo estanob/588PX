@@ -3,7 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import FollowersModal from './followers_modal';
 
-function Modal({ modal, closeModal }) {
+function Modal({ session, thisUser, allUsers, modal, closeModal }) {
 
   if (!modal) {
     return null;
@@ -11,7 +11,11 @@ function Modal({ modal, closeModal }) {
   let component;
   switch (modal) {
     case 'followers':
-      component = <FollowersModal closeModal={closeModal} />;
+      component = <FollowersModal 
+                    thisUser={thisUser}
+                    allUsers={allUsers} 
+                    closeModal={closeModal}
+                    session={session} />;
       break;
     default:
       return null;
@@ -25,9 +29,15 @@ function Modal({ modal, closeModal }) {
   );
 }
 
+
+// Modal Container:
 const mSTP = state => {
+  debugger
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    allUsers: Object.values(state.entities.user),
+    thisUser: state.entities.users,
+    session: state.session.id,
   };
 };
 

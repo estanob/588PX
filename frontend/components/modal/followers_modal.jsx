@@ -1,7 +1,21 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 
-const FollowersModal = ({ closeModal }) => {
+const FollowersModal = (props) => {
+  const { session, thisUser, allUsers, closeModal } = props;
+  thisUser ? thisUser : {};
+  allUsers ? allUsers : {};
+  
+  const ownFollowers = allUsers.map((user, i) => {
+    if (thisUser[session].followers.includes(user.id)) {
+      return <li key={i}>
+                {user.username}
+             </li>
+    }
+  });
+  console.log("Props: ")
+  console.log(props)
+  debugger
   return(
     <div className='followers-mdl'>
       <button onClick={closeModal}>
@@ -10,8 +24,9 @@ const FollowersModal = ({ closeModal }) => {
         </svg>
       </button>
       <h1>Followers</h1>
+      <p>Followers will go here</p>
       <ul>
-        <p>Followers will go here</p>
+        {ownFollowers}
       </ul>
     </div> 
   )
