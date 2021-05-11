@@ -27,9 +27,16 @@ const mDTP = (dispatch, ownProps) => {
     followersModal: (
       <input 
         type="button" 
-        className="cancel-button" 
+        className="modal-button" 
         value="Followers Testing" 
         onClick={() => dispatch(openModal('followers'))} />
+    ),
+    followingModal: (
+      <input 
+        type="button" 
+        className="modal-button" 
+        value="Following Testing" 
+        onClick={() => dispatch(openModal('following'))} />
     ),
     closeModal: () => dispatch(closeModal()),
   }

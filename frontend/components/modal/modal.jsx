@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import FollowersModal from './followers_modal';
+import FollowingModal from './following_modal';
 
 function Modal({ session, thisUser, allUsers, modal, closeModal }) {
 
@@ -16,7 +17,14 @@ function Modal({ session, thisUser, allUsers, modal, closeModal }) {
                     allUsers={allUsers} 
                     closeModal={closeModal}
                     session={session} />;
-      break;
+        break;
+    case 'following':
+      component = <FollowingModal 
+                    thisUser={thisUser}
+                    allUsers={allUsers} 
+                    closeModal={closeModal}
+                    session={session} />;
+        break;
     default:
       return null;
   }
