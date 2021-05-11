@@ -32,7 +32,7 @@ function Modal({ session, thisUser, allUsers, modal, closeModal }) {
 
 // Modal Container:
 const mSTP = state => {
-  debugger
+  // debugger
   return {
     modal: state.ui.modal,
     allUsers: Object.values(state.entities.user),
