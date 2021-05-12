@@ -1,5 +1,6 @@
 class Api::FollowsController < ApplicationController
   def create
+    debugger
     @follow = Follow.new(follow_params)
     @follow.user_id = current_user.id
 
@@ -23,13 +24,17 @@ class Api::FollowsController < ApplicationController
 
   def destroy
     debugger
-    @follow = Follow.where(followee_id: params[:id]).where(user_id: current_user.id)[0]
+    @follow = Follow.find_by(delete_params)
     @follow.destroy
-    render :show
+    render 'api/follows'
   end
 
   private
   def follow_params
-    params.permit(:user_id, :followee_id)
+    params.require(:follow).permit(:user_id, :followee_id)
+  end
+
+  def delete_params
+    params.except(:format).permit(:id, :user_id, :followee_id)
   end
 end

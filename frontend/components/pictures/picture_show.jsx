@@ -20,6 +20,7 @@ class PictureShow extends React.Component {
   componentDidMount() {
     this.props.fetchAllUsers();
     this.props.fetchPicture();
+    this.props.fetchFollows();
   };
   
   handleDelete(e) {
@@ -39,10 +40,6 @@ class PictureShow extends React.Component {
     followForm.append('follow[followee_id', this.props.picture.uploader_id);
 
     this.props.createFollow(followForm)
-    // this.props.createFollow({ 
-    //   user_id: this.props.session, 
-    //   followee_id: this.props.picture.uploader_id, 
-    // })
       .then(
         this.setState({
           redirectToProfilePage: true,
@@ -51,16 +48,13 @@ class PictureShow extends React.Component {
   };
 
   handleUnfollow(e) {
-    debugger
     e.preventDefault();
-    this.props.deleteFollow({ 
-      user_id: this.props.session, 
-      followee_id: this.props.picture.uploader_id, 
-    })
+    this.props.deleteFollow(this.props.followForm)
       .then(
         this.setState({
           redirectToProfilePage: true,
         }))
+    debugger
   };
 
   render() {

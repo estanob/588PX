@@ -15,10 +15,12 @@ export const createFollow = follow => {
   });
 };
 
-export const deleteFollow = id => {
+export const deleteFollow = followId => {
+  console.log("followId:")
+  console.log(followId)
   return $.ajax({
+    url: `api/follows/${followId}`,
     method: 'DELETE',
-    url: `api/follows/${id}`
   });
 };
 
@@ -28,10 +30,3 @@ export const fetchFollow = id => {
     url: `api/follows/${id}`,
   });
 };
-
-// export const fetchFollows = userId => {
-//   return $.ajax({
-//     method: "GET",
-//     url: `api/users/${userId}/follows`,
-//   });
-// };

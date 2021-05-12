@@ -11,7 +11,7 @@ const FollowsReducer = (state = {}, action) => {
     case RECEIVE_ALL_FOLLOWS:
       debugger
       nextState = Object.assign({}, action.follows)
-      return nextState;
+      return action.follows;
     case RECEIVE_FOLLOW:
       nextState[action.follow.id] = action.follow
       return nextState
