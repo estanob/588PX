@@ -17,14 +17,19 @@ class EditGalleryForm extends React.Component {
           title: this.props.gallery.title,
         })
       ))
+    this.props.fetchPictures()
   }
 
   render() {
     let { 
       action, 
+      session,
+      thisUser,
       formType, 
       gallery, 
       deleteGallery, 
+      userPicIds,
+      pictures,
     } = this.props;
 
     const {
@@ -33,7 +38,15 @@ class EditGalleryForm extends React.Component {
 
     gallery = gallery ? gallery : {};
     let creator_id = gallery ? gallery.creator_id : '';
-
+    const ownPics = userPicIds.map((picId, i) => {
+      if (pictures.includes(picId)) {
+        return <li>
+                  {picture.id}
+               </li>
+      }
+    });
+    console.log("Edit Gallery Form pictures: ")
+    console.log(pictures)
     return(
       <div className="edit-show">
         <div className='edit-header'>
@@ -48,6 +61,7 @@ class EditGalleryForm extends React.Component {
               gallery={gallery}
               title={title}
               creator_id={creator_id}
+              ownPics={ownPics}
               deleteGallery={deleteGallery} />
           </div>
         </div>

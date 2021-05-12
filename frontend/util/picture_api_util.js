@@ -18,7 +18,7 @@ export const createPicture = picture => (
     method: 'POST',
     data: picture,
     contentType: false,
-    processData: false
+    processData: false,
   })
 );
 
@@ -28,7 +28,7 @@ export const updatePicture = picture => (
     method: 'PATCH',
     data: picture,
     contentType: false,
-    processData: false
+    processData: false,
   })
 );
 

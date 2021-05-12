@@ -8,11 +8,13 @@ class PictureShow extends React.Component {
     super(props)
 
     this.state = {
-      redirect: false,
-      changeFollow: false,
+      redirectToHomeFeed: false,
+      redirectToProfilePage: false,
     }
 
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleNewFollow = this.handleNewFollow.bind(this);
+    this.handleUnfollow = this.handleUnfollow.bind(this);
   };
 
   componentDidMount() {
@@ -25,21 +27,44 @@ class PictureShow extends React.Component {
     this.props.deletePicture()
       .then(
         this.setState({
-          redirect: true,
+          redirectToHomeFeed: true,
         })
       )
   };
 
-  // componentDidUpdate instead
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log("Current Props:")
-  //   console.log(this.props)
-  //   console.log("Previous Props:")
-  //   console.log(prevProps)
-  // }
+  handleNewFollow(e) {
+    e.preventDefault();
+    const followForm = new FormData();
+    followForm.append('follow[user_id]', this.props.session);
+    followForm.append('follow[followee_id', this.props.picture.uploader_id);
+
+    this.props.createFollow(followForm)
+    // this.props.createFollow({ 
+    //   user_id: this.props.session, 
+    //   followee_id: this.props.picture.uploader_id, 
+    // })
+      .then(
+        this.setState({
+          redirectToProfilePage: true,
+        }))
+    debugger
+  };
+
+  handleUnfollow(e) {
+    debugger
+    e.preventDefault();
+    this.props.deleteFollow({ 
+      user_id: this.props.session, 
+      followee_id: this.props.picture.uploader_id, 
+    })
+      .then(
+        this.setState({
+          redirectToProfilePage: true,
+        }))
+  };
 
   render() {
-    let { picture, session, users, createFollow, deleteFollow } = this.props;
+    let { picture, session, users } = this.props;
     picture = picture ? picture : {};
     let currentUser = users[session];
     
@@ -63,47 +88,17 @@ class PictureShow extends React.Component {
       }
     };
 
-    const createNewFollow = () => {
-      const userIdToFollow = picture.uploader_id;
-      const currentUserId = session;
-      createFollow({ followee_id: userIdToFollow })
-        .then(() => this.props.fetchUser(currentUserId),
-        this.render())
-    };
-    
-    const destroyFollow = () => {
-      const userIdToUnfollow = picture.uploader_id;
-      const currentUserId = session;
-      deleteFollow(userIdToUnfollow)
-        .then(() => this.props.fetchUser(currentUserId),
-          this.props.fetchPicture());
-    };
-    
-    const newFollow = () => {
-      createNewFollow();
-      this.setState({
-        changeFollow: true,
-      })
-    };
-    
-    const unfollow = () => {
-      destroyFollow();
-      this.setState({
-        changeFollow: true,
-      })
-    };
-    
     const otherUploader = () => {
       if (picture.uploader_id!== session) {
         if (!currentUser.followees.includes(picture.uploader_id)) {
           return <button 
                     className='follow-button' 
-                    onClick={newFollow}>Follow
+                    onClick={this.handleNewFollow}>Follow
                   </button>;
         } else {
           return <button 
                     className='follow-button' 
-                    onClick={unfollow}>Unfollow
+                    onClick={this.handleUnfollow}>Unfollow
                   </button>;
         }
       } else {
@@ -111,8 +106,12 @@ class PictureShow extends React.Component {
       }
     };
 
-    const redirectToHomeFeed = this.state.redirect;
+    const redirectToHomeFeed = this.state.redirectToHomeFeed;
     if (redirectToHomeFeed) return <Redirect to='/home' />
+
+    const redirectToProfilePage = this.state.redirectToProfilePage;
+    if (redirectToProfilePage) return <Redirect 
+                                        to={`/p/${currentUser.username}`} />
 
     return(
       <div>
@@ -131,7 +130,6 @@ class PictureShow extends React.Component {
                     <p>
                       {`${picture.uploaderFirstName} ${picture.uploaderLastName}`}
                     </p>
-                {/* </Link>} */}
                 </Link>}&nbsp; {otherUploader()}
           </p>
           <p>Uploaded: {picture.created_at}</p>

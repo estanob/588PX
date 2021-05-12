@@ -38,7 +38,16 @@ class Profile extends React.Component {
   };
 
   render() {
-    const { allUsers, users, session, pictures, galleries, followersModal, followingModal } = this.props;
+    const { 
+      allUsers, 
+      users, 
+      session, 
+      pictures, 
+      galleries, 
+      followersModal, 
+      followingModal, 
+    } = this.props;
+
     let profileContent = this.state.profileContent;
 
     const currentUser = users[session];
@@ -78,9 +87,9 @@ class Profile extends React.Component {
         <div className="user-info">
           <h1>{`${currentUser.firstName} ${currentUser.lastName}`}</h1>
           <p>
-            {followers} Followers {following} Following
+            {followers} {followersModal} {following} {followingModal}
           </p>
-          {followersModal}&nbsp;{followingModal}
+          
         </div>
         <div className="profile-nav-tabs">
           <button className={profileContent === 'Pictures' ? 'profile-tab clicked' : 'profile-tab'} onClick={this.togglePictures}>

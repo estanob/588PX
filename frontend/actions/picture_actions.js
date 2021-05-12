@@ -30,7 +30,6 @@ const removePicture = pictureId => ({
 })
 
 export const receiveErrors = errors => {
-  // debugger
   return {
     type: RECEIVE_PICTURE_ERRORS,
     errors,

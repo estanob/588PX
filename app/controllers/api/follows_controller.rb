@@ -11,6 +11,7 @@ class Api::FollowsController < ApplicationController
   end
 
   def index
+    debugger
     @follows = Follow.all
     render :index
   end
@@ -21,7 +22,8 @@ class Api::FollowsController < ApplicationController
   end
 
   def destroy
-    @follow = Follow.find_by(follow_params)
+    debugger
+    @follow = Follow.where(followee_id: params[:id]).where(user_id: current_user.id)[0]
     @follow.destroy
     render :show
   end

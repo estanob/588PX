@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :pictures, only: [:index, :show, :create, :update, :destroy]
     resources :pictures_to_galleries, only: [:create, :index, :show, :destroy]
     resources :galleries, only: [:index, :show, :create, :update, :destroy]
-    resources :follows, only: [:create, :show, :destroy]
+    resources :follows, only: [:index, :create, :show, :destroy]
     resource :session, only: [:create, :destroy]
   end
 end

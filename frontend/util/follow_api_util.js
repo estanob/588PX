@@ -1,7 +1,7 @@
 export const fetchFollows = () => {
   $.ajax({
     url: `/api/follows`,
-    method: 'GET'
+    method: 'GET',
   });
 };
 
@@ -9,7 +9,9 @@ export const createFollow = follow => {
   return $.ajax({
     method: 'POST',
     url: 'api/follows',
-    data: follow
+    data: follow,
+    contentType: false,
+    processData: false,
   });
 };
 

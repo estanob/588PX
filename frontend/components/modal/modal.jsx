@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import FollowersModal from './followers_modal';
 import FollowingModal from './following_modal';
 
-function Modal({ session, thisUser, allUsers, modal, closeModal }) {
-
+function Modal (props) {
+  const { session, thisUser, allUsers, modal, closeModal } = props;
+  
   if (!modal) {
     return null;
   }
@@ -40,12 +41,14 @@ function Modal({ session, thisUser, allUsers, modal, closeModal }) {
 
 // Modal Container:
 const mSTP = state => {
-  // debugger
+  const allUsers = state.entities.user ? Object.values(state.entities.user) : {};
+  const thisUser = state.entities.users ? state.entities.users : {};
+  const session = state.session.id ? state.session.id : '';
   return {
     modal: state.ui.modal,
-    allUsers: Object.values(state.entities.user),
-    thisUser: state.entities.users,
-    session: state.session.id,
+    allUsers: allUsers,
+    thisUser: thisUser,
+    session: session,
   };
 };
 

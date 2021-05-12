@@ -7,13 +7,18 @@ import Profile from './profile'
 import { closeModal, openModal } from '../../actions/modal_actions'
 
 const mSTP = (state, ownProps) => {
+  const thisUser = state.entities.users ? state.entities.users : {};
+  const allUsers = state.entities.user ? state.entities.user : {};
+  const session = state.session.id ? state.session.id : '';
   return {
-    users: state.entities.users,
+    users: thisUser,
+    session: session,
+    allUsers: allUsers,
     pictures: Object.values(state.entities.pictures),
     galleries: Object.values(state.entities.galleries),
-    session: state.session.id,
-    allUsers: state.entities.user,
     profileContent: 'Pictures',
+    numFollowers: thisUser[session].followers.length,      
+    numFollowees: thisUser[session].followees.length,    
   }
 }
 
@@ -25,18 +30,18 @@ const mDTP = (dispatch, ownProps) => {
     fetchGalleries: () => dispatch(fetchGalleries()),
     openModal: () => dispatch(openModal()),
     followersModal: (
-      <input 
-        type="button" 
+      <button 
         className="modal-button" 
-        value="Followers Testing" 
-        onClick={() => dispatch(openModal('followers'))} />
+        onClick={() => dispatch(openModal('followers'))}>
+          Followers
+        </button>
     ),
     followingModal: (
-      <input 
-        type="button" 
+      <button 
         className="modal-button" 
-        value="Following Testing" 
-        onClick={() => dispatch(openModal('following'))} />
+        onClick={() => dispatch(openModal('following'))}>
+          Following
+        </button>
     ),
     closeModal: () => dispatch(closeModal()),
   }

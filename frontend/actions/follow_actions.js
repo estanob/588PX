@@ -26,6 +26,7 @@ const removeFollow = follow => {
 };
 
 export const fetchFollows = () => dispatch => {
+  debugger
   return FollowAPIUtil.fetchFollows()
     .then(follows => {
       dispatch(receiveFollows(follows))

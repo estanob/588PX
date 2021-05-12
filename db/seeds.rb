@@ -12,6 +12,7 @@ User.destroy_all
 Picture.destroy_all
 Gallery.destroy_all
 Follow.destroy_all
+PicturesToGallery.destroy_all
 
 user1 = User.create!(first_name: 'App', last_name: 'Academy', username: 'appacademy', password: '123456')
 user2 = User.create!(first_name: 'Jenny', last_name: 'Jenny', username: 'jenny95611', password: '123456')
@@ -21,6 +22,7 @@ user5 = User.create!(first_name: 'Demo', last_name: 'Guest', username: 'demo123'
 user6 = User.create!(first_name: 'Brandon', last_name: 'Estaño', username: 'estanob', password: 'password123456')
 user7 = User.create!(first_name: 'Rabbit', last_name: 'Bunny', username: 'rabbit262', password: 'password123456')
 user8 = User.create!(first_name: 'Five', last_name: 'Eight-eight', username: 'five88', password: 'password')
+user9 = User.create!(first_name: 'Software', last_name: 'Engineering', username: 'swe588px', password: 'swepassword')
 
 picture1 = Picture.create(
   title: 'Taiwanese Food Stall', 
@@ -45,7 +47,7 @@ picture2.save!
 picture3 = Picture.create(
   title: 'Beautiful beach in Okinawa', 
   location: 'Yonehara Beach, Ishigaki City, Okinawa Prefecture, Japan', 
-  caption: 'Water so clear you can see your feet in the sand', 
+  caption: "Water so clear you can see your feet in the sand.\nImage taken from Google", 
   uploader_id: user1.id
 )
 # picture not yet uploaded
@@ -56,7 +58,7 @@ picture3.save!
 picture4 = Picture.create(
   title: 'Shuri Castle', 
   location: 'Naha City, Okinawa Prefecture, Japan', 
-  caption: 'Majestic castle in Okinawa', 
+  caption: "Majestic castle in Okinawa.\nImage taken from Google", 
   uploader_id: user1.id
 )
 # picture not yet uploaded
@@ -182,6 +184,34 @@ file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/fspimagespti/narita
 picture17.photo.attach(io: file, filename: 'naritasan.png')
 picture17.save!
 
+picture18 = Picture.create(
+  title: 'Merlion Park with Dad', 
+  location: "Merlion Park, Central Area, Singapore", 
+  uploader_id: user6.id,
+  caption: "魚尾獅公園\n鱼尾狮公园"
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/next+uploads/%E9%AD%9A%E5%B0%BE%E7%8D%85%E5%85%AC%E5%9C%92+%E6%B8%85%E6%A5%9A.png")
+picture18.photo.attach(io: file, filename: 'merlionpark.png')
+picture18.save!
+
+picture19 = Picture.create(
+  title: 'Marina Bay Sands', 
+  location: "Marina Bay Sands Hotel, Central Area, Singapore", 
+  uploader_id: user6.id
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/next+uploads/%E6%BF%B1%E6%B5%B7%E7%81%A3%E9%87%91%E6%B2%99%E9%85%92%E5%BA%97.jpeg")
+picture19.photo.attach(io: file, filename: 'marina bay sands.png')
+picture19.save!
+
+picture20 = Picture.create(
+  title: 'Hiking', 
+  location: "Mission Peak, Fremont, CA, USA", 
+  uploader_id: user6.id
+)
+file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/next+uploads/%E5%85%84%E5%BC%9F.jpeg")
+picture20.photo.attach(io: file, filename: 'mission peak.png')
+picture20.save!
+
 gallery1 = Gallery.create!(
   title: 'TaiWan Trip', 
   creator_id: user2.id
@@ -199,6 +229,11 @@ gallery3 = Gallery.create!(
 
 gallery4 = Gallery.create!(
   title: "All Photos",
+  creator_id: user6.id
+)
+
+gallery5 = Gallery.create!(
+  title: "Asia Travel",
   creator_id: user6.id
 )
 
@@ -237,6 +272,26 @@ follow7 = Follow.create!(
   follower: user6
 )
 
+follow8 = Follow.create!(
+  followee: user6,
+  follower: user9
+)
+
+follow9 = Follow.create!(
+  followee: user7,
+  follower: user9
+)
+
+follow10 = Follow.create!(
+  followee: user1,
+  follower: user9
+)
+
+follow11 = Follow.create!(
+  followee: user2,
+  follower: user9
+)
+
 picToGal1 = PicturesToGallery.create!(
   picture_id: picture9.id,
   gallery_id: gallery4.id
@@ -253,5 +308,34 @@ picToGal3 = PicturesToGallery.create!(
 
 picToGal4 = PicturesToGallery.create!(
   picture_id: picture17.id,
+  gallery_id: gallery4.id
+)
+
+picToGal5 = PicturesToGallery.create!(
+  picture_id: picture17.id,
+  gallery_id: gallery5.id
+)
+
+picToGal6 = PicturesToGallery.create!(
+  picture_id: picture18.id,
+  gallery_id: gallery5.id
+)
+picToGal5 = PicturesToGallery.create!(
+  picture_id: picture17.id,
+  gallery_id: gallery4.id
+)
+
+picToGal6 = PicturesToGallery.create!(
+  picture_id: picture18.id,
+  gallery_id: gallery4.id
+)
+
+picToGal7 = PicturesToGallery.create!(
+  picture_id: picture19.id,
+  gallery_id: gallery5.id
+)
+
+picToGal8 = PicturesToGallery.create!(
+  picture_id: picture19.id,
   gallery_id: gallery4.id
 )
