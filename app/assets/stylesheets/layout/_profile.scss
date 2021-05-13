@@ -41,10 +41,14 @@
 .pics-on-profile {
   row-gap: 1em;
   background-color: rgb(247, 248, 250);
+  display: flex;
 }
 
 .pics-on-profile-li {
   display: inline-block;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
 }
 
 .gals-on-profile-li {

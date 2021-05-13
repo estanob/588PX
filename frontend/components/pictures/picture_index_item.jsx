@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PictureIndexItem = (props) => {
-  debugger
   console.log(props)
   const picture = props.picture;
   const id = props.id

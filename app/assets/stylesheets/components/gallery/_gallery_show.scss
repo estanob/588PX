@@ -20,7 +20,10 @@
 
 .gallery-show-pics {
   background-color: rgb(247, 248, 250);
+  display: grid;
+  column-count: 3;
 }
+
 .gallery-show-pics > h2 {
   text-align: center;
   font-size: 36px;

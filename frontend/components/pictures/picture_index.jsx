@@ -15,7 +15,6 @@ class PictureIndex extends React.Component {
     let { pictures } = this.props;
     pictures = pictures ? pictures : [];
     let pics = pictures.map((pic, i) => {
-      debugger
       return (
         <li className="pic-index-item" key={i}>
           <PictureIndexItem 
@@ -23,7 +22,7 @@ class PictureIndex extends React.Component {
         </li>
       )
     })
-    debugger
+    pics = pics.sort(() => Math.random() - 0.5);
     return(
       <div className='pic-index-container'>
         <ul className='pic-index'>{pics}</ul>
