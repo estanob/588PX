@@ -57,10 +57,8 @@ class Profile extends React.Component {
     username ? username: '';
     const ownPics = pictures.map((ownPic, i) => {
       if (ownPic.uploader_id === session) {
-        return <li className="pics-on-profile-li">
-                  <PictureIndexPhotos 
-                    key={i} 
-                    picture={ownPic} />
+        return <li className="pics-on-profile-li" key={i}>
+                  <PictureIndexPhotos picture={ownPic} />
                 </li>
       }
     });

@@ -7,13 +7,8 @@ class PictureShow extends React.Component {
   constructor(props) {
     super(props)
 
-    let user_id = this.props.session ? this.props.session : '';
-    let followee_id = this.props.picture ? this.props.picture.uploader_id : '';
     this.state = {
-      user_id: user_id,
-      followee_id: followee_id,
       redirectToHomeFeed: false,
-      redirectToProfilePage: false,
     }
 
     this.handleDelete = this.handleDelete.bind(this);
@@ -24,9 +19,8 @@ class PictureShow extends React.Component {
   componentDidMount() {
     this.props.fetchAllUsers();
     this.props.fetchPicture();
-    this.props.fetchFollows();
   };
-  
+
   handleDelete(e) {
     e.preventDefault();
     this.props.deletePicture()
@@ -37,20 +31,13 @@ class PictureShow extends React.Component {
       )
   };
 
+
   handleNewFollow(e) {
     e.preventDefault();
     const followForm = new FormData();
     followForm.append('follow[user_id]', this.props.session.id);
-    followForm.append('follow[user_id]', this.props.session.id);
     followForm.append('follow[followee_id', this.props.picture.uploader_id);
-
     this.props.createFollow(followForm)
-      .then(
-        this.setState({
-          followForm: followForm,
-          redirectToProfilePage: true,
-        }))
-    debugger
   };
 
   handleUnfollow(e) {
@@ -59,11 +46,6 @@ class PictureShow extends React.Component {
       user_id: this.props.session, 
       followee_id: this.props.picture.uploader_id,
     })
-      .then(
-        this.setState({
-          redirectToProfilePage: true,
-        }))
-    debugger
   };
 
   render() {
@@ -112,12 +94,10 @@ class PictureShow extends React.Component {
     const redirectToHomeFeed = this.state.redirectToHomeFeed;
     if (redirectToHomeFeed) return <Redirect to='/home' />
 
-    const redirectToProfilePage = this.state.redirectToProfilePage;
-    if (redirectToProfilePage) return <Redirect 
-                                        to='/home' />
+    // const redirectToProfilePage = this.state.redirectToProfilePage;
+    // if (redirectToProfilePage) return <Redirect 
+    //                                     to='/home' />
                                         // to={`/p/${currentUser.username}`} />
-    console.log("this.props:")
-    console.log(this.props)
     return(
       <div>
         <HeaderContainer />

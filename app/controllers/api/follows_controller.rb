@@ -11,11 +11,9 @@ class Api::FollowsController < ApplicationController
     else
       render json: @follow.errors.full_messages, status: 422
     end
-    debugger
   end
 
   def index
-    debugger
     @follows = Follow.all
     render :index
   end
@@ -26,7 +24,6 @@ class Api::FollowsController < ApplicationController
   end
 
   def destroy
-    debugger
     @follow = Follow.find_by(delete_params)
     @follow.destroy
     render :show

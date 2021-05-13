@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import GalleryIndexGalleries from './gallery_index_galleries';
 import PictureIndexPhotos from '../pictures/picture_index_photos';
 import PictureIndexItem from '../pictures/picture_index_item';
+import PictureIndexContainer from '../pictures/picture_index_container';
 
 class GalleryShow extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class GalleryShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchGallery();
+    this.props.fetchGalleries();
     this.props.fetchPictures();
   };
   
@@ -28,9 +30,22 @@ class GalleryShow extends React.Component {
     let { gallery, session, users, galleries, pictures } = this.props;
     pictures = pictures ? pictures : [];
     gallery = gallery ? gallery : {};
-    let picsInGal = gallery.pics ? gallery.pics : [];
-    let creator = gallery.creator ? gallery.creator : '';
-    console.log(picsInGal)
+    let galPics = gallery.pics ? gallery.pics : [];
+    console.log("Gal Pics exists")
+    console.log(galPics);
+    let creator = gallery ? gallery.creator : '';
+    galleries = galleries ? galleries : [];
+    let picIds = [];
+    galPics.forEach(pic => picIds.push(pic.id));
+    console.log("Pic IDs:")
+    console.log(picIds)
+    let pix = pictures.map((pic, i) => {
+      if (picIds.includes(pic.id)) {
+        return <li className="pics-on-profile-li" key={i}>
+              <PictureIndexPhotos picture={pic} />
+             </li>
+      }
+    })
     const ownGallery = () => {
       if (session === gallery.creator_id) {
         return (
@@ -51,40 +66,19 @@ class GalleryShow extends React.Component {
       }
     };
 
-    // let galPics = picsInGal.map(picture => {
-    //   return (
-    //     <li className="pics-on-profile-li">
-    //       <PictureIndexPhotos 
-    //         picture={picture} 
-    //         key={picture.id}>
-    //           <img className='display-img for-profile'
-    //             src={picture.photoUrl}
-    //             alt={picture} />
-    //       </PictureIndexPhotos>
-    //     </li>
-    //   )
-    // })
-    
-    let galPics = picsInGal.map(picture => {
-      if (picsInGal.includes(picture)) {
-        return (
-          <li className="pics-on-profile-li">
-            <PictureIndexPhotos 
-              picture={picture} 
-              key={picture.id} />
-          </li>
-        )
-      }
-    })
-
-    const ownGals = galleries.map(ownGal => {
-      if (ownGal.creator === creator) {(
-        <GalleryIndexGalleries key={ownGal.id} gallery={ownGal} />
+    const ownGals = galleries.map((ownGal, i) => {
+      if (ownGal.creator === creator && ownGal.title !== gallery.title) {(
+        <li>
+          {/* <GalleryIndexGalleries key={ownGal.id} gallery={ownGal} /> */}
+          {ownGal.title}
+        </li>
       )}
     });
 
+    console.log("Gallery:")
     console.log(gallery)
-    console.log(picsInGal)
+    console.log("Galleries: ")
+    console.log(galleries)
     // debugger
     return(
       <div className='gallery-show'>
@@ -92,15 +86,15 @@ class GalleryShow extends React.Component {
         <p>Curated by {creator}</p>
         {ownGallery()}
         <div className='gallery-show-pics'>
-          <h2>Pics in the gallery will go here</h2>
           <ul className='pic-index pics-on-profile'>
-            {picsInGal.length === 0 ? "This gallery doesn't have any pictures yet" : galPics}
+            {/* <PictureIndexContainer picIds={picIds} /> */}
+            {pix}
           </ul>
         </div>
         <div className='more-galleries'>
           <p>More Galleries by {creator}</p>
           <h4>The other galleries will show up here</h4>
-          {/* {ownGals} */}
+          {ownGals}
         </div>
       </div>
     ) 
