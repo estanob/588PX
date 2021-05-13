@@ -1,7 +1,9 @@
 class Api::FollowsController < ApplicationController
   def create
-    debugger
-    @follow = Follow.new(follow_params)
+    @follow = Follow.new(
+      user_id: params[:follow][:user_id], 
+      followee_id: params[:follow][:followee_id]
+    )
     @follow.user_id = current_user.id
 
     if @follow && @follow.save
@@ -9,6 +11,7 @@ class Api::FollowsController < ApplicationController
     else
       render json: @follow.errors.full_messages, status: 422
     end
+    debugger
   end
 
   def index
@@ -26,7 +29,7 @@ class Api::FollowsController < ApplicationController
     debugger
     @follow = Follow.find_by(delete_params)
     @follow.destroy
-    render 'api/follows'
+    render :show
   end
 
   private
@@ -35,6 +38,6 @@ class Api::FollowsController < ApplicationController
   end
 
   def delete_params
-    params.except(:format).permit(:id, :user_id, :followee_id)
+    params.except(:follow, :format).permit(:id, :user_id, :followee_id)
   end
 end

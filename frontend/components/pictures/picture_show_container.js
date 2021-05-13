@@ -8,13 +8,15 @@ const mSTP = ( state, ownProps ) => {
   let picture = state.entities.pictures ? state.entities.pictures[ownProps.match.params.id] : {};
   let users = state.entities.users ? state.entities.users : {};
   let session = state.session.id ? state.session.id : '';
-  let follows = state.entities.follows ?  state.entities.follows : {};
   debugger
   return {
     picture: picture,
     users: users,
     session: session,
-    follows: follows
+    follow: {
+      user_id: '',
+      followee_id: '',
+    },
   };
 };
 
@@ -26,7 +28,7 @@ const mDTP = (dispatch, ownProps)=> {
     fetchAllUsers: () => dispatch(fetchAllUsers()),
     fetchFollows: () => dispatch(fetchFollows),
     createFollow: follow => dispatch(createFollow(follow)),
-    deleteFollow: (followId) => dispatch(deleteFollow(followId)),
+    deleteFollow: follow => dispatch(deleteFollow(follow)),
   };
 };
 

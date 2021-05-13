@@ -7,7 +7,11 @@ class PictureShow extends React.Component {
   constructor(props) {
     super(props)
 
+    let user_id = this.props.session ? this.props.session : '';
+    let followee_id = this.props.picture ? this.props.picture.uploader_id : '';
     this.state = {
+      user_id: user_id,
+      followee_id: followee_id,
       redirectToHomeFeed: false,
       redirectToProfilePage: false,
     }
@@ -36,12 +40,14 @@ class PictureShow extends React.Component {
   handleNewFollow(e) {
     e.preventDefault();
     const followForm = new FormData();
-    followForm.append('follow[user_id]', this.props.session);
+    followForm.append('follow[user_id]', this.props.session.id);
+    followForm.append('follow[user_id]', this.props.session.id);
     followForm.append('follow[followee_id', this.props.picture.uploader_id);
 
     this.props.createFollow(followForm)
       .then(
         this.setState({
+          followForm: followForm,
           redirectToProfilePage: true,
         }))
     debugger
@@ -49,7 +55,10 @@ class PictureShow extends React.Component {
 
   handleUnfollow(e) {
     e.preventDefault();
-    this.props.deleteFollow(this.props.followForm)
+    this.props.deleteFollow({ 
+      user_id: this.props.session, 
+      followee_id: this.props.picture.uploader_id,
+    })
       .then(
         this.setState({
           redirectToProfilePage: true,
@@ -105,8 +114,10 @@ class PictureShow extends React.Component {
 
     const redirectToProfilePage = this.state.redirectToProfilePage;
     if (redirectToProfilePage) return <Redirect 
-                                        to={`/p/${currentUser.username}`} />
-
+                                        to='/home' />
+                                        // to={`/p/${currentUser.username}`} />
+    console.log("this.props:")
+    console.log(this.props)
     return(
       <div>
         <HeaderContainer />

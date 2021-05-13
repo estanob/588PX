@@ -5,22 +5,23 @@ export const fetchFollows = () => {
   });
 };
 
-export const createFollow = follow => {
+export const createFollow = (follow) => {
   return $.ajax({
     method: 'POST',
-    url: 'api/follows',
+    url: `api/follows/`,
     data: follow,
     contentType: false,
     processData: false,
   });
 };
 
-export const deleteFollow = followId => {
-  console.log("followId:")
-  console.log(followId)
+export const deleteFollow = follow => {
+  console.log("follow:")
+  console.log(follow)
   return $.ajax({
-    url: `api/follows/${followId}`,
+    url: `api/follows/`,
     method: 'DELETE',
+    data: follow,
   });
 };
 
