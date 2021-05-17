@@ -10,10 +10,12 @@ class GalleryIndex extends React.Component {
   componentDidMount() {
     this.props.fetchGalleries();
     this.props.fetchGallery(this.props.galleryId);
+    this.props.fetchPictures();
   }
   
   render() {
-    const { galleries } = this.props;
+    const { galleries, pictures } = this.props;
+    debugger
     return (
       <div className='galleries'>
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,6 +35,7 @@ class GalleryIndex extends React.Component {
             return (
               <GalleryIndexItem
                 gallery={gal}
+                pics={pictures}
                 key={i}>
                   {gal.title}
               </GalleryIndexItem>
