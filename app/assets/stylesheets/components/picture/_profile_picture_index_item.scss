@@ -1,0 +1,10 @@
+.pics-on-profile-li img {
+  height: 300px;
+  width: auto;
+  vertical-align: bottom;
+  object-fit: cover;
+}
+
+.pics-on-profile-li img:hover {
+  filter: brightness(50%);
+}

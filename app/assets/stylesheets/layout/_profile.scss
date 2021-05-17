@@ -38,17 +38,19 @@
   box-shadow: rgb(8, 112, 209) 0px -2px inset;
 }
 
-.pics-on-profile {
-  row-gap: 1em;
-  background-color: rgb(247, 248, 250);
+.profile-pic-index {
   display: flex;
+  flex-wrap: wrap;
+  width: 98%;
+  height: auto;
+  background-color: rgb(247, 248, 250);
 }
 
 .pics-on-profile-li {
-  display: inline-block;
-  object-fit: cover;
-  width: 100%;
-  height: auto;
+  flex-grow: 1;
+  margin: 3px;
+  display: block;
+  position: relative;
 }
 
 .gals-on-profile-li {

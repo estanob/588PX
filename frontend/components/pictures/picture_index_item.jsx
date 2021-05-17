@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 const PictureIndexItem = (props) => {
   console.log(props)
   const picture = props.picture;
-  const id = props.id
   return (
     <div className="individual-pic">
       <Link 
-        to={`/pictures/${id}`} 
+        to={`/pictures/${picture.id}`} 
         style={{ color: 'black', textDecoration: 'none' }}
         className='pic-link'>
         <img 

@@ -1,6 +1,6 @@
 import React from 'react'
 import GalleryIndexItem from '../gallery/gallery_index_item';
-import PictureIndexPhotos from '../pictures/picture_index_photos';
+import ProfilePictureIndexItem from '../pictures/profile-picture-index-item';
 import Modal from '../modal/modal';
 
 class Profile extends React.Component {
@@ -55,13 +55,15 @@ class Profile extends React.Component {
     allUsers ? allUsers : [];
     currentUser ? currentUser : {};
     username ? username: '';
-    const ownPics = pictures.map((ownPic, i) => {
+    let ownPics = pictures.map((ownPic, i) => {
       if (ownPic.uploader_id === session) {
         return <li className="pics-on-profile-li" key={i}>
-                  <PictureIndexPhotos picture={ownPic} />
+                  <ProfilePictureIndexItem picture={ownPic} id={ownPic.id} />
                 </li>
       }
     });
+
+    ownPics = ownPics.sort(() => Math.random() -0.5)
 
     let picCount = 0;
     pictures.forEach(picture => {
@@ -97,7 +99,7 @@ class Profile extends React.Component {
             Galleries {galleryCount}
           </button>
         </div>
-        <ul className='pic-index'>
+        <ul className='profile-pic-index'>
         {/* <ul className='pic-index pics-on-profile'> */}
           {profileContent === 'Pictures' ? ownPics : ownGals}
         </ul>
