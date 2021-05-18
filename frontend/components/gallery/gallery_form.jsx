@@ -42,11 +42,13 @@ class GalleryForm extends React.Component {
   };
 
   handleSubmit(e) {
+    debugger
     e.preventDefault()
     const galForm = new FormData();
     galForm.append('gallery[id]', this.props.gallery.id);
     galForm.append('gallery[title]', this.state.title);
     galForm.append('gallery[creator_id]', this.state.creator_id);
+    galForm.append('gallery[pictures_to_gallery', this.state.pictures_to_gallery);
 
     console.log(galForm)
     if (galForm) {
@@ -58,6 +60,7 @@ class GalleryForm extends React.Component {
           })
         );
     }
+    debugger
   };
 
   handleClick(e) {
