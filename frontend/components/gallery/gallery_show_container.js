@@ -5,12 +5,18 @@ import { fetchPictures } from '../../actions/picture_actions';
 import GalleryShow from './gallery_show';
 
 const mSTP = ( state, ownProps ) => {
+  let gallery = state.entities.galleries ? state.entities.galleries[ownProps.match.params.id] : {};
+  let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
+  let users = state.entities.users ? state.entities.users : [];
+  let session = state.session.id ? state.session.id : '';
+  let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
+  debugger
   return {
-    gallery: state.entities.galleries[ownProps.match.params.id],
-    galleries: Object.values(state.entities.galleries),
-    pictures: Object.values(state.entities.pictures),
-    users: state.entities.users,
-    session: state.session.id,
+    gallery: gallery,
+    galleries: galleries,
+    pictures: pictures,
+    users: users,
+    session: session,
   };
 };
 

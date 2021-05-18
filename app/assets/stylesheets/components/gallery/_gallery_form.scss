@@ -2,3 +2,27 @@
   margin-top: 100px;
   margin-left: 50px;
 }
+
+.create-gallery-pics {
+  width: 80%;
+  height: 80%;
+  margin-top: 20px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.user-pics {
+  display: inline-block;
+  flex-grow: 1;
+}
+
+.user-pics > img {
+  display: inline-block;
+  height: 150px;
+  width: auto;
+}
+
+.img-clicked > img {
+  filter: grayscale(0%);
+  border: rgb(8, 159, 209) solid 3px;
+}

@@ -12,14 +12,18 @@ class GalleryForm extends React.Component {
     this.state = {
       title: title,
       creator_id: creatorId,
+      rerender: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+
+    this.picIds = [];
   };
 
-  // componentDidMount() {
-  //   this.props.fetchPictures();
-  // }
+  componentDidMount() {
+    this.props.fetchPictures();
+  }
 
   componentDidUpdate(prevProps) {
     let creatorId = this.props.galleries ? this.props.galleries.creator_id : '';
@@ -55,6 +59,31 @@ class GalleryForm extends React.Component {
         );
     }
   };
+
+  handleClick(e) {
+    e.preventDefault();
+    
+    const id = parseInt(e.target.alt);
+    const idObject = { picId: id };
+
+    if (this.picIds[id]) {
+      delete this.picIds[id];
+    } else {
+      this.picIds[id] = idObject;
+    }
+    console.log(this.picIds);
+
+    const clicked = e.currentTarget.className;
+    if (clicked === "user-pics") {
+      e.currentTarget.className = 'user-pics img-clicked';
+    } else {
+      e.currentTarget.className = "user-pics";
+    }
+
+    this.setState({
+      rerender: !this.state.render,
+    })
+  };
   
   render() {
     let { thisUser, formType, gallery, pictures } = this.props;
@@ -64,15 +93,21 @@ class GalleryForm extends React.Component {
     let whatButton = formType === 'Create Gallery' ? 'Create' : 'Save Changes';
     const redirectToHomeFeed = this.state.redirect;
     if (redirectToHomeFeed) return <Redirect to='/galleries' />
+    thisUser.pics ? thisUser.pics : [];
     let userPics = pictures.map((picture, i) => {
-      if (thisUser.pictures.includes(picture.id)) {
-        return <li>
-                  <PictureIndexItem picture={picture} key={i} />
+      if (thisUser.pics.includes(picture.id)) {
+        return <li onClick={this.handleClick} 
+                  className='user-pics' 
+                  key={i}>
+                  <img src={picture.photoUrl}
+                    alt={picture.title} />
                </li>
       }
     });
     console.log(this.props);
     console.log(this.state);
+    console.log("This User:")
+    console.log(thisUser)
     console.log("Gallery form pictures:")
     console.log(pictures)
     return (

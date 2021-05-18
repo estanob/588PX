@@ -9,6 +9,12 @@ import PictureIndexContainer from '../pictures/picture_index_container';
 class GalleryShow extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      redirectToGalleryIndex: false,
+    }
+
+    this.handleDelete = this.handleDelete.bind(this);
   };
 
   componentDidMount() {
@@ -18,15 +24,18 @@ class GalleryShow extends React.Component {
   };
   
   handleDelete(e) {
+    debugger
     e.preventDefault();
-    this.props.deleteGallery();
-    return (
-      <Redirect to='/galleries' />
-    );
+    this.props.deleteGallery()
+      .then(
+        this.setState({
+          redirectToGalleryIndex: true,
+        })
+      )
   };
 
   render() {
-    // debugger
+    debugger
     let { gallery, session, users, galleries, pictures } = this.props;
     pictures = pictures ? pictures : [];
     gallery = gallery ? gallery : {};
@@ -75,11 +84,14 @@ class GalleryShow extends React.Component {
       )}
     });
 
+    const redirectToGalleryIndex = this.state.redirectToGalleryIndex;
+    if (redirectToGalleryIndex) return <Redirect to='/galleries' />
+
     console.log("Gallery:")
     console.log(gallery)
     console.log("Galleries: ")
     console.log(galleries)
-    // debugger
+    debugger
     return(
       <div className='gallery-show'>
         <h1>{gallery.title}</h1>
