@@ -15,6 +15,7 @@ class GalleryIndex extends React.Component {
   
   render() {
     const { galleries, pictures } = this.props;
+    pictures ? pictures : [];
     debugger
     return (
       <div className='galleries'>

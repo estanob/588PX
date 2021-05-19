@@ -19,6 +19,7 @@ const mSTP = (state) => {
     userPicIds: thisUser.pictures,
     pictures: pictures,
     formType: 'Create Gallery'
+    // make default state for display image to be [0] automatically selected
   };
 };
 
@@ -26,6 +27,7 @@ const mDTP = dispatch => {
   return {
     action: gallery => dispatch(createGallery(gallery)),
     fetchPictures: () => dispatch(fetchPictures()),
+
   };
 };
 

@@ -1,5 +1,6 @@
 class Api::PicturesToGalleriesController < ApplicationController
   def create
+    debugger
     @pictures_to_gallery = PicturesToGallery.new(pictures_to_gallery_params)
     if @pictures_to_gallery.save
       render :show
@@ -19,6 +20,7 @@ class Api::PicturesToGalleriesController < ApplicationController
   end
 
   def destroy
+    debugger
     @pictures_to_gallery = PicturesToGallery.find_by(id: params[:id])
     @pictures_to_gallery.destroy
     render :index

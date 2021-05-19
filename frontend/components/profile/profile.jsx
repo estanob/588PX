@@ -75,10 +75,10 @@ class Profile extends React.Component {
     
     const ownGals = galleries.map((gallery, i) => {
       if (gallery.creator_id === session) {
-        return <li className="gals-on-profile-li">
+        return <li className="gals-on-profile-li" key={i}>
                   <GalleryIndexItem 
-                    key={i} 
-                    gallery={gallery} />
+                    gallery={gallery}
+                    pics={pictures} />
                 </li>
       }
     });

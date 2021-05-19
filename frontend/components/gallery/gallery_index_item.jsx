@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const GalleryIndexItem = (props) => {
   const { gallery, pics }= props;
   gallery ? gallery : [];
+  gallery.pics ? gallery.pics : [];
   pics ? pics : [];
   const thisGalPics = [];
   if (gallery.pics.length > 0) {
@@ -18,7 +19,7 @@ const GalleryIndexItem = (props) => {
   let imgSrc = thisGalPics[0] ? thisGalPics[0].photoUrl : '';
   debugger
   return (
-    <div className="individual-gal">
+    <div className="individual-gal" key={gallery.id}>
       <Link 
         to={`/galleries/${gallery.id}`} 
         style={{ color: 'black', textDecoration: 'none' }}

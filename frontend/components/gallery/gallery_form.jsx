@@ -18,7 +18,7 @@ class GalleryForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
 
-    this.picIds = [];
+    this.picIds = {};
   };
 
   componentDidMount() {
@@ -48,8 +48,9 @@ class GalleryForm extends React.Component {
     galForm.append('gallery[id]', this.props.gallery.id);
     galForm.append('gallery[title]', this.state.title);
     galForm.append('gallery[creator_id]', this.state.creator_id);
-    galForm.append('gallery[pictures_to_gallery', this.state.pictures_to_gallery);
+    galForm.append('gallery[pictures_to_gallery]', this.state.pictures_to_gallery);
 
+    console.log("Gallery Form");
     console.log(galForm)
     if (galForm) {
       this.props.action(galForm)
@@ -64,9 +65,10 @@ class GalleryForm extends React.Component {
   };
 
   handleClick(e) {
+    debugger
     e.preventDefault();
     
-    const id = parseInt(e.target.alt);
+    const id = e.target.id;
     const idObject = { picId: id };
 
     if (this.picIds[id]) {
@@ -74,6 +76,10 @@ class GalleryForm extends React.Component {
     } else {
       this.picIds[id] = idObject;
     }
+
+    console.log("ID");
+    console.log(id);
+    console.log("This Pic IDs");
     console.log(this.picIds);
 
     const clicked = e.currentTarget.className;
@@ -83,10 +89,21 @@ class GalleryForm extends React.Component {
       e.currentTarget.className = "user-pics";
     }
 
-    this.setState({
-      rerender: !this.state.render,
-    })
+    // this.setState({
+    //   rerender: !this.state.render,
+    // })
+    debugger
   };
+  
+  // handleNewPicToGallery(e) {
+  //   e.preventDefault();
+
+  // }
+
+  // handleRemovePicFromGallery(e) {
+  //   e.preventDefault();
+
+  // }
   
   render() {
     let { thisUser, formType, gallery, pictures } = this.props;
@@ -103,16 +120,21 @@ class GalleryForm extends React.Component {
                   className='user-pics' 
                   key={i}>
                   <img src={picture.photoUrl}
-                    alt={picture.title} />
+                    alt={picture.title}
+                    id={picture.id} />
                </li>
       }
     });
+    console.log("This Props");
     console.log(this.props);
+    console.log("This State");
     console.log(this.state);
     console.log("This User:")
     console.log(thisUser)
     console.log("Gallery form pictures:")
     console.log(pictures)
+    console.log("Render picIds")
+    console.log(this.picIds)
     return (
       <div className='gallery-create'>
         <h1>{whichHeader}</h1>
