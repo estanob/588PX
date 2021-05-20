@@ -85,7 +85,7 @@ class GalleryShow extends React.Component {
     });
 
     const redirectToGalleryIndex = this.state.redirectToGalleryIndex;
-    if (redirectToGalleryIndex) return <Redirect to='/galleries' />
+    if (redirectToGalleryIndex) return <Redirect to='/home' />
 
     console.log("Gallery:")
     console.log(gallery)

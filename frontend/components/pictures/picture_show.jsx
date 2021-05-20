@@ -36,7 +36,7 @@ class PictureShow extends React.Component {
     e.preventDefault();
     const followForm = new FormData();
     followForm.append('follow[user_id]', this.props.session.id);
-    followForm.append('follow[followee_id', this.props.picture.uploader_id);
+    followForm.append('follow[followee_id]', this.props.picture.uploader_id);
     this.props.createFollow(followForm)
   };
 

@@ -35,7 +35,7 @@ const App = () => {
       <Switch>
         <ProtectedRoute path='/home' component={HomeFeed} />
         <ProtectedRoute path='/upload' component={UploadForm} />
-        <ProtectedRoute path='/gallery_new' component={NewGallery} />
+        <ProtectedRoute path='/gallery/new' component={NewGallery} />
         <ProtectedRoute exact path='/pictures/:id/edit' component={EditPictureFormContainer} />
         <ProtectedRoute exact path='/pictures/:id' component={PictureShowContainer} />
         <ProtectedRoute path='/pictures' component={PictureIndexContainer} />

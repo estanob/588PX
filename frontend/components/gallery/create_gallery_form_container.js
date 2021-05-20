@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createGallery } from '../../actions/gallery_actions';
+import { createPicturesToGallery } from '../../actions/pictures_to_gallery_actions';
 import { fetchPictures } from '../../actions/picture_actions';
 import GalleryForm from './gallery_form';
 
@@ -27,7 +28,7 @@ const mDTP = dispatch => {
   return {
     action: gallery => dispatch(createGallery(gallery)),
     fetchPictures: () => dispatch(fetchPictures()),
-
+    createPicturesToGallery: (picToGal) => dispatch(createPicturesToGallery(picToGal)),
   };
 };
 

@@ -6,19 +6,21 @@ class GalleryForm extends React.Component {
   constructor(props) {
     super(props)
 
-    let title = this.props.title ? this.props.title : '';
-    let creatorId = this.props.galleries ? this.props.galleries.creator_id : '';
+    // let title = this.props.title ? this.props.title : '';
+    // let creatorId = this.props.galleries ? this.props.galleries.creator_id : '';
 
     this.state = {
-      title: title,
-      creator_id: creatorId,
+      title: '',
+      // title: title,
+      // creator_id: creatorId,
       rerender: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
 
-    this.picIds = {};
+    this.picIds = [];
+    this.picsToGals = [];
   };
 
   componentDidMount() {
@@ -44,12 +46,40 @@ class GalleryForm extends React.Component {
   handleSubmit(e) {
     debugger
     e.preventDefault()
+
+    if (this.picIds.length === 0) {
+      const err = "Please select at least 1 picture"
+      if (!this.props.errors.includes(err)) this.props.errors.push(err)
+      this.setState({
+        rerender: !this.state.rerender,
+      })
+      return null;
+    }
+    
     const galForm = new FormData();
     galForm.append('gallery[id]', this.props.gallery.id);
     galForm.append('gallery[title]', this.state.title);
     galForm.append('gallery[creator_id]', this.state.creator_id);
+    galForm.append('gallery[pics]', this.state.picIds)
     galForm.append('gallery[pictures_to_gallery]', this.state.pictures_to_gallery);
 
+    // const newGal = {
+    //   title: this.state.title,
+    //   creator_id: this.props.session,
+    //   pics: this.picIds,
+    //   pictures_to_galleries: [],
+    // }
+    this.props.action(galForm)
+    // this.props.action(newGal)
+      // .then((galForm) => {
+      // .then((newGal) => {
+      //   let testIng = this.picIds.forEach(picId => {
+      //     picId["galleryId"] = newGal.id;
+      //   })
+      //   this.props.createPicturesToGallery(this.picIds)
+      //   console.log("Testing:")
+      //   console.log(testIng);
+      // })
     console.log("Gallery Form");
     console.log(galForm)
     if (galForm) {
@@ -58,23 +88,28 @@ class GalleryForm extends React.Component {
           this.setState({
             title: '',
             redirect: true,
-          })
+          }),
+          galForm.append('gallery[pictures_to_gallery]', this.picsToGals)
         );
     }
+
+    // console.log("New Gallery:")
+    // console.log(newGal);
     debugger
   };
 
   handleClick(e) {
-    debugger
     e.preventDefault();
     
     const id = e.target.id;
-    const idObject = { picId: id };
 
-    if (this.picIds[id]) {
-      delete this.picIds[id];
+    if (this.picIds.includes(id)) {
+      let deleted = this.picIds.filter(function(value, index, arr) {
+        return value !== id
+      });
+      this.picIds = deleted;
     } else {
-      this.picIds[id] = idObject;
+      this.picIds.push(id);
     }
 
     console.log("ID");
@@ -88,21 +123,17 @@ class GalleryForm extends React.Component {
     } else {
       e.currentTarget.className = "user-pics";
     }
-
     // this.setState({
     //   rerender: !this.state.render,
     // })
-    debugger
   };
   
-  // handleNewPicToGallery(e) {
-  //   e.preventDefault();
-
-  // }
-
-  // handleRemovePicFromGallery(e) {
-  //   e.preventDefault();
-
+  // handlePicsToGals(e) {
+  //   e.preventDefault()
+  //   const picGalForm = new FormData();
+    // picGalForm.append('pictures_to_gallery[]', );
+    // picGalForm.append('pictures_to_gallery[]', );
+  //   this.props.createPicturesToGallery(picGalForm)
   // }
   
   render() {

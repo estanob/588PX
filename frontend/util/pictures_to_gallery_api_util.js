@@ -6,6 +6,7 @@ export const fetchPicturesToGalleries = () => {
 };
 
 export const createPicturesToGallery = picturesToGallery => {
+  debugger
   return $.ajax({
     method: 'POST',
     url: '/api/pictures_to_galleries',

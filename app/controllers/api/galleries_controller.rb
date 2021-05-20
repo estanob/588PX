@@ -11,7 +11,11 @@ class Api::GalleriesController < ApplicationController
   end
 
   def create
-    @gallery = Gallery.new(gallery_params)
+    debugger
+    @gallery = Gallery.new(
+      title: params[:gallery][:title]
+    )
+    # @gallery = Gallery.new(gallery_params)
     @gallery.creator_id = current_user.id
     if @gallery && @gallery.save
       render :show
@@ -38,6 +42,7 @@ class Api::GalleriesController < ApplicationController
   private
 
   def gallery_params
-    params.require(:gallery).permit(:title)
+    # params.require(:gallery).permit(:title)
+    params.except(:gallery).permit(:title)
   end
 end

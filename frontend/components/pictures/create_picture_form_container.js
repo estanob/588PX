@@ -18,15 +18,6 @@ const mSTP = (state) => {
 const mDTP = dispatch => {
   return {
     action: picture => dispatch(createPicture(picture)),
-    cancelModal: (
-      <input 
-        type="button" 
-        className="cancel-button" 
-        value="Cancel"
-        onClick={() => dispatch(openModal('cancel'))}/>
-    ),
-    removeModal: () => dispatch(openModal('remove')),
-    closeModal: () => dispatch(closeModal())
   }
 }
 

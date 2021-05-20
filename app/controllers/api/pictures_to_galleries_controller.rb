@@ -1,11 +1,21 @@
 class Api::PicturesToGalleriesController < ApplicationController
   def create
     debugger
-    @pictures_to_gallery = PicturesToGallery.new(pictures_to_gallery_params)
-    if @pictures_to_gallery.save
-      render :show
-    else
-      render json: @pictures_to_gallery.errors.full_messages, status: 422
+    # @pictures_to_gallery = PicturesToGallery.new(
+    #   picture_id: params[:pictures_to_gallery][:picture_id],
+    #   gallery_id: params[:pictures_to_gallery][:gallery_id],
+    # )
+    # if @pictures_to_gallery.save
+    #   render :show
+    # else
+    #   render json: @pictures_to_gallery.errors.full_messages, status: 422
+    # end
+
+    params[:pictures_to_gallery].values.each do |hash|
+      PicturesToGallery.create!(
+        picture_id: hash[:pictureId], 
+        gallery_id: hash[:galleryId]
+      )
     end
   end
 

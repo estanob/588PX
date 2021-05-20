@@ -33,6 +33,7 @@ export const fetchPicturesToGalleries = () => dispatch => {
 };
 
 export const createPicturesToGallery = picturesToGallery => dispatch => {
+  debugger
   return PicToGalUtil.createPicturesToGallery(picturesToGallery)
     .then(newPicturesToGallery => {
       dispatch(receivePicturesToGallery(newPicturesToGallery))
@@ -42,6 +43,6 @@ export const createPicturesToGallery = picturesToGallery => dispatch => {
 export const deletePicturesToGallery = picturesToGallery => dispatch => {
   return PicToGalUtil.deletePicturesToGallery(picturesToGallery)
     .then(() => {
-      dispatch((picturesToGallery))
+      dispatch(removePicturesToGallery(picturesToGallery))
     });
 };
