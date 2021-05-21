@@ -55,46 +55,32 @@ class GalleryForm extends React.Component {
       })
       return null;
     }
-    
+
     const galForm = new FormData();
-    galForm.append('gallery[id]', this.props.gallery.id);
+    // galForm.append('gallery[id]', this.props.gallery.id);
     galForm.append('gallery[title]', this.state.title);
     galForm.append('gallery[creator_id]', this.state.creator_id);
-    galForm.append('gallery[pics]', this.state.picIds)
-    galForm.append('gallery[pictures_to_gallery]', this.state.pictures_to_gallery);
 
-    // const newGal = {
-    //   title: this.state.title,
-    //   creator_id: this.props.session,
-    //   pics: this.picIds,
-    //   pictures_to_galleries: [],
-    // }
-    this.props.action(galForm)
-    // this.props.action(newGal)
-      // .then((galForm) => {
-      // .then((newGal) => {
-      //   let testIng = this.picIds.forEach(picId => {
-      //     picId["galleryId"] = newGal.id;
-      //   })
-      //   this.props.createPicturesToGallery(this.picIds)
-      //   console.log("Testing:")
-      //   console.log(testIng);
-      // })
-    console.log("Gallery Form");
-    console.log(galForm)
     if (galForm) {
       this.props.action(galForm)
         .then(
+          console.log("Gallery Form"),
+          console.log(galForm),
+          this.picsToGals = this.picIds.forEach(picId => {
+            this.props.createPicturesToGallery({
+              picture_id: picId,
+              gallery_id: galForm.id
+            })
+          }),
+          console.log("Pics to Gals"),
+          console.log(this.picsToGals),
           this.setState({
             title: '',
             redirect: true,
           }),
-          galForm.append('gallery[pictures_to_gallery]', this.picsToGals)
         );
     }
-
-    // console.log("New Gallery:")
-    // console.log(newGal);
+    
     debugger
   };
 
@@ -120,6 +106,7 @@ class GalleryForm extends React.Component {
     const clicked = e.currentTarget.className;
     if (clicked === "user-pics") {
       e.currentTarget.className = 'user-pics img-clicked';
+      // this.props.createPicturesToGallery()
     } else {
       e.currentTarget.className = "user-pics";
     }
@@ -137,8 +124,10 @@ class GalleryForm extends React.Component {
   // }
   
   render() {
+    debugger
     let { thisUser, formType, gallery, pictures } = this.props;
     gallery = gallery ? gallery : {};
+    pictures = pictures ? pictures : {};
     const { title } = this.state;
     let whichHeader = formType === 'Create Gallery' ? 'Create a Gallery' : 'Edit Gallery';
     let whatButton = formType === 'Create Gallery' ? 'Create' : 'Save Changes';

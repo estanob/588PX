@@ -12,10 +12,7 @@ class Api::GalleriesController < ApplicationController
 
   def create
     debugger
-    @gallery = Gallery.new(
-      title: params[:gallery][:title]
-    )
-    # @gallery = Gallery.new(gallery_params)
+    @gallery = Gallery.new(gallery_params)
     @gallery.creator_id = current_user.id
     if @gallery && @gallery.save
       render :show
@@ -25,7 +22,7 @@ class Api::GalleriesController < ApplicationController
   end
 
   def update
-    @gallery = Gallery.find_by(id: params[:gallery][:id])
+    @gallery = Gallery.find(params[:gallery][:id])
     if @gallery && @gallery.update(gallery_params)
       render :show
     else
@@ -42,7 +39,6 @@ class Api::GalleriesController < ApplicationController
   private
 
   def gallery_params
-    # params.require(:gallery).permit(:title)
-    params.except(:gallery).permit(:title)
+    params.require(:gallery).permit(:id, :title, :creator_id)
   end
 end

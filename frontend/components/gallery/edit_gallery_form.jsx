@@ -21,32 +21,39 @@ class EditGalleryForm extends React.Component {
   }
 
   render() {
+    debugger
     let { 
       action, 
-      session,
-      thisUser,
       formType, 
       gallery, 
       deleteGallery, 
       userPicIds,
+      thisUser,
       pictures,
+      fetchPictures,
     } = this.props;
 
     const {
       title,
     } = this.state;
 
-    gallery = gallery ? gallery : {};
-    let creator_id = gallery ? gallery.creator_id : '';
-    const ownPics = userPicIds.map((picId, i) => {
-      if (pictures.includes(picId)) {
-        return <li>
-                  {picture.id}
-               </li>
-      }
-    });
+    thisUser = thisUser ? thisUser : {};
+    // gallery = gallery ? gallery : {};
+    pictures = pictures ? pictures : [];
+    // userPicIds = userPicIds ? userPicIds : [];
+    // let creator_id = gallery ? gallery.creator_id : '';
+    // debugger
+    // const ownPics = userPicIds.map((picId, i) => {
+    //   if (pictures.includes(picId)) {
+    //     return <li>
+    //               {picture.id}
+    //            </li>
+    //   }
+    // });
+
     console.log("Edit Gallery Form pictures: ")
     console.log(pictures)
+    debugger
     return(
       <div className="edit-show">
         <div className='edit-header'>
@@ -56,12 +63,15 @@ class EditGalleryForm extends React.Component {
           <div className='edit-info'>
             <GalleryForm 
               action={action}
-              id={gallery.id}
+              thisUser={thisUser}
+              // id={gallery.id}
               formType={formType}
               gallery={gallery}
-              title={title}
-              creator_id={creator_id}
-              ownPics={ownPics}
+              pictures={pictures}
+              // title={title}
+              // creator_id={creator_id}
+              // ownPics={ownPics}
+              fetchPictures={fetchPictures}
               deleteGallery={deleteGallery} />
           </div>
         </div>

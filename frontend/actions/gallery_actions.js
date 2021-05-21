@@ -43,6 +43,7 @@ export const fetchGallery = galleryId => dispatch => {
 }
 
 export const createGallery = gallery => dispatch => {
+  debugger
   return GalleryAPIUtils.createGallery(gallery)
     .then(createGallery => {
       dispatch(receiveGallery(createGallery))

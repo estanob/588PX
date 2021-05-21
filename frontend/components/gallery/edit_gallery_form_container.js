@@ -5,6 +5,7 @@ import EditGalleryForm from './edit_gallery_form';
 import { fetchPictures } from '../../actions/picture_actions';
 
 const mSTP = (state, ownProps) => {
+  debugger
   let gallery = state.entities ? state.entities.galleries[ownProps.match.params.id] : {};
   let session = state.session.id ? state.session.id : '';
   let thisUser = state.entities.users ? state.entities.users[session] : {};

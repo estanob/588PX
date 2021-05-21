@@ -26,7 +26,7 @@ class GalleryShow extends React.Component {
   handleDelete(e) {
     debugger
     e.preventDefault();
-    this.props.deleteGallery()
+    this.props.deleteGallery(this.props.gallery.id)
       .then(
         this.setState({
           redirectToGalleryIndex: true,
