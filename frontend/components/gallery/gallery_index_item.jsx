@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const GalleryIndexItem = (props) => {
-  const { gallery, pics }= props;
+  const { gallery, pics, currentId }= props;
+  currentId ? currentId : '';
   gallery ? gallery : [];
   gallery.pics ? gallery.pics : [];
   pics ? pics : [];
@@ -17,11 +18,13 @@ const GalleryIndexItem = (props) => {
     };
   };
   let imgSrc = thisGalPics[0] ? thisGalPics[0].photoUrl : '';
+  let textColor = (currentId !== gallery.creator_id) ? 'black' : '#1890ff';
+  debugger
   return (
     <div className="individual-gal" key={gallery.id}>
       <Link 
         to={`/galleries/${gallery.id}`} 
-        style={{ color: 'black', textDecoration: 'none' }}
+        style={{ color: textColor, textDecoration: 'none' }}
         className='gal-link'>
         <img 
           className='display-img' 

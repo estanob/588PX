@@ -54,8 +54,9 @@ class GalleryForm extends React.Component {
     this.props.action(galForm)
       .then(() => {
         this.state.pics.forEach(pic => {
-          let galId = this.props.thisUser.galleries[this.props.thisUser.galleries.length - 1]
-          const picGalForm = new FormData();
+          const gals = this.props.thisUser.galleries
+          const galId = gals[gals.length - 1]
+          const picGalForm = new FormData()
           picGalForm.append('pictures_to_gallery[picture_id]', pic.id)
           picGalForm.append('pictures_to_gallery[gallery_id]', galId)
           this.props.createPicturesToGallery(picGalForm)
