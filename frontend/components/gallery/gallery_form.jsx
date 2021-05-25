@@ -89,6 +89,8 @@ class GalleryForm extends React.Component {
   render() {
     let { thisUser, formType, gallery, pictures } = this.props;
     gallery = gallery ? gallery : {};
+    console.log("Current Gallery:")
+    console.log(gallery)
     pictures = pictures ? pictures : {};
     const { title } = this.state;
     let whichHeader = formType === 'Create Gallery' ? 'Create a Gallery' : 'Edit Gallery';
@@ -98,13 +100,19 @@ class GalleryForm extends React.Component {
     thisUser.pics ? thisUser.pics : [];
     let userPics = pictures.map((picture, i) => {
       if (thisUser.pics.includes(picture.id)) {
-        return <li onClick={this.handleClick} 
-                  className='user-pics' 
-                  key={i} id={picture.id}>
-                  <img src={picture.photoUrl}
-                    alt={picture.title}
-                    id={picture.id} />
-               </li>
+        let whichClass = 'user-pics';
+        gallery.pics.forEach(galPic => {
+          if (galPic.id === picture.id) whichClass = 'user-pics img-clicked'
+        })
+        return (
+          <li onClick={this.handleClick} 
+            className={whichClass} 
+            key={i} id={picture.id}>
+              <img src={picture.photoUrl}
+                alt={picture.title}
+                id={picture.id} />
+          </li>
+        )
       }
     });
     return (

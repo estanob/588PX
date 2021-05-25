@@ -32,18 +32,18 @@
   width: 150px;
   padding: 0px 24px;
   margin: 0px;
-  background-color: rgb(8, 112, 209);
+  background-color: #0870D1;
   border-width: 2px;
-  border-color: rgb(8, 112, 209);
-  color: rgb(255, 255, 255);
+  border-color: #0870D1;
+  color: white;
   border-radius: 28px;
   border-style: solid;
   height: 30px;
 }
 
 .new-gallery:hover {
-  background-color: rgb(8, 159, 209);
-  border-color: rgb(8, 159, 209);
+  background-color: #089FD1;
+  border-color: #089FD1;
 }
 
 .gallery-index{
@@ -56,6 +56,11 @@
   column-gap: 1em;
   object-fit: contain;
   text-align: center;
+}
+
+.individual-gal img {
+  width: 250px;
+  height: 250px;
 }
 
 .individual-gal:hover {
