@@ -24,7 +24,6 @@ class GalleryForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger
     let creatorId = this.props.galleries ? this.props.galleries.creator_id : '';
     if (prevProps.title !== this.props.title) {
       this.setState({
@@ -45,7 +44,6 @@ class GalleryForm extends React.Component {
   };
 
   handleSubmit(e) {
-    debugger
     e.preventDefault()
 
     const galForm = new FormData();
@@ -68,7 +66,6 @@ class GalleryForm extends React.Component {
           rerender: true,
         })
       })
-    debugger
   };
 
   handleClick(e) {

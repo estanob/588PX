@@ -4,7 +4,6 @@ import ProfileHeader from './profile_header';
 const Profile = ({ user, userId }) => {
   const user = props.user;
   const userId = props.userId;
-  debugger
   return (
     <div>
       <div className='profile'>

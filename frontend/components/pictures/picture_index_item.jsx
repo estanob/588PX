@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 
 const PictureIndexItem = (props) => {
   console.log(props)
-  const picture = props.picture;
+  const { picture, currentId } = props;
+  const ownPic = (currentId === picture.uploader_id) ? '#1890ff' : 'black';
+  debugger
   return (
     <div className="individual-pic">
       <Link 
         to={`/pictures/${picture.id}`} 
-        style={{ color: 'black', textDecoration: 'none' }}
+        style={{ color: ownPic, textDecoration: 'none' }}
         className='pic-link'>
         <img 
           className='display-img' 

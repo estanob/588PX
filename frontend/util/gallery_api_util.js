@@ -23,7 +23,6 @@ export const createGallery = gallery => (
 )
 
 export const updateGallery = gallery => {
-  debugger
   return $.ajax({
     url: `/api/galleries/${gallery.id}`,
     method: 'PATCH',

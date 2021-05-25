@@ -45,7 +45,7 @@ export const clearErrors = () => {
 export const fetchPictures = () => dispatch => {
   return PictureAPIUtils.fetchPictures()
     .then(pictures => {
-    dispatch(receivePictures(pictures))
+      dispatch(receivePictures(pictures))
   })
 }
 
@@ -55,6 +55,7 @@ export const fetchPicture = pictureId => dispatch => {
 }
 
 export const createPicture = picture => dispatch => {
+  debugger
   return PictureAPIUtils.createPicture(picture)
     .then(createPicture => {
       dispatch(receivePicture(createPicture))
@@ -63,14 +64,15 @@ export const createPicture = picture => dispatch => {
     .fail(err => dispatch(receiveErrors(err.responseJSON)))
 }
 
-export const updatePicture = picture => dispatch => (
-  PictureAPIUtils.updatePicture(picture)
+export const updatePicture = picture => dispatch => {
+  debugger
+  return PictureAPIUtils.updatePicture(picture)
     .then(updatedPicture => {
       dispatch(receivePicture(updatedPicture))
       dispatch(clearErrors())
     })
     .fail(err => dispatch(receiveErrors(err.responseJSON)))
-)
+}
 
 export const deletePicture = pictureId => dispatch => (
   PictureAPIUtils.deletePicture(pictureId)

@@ -64,6 +64,7 @@ class GalleryShow extends React.Component {
                   <p>Edit</p>
               </Link>
             </button>
+            <span>&nbsp;</span>
             <button 
               className='edit-delete' 
               onClick={this.handleDelete}>Delete

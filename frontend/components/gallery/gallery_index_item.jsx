@@ -19,7 +19,6 @@ const GalleryIndexItem = (props) => {
   };
   let imgSrc = thisGalPics[0] ? thisGalPics[0].photoUrl : '';
   let textColor = (currentId !== gallery.creator_id) ? 'black' : '#1890ff';
-  debugger
   return (
     <div className="individual-gal" key={gallery.id}>
       <Link 
