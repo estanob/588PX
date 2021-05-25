@@ -16,15 +16,18 @@ class Gallery < ApplicationRecord
   validates :title, presence: true
 
   belongs_to :creator,
+    primary_key: :id,
     foreign_key: :creator_id,
     class_name: :User
 
   has_many :pictures_to_galleries,
+    primary_key: :id,
     foreign_key: :gallery_id,
     class_name: :PicturesToGallery,
     dependent: :destroy
 
   has_many :pictures,
+    primary_key: :id,
     through: :pictures_to_galleries,
     source: :picture
 end

@@ -9,18 +9,20 @@ class GalleryForm extends React.Component {
     // let title = this.props.title ? this.props.title : '';
     // let creatorId = this.props.galleries ? this.props.galleries.creator_id : '';
 
+    let title = this.props.title ? this.props.title : '';
+    let creator_id = this.props.creator_id ? this.props.creator_id : '';
     this.state = {
-      title: '',
-      // title: title,
-      // creator_id: creatorId,
+      title: title,
+      creator_id: creator_id,
       rerender: false,
+      pics: [],
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
 
-    this.picIds = [];
-    this.picsToGals = [];
+    // this.picIds = [];
+    // this.picsToGals = [];
   };
 
   componentDidMount() {
@@ -47,73 +49,127 @@ class GalleryForm extends React.Component {
     debugger
     e.preventDefault()
 
-    if (this.picIds.length === 0) {
-      const err = "Please select at least 1 picture"
-      if (!this.props.errors.includes(err)) this.props.errors.push(err)
-      this.setState({
-        rerender: !this.state.rerender,
-      })
-      return null;
-    }
+    // if (this.picIds.length === 0) {
+    //   const err = "Please select at least 1 picture"
+    //   if (!this.props.errors.includes(err)) this.props.errors.push(err)
+    //   this.setState({
+    //     rerender: !this.state.rerender,
+    //   })
+    //   return null;
+    // }
 
     const galForm = new FormData();
     // galForm.append('gallery[id]', this.props.gallery.id);
     galForm.append('gallery[title]', this.state.title);
-    galForm.append('gallery[creator_id]', this.state.creator_id);
-
-    if (galForm) {
-      this.props.action(galForm)
-        .then(
-          console.log("Gallery Form"),
-          console.log(galForm),
-          this.picsToGals = this.picIds.forEach(picId => {
-            this.props.createPicturesToGallery({
-              picture_id: picId,
-              gallery_id: galForm.id
-            })
-          }),
-          console.log("Pics to Gals"),
-          console.log(this.picsToGals),
-          this.setState({
-            title: '',
-            redirect: true,
-          }),
-        );
-    }
+    galForm.append('gallery[pics]', this.state.pics);
+    this.props.action(galForm)
+      .then(() => {
+        this.state.pics.forEach(pic => {
+          debugger
+          let galId = this.props.thisUser.galleries[this.props.thisUser.galleries.length - 1]
+          console.log("Gallery Id")
+          console.log(galId)
+          this.props.createPicturesToGallery({
+            picture_id: pic.id,
+            gallery_id: galId,
+          })
+        })
+        console.log("成功喇！！！")
+        this.setState({
+          title: '',
+          creator_id: '',
+        })
+        console.log("Hit the debugger then print:")
+        console.log(this.state)
+        console.log(this.props)
+      })
+    // if (galForm) {
+    //   this.props.action(galForm)
+    //     .then(
+    //       console.log("Gallery Form"),
+    //       console.log(galForm),
+    //       this.picsToGals = this.picIds.forEach(picId => {
+    //         this.props.createPicturesToGallery({
+    //           picture_id: picId,
+    //           gallery_id: this.props.gallery.id
+    //         })
+    //       }),
+    //       console.log("Pics to Gals"),
+    //       console.log(this.picsToGals),
+    //       this.setState({
+    //         title: '',
+    //         redirect: true,
+    //       }),
+    //     );
+    // }
     
+    // const galPics = Object.values(this.state.pics)
+    
+    // const newGal = {
+    //   title: this.state.title,
+    // }
+    // let picsToGals = [];
+    // this.props.action(galForm)
+      // .then(gallery => {
+      //   console.log("New Gallery")
+      //   console.log(galForm)
+      //   console.log(gallery)
+      //   gallery.pics.forEach(galPic => {
+      //     let picToGal = { gallery_id: gallery.id, picture_id: galPic.id };
+      //     // galPic["picture_id"] = gallery.id;
+      //     picsToGals.push(picToGal)
+      //     console.log("Pics To Gals")
+      //     console.log(picsToGals)
+      //   })
+      //   picsToGals.forEach(picToGal => {
+      //     this.props.createPicturesToGallery(picToGal)
+      //   })
+      //     .then(console.log("You've created it!"))
+      //   // this.props.createPicturesToGallery(galPics)
+      //   //   .then(() => console.log("Success!"))
+      // })
+    
+    // this.props.gallery.pics.forEach(pic => {
+    //   this.props.createPicturesToGallery({
+    //     gallery_id: this.props.gallery.id,
+    //     picture_id: pic.id,
+    //   })
+    // })
+    //   .then(() => console.log("success!"))
+      
     debugger
   };
 
+  //   const clicked = e.currentTarget.className;
+  //   if (clicked === "user-pics") {
+  //     e.currentTarget.className = 'user-pics img-clicked';
+  //     // this.props.createPicturesToGallery()
+  //   } else {
+  //     e.currentTarget.className = "user-pics";
+  //   }
+  //   // this.setState({
+  //   //   rerender: !this.state.render,
+  //   // })
+  // };
+
   handleClick(e) {
-    e.preventDefault();
-    
-    const id = e.target.id;
-
-    if (this.picIds.includes(id)) {
-      let deleted = this.picIds.filter(function(value, index, arr) {
-        return value !== id
-      });
-      this.picIds = deleted;
+    this.props.pictures ? this.props.pictures : [];
+    console.log("Current Pictures")
+    console.log(this.props.pictures)
+    let picId = parseInt(e.currentTarget.id); //get id
+    if (e.currentTarget.className === 'user-pics') {
+      e.currentTarget.className = 'user-pics img-clicked'
+      this.props.pictures.filter(picture => {
+        if (picture.id === picId) this.state.pics.push(picture)
+      })
     } else {
-      this.picIds.push(id);
+      e.currentTarget.className = 'user-pics'
+      this.state.pics.splice(this.state.pics.indexOf(pic), 1);
     }
-
-    console.log("ID");
-    console.log(id);
-    console.log("This Pic IDs");
-    console.log(this.picIds);
-
-    const clicked = e.currentTarget.className;
-    if (clicked === "user-pics") {
-      e.currentTarget.className = 'user-pics img-clicked';
-      // this.props.createPicturesToGallery()
-    } else {
-      e.currentTarget.className = "user-pics";
-    }
-    // this.setState({
-    //   rerender: !this.state.render,
-    // })
-  };
+    console.log("New Pics! (this.state.pics)")
+    console.log(this.state.pics)
+    debugger
+  }
   
   // handlePicsToGals(e) {
   //   e.preventDefault()
@@ -138,7 +194,7 @@ class GalleryForm extends React.Component {
       if (thisUser.pics.includes(picture.id)) {
         return <li onClick={this.handleClick} 
                   className='user-pics' 
-                  key={i}>
+                  key={i} id={picture.id}>
                   <img src={picture.photoUrl}
                     alt={picture.title}
                     id={picture.id} />

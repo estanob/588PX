@@ -22,7 +22,7 @@ class Api::GalleriesController < ApplicationController
   end
 
   def update
-    @gallery = Gallery.find(params[:gallery][:id])
+    @gallery = Gallery.find_by(id: params[:id])
     if @gallery && @gallery.update(gallery_params)
       render :show
     else

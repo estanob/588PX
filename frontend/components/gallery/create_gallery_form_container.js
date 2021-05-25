@@ -9,7 +9,6 @@ const mSTP = (state) => {
   let session = state.session.id ? state.session.id : '';
   let thisUser = state.entities ? state.entities.users[session] : {};
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : {};
-  debugger
   return {
     session: session,
     thisUser: thisUser,
@@ -26,9 +25,9 @@ const mSTP = (state) => {
 
 const mDTP = dispatch => {
   return {
-    action: gallery => dispatch(createGallery(gallery)),
+    action: (gallery) => dispatch(createGallery(gallery)),
     fetchPictures: () => dispatch(fetchPictures()),
-    createPicturesToGallery: (picToGal) => dispatch(createPicturesToGallery(picToGal)),
+    createPicturesToGallery: (picsToGal) => dispatch(createPicturesToGallery(picsToGal)),
   };
 };
 

@@ -17,10 +17,12 @@ class PicturesToGallery < ApplicationRecord
   validates :picture_id, :gallery_id, presence: true
 
   belongs_to :picture,
+    primary_key: :id,
     foreign_key: :picture_id,
     class_name: :Picture
 
   belongs_to :gallery,
+    primary_key: :id,
     foreign_key: :gallery_id,
     class_name: :Gallery
 end

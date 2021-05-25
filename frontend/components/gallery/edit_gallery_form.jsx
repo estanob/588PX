@@ -27,6 +27,7 @@ class EditGalleryForm extends React.Component {
       formType, 
       gallery, 
       deleteGallery, 
+      createPicturesToGallery,
       userPicIds,
       thisUser,
       pictures,
@@ -38,18 +39,7 @@ class EditGalleryForm extends React.Component {
     } = this.state;
 
     thisUser = thisUser ? thisUser : {};
-    // gallery = gallery ? gallery : {};
     pictures = pictures ? pictures : [];
-    // userPicIds = userPicIds ? userPicIds : [];
-    // let creator_id = gallery ? gallery.creator_id : '';
-    // debugger
-    // const ownPics = userPicIds.map((picId, i) => {
-    //   if (pictures.includes(picId)) {
-    //     return <li>
-    //               {picture.id}
-    //            </li>
-    //   }
-    // });
 
     console.log("Edit Gallery Form pictures: ")
     console.log(pictures)
@@ -62,16 +52,14 @@ class EditGalleryForm extends React.Component {
         <div className='edit-not-header'>
           <div className='edit-info'>
             <GalleryForm 
+              gallery={gallery}
+              title={title}
               action={action}
               thisUser={thisUser}
-              // id={gallery.id}
               formType={formType}
-              gallery={gallery}
               pictures={pictures}
-              // title={title}
-              // creator_id={creator_id}
-              // ownPics={ownPics}
               fetchPictures={fetchPictures}
+              createPicturesToGallery={createPicturesToGallery}
               deleteGallery={deleteGallery} />
           </div>
         </div>

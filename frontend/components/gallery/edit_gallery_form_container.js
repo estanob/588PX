@@ -3,6 +3,7 @@ import React from 'react';
 import { deleteGallery, fetchGallery, updateGallery } from '../../actions/gallery_actions';
 import EditGalleryForm from './edit_gallery_form';
 import { fetchPictures } from '../../actions/picture_actions';
+import { createPicturesToGallery } from '../../actions/pictures_to_gallery_actions';
 
 const mSTP = (state, ownProps) => {
   debugger
@@ -27,6 +28,7 @@ const mDTP = dispatch => {
     deleteGallery: galleryId => dispatch(deleteGallery(galleryId)),
     fetchPictures: () => dispatch(fetchPictures()),
     action: gallery => dispatch(updateGallery(gallery)),
+    createPicturesToGallery: picsToGal => dispatch(createPicturesToGallery(picsToGal)),
   };
 };
 
