@@ -22,15 +22,24 @@ export const createGallery = gallery => (
   })
 )
 
-export const updateGallery = gallery => (
-  $.ajax({
+export const updateGallery = gallery => {
+  debugger
+  return $.ajax({
     url: `/api/galleries/${gallery.id}`,
     method: 'PATCH',
     data: gallery,
     contentType: false,
     processData: false
   })
-)
+} //(
+//   $.ajax({
+//     url: `/api/galleries/${gallery.id}`,
+//     method: 'PATCH',
+//     data: gallery,
+//     contentType: false,
+//     processData: false
+//   })
+// )
 
 export const deleteGallery = galleryId => (
   $.ajax({

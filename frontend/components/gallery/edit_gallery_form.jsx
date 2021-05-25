@@ -39,6 +39,7 @@ class EditGalleryForm extends React.Component {
     } = this.state;
 
     thisUser = thisUser ? thisUser : {};
+    gallery = gallery ? gallery : {};
     pictures = pictures ? pictures : [];
 
     console.log("Edit Gallery Form pictures: ")
@@ -53,6 +54,7 @@ class EditGalleryForm extends React.Component {
           <div className='edit-info'>
             <GalleryForm 
               gallery={gallery}
+              id={gallery.id}
               title={title}
               action={action}
               thisUser={thisUser}

@@ -21,7 +21,9 @@ class Api::GalleriesController < ApplicationController
   end
 
   def update
-    @gallery = Gallery.find_by(id: params[:id])
+    debugger
+    @gallery = Gallery.find_by(gallery_params)
+    # @gallery = Gallery.find(params[:gallery][:id])
     if @gallery && @gallery.update(gallery_params)
       render :show
     else

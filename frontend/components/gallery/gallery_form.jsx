@@ -24,11 +24,16 @@ class GalleryForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    debugger
     let creatorId = this.props.galleries ? this.props.galleries.creator_id : '';
     if (prevProps.title !== this.props.title) {
       this.setState({
         title: this.props.title,
         creator_id: creatorId,
+      })
+    } else if (prevProps.pics !== this.props.pics) {
+      this.setState({
+        pics: this.props.pics
       })
     }
   }
@@ -40,6 +45,7 @@ class GalleryForm extends React.Component {
   };
 
   handleSubmit(e) {
+    debugger
     e.preventDefault()
 
     const galForm = new FormData();
@@ -58,8 +64,10 @@ class GalleryForm extends React.Component {
         this.setState({
           title: '',
           creator_id: '',
+          rerender: true,
         })
       })
+    debugger
   };
 
   handleClick(e) {
@@ -87,8 +95,8 @@ class GalleryForm extends React.Component {
     const { title } = this.state;
     let whichHeader = formType === 'Create Gallery' ? 'Create a Gallery' : 'Edit Gallery';
     let whatButton = formType === 'Create Gallery' ? 'Create' : 'Save Changes';
-    const redirectToHomeFeed = this.state.redirect;
-    if (redirectToHomeFeed) return <Redirect to='/galleries' />
+    const redirectToGalleryIndex = this.state.redirect;
+    if (redirectToGalleryIndex) return <Redirect to='/galleries' />
     thisUser.pics ? thisUser.pics : [];
     let userPics = pictures.map((picture, i) => {
       if (thisUser.pics.includes(picture.id)) {
