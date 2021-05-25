@@ -69,10 +69,14 @@ class GalleryForm extends React.Component {
           let galId = this.props.thisUser.galleries[this.props.thisUser.galleries.length - 1]
           console.log("Gallery Id")
           console.log(galId)
-          this.props.createPicturesToGallery({
-            picture_id: pic.id,
-            gallery_id: galId,
-          })
+          const picGalForm = new FormData();
+          picGalForm.append('pictures_to_gallery[picture_id]', pic.id)
+          picGalForm.append('pictures_to_gallery[gallery_id]', galId)
+          // this.props.createPicturesToGallery({
+          //   picture_id: pic.id,
+          //   gallery_id: galId,
+          // })
+          this.props.createPicturesToGallery(picGalForm)
         })
         console.log("成功喇！！！")
         this.setState({

@@ -11,6 +11,8 @@ export const createPicturesToGallery = picturesToGallery => {
     method: 'POST',
     url: '/api/pictures_to_galleries',
     data: picturesToGallery,
+    contentType: false,
+    processData: false
   });
 };
 
