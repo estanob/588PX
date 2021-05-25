@@ -117,7 +117,6 @@ class PictureForm extends React.Component{
     }
 
     // console.log(errors)
-    // debugger
     return (
       <div className='picture'>
         <form onSubmit={this.handleSubmit}>

@@ -33,7 +33,6 @@ export const fetchPicturesToGalleries = () => dispatch => {
 };
 
 export const createPicturesToGallery = picturesToGallery => dispatch => {
-  debugger
   return PicToGalUtil.createPicturesToGallery(picturesToGallery)
     .then(newPicturesToGallery => {
       dispatch(receivePicturesToGallery(newPicturesToGallery))

@@ -17,7 +17,6 @@ const GalleryIndexItem = (props) => {
     };
   };
   let imgSrc = thisGalPics[0] ? thisGalPics[0].photoUrl : '';
-  debugger
   return (
     <div className="individual-gal" key={gallery.id}>
       <Link 

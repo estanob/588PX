@@ -24,7 +24,6 @@ class GalleryShow extends React.Component {
   };
   
   handleDelete(e) {
-    debugger
     e.preventDefault();
     this.props.deleteGallery(this.props.gallery.id)
       .then(
@@ -35,7 +34,6 @@ class GalleryShow extends React.Component {
   };
 
   render() {
-    debugger
     let { gallery, session, users, galleries, pictures } = this.props;
     pictures = pictures ? pictures : [];
     gallery = gallery ? gallery : {};
@@ -91,7 +89,6 @@ class GalleryShow extends React.Component {
     console.log(gallery)
     console.log("Galleries: ")
     console.log(galleries)
-    debugger
     return(
       <div className='gallery-show'>
         <h1>{gallery.title}</h1>

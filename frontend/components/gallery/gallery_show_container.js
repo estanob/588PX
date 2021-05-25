@@ -10,7 +10,6 @@ const mSTP = ( state, ownProps ) => {
   let users = state.entities.users ? state.entities.users : [];
   let session = state.session.id ? state.session.id : '';
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
-  debugger
   return {
     gallery: gallery,
     galleries: galleries,

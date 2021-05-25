@@ -11,7 +11,6 @@ class Api::GalleriesController < ApplicationController
   end
 
   def create
-    debugger
     @gallery = Gallery.new(gallery_params)
     @gallery.creator_id = current_user.id
     if @gallery && @gallery.save
