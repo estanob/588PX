@@ -1,5 +1,5 @@
-@pictures_to_galleries.each do |pics_to_gal|
-  json.set! pics_to_gal.id do
-    json.partial! "pics_to_gal", pics_to_gal: pics_to_gal
+@pictures_to_galleries.each do |pics_to_gallery|
+  json.set! pics_to_gallery.id do
+    json.partial! "pics_to_gallery", pics_to_gallery: pics_to_gallery
   end
 end

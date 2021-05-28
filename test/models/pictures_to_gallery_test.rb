@@ -10,8 +10,7 @@
 #
 # Indexes
 #
-#  index_pictures_to_galleries_on_gallery_id  (gallery_id)
-#  index_pictures_to_galleries_on_picture_id  (picture_id)
+#  index_pictures_to_galleries_on_picture_id_and_gallery_id  (picture_id,gallery_id) UNIQUE
 #
 require 'test_helper'
 

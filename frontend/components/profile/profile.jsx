@@ -38,6 +38,7 @@ class Profile extends React.Component {
   };
 
   render() {
+    debugger
     const { 
       allUsers, 
       users, 
@@ -53,6 +54,7 @@ class Profile extends React.Component {
     const currentUser = users[session];
     const username = currentUser.username;
     allUsers ? allUsers : [];
+    pictures ? pictures : [];
     currentUser ? currentUser : {};
     username ? username: '';
     let ownPics = pictures.map((ownPic, i) => {
@@ -82,6 +84,7 @@ class Profile extends React.Component {
                 </li>
       }
     });
+    debugger
     return (
       <div className="profile">
         <div className="user-info">

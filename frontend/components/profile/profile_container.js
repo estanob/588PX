@@ -10,11 +10,12 @@ const mSTP = (state, ownProps) => {
   const thisUser = state.entities.users ? state.entities.users : {};
   const allUsers = state.entities.user ? state.entities.user : {};
   const session = state.session.id ? state.session.id : '';
+  const pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
   return {
     users: thisUser,
     session: session,
     allUsers: allUsers,
-    pictures: Object.values(state.entities.pictures),
+    pictures: pictures,
     galleries: Object.values(state.entities.galleries),
     profileContent: 'Pictures',
     numFollowers: thisUser[session].followers.length,      

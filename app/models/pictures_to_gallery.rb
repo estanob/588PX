@@ -10,18 +10,17 @@
 #
 # Indexes
 #
-#  index_pictures_to_galleries_on_gallery_id  (gallery_id)
-#  index_pictures_to_galleries_on_picture_id  (picture_id)
+#  index_pictures_to_galleries_on_picture_id_and_gallery_id  (picture_id,gallery_id) UNIQUE
 #
 class PicturesToGallery < ApplicationRecord
   validates :picture_id, :gallery_id, presence: true
 
-  belongs_to :picture,
+  has_many :pictures,
     primary_key: :id,
     foreign_key: :picture_id,
     class_name: :Picture
 
-  belongs_to :gallery,
+  has_one :gallery,
     primary_key: :id,
     foreign_key: :gallery_id,
     class_name: :Gallery

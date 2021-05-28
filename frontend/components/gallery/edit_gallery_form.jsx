@@ -18,6 +18,7 @@ class EditGalleryForm extends React.Component {
         })
       ))
     this.props.fetchPictures()
+    this.props.fetchPicturesToGalleries()
   }
 
   render() {
@@ -28,7 +29,9 @@ class EditGalleryForm extends React.Component {
       gallery, 
       deleteGallery, 
       createPicturesToGallery,
-      userPicIds,
+      deletePicturesToGallery,
+      fetchPicturesToGalleries,
+      galleryImageModal,
       thisUser,
       pictures,
       fetchPictures,
@@ -44,6 +47,8 @@ class EditGalleryForm extends React.Component {
 
     console.log("Edit Gallery Form pictures: ")
     console.log(pictures)
+    console.log("Edit Gallery Props:")
+    console.log(this.props)
     debugger
     return(
       <div className="edit-show">
@@ -56,13 +61,16 @@ class EditGalleryForm extends React.Component {
               gallery={gallery}
               id={gallery.id}
               title={title}
-              action={action}
+              updateGallery={action}
               pics={gallery.pics}
               thisUser={thisUser}
               formType={formType}
               pictures={pictures}
+              galleryImageModal={galleryImageModal}
               fetchPictures={fetchPictures}
+              fetchPicturesToGalleries={fetchPicturesToGalleries}
               createPicturesToGallery={createPicturesToGallery}
+              deletePicturesToGallery={deletePicturesToGallery}
               deleteGallery={deleteGallery} />
           </div>
         </div>

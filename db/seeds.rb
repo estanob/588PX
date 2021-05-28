@@ -293,49 +293,22 @@ follow11 = Follow.create!(
 )
 
 picToGal1 = PicturesToGallery.create!(
-  picture_id: picture9.id,
-  gallery_id: gallery4.id
+  gallery: gallery4,
+  pictures: [
+    picture9.id, 
+    picture10.id, 
+    picture11.id, 
+    picture17.id, 
+    picture18.id, 
+    picture19.id
+  ]
 )
+
 picToGal2 = PicturesToGallery.create!(
-  picture_id: picture10.id,
-  gallery_id: gallery4.id
-)
-
-picToGal3 = PicturesToGallery.create!(
-  picture_id: picture11.id,
-  gallery_id: gallery4.id
-)
-
-picToGal4 = PicturesToGallery.create!(
-  picture_id: picture17.id,
-  gallery_id: gallery4.id
-)
-
-picToGal5 = PicturesToGallery.create!(
-  picture_id: picture17.id,
-  gallery_id: gallery5.id
-)
-
-picToGal6 = PicturesToGallery.create!(
-  picture_id: picture18.id,
-  gallery_id: gallery5.id
-)
-picToGal5 = PicturesToGallery.create!(
-  picture_id: picture17.id,
-  gallery_id: gallery4.id
-)
-
-picToGal6 = PicturesToGallery.create!(
-  picture_id: picture18.id,
-  gallery_id: gallery4.id
-)
-
-picToGal7 = PicturesToGallery.create!(
-  picture_id: picture19.id,
-  gallery_id: gallery5.id
-)
-
-picToGal8 = PicturesToGallery.create!(
-  picture_id: picture19.id,
-  gallery_id: gallery4.id
+  gallery: gallery5,
+  pictures: [
+    picture17.id, 
+    picture18.id, 
+    picture19.id
+  ]
 )

@@ -1,11 +1,13 @@
 export const fetchPicturesToGalleries = () => {
-  $.ajax({
+  debugger
+  return $.ajax({
     url: '/api/pictures_to_galleries',
     method: 'GET',
   });
 };
 
 export const createPicturesToGallery = picturesToGallery => {
+  debugger
   return $.ajax({
     method: 'POST',
     url: '/api/pictures_to_galleries',
@@ -14,6 +16,12 @@ export const createPicturesToGallery = picturesToGallery => {
     processData: false
   });
 };
+
+/** addPicturesToGallery = (picturesToGallery, picturesArr) => {
+ * return $.ajax({
+ *  method: 'PATCH',
+ *  url: ,
+ * })} **/
 
 export const deletePicturesToGallery = picturesToGallery => {
   debugger

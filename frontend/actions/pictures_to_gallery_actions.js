@@ -26,10 +26,12 @@ const removePicturesToGallery = picturesToGallery => {
 };
 
 export const fetchPicturesToGalleries = () => dispatch => {
+  debugger
   return PicToGalUtil.fetchPicturesToGalleries()
-    .then(picsToGalls => {
-      dispatch(receivePicturesToGalleries(picsToGalls))
-    });
+    .then(picturesToGalleries => {
+      dispatch(receivePicturesToGalleries(picturesToGalleries))
+    })
+    .fail(error => console.log(error))
 };
 
 export const createPicturesToGallery = picturesToGallery => dispatch => {
