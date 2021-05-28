@@ -36,6 +36,6 @@ class Api::PicturesToGalleriesController < ApplicationController
   private
 
   def pictures_to_gallery_params
-    params.require(:pictures_to_gallery).permit(:picture_id, :gallery_id)
+    params.require(:pictures_to_gallery).permit(:id, :picture_id, :gallery_id)
   end
 end

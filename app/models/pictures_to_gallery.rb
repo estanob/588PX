@@ -13,15 +13,15 @@
 #  index_pictures_to_galleries_on_picture_id_and_gallery_id  (picture_id,gallery_id) UNIQUE
 #
 class PicturesToGallery < ApplicationRecord
-  validates :picture_id, :gallery_id, presence: true
+  validates :gallery_id, :picture_id, presence: true
 
-  has_many :pictures,
-    primary_key: :id,
-    foreign_key: :picture_id,
+  has_one :picture,
+    primary_key: :picture_id,
+    foreign_key: :id,
     class_name: :Picture
 
   has_one :gallery,
-    primary_key: :id,
-    foreign_key: :gallery_id,
+    primary_key: :gallery_id,
+    foreign_key: :id,
     class_name: :Gallery
 end

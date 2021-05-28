@@ -61,7 +61,7 @@ class EditGalleryForm extends React.Component {
               gallery={gallery}
               id={gallery.id}
               title={title}
-              updateGallery={action}
+              updateGallery={updateGallery}
               pics={gallery.pics}
               thisUser={thisUser}
               formType={formType}

@@ -27,7 +27,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch, ownProps) => {
   debugger
   return {
-    action: (gallery) => dispatch(createGallery(gallery)),
+    createGallery: (gallery) => dispatch(createGallery(gallery)),
     fetchPictures: () => dispatch(fetchPictures()),
     createPicturesToGallery: (picsToGal) => dispatch(createPicturesToGallery(picsToGal)),
     openModal: () => dispatch(openModal()),

@@ -32,7 +32,7 @@ const mDTP = dispatch => {
     fetchGallery: galleryId => dispatch(fetchGallery(galleryId)),
     deleteGallery: galleryId => dispatch(deleteGallery(galleryId)),
     fetchPictures: () => dispatch(fetchPictures()),
-    action: gallery => dispatch(updateGallery(gallery)),
+    updateGallery: gallery => dispatch(updateGallery(gallery)),
     fetchPicturesToGalleries: () => dispatch(fetchPicturesToGalleries()),
     createPicturesToGallery: picsToGal => dispatch(createPicturesToGallery(picsToGal)),
     deletePicturesToGallery: picsToGal => dispatch(deletePicturesToGallery(picsToGal)),

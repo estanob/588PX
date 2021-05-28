@@ -68,11 +68,13 @@ class GalleryForm extends React.Component {
     }
     console.log("State Pics")
     console.log(this.state.pics)
+    console.log("Pics to Add")
+    console.log(this.picsToAdd)
     if (this.props.formType === 'Edit Gallery') {
       this.props.updateGallery(galForm)
         .then(() => {
-          this.state.pics ? this.state.pics : [];
-          this.state.pics.forEach(pic => {
+          this.picsToAdd ? this.picsToAdd : [];
+          this.picsToAdd.forEach(pic => {
             debugger
             const gals = this.props.thisUser.galleries
             const galId = gals[gals.length - 1]
@@ -95,7 +97,7 @@ class GalleryForm extends React.Component {
           })
         })
     } else {
-      this.props.action(galForm)
+      this.props.createGallery(galForm)
         .then(() => {
           this.picsToAdd.forEach(pic => {
             debugger
