@@ -1,10 +1,10 @@
 import React from 'react';
 import { Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import GalleryIndexGalleries from './gallery_index_galleries';
 import PictureIndexPhotos from '../pictures/picture_index_photos';
 import PictureIndexItem from '../pictures/picture_index_item';
 import PictureIndexContainer from '../pictures/picture_index_container';
+import GalleryIndexItem from './gallery_index_item';
 
 class GalleryShow extends React.Component {
   constructor(props) {
@@ -69,13 +69,14 @@ class GalleryShow extends React.Component {
       }
     };
 
-    const ownGals = galleries.map((ownGal, i) => {
-      if (ownGal.creator === creator && ownGal.title !== gallery.title) {(
-        <li key={i}>
-          {/* <GalleryIndexGalleries key={ownGal.id} gallery={ownGal} /> */}
-          {ownGal.title}
-        </li>
-      )}
+    const ownGals = galleries.map((gal, i) => {
+      if (gal.id !== gallery.id && gal.creator_id === gallery.creator_id) {
+        return (
+          <li className="gals-on-profile-li" key={i}>
+            <GalleryIndexItem gallery={gal} pics={pictures} currentId={session} />
+          </li>
+        )
+      }
     });
 
 
@@ -101,7 +102,9 @@ class GalleryShow extends React.Component {
         <div className='more-galleries'>
           <p>More Galleries by {creator}</p>
           <h4>The other galleries will show up here</h4>
-          {(gallery.creator_id === session && thisUser.galleries.length > 1) ? ownGals : <p>This User has no other Galleries</p>}
+          <ul className="other-galleries">
+            {ownGals}
+          </ul>
         </div>
       </div>
     ) 
