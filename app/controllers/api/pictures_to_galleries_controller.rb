@@ -28,7 +28,7 @@ class Api::PicturesToGalleriesController < ApplicationController
 
   def destroy
     debugger
-    @pictures_to_gallery = PicturesToGallery.find_by(id: params[:id])
+    @pictures_to_gallery = PicturesToGallery.find_by(delete_params)
     @pictures_to_gallery.destroy
     render :index
   end
@@ -37,5 +37,9 @@ class Api::PicturesToGalleriesController < ApplicationController
 
   def pictures_to_gallery_params
     params.require(:pictures_to_gallery).permit(:id, :picture_id, :gallery_id)
+  end
+
+  def delete_params
+    params.except(:pictures_to_gallery, :format).permit(:id, :gallery_id, :picture_id)
   end
 end

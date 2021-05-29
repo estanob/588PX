@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:show, :create, :index] 
     resources :pictures, only: [:index, :show, :create, :update, :destroy]
-    resources :pictures_to_galleries, only: [:create, :index, :show, :destroy]
+    resources :pictures_to_galleries, only: [:create, :index, :show]
     resources :galleries, only: [:index, :show, :create, :update, :destroy]
     resources :follows, only: [:create,:show]
     resource :session, only: [:create, :destroy]
 
     delete '/follows', to: 'follows#destroy'
+    delete '/pictures_to_galleries', to: 'pictures_to_galleries#destroy'
   end
 end

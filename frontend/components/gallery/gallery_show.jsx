@@ -34,9 +34,12 @@ class GalleryShow extends React.Component {
   };
 
   render() {
-    let { gallery, session, users, galleries, pictures } = this.props;
+    let { gallery, session, thisUser, galleries, pictures } = this.props;
     pictures = pictures ? pictures : [];
     gallery = gallery ? gallery : {};
+    thisUser = thisUser ? thisUser : {};
+    console.log("This User")
+    console.log(thisUser)
     let galPics = gallery.pics ? gallery.pics : [];
     console.log("Gal Pics exists")
     console.log(galPics);
@@ -57,16 +60,8 @@ class GalleryShow extends React.Component {
       if (session === gallery.creator_id) {
         return (
           <div className="own-gallery">
-            <button className='edit-update'>
-              <Link 
-                style={{ color: 'white', textDecoration: 'none' }} 
-                to={`/galleries/${gallery.id}/edit`} >
-                  <p>Edit</p>
-              </Link>
-            </button>
-            <span>&nbsp;</span>
-            <button 
-              className='edit-delete' 
+            <button
+              className='edit-delete'
               onClick={this.handleDelete}>Delete
             </button>
           </div>
@@ -76,12 +71,14 @@ class GalleryShow extends React.Component {
 
     const ownGals = galleries.map((ownGal, i) => {
       if (ownGal.creator === creator && ownGal.title !== gallery.title) {(
-        <li>
+        <li key={i}>
           {/* <GalleryIndexGalleries key={ownGal.id} gallery={ownGal} /> */}
           {ownGal.title}
         </li>
       )}
     });
+
+
 
     const redirectToGalleryIndex = this.state.redirectToGalleryIndex;
     if (redirectToGalleryIndex) return <Redirect to='/home' />
@@ -104,7 +101,7 @@ class GalleryShow extends React.Component {
         <div className='more-galleries'>
           <p>More Galleries by {creator}</p>
           <h4>The other galleries will show up here</h4>
-          {ownGals}
+          {(gallery.creator_id === session && thisUser.galleries.length > 1) ? ownGals : <p>This User has no other Galleries</p>}
         </div>
       </div>
     ) 

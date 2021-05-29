@@ -22,11 +22,11 @@ export const createGallery = gallery => (
   })
 )
 
-export const updateGallery = gallery => {
+export const updateGallery = (gallery, picsToGal) => {
   return $.ajax({
     url: `/api/galleries/${gallery.id}`,
     method: 'PATCH',
-    data: gallery,
+    data: gallery, picsToGal,
     contentType: false,
     processData: false
   })

@@ -51,10 +51,10 @@ export const createGallery = (gallery) => dispatch => {
     .fail(err => dispatch(receiveErrors(err)))
 }
 
-export const updateGallery = gallery => dispatch => (
-  GalleryAPIUtils.updateGallery(gallery)
-    .then(updateGallery => {
-      dispatch(receiveGallery(updateGallery))
+export const updateGallery = (gallery, picsToGal) => dispatch => (
+  GalleryAPIUtils.updateGallery(gallery, picsToGal)
+    .then((updateGallery, updatePTG) => {
+      dispatch(receiveGallery(updateGallery, updatePTG))
       dispatch(clearErrors())
     })
     .fail(err => dispatch(receiveErrors(err)))

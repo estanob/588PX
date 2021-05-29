@@ -9,6 +9,7 @@ const mSTP = ( state, ownProps ) => {
   let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
   let users = state.entities.users ? state.entities.users : [];
   let session = state.session.id ? state.session.id : '';
+  let thisUser = state.entities.users ? state.entities.users[session] : {};
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
   return {
     gallery: gallery,
@@ -16,6 +17,7 @@ const mSTP = ( state, ownProps ) => {
     pictures: pictures,
     users: users,
     session: session,
+    thisUser: thisUser,
   };
 };
 

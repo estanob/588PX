@@ -31,11 +31,13 @@ class Picture < ApplicationRecord
 
   has_many :pictures_to_galleries,
     foreign_key: :picture_id,
-    class_name: :PicturesToGallery
+    class_name: :PicturesToGallery,
+    dependent: :destroy
 
   has_many :galleries,
     through: :pictures_to_galleries,
-    source: :gallery
+    source: :gallery,
+    dependent: :destroy
 
   def ensure_photo
     unless self.photo.attached?

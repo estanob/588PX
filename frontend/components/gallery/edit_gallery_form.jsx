@@ -24,7 +24,6 @@ class EditGalleryForm extends React.Component {
   render() {
     debugger
     let { 
-      action, 
       formType, 
       gallery, 
       deleteGallery, 
@@ -32,6 +31,7 @@ class EditGalleryForm extends React.Component {
       deletePicturesToGallery,
       fetchPicturesToGalleries,
       galleryImageModal,
+      updateGallery,
       thisUser,
       pictures,
       fetchPictures,

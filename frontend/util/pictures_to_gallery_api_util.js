@@ -17,18 +17,12 @@ export const createPicturesToGallery = picturesToGallery => {
   });
 };
 
-/** addPicturesToGallery = (picturesToGallery, picturesArr) => {
- * return $.ajax({
- *  method: 'PATCH',
- *  url: ,
- * })} **/
-
 export const deletePicturesToGallery = picturesToGallery => {
   debugger
   console.log('Pics to gallery:')
-  console.log(picturesToGallery)
+  console.log(picturesToGallery.pop())
   return $.ajax({
-    url: '/api/pictures_to_galleries',
+    url: `/api/pictures_to_galleries/`,
     method: 'DELETE',
     data: picturesToGallery,
   });

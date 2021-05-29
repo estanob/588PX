@@ -8,7 +8,7 @@ import GalleryForm from './gallery_form';
 
 const mSTP = (state) => {
   let session = state.session.id ? state.session.id : '';
-  let thisUser = state.entities ? state.entities.users[session] : {};
+  let thisUser = state.entities.users ? state.entities.users[session] : {};
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : {};
   return {
     session: session,
@@ -20,7 +20,6 @@ const mSTP = (state) => {
     userPicIds: thisUser.pictures,
     pictures: pictures,
     formType: 'Create Gallery'
-    // make default state for display image to be [0] automatically selected
   };
 };
 

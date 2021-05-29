@@ -17,6 +17,7 @@ class GalleryForm extends React.Component {
     };
 
     this.picsToAdd = [];
+    this.picsToRemove = [];
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -42,11 +43,7 @@ class GalleryForm extends React.Component {
         creator_id: creatorId,
         pics: pics,
       })
-    } //else if (prevProps.pics.length !== this.props.gallery.pics.length) {
-    //   this.setState({
-    //     pics: this.props.pics
-    //   })
-    // }
+    } 
   }
 
   update(field) {
@@ -66,42 +63,57 @@ class GalleryForm extends React.Component {
     } else {
       galForm.append('gallery[pics]', this.state.pics);
     }
-    console.log("State Pics")
-    console.log(this.state.pics)
+
     console.log("Pics to Add")
     console.log(this.picsToAdd)
     if (this.props.formType === 'Edit Gallery') {
-      this.props.updateGallery(galForm)
-        .then(() => {
-          this.picsToAdd ? this.picsToAdd : [];
-          this.picsToAdd.forEach(pic => {
-            debugger
-            const gals = this.props.thisUser.galleries
-            const galId = gals[gals.length - 1]
-            const picGalForm = new FormData()
-            picGalForm.append('pictures_to_gallery[picture_id]', pic.id)
-            picGalForm.append('pictures_to_gallery[gallery_id]', galId)
-            this.props.createPicturesToGallery(picGalForm)
-            console.log("Picture Id:")
-            console.log(pic.id)
-            console.log("Gallery Id:")
-            console.log(galId)
+      this.picsToAdd ? this.picsToAdd : [];
+      this.picsToRemove ? this.picsToRemove : [];
+      this.props.gallery ? this.props.gallery.picsToGal : [];
+      console.log("Pics to Gallery")
+      console.log(this.props.gallery.picsToGal)
+      console.log("Removing the pics")
+      console.log(this.picsToRemove)
+      if (this.picsToRemove.length > 0) {
+        debugger
+        this.picsToRemove.forEach(pic => {
+          this.props.gallery.picsToGal.forEach(pTG => {
+            if (pic.id === pTG.picture_id) {
+              debugger
+              this.props.deletePicturesToGallery(pTG)
+            }
           })
-          console.log("Success!")
-          // console.log("成功喇！！！")
+        })
+      } else if (this.picsToAdd.length > 0) {
+        this.picsToAdd.forEach(pic => {
+          debugger
+          const gals = this.props.thisUser.galleries
+          const galId = gals[gals.length - 1]
+          const picGalForm = new FormData()
+          picGalForm.append('pictures_to_gallery[picture_id]', pic.id)
+          picGalForm.append('pictures_to_gallery[gallery_id]', galId)
+          this.props.createPicturesToGallery(picGalForm)
+          console.log("Picture Id:")
+          console.log(pic.id)
+          console.log("Gallery Id:")
+          console.log(galId)
+        })
+        console.log("Success!")
+      }
+      this.props.updateGallery(galForm)
+        .then(
           this.setState({
             title: '',
             creator_id: '',
             pics: this.state.pics,
             redirect: true,
           })
-        })
+        )
     } else {
       this.props.createGallery(galForm)
         .then(() => {
           this.picsToAdd.forEach(pic => {
             debugger
-            // make one api call for all ids, not one each
             const gals = this.props.thisUser.galleries ? this.props.thisUser.galleries : {};
             const galId = gals[gals.length - 1]
             const picGalForm = new FormData()
@@ -122,33 +134,13 @@ class GalleryForm extends React.Component {
           })
       })
     }
-      // .then(() => {
-      //   this.state.pics ? this.state.pics : [];
-      //   this.state.pics.forEach(pic => {
-      //     debugger
-      //     const gals = this.props.thisUser.galleries
-      //     const galId = gals[gals.length - 1]
-      //     const picGalForm = new FormData()
-      //     picGalForm.append('pictures_to_gallery[picture_id]', pic.id)
-      //     picGalForm.append('pictures_to_gallery[gallery_id]', galId)
-      //     this.props.createPicturesToGallery(picGalForm)
-      //     console.log("Picture Id:")
-      //     console.log(pic.id)
-      //   })
-      //   console.log("成功喇！！！")
-      //   this.setState({
-      //     title: '',
-      //     creator_id: '',
-      //     pics: this.state.pics,
-      //     redirect: true,
-      //   })
-      // })
     debugger
   };
 
   handleClick(e) {
     debugger
     this.props.pictures ? this.props.pictures : [];
+    const currentGallery = this.props.gallery ? this.props.gallery : {};
     console.log("Pics to Add")
     console.log(this.picsToAdd)
     let picId = parseInt(e.currentTarget.id);
@@ -160,10 +152,17 @@ class GalleryForm extends React.Component {
         console.log(this.picsToAdd)
       })
     } else {
+      debugger
+      console.log("Current Gallery")
+      console.log(this.props.gallery)
       e.currentTarget.className = 'user-pics'
       this.picsToAdd = this.picsToAdd.filter(picture => picture.id !== picId)
-      console.log("filtered:")
+      console.log("Filtered pics in the gallery")
       console.log(this.picsToAdd)
+      let removedPic = currentGallery.picsToGal.filter(pTG => pTG.picture_id === picId)
+      this.picsToRemove.push(removedPic);
+      console.log("Pics to Remove")
+      console.log(this.picsToRemove)
     }
     debugger
   }
@@ -177,7 +176,6 @@ class GalleryForm extends React.Component {
     gallery.pics ? gallery.pics : {};
     console.log("Current Gallery:")
     console.log(gallery)
-    pictures = pictures ? pictures : {};
     const { title } = this.state;
     let whichHeader = formType === 'Create Gallery' ? 'Create a New Gallery' : 'Edit Gallery';
     let whatButton = formType === 'Create Gallery' ? 'Create' : 'Save Changes';

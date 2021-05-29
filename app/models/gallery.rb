@@ -29,5 +29,6 @@ class Gallery < ApplicationRecord
   has_many :pictures,
     primary_key: :id,
     through: :pictures_to_galleries,
-    source: :picture
+    source: :picture, 
+    dependent: :destroy
 end
