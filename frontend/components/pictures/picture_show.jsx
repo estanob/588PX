@@ -119,7 +119,7 @@ class PictureShow extends React.Component {
                   style={{ color: 'black', textDecoration: 'none'}}
                   className='pic-show-uploader'>
                     <p>
-                      {`${picture.uploaderFirstName} ${picture.uploaderLastName}`}
+                      {`${picture.uploaderName}`}
                     </p>
                 </Link>}&nbsp; {otherUploader()}
           </p>

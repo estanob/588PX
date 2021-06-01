@@ -46,6 +46,12 @@ p
   background-color: #F7F8FA;
 }
 
+.pics-on-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .pics-on-profile-li {
   flex-grow: 1;
   margin: 3px;
