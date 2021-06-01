@@ -16,8 +16,6 @@ export const createFollow = (follow) => {
 };
 
 export const deleteFollow = follow => {
-  console.log("follow:")
-  console.log(follow)
   return $.ajax({
     url: `api/follows/`,
     method: 'DELETE',

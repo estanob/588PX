@@ -18,9 +18,6 @@ export const createPicturesToGallery = picturesToGallery => {
 };
 
 export const deletePicturesToGallery = picturesToGallery => {
-  debugger
-  console.log('Pics to gallery:')
-  console.log(picturesToGallery.pop())
   return $.ajax({
     url: `/api/pictures_to_galleries/`,
     method: 'DELETE',

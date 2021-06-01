@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const GalleryIndexItem = (props) => {
-  console.log("Individual Gallery Props")
-  console.log(props)
   const { gallery, pics, currentId }= props;
   currentId ? currentId : '';
   gallery ? gallery : [];

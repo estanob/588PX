@@ -42,19 +42,11 @@ class GalleryShow extends React.Component {
     pictures = pictures ? pictures : [];
     gallery = gallery ? gallery : {};
     thisUser = thisUser ? thisUser : {};
-    console.log("This User")
-    console.log(thisUser)
-    console.log("This Dot Props")
-    console.log(this.props)
     let galPics = gallery.pics ? gallery.pics : [];
-    console.log("Gal Pics exists")
-    console.log(galPics);
     let creator = gallery ? gallery.creator : '';
     galleries = galleries ? galleries : [];
     let picIds = [];
     galPics.forEach(pic => picIds.push(pic.id));
-    console.log("Pic IDs:")
-    console.log(picIds)
     let pix = pictures.map((pic, i) => {
       if (picIds.includes(pic.id)) {
         return <li className="pics-on-profile-li" key={i}>
@@ -79,7 +71,10 @@ class GalleryShow extends React.Component {
       if (gal.id !== gallery.id && gal.creator_id === gallery.creator_id) {
         return (
           <li className="gals-on-profile-li" key={i}>
-            <GalleryIndexItem gallery={gal} pics={pictures} currentId={session} />
+            <GalleryIndexItem 
+              gallery={gal} 
+              pics={pictures} 
+              currentId={session} />
           </li>
         )
       }
@@ -96,10 +91,6 @@ class GalleryShow extends React.Component {
     const redirectToGalleryIndex = this.state.redirectToGalleryIndex;
     if (redirectToGalleryIndex) return <Redirect to='/home' />
 
-    console.log("Gallery:")
-    console.log(gallery)
-    console.log("Galleries: ")
-    console.log(galleries)
     return(
       <div className='gallery-show'>
         <h1>{gallery.title}</h1>

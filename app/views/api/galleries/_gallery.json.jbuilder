@@ -3,4 +3,4 @@ json.id gallery.id
 json.creator_id gallery.creator_id
 json.creator gallery.creator.username
 json.picsToGal gallery.pictures_to_galleries
-json.pics gallery.pictures
+json.pics gallery.pictures, partial: 'api/pictures/picture', as: :picture

@@ -19,6 +19,7 @@
 }
 
 .gallery-show-pics {
+  margin-top: 20px;
   background-color: #f7f8fa;
   display: grid;
   column-count: 3;
@@ -31,6 +32,10 @@
   color: black;
   margin-bottom: 10px;
   line-height: 120%;
+}
+
+.more-galleries {
+  margin-top: 10px;
 }
 
 .more-galleries > p {
@@ -61,6 +66,8 @@
 
 .other-galleries {
   background-color: #f7f8fa;
+  padding-top: 20px;
+  padding-bottom: 20px;
   display: flex;
   justify-content: center;
   grid-template-columns: repeat(4, 1fr);
