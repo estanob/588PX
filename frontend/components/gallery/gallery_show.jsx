@@ -49,7 +49,7 @@ class GalleryShow extends React.Component {
     galPics.forEach(pic => picIds.push(pic.id));
     let pix = pictures.map((pic, i) => {
       if (picIds.includes(pic.id)) {
-        return <li className="pics-on-profile-li" key={i}>
+        return <li className="pics-in-gallery-li" key={i}>
               <PictureIndexPhotos picture={pic} />
              </li>
       }
@@ -97,7 +97,7 @@ class GalleryShow extends React.Component {
         <p>Curated by {creator}</p>
         {ownGallery()}
         <div className='gallery-show-pics'>
-          <ul className='pic-index pics-on-profile'>
+          <ul className='pics-in-gallery'>
             {pix}
           </ul>
         </div>

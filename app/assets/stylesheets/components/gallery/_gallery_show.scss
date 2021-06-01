@@ -20,11 +20,9 @@
 
 .gallery-show-pics {
   margin-top: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
   background-color: #f7f8fa;
-  display: grid;
-  column-count: 3;
+  display: flex;
 }
 
 .gallery-show-pics > h2 {
@@ -34,6 +32,23 @@
   color: black;
   margin-bottom: 10px;
   line-height: 120%;
+}
+
+.pics-in-gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pics-in-gallery-li {
+  flex-grow: 1;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.pics-in-gallery-li img {
+  height: 300px;
+  min-width: 100%;
+  object-fit: cover;
 }
 
 .more-galleries {
@@ -79,7 +94,3 @@
   object-fit: contain;
   text-align: center;
 }
-
-// .gals-on-profile-li {
-
-// }
