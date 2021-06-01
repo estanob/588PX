@@ -5,8 +5,9 @@ import { fetchUser } from "../../actions/profile_actions";
 import { fetchPictures } from "../../actions/picture_actions";
 
 const mSTP = state => {
+  let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
   return {
-    galleries: Object.values(state.entities.galleries),
+    galleries: galleries,
     pictures: Object.values(state.entities.pictures),
     session: state.session.id,
   };

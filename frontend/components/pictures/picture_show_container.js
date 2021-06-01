@@ -20,7 +20,6 @@ const mDTP = (dispatch, ownProps)=> {
     fetchPicture: () => dispatch(fetchPicture(parseInt(ownProps.match.params.id))),
     deletePicture: () => dispatch(deletePicture(parseInt(ownProps.match.params.id))),
     fetchUser: userId => dispatch(fetchUser(userId)),
-    // fetchUser: () => dispatch(fetchUser(parseInt(ownProps.match.params.id))),
     fetchAllUsers: () => dispatch(fetchAllUsers()),
     createFollow: follow => dispatch(createFollow(follow)),
     deleteFollow: follow => dispatch(deleteFollow(follow)),

@@ -1,3 +1,4 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { fetchGallery, deleteGallery, fetchGalleries } from '../../actions/gallery_actions';
 import { fetchUser } from '../../actions/profile_actions';

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { createGallery } from '../../actions/gallery_actions';
 import { createPicturesToGallery } from '../../actions/pictures_to_gallery_actions';
 import { fetchPictures } from '../../actions/picture_actions';
-import { openModal, closeModal } from '../../actions/modal_actions';
 import GalleryForm from './gallery_form';
 
 const mSTP = (state) => {
@@ -28,14 +27,6 @@ const mDTP = (dispatch) => {
     createGallery: (gallery) => dispatch(createGallery(gallery)),
     fetchPictures: () => dispatch(fetchPictures()),
     createPicturesToGallery: (picsToGal) => dispatch(createPicturesToGallery(picsToGal)),
-    openModal: () => dispatch(openModal()),
-    galleryImageModal: (
-      <button
-        className="gallery-image-button"
-        onClick={() => dispatch(openModal('gallery'))}>
-        Select Display Image
-      </button>
-    ),
   };
 };
 

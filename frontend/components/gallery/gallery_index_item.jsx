@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const GalleryIndexItem = (props) => {
-  console.log("Gallery Index Item Props")
+  console.log("Individual Gallery Props")
   console.log(props)
   const { gallery, pics, currentId }= props;
   currentId ? currentId : '';
@@ -19,7 +19,7 @@ const GalleryIndexItem = (props) => {
       };
     };
   };
-  let imgSrc = thisGalPics[0] ? thisGalPics[0].photoUrl : '';
+  let galDisplayPic = thisGalPics[0] ? thisGalPics[0].photoUrl : '';
   let textColor = (currentId !== gallery.creator_id) ? 'black' : '#1890ff';
   return (
     <div className="individual-gal" key={gallery.id}>
@@ -29,7 +29,7 @@ const GalleryIndexItem = (props) => {
         className='gal-link'>
         <img 
           className='display-img' 
-          src={imgSrc}
+          src={galDisplayPic}
           alt={gallery.title} />
         <p>{gallery.title}</p>
       </Link>

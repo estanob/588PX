@@ -31,12 +31,21 @@ class GalleryShow extends React.Component {
   };
 
   render() {
-    let { gallery, session, thisUser, galleries, pictures } = this.props;
+    let { 
+      gallery, 
+      session, 
+      thisUser, 
+      galleries, 
+      pictures, 
+    } = this.props;
+
     pictures = pictures ? pictures : [];
     gallery = gallery ? gallery : {};
     thisUser = thisUser ? thisUser : {};
     console.log("This User")
     console.log(thisUser)
+    console.log("This Dot Props")
+    console.log(this.props)
     let galPics = gallery.pics ? gallery.pics : [];
     console.log("Gal Pics exists")
     console.log(galPics);
@@ -76,7 +85,13 @@ class GalleryShow extends React.Component {
       }
     });
 
-
+    const twoPlusGals = thisUser.galleries.length > 1 ? 
+                        <div className='more-galleries'>
+                          <p>More Galleries by {creator}</p>
+                          <ul className="other-galleries">
+                            {ownGals}
+                          </ul>
+                        </div> : '';
 
     const redirectToGalleryIndex = this.state.redirectToGalleryIndex;
     if (redirectToGalleryIndex) return <Redirect to='/home' />
@@ -92,16 +107,10 @@ class GalleryShow extends React.Component {
         {ownGallery()}
         <div className='gallery-show-pics'>
           <ul className='pic-index pics-on-profile'>
-            {/* <PictureIndexContainer picIds={picIds} /> */}
             {pix}
           </ul>
         </div>
-        <div className='more-galleries'>
-          <p>More Galleries by {creator}</p>
-          <ul className="other-galleries">
-            {ownGals}
-          </ul>
-        </div>
+        {twoPlusGals}
       </div>
     ) 
   };

@@ -38,6 +38,11 @@ class PictureShow extends React.Component {
     followForm.append('follow[user_id]', this.props.session.id);
     followForm.append('follow[followee_id]', this.props.picture.uploader_id);
     this.props.createFollow(followForm)
+      .then(() => {
+        this.setState({
+          redirectToHomeFeed: true,
+        })
+      })
   };
 
   handleUnfollow(e) {
@@ -46,6 +51,11 @@ class PictureShow extends React.Component {
       user_id: this.props.session, 
       followee_id: this.props.picture.uploader_id,
     })
+      .then(() => {
+        this.setState({
+          redirectToHomeFeed: true,
+        })
+      })
   };
 
   render() {
@@ -94,10 +104,6 @@ class PictureShow extends React.Component {
     const redirectToHomeFeed = this.state.redirectToHomeFeed;
     if (redirectToHomeFeed) return <Redirect to='/home' />
 
-    // const redirectToProfilePage = this.state.redirectToProfilePage;
-    // if (redirectToProfilePage) return <Redirect 
-    //                                     to='/home' />
-                                        // to={`/p/${currentUser.username}`} />
     return(
       <div>
         <HeaderContainer />
@@ -121,6 +127,7 @@ class PictureShow extends React.Component {
           <p>Location: {picture.location}</p>
           <p>{picture.caption ? picture.caption : ''}</p>
         </div>
+        {redirectToHomeFeed}
       </div>
     ) 
   };
