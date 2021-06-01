@@ -40,23 +40,25 @@ p
 
 .profile-pic-index {
   display: flex;
-  flex-wrap: wrap;
   width: 98%;
   height: auto;
+  padding-left: 10px;
   background-color: #F7F8FA;
 }
 
 .pics-on-profile {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .pics-on-profile-li {
   flex-grow: 1;
-  margin: 3px;
+  margin: 5px;
   position: relative;
   box-sizing: border-box;
 }
 
 .gals-on-profile-li {
   display: inline-block;
+  margin-right: 5px;
 }

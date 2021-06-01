@@ -1,17 +1,19 @@
 .individual-pic {
-  display: inline-block;
+  flex-grow: 1;
+  position: relative;
+  box-sizing: border-box;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 .pic-link > p:hover {
-// .pic-idx-itm-title:hover {
   text-decoration-color: #1890ff;
 }
 
-.display-img {
-  // display: inline-block;
-  object-fit: cover;
-  min-width: 100%;
+.pic-link img {
   height: 300px;
+  min-width: 100%;
+  object-fit: cover;
 }
 
 .display-img:hover {

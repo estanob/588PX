@@ -1,23 +1,19 @@
 .pic-index-container {
-  display: grid;
+  display: flex;
   margin-top: 30px;
+  padding: 20px;
   font-family: Tahoma;
   background: rgb(247, 248, 250);
 }
 
 .pic-index {
-  padding: 50px;
-  column-count: 5;
-  column-gap: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
 }
 
 .pic-index-item {
-  display: inline-block;
-}
-
-.pic-index-container img {
-  display: block;
-  max-width: 100%;
-  object-fit: contain;
-  max-height: fit-content;
+  flex-grow: 1;
+  position: relative;
+  box-sizing: border-box;
 }

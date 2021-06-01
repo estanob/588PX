@@ -100,10 +100,11 @@ class Profile extends React.Component {
             Galleries {galleryCount}
           </button>
         </div>
-        {/* <ul className='profile-pic-index'> */}
-        <ul className='pic-index pics-on-profile'>
-          {profileContent === 'Pictures' ? ownPics : ownGals}
-        </ul>
+        <div className="profile-pic-index">
+          <ul className='pic-index pics-on-profile'>
+            {profileContent === 'Pictures' ? ownPics : ownGals}
+          </ul>
+        </div>
       </div>
     )
   };
