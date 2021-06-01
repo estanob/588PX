@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const GalleryIndexItem = (props) => {
   console.log("Gallery Index Item Props")
   console.log(props)
-  debugger
   const { gallery, pics, currentId }= props;
   currentId ? currentId : '';
   gallery ? gallery : [];
@@ -34,6 +33,7 @@ const GalleryIndexItem = (props) => {
           alt={gallery.title} />
         <p>{gallery.title}</p>
       </Link>
+      <p>{gallery.pics.length} Photos</p>
     </div>
   )
 };

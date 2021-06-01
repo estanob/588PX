@@ -17,7 +17,6 @@ import FourOhFour from './four_oh_four';
 import NewGallery from './gallery/new_gallery';
 import OwnGallery from './gallery/own_gallery';
 import GalleryShowContainer from './gallery/gallery_show_container';
-import GalleryEditFormContainer from './gallery/edit_gallery_form_container';
 import GalleryIndexContainer from './gallery/gallery_index_container';
 import PictureIndexContainer from './pictures/picture_index_container';
 import PictureShowContainer from './pictures/picture_show_container';
@@ -35,12 +34,11 @@ const App = () => {
       <Switch>
         <ProtectedRoute path='/home' component={HomeFeed} />
         <ProtectedRoute path='/upload' component={UploadForm} />
-        <ProtectedRoute path='/gallery/new' component={NewGallery} />
+        <ProtectedRoute path='/galleries/new' component={NewGallery} />
         <ProtectedRoute exact path='/pictures/:id/edit' component={EditPictureFormContainer} />
         <ProtectedRoute exact path='/pictures/:id' component={PictureShowContainer} />
         <ProtectedRoute path='/pictures' component={PictureIndexContainer} />
         <ProtectedRoute exact path='/galleries/own' component={OwnGallery} />
-        <ProtectedRoute exact path='/galleries/:id/edit' component={GalleryEditFormContainer} />
         <ProtectedRoute exact path='/galleries/:id' component={GalleryShowContainer} />
         <ProtectedRoute path='/galleries' component={GalleryIndexContainer} />
         <ProtectedRoute path='/p/:username' component={ProfileContainer} />

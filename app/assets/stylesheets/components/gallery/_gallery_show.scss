@@ -19,7 +19,7 @@
 }
 
 .gallery-show-pics {
-  background-color: rgb(247, 248, 250);
+  background-color: #f7f8fa;
   display: grid;
   column-count: 3;
 }
@@ -43,6 +43,13 @@
   line-height: 120%;
 }
 
+
+.own-gallery {
+  display: flex;
+  width: 12%;
+  margin: 0 auto;
+}
+
 .more-galleries > h4 {
   text-align: center;
   font-size: 36px;
@@ -52,12 +59,18 @@
   line-height: 120%;
 }
 
-.own-gallery {
+.other-galleries {
+  background-color: #f7f8fa;
   display: flex;
-  width: 12%;
-  margin: 0 auto;
+  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  flex-flow: row wrap;
+  align-items: center;
+  column-gap: 1em;
+  object-fit: contain;
+  text-align: center;
 }
 
-// .pics-in-gallery-li > img {
+// .gals-on-profile-li {
 
 // }

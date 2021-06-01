@@ -25,7 +25,6 @@ class PictureIndex extends React.Component {
       )
     })
     pics = pics.sort(() => Math.random() - 0.5);
-    debugger
     return(
       <div className='pic-index-container'>
         <ul className='pic-index'>{pics}</ul>

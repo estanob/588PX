@@ -27,7 +27,7 @@ class GalleryIndex extends React.Component {
         </svg>
         <h1>Curate photos using Galleries</h1>
         <p>Build a Gallery to show off your style or to keep track of what inspires you!</p>
-        <Link to='/gallery/new'
+        <Link to='/galleries/new'
               className='new-gallery'>
           Create New Gallery
         </Link>

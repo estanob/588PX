@@ -38,7 +38,6 @@ class Profile extends React.Component {
   };
 
   render() {
-    debugger
     const { 
       allUsers, 
       users, 
@@ -84,7 +83,6 @@ class Profile extends React.Component {
                 </li>
       }
     });
-    debugger
     return (
       <div className="profile">
         <div className="user-info">
@@ -96,14 +94,14 @@ class Profile extends React.Component {
         </div>
         <div className="profile-nav-tabs">
           <button className={profileContent === 'Pictures' ? 'profile-tab clicked' : 'profile-tab'} onClick={this.togglePictures}>
-            Pictures {picCount}
+            Photos {picCount}
           </button>
           <button className={profileContent === 'Pictures' ? 'profile-tab' : 'profile-tab clicked'} onClick={this.toggleGalleries}>
             Galleries {galleryCount}
           </button>
         </div>
-        <ul className='profile-pic-index'>
-        {/* <ul className='pic-index pics-on-profile'> */}
+        {/* <ul className='profile-pic-index'> */}
+        <ul className='pic-index pics-on-profile'>
           {profileContent === 'Pictures' ? ownPics : ownGals}
         </ul>
       </div>

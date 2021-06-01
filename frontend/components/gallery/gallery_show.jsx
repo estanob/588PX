@@ -1,9 +1,6 @@
 import React from 'react';
 import { Redirect, withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 import PictureIndexPhotos from '../pictures/picture_index_photos';
-import PictureIndexItem from '../pictures/picture_index_item';
-import PictureIndexContainer from '../pictures/picture_index_container';
 import GalleryIndexItem from './gallery_index_item';
 
 class GalleryShow extends React.Component {
@@ -101,7 +98,6 @@ class GalleryShow extends React.Component {
         </div>
         <div className='more-galleries'>
           <p>More Galleries by {creator}</p>
-          <h4>The other galleries will show up here</h4>
           <ul className="other-galleries">
             {ownGals}
           </ul>

@@ -5,7 +5,6 @@ const PictureIndexItem = (props) => {
   console.log(props)
   const { picture, currentId } = props;
   const ownPic = (currentId === picture.uploader_id) ? '#1890ff' : 'black';
-  debugger
   return (
     <div className="individual-pic">
       <Link 

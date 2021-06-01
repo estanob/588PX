@@ -23,8 +23,7 @@ const mSTP = (state) => {
   };
 };
 
-const mDTP = (dispatch, ownProps) => {
-  debugger
+const mDTP = (dispatch) => {
   return {
     createGallery: (gallery) => dispatch(createGallery(gallery)),
     fetchPictures: () => dispatch(fetchPictures()),
