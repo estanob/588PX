@@ -80,7 +80,7 @@ class GalleryShow extends React.Component {
       }
     });
 
-    const twoPlusGals = thisUser.galleries.length > 1 ? 
+    const twoPlusGals = gallery.totalGalsFromUser > 1 ? 
                         <div className='more-galleries'>
                           <p>More Galleries by {creator}</p>
                           <ul className="other-galleries">
