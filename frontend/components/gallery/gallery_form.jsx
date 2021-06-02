@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import Modal from '../modal/modal';
 
 class GalleryForm extends React.Component {
   constructor(props) {
@@ -46,6 +45,10 @@ class GalleryForm extends React.Component {
     } 
   }
 
+  componentWillUnmount() {
+    
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -66,6 +69,7 @@ class GalleryForm extends React.Component {
 
     console.log("Pics to Add")
     console.log(this.picsToAdd)
+    /*
     if (this.props.formType === 'Edit Gallery') {
       this.picsToAdd ? this.picsToAdd : [];
       this.picsToRemove ? this.picsToRemove : [];
@@ -134,11 +138,40 @@ class GalleryForm extends React.Component {
           })
       })
     }
+    */
+
+    if (this.picsToAdd.length > 0) {
+      this.props.createGallery(galForm)
+        .then(() => {
+          const gals = this.props.thisUser.galleries ? this.props.thisUser.galleries : {};
+          const galId = gals[gals.length - 1]
+          console.log("The Gallery Id")
+          console.log(galId)
+          this.picsToAdd.forEach(pic => {
+            debugger
+            const picGalForm = new FormData()
+            picGalForm.set('pictures_to_gallery[picture_id]', pic.id)
+            picGalForm.set('pictures_to_gallery[gallery_id]', galId)
+            debugger
+            this.props.createPicturesToGallery(picGalForm)
+              .then (
+                console.log("Picture Id:"),
+                console.log(pic.id),
+                this.setState({
+                  title: '',
+                  creator_id: '',
+                  pics: this.picsToAdd,
+                  redirect: true,
+                }),
+                console.log("成功喇！！！"),
+              )
+          })
+      })
+    }
     debugger
   };
 
   handleClick(e) {
-    debugger
     this.props.pictures ? this.props.pictures : [];
     const currentGallery = this.props.gallery ? this.props.gallery : {};
     console.log("Pics to Add")
@@ -152,7 +185,6 @@ class GalleryForm extends React.Component {
         console.log(this.picsToAdd)
       })
     } else {
-      debugger
       console.log("Current Gallery")
       console.log(this.props.gallery)
       e.currentTarget.className = 'user-pics'
@@ -164,11 +196,9 @@ class GalleryForm extends React.Component {
       console.log("Pics to Remove")
       console.log(this.picsToRemove)
     }
-    debugger
   }
   
   render() {
-    debugger
     let { thisUser, formType, gallery, pictures } = this.props;
     const { title } = this.state;
     thisUser = thisUser ? thisUser : {};
@@ -183,7 +213,6 @@ class GalleryForm extends React.Component {
     thisUser.pics ? thisUser.pics : [];
     const userPics = pictures.map((picture, i) => {
       if (thisUser.pics.includes(picture.id)) {
-        debugger
         let whichClass = 'user-pics';
         if(gallery.title !== "") {
           gallery.pics.forEach(galPic => {

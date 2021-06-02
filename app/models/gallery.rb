@@ -13,7 +13,7 @@
 #  fk_rails_...  (creator_id => users.id)
 #
 class Gallery < ApplicationRecord
-  validates :title, presence: true
+  validates :title, presence: true, length: { minimum: 2, maximum: 20 }
 
   belongs_to :creator,
     primary_key: :id,
@@ -27,7 +27,6 @@ class Gallery < ApplicationRecord
     dependent: :destroy
 
   has_many :pictures,
-    primary_key: :id,
     through: :pictures_to_galleries,
     source: :picture, 
     dependent: :destroy

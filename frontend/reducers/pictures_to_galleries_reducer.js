@@ -12,10 +12,11 @@ const PicturesToGalleriesReducer = (state = {}, action) => {
       nextState = Object.assign({}, action.pictures_to_galleries)
       return action.pictures_to_galleries;
     case RECEIVE_PICTURES_TO_GALLERY:
-      nextState[action.pictures_to_gallery.id] = action.pictures_to_gallery
+      debugger
+      nextState[action.picturesToGallery.id] = action.picturesToGallery
       return nextState;
     case REMOVE_PICTURES_TO_GALLERY:
-      delete nextState[action.pictures_to_galleryId]
+      delete nextState[action.picturesToGalleryId]
       return nextState;
     default:
       return state;

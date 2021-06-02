@@ -26,10 +26,11 @@ class Picture < ApplicationRecord
   belongs_to :uploader,
     foreign_key: :uploader_id,
     class_name: :User
-
+\
   has_one_attached :photo
 
   has_many :pictures_to_galleries,
+    primary_key: :id,
     foreign_key: :picture_id,
     class_name: :PicturesToGallery,
     dependent: :destroy

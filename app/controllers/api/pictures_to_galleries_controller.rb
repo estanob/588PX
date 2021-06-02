@@ -1,7 +1,6 @@
 class Api::PicturesToGalleriesController < ApplicationController
   
   def create
-    debugger
     # @pictures_to_gallery = PicturesToGallery.new(
     #   picture_id: params[:pictures_to_gallery][:picture_id],
     #   gallery_id: params[:pictures_to_gallery][:gallery_id]
