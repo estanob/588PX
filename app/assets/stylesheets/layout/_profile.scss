@@ -40,10 +40,14 @@ p
 
 .profile-pic-index {
   display: flex;
-  width: 98%;
   height: auto;
-  padding-left: 10px;
+  justify-content: center;
   background-color: #F7F8FA;
+}
+
+.profile-gals {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .pics-on-profile {

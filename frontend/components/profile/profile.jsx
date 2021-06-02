@@ -83,6 +83,8 @@ class Profile extends React.Component {
                 </li>
       }
     });
+
+    const picsOrGals = profileContent === 'Pictures' ? 'profile-pic-index' : 'profile-pic-index profile-gals';
     return (
       <div className="profile">
         <div className="user-info">
@@ -100,8 +102,8 @@ class Profile extends React.Component {
             Galleries {galleryCount}
           </button>
         </div>
-        <div className="profile-pic-index">
-          <ul className='pic-index pics-on-profile'>
+        <div className={picsOrGals}>
+          <ul className='pics-on-profile'>
             {profileContent === 'Pictures' ? ownPics : ownGals}
           </ul>
         </div>

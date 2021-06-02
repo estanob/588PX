@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 
 const FollowersModal = (props) => {
   const { session, thisUser, allUsers, closeModal } = props;

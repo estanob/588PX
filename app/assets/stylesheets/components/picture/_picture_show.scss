@@ -3,11 +3,23 @@
   margin-left: 40px;
 }
 
+.pic-show-container {
+  position: relative;
+}
 .img-container {
   background: black;
-  align-items: center;
-  padding-top: 100px;
-  padding-bottom: 60px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.single-img {
+  display: flex;
+}
+
+.single-img img {
+  width: 80vw;
 }
 
 .img-info {

@@ -11,9 +11,13 @@
 }
 
 .pic-link img {
-  height: 300px;
+  height: 250px;
   min-width: 100%;
   object-fit: cover;
+}
+
+.pic-link img:hover {
+  filter: brightness(50%);
 }
 
 .display-img:hover {

@@ -107,27 +107,31 @@ class PictureShow extends React.Component {
     return(
       <div>
         <HeaderContainer />
-        <div className='img-container'>
-          <img src={picture.photoUrl} alt={picture.title} />
+        <div className='pic-show-container'>
+          <div className='img-container'>
+            <div className='single-img'>
+              <img src={picture.photoUrl} alt={picture.title} />
+            </div>
+          </div>
+          <div className='show img-info'>
+            {ownPicture()}
+            <h1>{picture.title}</h1>
+            <p className='uploader'>
+              by {<Link 
+                    to={`/p/${picture.uploader}`} 
+                    style={{ color: 'black', textDecoration: 'none'}}
+                    className='pic-show-uploader'>
+                      <p>
+                        {`${picture.uploaderName}`}
+                      </p>
+                  </Link>}&nbsp; {otherUploader()}
+            </p>
+            <p>Uploaded: {picture.created_at}</p>
+            <p>Location: {picture.location}</p>
+            <p>{picture.caption ? picture.caption : ''}</p>
+          </div>
+          {redirectToHomeFeed}
         </div>
-        <div className='show img-info'>
-          {ownPicture()}
-          <h1>{picture.title}</h1>
-          <p className='uploader'>
-            by {<Link 
-                  to={`/p/${picture.uploader}`} 
-                  style={{ color: 'black', textDecoration: 'none'}}
-                  className='pic-show-uploader'>
-                    <p>
-                      {`${picture.uploaderName}`}
-                    </p>
-                </Link>}&nbsp; {otherUploader()}
-          </p>
-          <p>Uploaded: {picture.created_at}</p>
-          <p>Location: {picture.location}</p>
-          <p>{picture.caption ? picture.caption : ''}</p>
-        </div>
-        {redirectToHomeFeed}
       </div>
     ) 
   };
