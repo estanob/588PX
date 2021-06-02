@@ -1,25 +1,43 @@
 .gallery-create {
   margin-top: 100px;
+}
+
+.gallery-create > h1 {
+  text-align: center;
+  font-size: 21px;
+  font-family: "Helvetica Neue", HelveticaNeue, 
+                Helvetica, FreeSans, 
+                Arial, sansserif;
+}
+
+.gal-form {
+  padding-top: 20px;
   margin-left: 50px;
 }
 
+.gallery-form-pics {
+  display: flex;
+  justify-content: center;
+}
+
 .create-gallery-pics {
-  width: 80%;
-  height: 80%;
   margin-top: 20px;
   display: flex;
   flex-flow: row wrap;
+  width: 1024px;
 }
 
 .user-pics {
-  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
   flex-grow: 1;
+  margin: 5px;
 }
 
 .user-pics > img {
-  display: inline-block;
-  height: 150px;
-  width: auto;
+  height: 200px;
+  min-width: 100%;
+  object-fit: cover;
 }
 
 .img-clicked > img {

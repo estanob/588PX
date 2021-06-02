@@ -169,14 +169,13 @@ class GalleryForm extends React.Component {
   
   render() {
     debugger
-    let { thisUser, formType, gallery, pictures, galleryImageModal } = this.props;
+    let { thisUser, formType, gallery, pictures } = this.props;
+    const { title } = this.state;
     thisUser = thisUser ? thisUser : {};
     gallery = gallery ? gallery : {};
-    galleryImageModal = galleryImageModal ? galleryImageModal : {};
     gallery.pics ? gallery.pics : {};
     console.log("Current Gallery:")
     console.log(gallery)
-    const { title } = this.state;
     let whichHeader = formType === 'Create Gallery' ? 'Create a New Gallery' : 'Edit Gallery';
     let whatButton = formType === 'Create Gallery' ? 'Create' : 'Save Changes';
     const redirectToGalleryIndex = this.state.redirect;
@@ -207,8 +206,8 @@ class GalleryForm extends React.Component {
     return (
       <div className='gallery-create'>
         <h1>{whichHeader}</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="gallery-title">Gallery Title
+        <form onSubmit={this.handleSubmit} className="gal-form">
+          <label htmlFor="gallery-title">Gallery Title 
             <input type="text"
               id='gallery-title'
               value={title}
@@ -220,10 +219,11 @@ class GalleryForm extends React.Component {
             value={whatButton}
             disabled={title.length < 2} />
         </form>
-        {galleryImageModal}
-        <ul className="create-gallery-pics">
-          {userPics}
-        </ul>
+        <div className='gallery-form-pics'>
+          <ul className="create-gallery-pics">
+            {userPics}
+          </ul>
+        </div>
       </div>
     )
   }
