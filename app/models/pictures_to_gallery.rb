@@ -8,6 +8,10 @@
 #  gallery_id :integer          not null
 #  picture_id :integer          not null
 #
+# Indexes
+#
+#  index_pictures_to_galleries_on_picture_id_and_gallery_id  (picture_id,gallery_id) UNIQUE
+#
 class PicturesToGallery < ApplicationRecord
   validates :gallery_id, :picture_id, presence: true
 

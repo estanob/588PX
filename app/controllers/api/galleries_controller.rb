@@ -10,14 +10,51 @@ class Api::GalleriesController < ApplicationController
     @gallery = Gallery.find_by(id: params[:id])
   end
 
+  # def create
+  #   debugger
+  #   @gallery = Gallery.new(gallery_params)
+  #   @gallery.creator_id = current_user.id
+  #   if @gallery.save
+  #     render :show
+  #   else
+  #     render json: @gallery.errors.full_messages, status:422
+  #   end
+  #   debugger
+  # end
+
+  # def create
+  #   debugger
+  #   @gallery = Gallery.new(
+  #     title: params[:gallery][:title],
+  #     creator_id: params[:gallery][:creator_id])
+
+  #   pic_ids = params[:gallery][:pic_ids]
+
+  #   if @gallery.save! && pic_ids && !pic_ids.empty?
+  #     pic_ids.each do |pic_id|
+  #       pictures_to_gallery_params = {
+  #         gallery_id: @gallery.id,
+  #         picture_id: pic_id.to_i
+  #       }
+  #       PicturesToGallery.create(pictures_to_gallery_params)
+  #     end
+  #     render :show
+  #   else
+  #     render json: @gallery.errors.full_messages, status: 422
+  #   end
+  #   debugger
+  # end
+
   def create
+    debugger
     @gallery = Gallery.new(gallery_params)
     @gallery.creator_id = current_user.id
-    if @gallery && @gallery.save
+    if @gallery.save
       render :show
     else
-      render json: @gallery.errors.full_messages, status:422
+      render json: @gallery.errors.full_messages, status: 422
     end
+    debugger
   end
 
   def update
@@ -30,6 +67,7 @@ class Api::GalleriesController < ApplicationController
     else
       render json: @gallery.errors.full_messages, status: 422
     end
+    debugger
   end
 
   def destroy
@@ -41,6 +79,6 @@ class Api::GalleriesController < ApplicationController
   private
 
   def gallery_params
-    params.require(:gallery).permit(:id, :title, :creator_id)
+    params.require(:gallery).permit(:title, :creator_id)
   end
 end

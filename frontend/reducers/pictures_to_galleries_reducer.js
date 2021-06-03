@@ -9,8 +9,9 @@ const PicturesToGalleriesReducer = (state = {}, action) => {
   let nextState = Object.assign({}, state)
   switch (action.type) {
     case RECEIVE_ALL_PICTURES_TO_GALLERIES:
-      nextState = Object.assign({}, action.pictures_to_galleries)
-      return action.pictures_to_galleries;
+      debugger
+      nextState = Object.assign({}, action.picturesToGalleries)
+      return action.picturesToGalleries;
     case RECEIVE_PICTURES_TO_GALLERY:
       debugger
       nextState[action.picturesToGallery.id] = action.picturesToGallery

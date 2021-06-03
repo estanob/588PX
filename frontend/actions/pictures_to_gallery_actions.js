@@ -4,7 +4,8 @@ export const RECEIVE_ALL_PICTURES_TO_GALLERIES = 'RECEIVE_ALL_PICTURES_TO_GALLER
 export const RECEIVE_PICTURES_TO_GALLERY = 'RECEIVE_PICTURES_TO_GALLERY';
 export const REMOVE_PICTURES_TO_GALLERY = 'REMOVE_PICTURES_TO_GALLERY';
 
-const receivePicturesToGalleries = picturesToGalleries => {
+const receiveAllPicturesToGalleries = picturesToGalleries => {
+  debugger
   return {
     type: RECEIVE_ALL_PICTURES_TO_GALLERIES,
     picturesToGalleries,
@@ -29,7 +30,7 @@ export const fetchPicturesToGalleries = () => dispatch => {
   debugger
   return PicToGalUtil.fetchPicturesToGalleries()
     .then(picturesToGalleries => {
-      dispatch(receivePicturesToGalleries(picturesToGalleries))
+      dispatch(receiveAllPicturesToGalleries(picturesToGalleries))
     })
     .fail(error => console.log(error))
 };

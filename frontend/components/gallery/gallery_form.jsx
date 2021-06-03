@@ -6,17 +6,18 @@ class GalleryForm extends React.Component {
     super(props)
 
     let title = this.props.title ? this.props.title : '';
-    let creator_id = this.props.creator_id ? this.props.creator_id : '';
-    let pics = this.props.gallery ? this.props.gallery.pics : [];
+    let description = this.props.description ? this.props.description : '';
+    let creator_id = this.props.creator_id ? this.props.creator_id : this.props.session;
     this.state = {
       title: title,
+      description: description,
       creator_id: creator_id,
-      redirect: false,
-      pics: pics,
     };
 
+    this.picIds = {};
     this.picsToAdd = [];
     this.picsToRemove = [];
+    this.redirect = false;
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -24,7 +25,8 @@ class GalleryForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchPictures();
-    if (this.props.formType === 'Edit Gallery') this.props.fetchPicturesToGalleries();
+    this.props.fetchGalleries();
+    this.props.fetchPicturesToGalleries();
   }
 
   componentDidUpdate(prevProps) {
@@ -46,7 +48,9 @@ class GalleryForm extends React.Component {
   }
 
   componentWillUnmount() {
-    
+    this.setState = (state, cb) => {
+      return;
+    }
   }
 
   update(field) {
@@ -61,97 +65,26 @@ class GalleryForm extends React.Component {
 
     const galForm = new FormData();
     galForm.append('gallery[title]', this.state.title);
-    if (this.props.formType === 'Edit Gallery') {
-      galForm.set('gallery[pics]', this.state.pics);
-    } else {
-      galForm.append('gallery[pics]', this.state.pics);
-    }
+    galForm.append('gallery[creator_id]', this.props.session);
 
     console.log("Pics to Add")
     console.log(this.picsToAdd)
-    /*
-    if (this.props.formType === 'Edit Gallery') {
-      this.picsToAdd ? this.picsToAdd : [];
-      this.picsToRemove ? this.picsToRemove : [];
-      this.props.gallery ? this.props.gallery.picsToGal : [];
-      console.log("Pics to Gallery")
-      console.log(this.props.gallery.picsToGal)
-      console.log("Removing the pics")
-      console.log(this.picsToRemove)
-      if (this.picsToRemove.length > 0) {
-        debugger
-        this.picsToRemove.forEach(pic => {
-          this.props.gallery.picsToGal.forEach(pTG => {
-            if (pic.id === pTG.picture_id) {
-              debugger
-              this.props.deletePicturesToGallery(pTG)
-            }
-          })
-        })
-      } else if (this.picsToAdd.length > 0) {
-        this.picsToAdd.forEach(pic => {
-          debugger
-          const gals = this.props.thisUser.galleries
-          const galId = gals[gals.length - 1]
-          const picGalForm = new FormData()
-          picGalForm.append('pictures_to_gallery[picture_id]', pic.id)
-          picGalForm.append('pictures_to_gallery[gallery_id]', galId)
-          this.props.createPicturesToGallery(picGalForm)
-          console.log("Picture Id:")
-          console.log(pic.id)
-          console.log("Gallery Id:")
-          console.log(galId)
-        })
-        console.log("Success!")
-      }
-      this.props.updateGallery(galForm)
-        .then(
-          this.setState({
-            title: '',
-            creator_id: '',
-            pics: this.state.pics,
-            redirect: true,
-          })
-        )
-    } else {
-      this.props.createGallery(galForm)
-        .then(() => {
-          this.picsToAdd.forEach(pic => {
-            debugger
-            const gals = this.props.thisUser.galleries ? this.props.thisUser.galleries : {};
-            const galId = gals[gals.length - 1]
-            const picGalForm = new FormData()
-            picGalForm.set('pictures_to_gallery[picture_id]', pic.id)
-            picGalForm.set('pictures_to_gallery[gallery_id]', galId)
-            this.props.createPicturesToGallery(picGalForm)
-              .then (
-                console.log("Picture Id:"),
-                console.log(pic.id),
-                this.setState({
-                  title: '',
-                  creator_id: '',
-                  pics: this.picsToAdd,
-                  redirect: true,
-                }),
-                console.log("成功喇！！！"),
-              )
-          })
-      })
-    }
-    */
 
     if (this.picsToAdd.length > 0) {
       this.props.createGallery(galForm)
-        .then(() => {
-          const gals = this.props.thisUser.galleries ? this.props.thisUser.galleries : {};
-          const galId = gals[gals.length - 1]
-          console.log("The Gallery Id")
-          console.log(galId)
+        .then(gallery => {
+          debugger
+          const gals = this.props.galleries ? this.props.galleries : [];
+          debugger
+          let lastGal = gals[gals.length - 1]
+          let newGalId = lastGal.id + 1
+          console.log("New Gallery ID")
+          console.log(newGalId)
           this.picsToAdd.forEach(pic => {
             debugger
             const picGalForm = new FormData()
-            picGalForm.set('pictures_to_gallery[picture_id]', pic.id)
-            picGalForm.set('pictures_to_gallery[gallery_id]', galId)
+            picGalForm.append('pictures_to_gallery[picture_id]', pic.id)
+            picGalForm.append('pictures_to_gallery[gallery_id]', newGalId)
             debugger
             this.props.createPicturesToGallery(picGalForm)
               .then (
@@ -160,13 +93,13 @@ class GalleryForm extends React.Component {
                 this.setState({
                   title: '',
                   creator_id: '',
-                  pics: this.picsToAdd,
-                  redirect: true,
+                  pics: [],
                 }),
+                this.redirect = true,
                 console.log("成功喇！！！"),
               )
           })
-      })
+        })
     }
     debugger
   };
@@ -197,18 +130,37 @@ class GalleryForm extends React.Component {
       console.log(this.picsToRemove)
     }
   }
+
+  titleError() {
+    return (
+      this.props.errors.map((error, i) => (
+        error.includes('Title') ? <ul className='error' key={i}>{error}</ul> : ''
+      ))
+    )
+  }
   
   render() {
-    let { thisUser, formType, gallery, pictures } = this.props;
-    const { title } = this.state;
+    debugger
+    let { thisUser, formType, gallery, pictures, galleries, errors } = this.props;
+    const { title, description } = this.state;
+    const err = errors.map((error, i) => {
+      return <label key={i}>{error}</label>
+    })
     thisUser = thisUser ? thisUser : {};
+    galleries = galleries ? galleries : [];
+    console.log("All Galleries")
+    console.log(galleries)
+    console.log("Last gallery")
+    let lastGal = galleries[galleries.length - 1];
+    console.log(lastGal)
+    debugger
     gallery = gallery ? gallery : {};
     gallery.pics ? gallery.pics : {};
     console.log("Current Gallery:")
     console.log(gallery)
     let whichHeader = formType === 'Create Gallery' ? 'Create a New Gallery' : 'Edit Gallery';
     let whatButton = formType === 'Create Gallery' ? 'Create' : 'Save Changes';
-    const redirectToGalleryIndex = this.state.redirect;
+    const redirectToGalleryIndex = this.redirect;
     if (redirectToGalleryIndex) return <Redirect to='/galleries' />
     thisUser.pics ? thisUser.pics : [];
     const userPics = pictures.map((picture, i) => {
@@ -235,18 +187,32 @@ class GalleryForm extends React.Component {
     return (
       <div className='gallery-create'>
         <h1>{whichHeader}</h1>
+        <div className="modal-errors">
+          {err}
+        </div>
         <form onSubmit={this.handleSubmit} className="gal-form">
-          <label htmlFor="gallery-title">Gallery Title 
+          <label htmlFor="gallery-title">Title</label>
+          <br/>
             <input type="text"
               id='gallery-title'
               value={title}
               onChange={this.update('title')} />
-          </label>
+          <div className="errors-box">
+            {this.titleError()}
+          </div>
+          <br/>
+          <label htmlFor="gallery-description">Description (optional)</label>
+          <br/>
+            <textarea type="text"
+              id='gallery-description'
+              value={description}
+              onChange={this.update('description')} />
           <br/>
           <input type='submit'
             className='upload-button'
             value={whatButton}
-            disabled={title.length < 2} />
+          />
+            {/* disabled={title.length < 2} /> */}
         </form>
         <div className='gallery-form-pics'>
           <ul className="create-gallery-pics">

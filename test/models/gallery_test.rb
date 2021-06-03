@@ -2,11 +2,12 @@
 #
 # Table name: galleries
 #
-#  id         :bigint           not null, primary key
-#  title      :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  creator_id :integer          not null
+#  id          :bigint           not null, primary key
+#  description :string
+#  title       :string           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  creator_id  :integer          not null
 #
 # Foreign Keys
 #

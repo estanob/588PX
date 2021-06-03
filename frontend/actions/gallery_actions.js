@@ -3,7 +3,7 @@ import * as GalleryAPIUtils from '../util/gallery_api_util';
 export const RECEIVE_ALL_GALLERIES = 'RECEIVE_ALL_GALLERIES';
 export const RECEIVE_GALLERY = 'RECEIVE_GALLERY';
 export const REMOVE_GALLERY = 'REMOVE_GALLERY';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_GALLERY_ERRORS = 'RECEIVE_GALLERY_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 const receiveGalleries = galleries => ({
@@ -22,8 +22,8 @@ const removeGallery = galleryId => ({
 })
 
 export const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS,
-  errors: errors.responseJSON
+  type: RECEIVE_GALLERY_ERRORS,
+  errors
 })
 
 export const clearErrors = () => ({
@@ -48,7 +48,7 @@ export const createGallery = (gallery) => dispatch => {
       dispatch(receiveGallery(createGallery))
       dispatch(clearErrors())
     })
-    .fail(err => dispatch(receiveErrors(err)))
+    .fail(err => dispatch(receiveErrors(err.responseJSON)))
 }
 
 export const updateGallery = (gallery, picsToGal) => dispatch => (
@@ -57,7 +57,7 @@ export const updateGallery = (gallery, picsToGal) => dispatch => (
       dispatch(receiveGallery(updateGallery, updatePTG))
       dispatch(clearErrors())
     })
-    .fail(err => dispatch(receiveErrors(err)))
+    .fail(err => dispatch(receiveErrors(err.responseJSON)))
 )
 
 export const deleteGallery = galleryId => dispatch => (

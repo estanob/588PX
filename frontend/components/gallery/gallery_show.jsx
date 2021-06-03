@@ -18,10 +18,14 @@ class GalleryShow extends React.Component {
     this.props.fetchGallery();
     this.props.fetchGalleries();
     this.props.fetchPictures();
+    this.props.fetchPicturesToGalleries();
   };
   
   handleDelete(e) {
     e.preventDefault();
+    this.props.gallery.picsToGals.forEach(picToGal => {
+      this.props.deletePicturesToGallery(picToGal)
+    })
     this.props.deleteGallery(this.props.gallery.id)
       .then(
         this.setState({

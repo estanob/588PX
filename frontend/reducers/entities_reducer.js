@@ -10,7 +10,7 @@ const entitiesReducer = combineReducers({
   users: UsersReducer,
   pictures: PicturesReducer,
   galleries: GalleriesReducer,
-  picsToGals: PicturesToGalleriesReducer,
+  picturesToGalleries: PicturesToGalleriesReducer,
   follows: FollowsReducer,
   user: ProfileReducer,
 })

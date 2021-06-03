@@ -11,6 +11,7 @@ class GalleryIndex extends React.Component {
     this.props.fetchGalleries();
     this.props.fetchGallery(this.props.galleryId);
     this.props.fetchPictures();
+    this.props.fetchPicturesToGalleries();
   }
   
   render() {
