@@ -15,7 +15,7 @@
 #
 class Gallery < ApplicationRecord
   validates :title, presence: true, length: { minimum: 2, maximum: 30 }
-  validates :description, length: { minimum: 5, maximum: 300 }
+  validates :description, length: { maximum: 300 }
   
   belongs_to :creator,
     primary_key: :id,
