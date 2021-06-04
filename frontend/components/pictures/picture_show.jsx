@@ -59,7 +59,7 @@ class PictureShow extends React.Component {
   };
 
   render() {
-    let { picture, session, users } = this.props;
+    let { picture, session, users, creatorModal, openModal } = this.props;
     picture = picture ? picture : {};
     let currentUser = users[session];
     
@@ -108,6 +108,7 @@ class PictureShow extends React.Component {
       <div>
         <HeaderContainer />
         <div className='pic-show-container'>
+          {creatorModal}
           <div className='img-container'>
             <div className='single-img'>
               <img src={picture.photoUrl} alt={picture.title} />
@@ -117,6 +118,15 @@ class PictureShow extends React.Component {
             {ownPicture()}
             <h1>{picture.title}</h1>
             <p className='uploader'>
+              by&nbsp; {picture.uploader_id === session ? <p>you</p> : <button 
+                    onClick={openModal}
+                    className='pic-uploader'>
+                      <p>
+                        {`${picture.uploaderName}`}
+                      </p>
+                  </button>}&nbsp; {otherUploader()}
+            </p>
+            {/* <p className='uploader'>
               by&nbsp; {picture.uploader_id === session ? <p>you</p> : <Link 
                     to={`/p/${picture.uploader}`} 
                     style={{ color: 'black', textDecoration: 'none'}}
@@ -125,7 +135,7 @@ class PictureShow extends React.Component {
                         {`${picture.uploaderName}`}
                       </p>
                   </Link>}&nbsp; {otherUploader()}
-            </p>
+            </p> */}
             <p>Uploaded: {picture.created_at}</p>
             <p>Location: {picture.location}</p>
             <p>{picture.caption ? picture.caption : ''}</p>

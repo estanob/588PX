@@ -40,7 +40,8 @@ class GalleryShow extends React.Component {
       session, 
       thisUser, 
       galleries, 
-      pictures, 
+      pictures,
+      creatorModal
     } = this.props;
 
     pictures = pictures ? pictures : [];
@@ -97,6 +98,7 @@ class GalleryShow extends React.Component {
 
     return(
       <div className='gallery-show'>
+        {creatorModal}
         <h1>{gallery.title}</h1>
         <p>Curated by {creator}</p>
         {ownGallery()}

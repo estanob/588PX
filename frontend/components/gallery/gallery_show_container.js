@@ -5,6 +5,7 @@ import { fetchUser } from '../../actions/profile_actions';
 import { fetchPictures } from '../../actions/picture_actions';
 import GalleryShow from './gallery_show';
 import { deletePicturesToGallery, fetchPicturesToGalleries } from '../../actions/pictures_to_gallery_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mSTP = ( state, ownProps ) => {
   let gallery = state.entities.galleries ? state.entities.galleries[ownProps.match.params.id] : {};
@@ -13,6 +14,7 @@ const mSTP = ( state, ownProps ) => {
   let session = state.session.id ? state.session.id : '';
   let thisUser = state.entities.users ? state.entities.users[session] : {};
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
+  debugger
   return {
     gallery: gallery,
     galleries: galleries,
@@ -21,6 +23,11 @@ const mSTP = ( state, ownProps ) => {
     session: session,
     thisUser: thisUser,
     picturesToGalleries: Object.values(state.entities.picturesToGalleries),
+    creatorModal: <button 
+                    className='modal-button'
+                    onClick={() => dispatch(openModal('creator'))}>
+                      {gallery.creator}
+                  </button>,
   };
 };
 
@@ -33,6 +40,8 @@ const mDTP = (dispatch, ownProps)=> {
     fetchPictures: () => dispatch(fetchPictures()),
     fetchPicturesToGalleries: () => dispatch(fetchPicturesToGalleries()),
     deletePicturesToGallery: picturesToGallery => dispatch(deletePicturesToGallery(picturesToGallery)),
+    openModal: () => dispatch(openModal()),
+    closeModal: () => dispatch(closeModal()),
   };
 };
 

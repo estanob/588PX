@@ -6,7 +6,15 @@ import FollowingModal from './following_modal';
 import CreatorModal from './creator_modal';
 
 function Modal (props) {
-  const { session, thisUser, allUsers, modal, closeModal } = props;
+  const { 
+    session, 
+    thisUser, 
+    allUsers, 
+    modal, 
+    closeModal, 
+    pictures, 
+    galleries, 
+    openModal, } = props;
   if (!modal) {
     return null;
   }
@@ -30,6 +38,7 @@ function Modal (props) {
       component = <CreatorModal
                     thisUser={thisUser}
                     allUsers={allUsers} 
+                    openModal={openModal}
                     closeModal={closeModal}
                     session={session}
                     pictures={pictures}
