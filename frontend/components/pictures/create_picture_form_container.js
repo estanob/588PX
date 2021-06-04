@@ -5,7 +5,7 @@ import { createPicture } from '../../actions/picture_actions';
 
 const mSTP = (state) => {
   return {
-    errors: state.errors.pictures,
+    errors: state.errors.picture,
     picture: {
       title: '',
       location: '',
