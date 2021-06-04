@@ -53,6 +53,7 @@ p
 .pics-on-profile {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .pics-on-profile-li {
@@ -65,4 +66,5 @@ p
 .gals-on-profile-li {
   display: inline-block;
   margin-right: 5px;
+  margin-bottom: 5px;
 }

@@ -66,19 +66,19 @@ class PictureShow extends React.Component {
     const ownPicture = () => {
       if (session === picture.uploader_id) {
         return (
-          <>
+          <div className='own-pic'>
             <button className='edit-update'>
               <Link 
                 style={{ color: 'white', textDecoration: 'none' }} 
                 to={`/pictures/${picture.id}/edit`} >
                   <p>Edit</p>
               </Link>
-            </button>
+            </button>&nbsp;
             <button 
               className='edit-delete' 
               onClick={this.handleDelete}>Delete
             </button>
-          </>
+          </div>
         )
       }
     };
@@ -117,7 +117,7 @@ class PictureShow extends React.Component {
             {ownPicture()}
             <h1>{picture.title}</h1>
             <p className='uploader'>
-              by {<Link 
+              by&nbsp; {picture.uploader_id === session ? <p>you</p> : <Link 
                     to={`/p/${picture.uploader}`} 
                     style={{ color: 'black', textDecoration: 'none'}}
                     className='pic-show-uploader'>

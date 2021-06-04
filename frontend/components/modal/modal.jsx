@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import FollowersModal from './followers_modal';
 import FollowingModal from './following_modal';
+import CreatorModal from './creator_modal';
 
 function Modal (props) {
   const { session, thisUser, allUsers, modal, closeModal } = props;
@@ -25,6 +26,15 @@ function Modal (props) {
                     closeModal={closeModal}
                     session={session} />;
       break;
+    case 'creator':
+      component = <CreatorModal
+                    thisUser={thisUser}
+                    allUsers={allUsers} 
+                    closeModal={closeModal}
+                    session={session}
+                    pictures={pictures}
+                    galleries={galleries} />;
+      break;
     default:
       return null;
   }
@@ -42,11 +52,15 @@ const mSTP = state => {
   const allUsers = state.entities.user ? Object.values(state.entities.user) : {};
   const thisUser = state.entities.users ? state.entities.users : {};
   const session = state.session.id ? state.session.id : '';
+  const pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
+  const galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
   return {
     modal: state.ui.modal,
     allUsers: allUsers,
     thisUser: thisUser,
     session: session,
+    pictures: pictures,
+    galleries: galleries,
   };
 };
 

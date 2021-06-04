@@ -5,7 +5,6 @@ export const RECEIVE_PICTURES_TO_GALLERY = 'RECEIVE_PICTURES_TO_GALLERY';
 export const REMOVE_PICTURES_TO_GALLERY = 'REMOVE_PICTURES_TO_GALLERY';
 
 const receiveAllPicturesToGalleries = picturesToGalleries => {
-  debugger
   return {
     type: RECEIVE_ALL_PICTURES_TO_GALLERIES,
     picturesToGalleries,
@@ -27,7 +26,6 @@ const removePicturesToGallery = picturesToGallery => {
 };
 
 export const fetchPicturesToGalleries = () => dispatch => {
-  debugger
   return PicToGalUtil.fetchPicturesToGalleries()
     .then(picturesToGalleries => {
       dispatch(receiveAllPicturesToGalleries(picturesToGalleries))
@@ -43,7 +41,6 @@ export const createPicturesToGallery = picturesToGallery => dispatch => {
 };
 
 export const deletePicturesToGallery = picturesToGallery => dispatch => {
-  debugger
   console.log("PTG to delete")
   console.log(picturesToGallery)
   return PicToGalUtil.deletePicturesToGallery(picturesToGallery)
