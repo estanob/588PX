@@ -2,12 +2,19 @@ import React from 'react';
 import { Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import HeaderContainer from '../header/header_container';
+import TestModal from '../modal/test_modal';
+
+const TEST_MODAL_STYLE = {
+  position: 'relative',
+  zIndex: 1
+}
 
 class PictureShow extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      showModal: false,
       redirectToHomeFeed: false,
     }
 
@@ -19,6 +26,7 @@ class PictureShow extends React.Component {
   componentDidMount() {
     this.props.fetchAllUsers();
     this.props.fetchPicture();
+    this.props.fetchPictures();
   };
 
   handleDelete(e) {
@@ -59,7 +67,14 @@ class PictureShow extends React.Component {
   };
 
   render() {
-    let { picture, session, users, creatorModal, openModal } = this.props;
+    let { 
+      picture, 
+      session, 
+      users, 
+      creatorModal, 
+      openModal, 
+      closeModal } = this.props;
+    let { showModal } = this.state;
     picture = picture ? picture : {};
     let currentUser = users[session];
     
@@ -103,12 +118,15 @@ class PictureShow extends React.Component {
 
     const redirectToHomeFeed = this.state.redirectToHomeFeed;
     if (redirectToHomeFeed) return <Redirect to='/home' />
+    // if (showModal) return <CreatorModal 
+    //                         showModal={showModal} 
+    //                         closeModal={closeModal} 
+    //                         creator={picture.uploader} />
 
     return(
       <div>
         <HeaderContainer />
         <div className='pic-show-container'>
-          {creatorModal}
           <div className='img-container'>
             <div className='single-img'>
               <img src={picture.photoUrl} alt={picture.title} />
@@ -118,24 +136,14 @@ class PictureShow extends React.Component {
             {ownPicture()}
             <h1>{picture.title}</h1>
             <p className='uploader'>
-              by&nbsp; {picture.uploader_id === session ? <p>you</p> : <button 
-                    onClick={openModal}
-                    className='pic-uploader'>
-                      <p>
-                        {`${picture.uploaderName}`}
-                      </p>
-                  </button>}&nbsp; {otherUploader()}
+              by&nbsp; {picture.uploader_id === session ? <p>you</p> : 
+                <div><button onClick={() => this.setState({ showModal: true })}>{picture.uploaderName}</button>&nbsp; {otherUploader()}</div>}
+                <TestModal 
+                  creator={picture.uploaderName}
+                  userName={picture.uploader}
+                  showModal={showModal} 
+                  closeModal={() => this.setState({ showModal: false })} />
             </p>
-            {/* <p className='uploader'>
-              by&nbsp; {picture.uploader_id === session ? <p>you</p> : <Link 
-                    to={`/p/${picture.uploader}`} 
-                    style={{ color: 'black', textDecoration: 'none'}}
-                    className='pic-show-uploader'>
-                      <p>
-                        {`${picture.uploaderName}`}
-                      </p>
-                  </Link>}&nbsp; {otherUploader()}
-            </p> */}
             <p>Uploaded: {picture.created_at}</p>
             <p>Location: {picture.location}</p>
             <p>{picture.caption ? picture.caption : ''}</p>

@@ -7,14 +7,14 @@ import CreatorModal from './creator_modal';
 
 function Modal (props) {
   const { 
+    creator,
     session, 
-    thisUser, 
+    thisUser,
     allUsers, 
     modal, 
     closeModal, 
     pictures, 
-    galleries, 
-    openModal, } = props;
+    galleries, } = props;
   if (!modal) {
     return null;
   }
@@ -34,16 +34,15 @@ function Modal (props) {
                     closeModal={closeModal}
                     session={session} />;
       break;
-    case 'creator':
-      component = <CreatorModal
-                    thisUser={thisUser}
-                    allUsers={allUsers} 
-                    openModal={openModal}
-                    closeModal={closeModal}
-                    session={session}
-                    pictures={pictures}
-                    galleries={galleries} />;
-      break;
+    // case 'creator':
+    //   component = <CreatorModal
+    //                 creator={creator}
+    //                 allUsers={allUsers} 
+    //                 closeModal={closeModal}
+    //                 session={session}
+    //                 pictures={pictures}
+    //                 galleries={galleries} />;
+    //   break;
     default:
       return null;
   }
@@ -65,6 +64,7 @@ const mSTP = state => {
   const galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
   return {
     modal: state.ui.modal,
+    creator: '',
     allUsers: allUsers,
     thisUser: thisUser,
     session: session,

@@ -41,6 +41,7 @@ class GalleryShow extends React.Component {
       thisUser, 
       galleries, 
       pictures,
+      openModal,
       creatorModal
     } = this.props;
 
@@ -100,7 +101,14 @@ class GalleryShow extends React.Component {
       <div className='gallery-show'>
         {creatorModal}
         <h1>{gallery.title}</h1>
-        <p>Curated by {creator}</p>
+        <p>Curated by&nbsp; {gallery.creator === session ? <p>you</p> : <button 
+                                                                          onClick={openModal} 
+                                                                          className={'gal-creator'}
+                                                                          creator={creator}>
+                                                                            {creator}
+                                                                        </button>}
+        </p>
+        {/* <p>Curated by {creator}</p> */}
         {ownGallery()}
         <div className='gallery-show-pics'>
           <ul className='pics-in-gallery'>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PictureForm from './picture_form';
 
 class EditPictureForm extends React.Component {
-  constructor(props) {
+  constructor(props) {3
     super(props);
 
     this.state = {
