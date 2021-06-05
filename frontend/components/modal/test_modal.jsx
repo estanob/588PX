@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function TestModal (props) {
-  let { userName, creator, showModal, closeModal } = props;
+  let { userName, creator, showModal, closeModal, modalContent } = props;
   if (!showModal) return null;
+  console.log("Test Modal's Props")
+  console.log(props)
+  let content = modalContent === 'pics' ? <p>pics</p> : <p>gals</p>;
+  const toggleContent = () => {
+    if (modalContent === 'pics') {
+      modalContent = 'gals'
+    } else {
+      modalContent = 'pics'
+    }
+  }
   return (
     <div className="modal-background">
       <div className='crt-mdl'>
@@ -12,7 +22,9 @@ export default function TestModal (props) {
           </svg>
         </button>
         <div className="crt-mdl-content">
+          <button onClick={toggleContent()}>Toggle Pics vs Gals</button>
           ({creator}) {userName}'s Content:
+          {content}
         </div>
       </div>
     </div>

@@ -27,6 +27,7 @@ class PictureShow extends React.Component {
     this.props.fetchAllUsers();
     this.props.fetchPicture();
     this.props.fetchPictures();
+    this.props.fetchGalleries();
   };
 
   handleDelete(e) {
@@ -70,12 +71,16 @@ class PictureShow extends React.Component {
     let { 
       picture, 
       session, 
+      pictures,
+      galleries,
       users, 
       creatorModal, 
       openModal, 
       closeModal } = this.props;
     let { showModal } = this.state;
     picture = picture ? picture : {};
+    pictures = pictures ? pictures : {};
+    galleries = galleries ? galleries : {};
     let currentUser = users[session];
     
     const ownPicture = () => {
@@ -116,6 +121,20 @@ class PictureShow extends React.Component {
       }
     };
 
+    const otherPics = [];
+     pictures.filter(pic => {
+      if (pic.id !== picture.id && pic.uploader_id === picture.uploader_id) {
+        otherPics.push(pic)
+      }
+    })
+
+    const creatorGals = [] 
+    galleries.filter(gal => {
+      if (gal.creator_id === picture.uploader_id) {
+        creatorGals.push(gal)
+      }
+    })
+
     const redirectToHomeFeed = this.state.redirectToHomeFeed;
     if (redirectToHomeFeed) return <Redirect to='/home' />
     // if (showModal) return <CreatorModal 
@@ -141,6 +160,9 @@ class PictureShow extends React.Component {
                 <TestModal 
                   creator={picture.uploaderName}
                   userName={picture.uploader}
+                  modalContent={'pics'}
+                  pics={otherPics}
+                  galleries={creatorGals}
                   showModal={showModal} 
                   closeModal={() => this.setState({ showModal: false })} />
             </p>
