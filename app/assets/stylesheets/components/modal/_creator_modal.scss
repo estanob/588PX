@@ -17,3 +17,20 @@
   display: flex;
   justify-content: center;
 }
+
+.crt-mdl-pics {
+  background-color: #f7f8fa;
+  padding: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.crt-mdl-pic-li {
+  flex-grow: 1;
+  height: 100px;
+}
+
+.crt-mdl-pic-li img {
+  height: 100px;
+}

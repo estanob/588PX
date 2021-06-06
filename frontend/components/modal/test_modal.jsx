@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 
 export default function TestModal (props) {
-  let [whichContent, setWhichContent] = useState('pics');
+  let [whichContent, setWhichContent] = useState('');
+  console.log("Which Content?")
+  console.log(whichContent)
   let { 
     userName, 
     owner,
@@ -15,30 +17,49 @@ export default function TestModal (props) {
   console.log("Test Modal's Props")
   console.log(props)
   users = users ? users : [];
-  let picsOrGals = whichContent === 'pics' ? 'gals' : 'pics';
-  let userGals = galleries.length;
-  let userPics = pics.length;
-  let modalPics = [];
+  let modalPics = pics.map((pic, i) => {
+    return (
+      <li key={i} className="crt-mdl-pic-li">
+        <img src={pic.photoUrl} alt={pic.title} />
+      </li>
+    )
+  });
   let modalGals = [];
   let modalFollowers = users.map((usr, i) => {
     if (owner.followers.includes(usr.id)) {
+      return <li key={i} className="crt-mdl-follows-li">{usr.username}</li>
+    }
+  });
+  let modalFollowing = users.map((usr, i) => {
+    if (owner.followees.includes(usr.id)) {
       return <li className="crt-mdl-follows-li">{usr.username}</li>
     }
   });
-  let modalFollowing = [];
   const modalContent = () => {
     if (whichContent === 'pics') {
-      return <p>Pics</p>
+      return (
+        <ul className="crt-mdl-pics">
+          {modalPics}
+        </ul>
+      )
     } else if (whichContent === 'gals') {
       return <p>Gals</p>
     } else if (whichContent === 'followers') {
       return (
         <ul className="crt-mdl-flrs">
+          <h1>Followers:</h1>
           {modalFollowers}
         </ul>
       )
+    } else if (whichContent === 'following') {
+      return (
+        <ul className="crt-mdl-flrs">
+          <h1>Following:</h1>
+          {modalFollowing}
+        </ul>
+      )
     } else {
-      return <p>Following</p>
+      return ''
     }
   }
   return (
@@ -50,22 +71,18 @@ export default function TestModal (props) {
           </svg>
         </button>
         <div className="crt-mdl-content">
-          <button onClick={() => setWhichContent(picsOrGals)}>Toggle Pics vs Gals</button>
           ({creator}) {userName}'s Information and Posts:
           <div className='crt-mdl-follows'>
-            <button>
+            <button onClick={() => setWhichContent('followers')}>
               <p>{`${owner.followers.length} Followers`}</p>&nbsp;
             </button>
-            <button>
+            <button onClick={() => setWhichContent('following')}>
               <p>{`${owner.followees.length} Following`}</p>
             </button>
           </div>
-          {whichContent === 'pics' ? <p>{`${userPics} Pictures`}</p> : <p>{`${userGals} Galleries`}</p>} 
           <p>Another Test</p>
           <button onClick={() => setWhichContent('pics')}>Pictures Toggle</button>
           <button onClick={() => setWhichContent('gals')}>Galleries Toggle</button>
-          <button onClick={() => setWhichContent('followers')}>Followers Toggle</button>
-          <button onClick={() => setWhichContent('following')}>Following Toggle</button>
           {modalContent()}
         </div>
       </div>
