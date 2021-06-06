@@ -13,19 +13,6 @@ export default function TestModal (props) {
   if (!showModal) return null;
   console.log("Test Modal's Props")
   console.log(props)
-  // const toggleContent = () => {
-  //   if (whichContent === 'pics') {
-  //     whichContent = 'gals'
-  //     console.log("Which Content")
-  //     console.log(whichContent)
-  //     return;
-  //   } else {
-  //     whichContent = 'pics'
-  //     console.log("Which Content")
-  //     console.log(whichContent)
-  //     return;
-  //   }
-  // }
 
   let picsOrGals = whichContent === 'pics' ? 'gals' : 'pics';
   let userGals = galleries.length;
@@ -40,7 +27,6 @@ export default function TestModal (props) {
         </button>
         <div className="crt-mdl-content">
           <button onClick={() => setWhichContent(picsOrGals)}>Toggle Pics vs Gals</button>
-          {/* <button onClick={toggleContent()}>Toggle Pics vs Gals</button> */}
           ({creator}) {userName}'s Content:
           {whichContent === 'pics' ? <p>{`${userPics} Pictures`}</p> : <p>{`${userGals} Galleries`}</p>} 
         </div>

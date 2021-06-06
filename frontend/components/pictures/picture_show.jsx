@@ -121,26 +121,22 @@ class PictureShow extends React.Component {
       }
     };
 
-    const otherPics = [];
+    const userPics = [];
      pictures.filter(pic => {
-      if (pic.id !== picture.id && pic.uploader_id === picture.uploader_id) {
-        otherPics.push(pic)
+      if (pic.uploader_id === picture.uploader_id) {
+        userPics.push(pic)
       }
-    })
+    });
 
-    const creatorGals = [] 
+    const creatorGals = [];
     galleries.filter(gal => {
       if (gal.creator_id === picture.uploader_id) {
         creatorGals.push(gal)
       }
-    })
+    });
 
     const redirectToHomeFeed = this.state.redirectToHomeFeed;
     if (redirectToHomeFeed) return <Redirect to='/home' />
-    // if (showModal) return <CreatorModal 
-    //                         showModal={showModal} 
-    //                         closeModal={closeModal} 
-    //                         creator={picture.uploader} />
 
     return(
       <div>
@@ -160,8 +156,7 @@ class PictureShow extends React.Component {
                 <TestModal 
                   creator={picture.uploaderName}
                   userName={picture.uploader}
-                  modalContent={'pics'}
-                  pics={otherPics}
+                  pics={userPics}
                   galleries={creatorGals}
                   showModal={showModal} 
                   closeModal={() => this.setState({ showModal: false })} />

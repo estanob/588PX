@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, withRouter } from 'react-router';
+import TestModal from '../modal/test_modal';
 import PictureIndexPhotos from '../pictures/picture_index_photos';
 import GalleryIndexItem from './gallery_index_item';
 
@@ -8,6 +9,7 @@ class GalleryShow extends React.Component {
     super(props)
 
     this.state = {
+      showModal: false,
       redirectToGalleryIndex: false,
     }
 
@@ -44,6 +46,7 @@ class GalleryShow extends React.Component {
       openModal,
       creatorModal
     } = this.props;
+    let { showModal } = this.state;
 
     pictures = pictures ? pictures : [];
     gallery = gallery ? gallery : {};
@@ -60,6 +63,7 @@ class GalleryShow extends React.Component {
              </li>
       }
     })
+
     const ownGallery = () => {
       if (session === gallery.creator_id) {
         return (
@@ -73,7 +77,7 @@ class GalleryShow extends React.Component {
       }
     };
 
-    const ownGals = galleries.map((gal, i) => {
+    const otherGals = galleries.map((gal, i) => {
       if (gal.id !== gallery.id && gal.creator_id === gallery.creator_id) {
         return (
           <li className="gals-on-profile-li" key={i}>
@@ -90,9 +94,23 @@ class GalleryShow extends React.Component {
                         <div className='more-galleries'>
                           <p>More Galleries by {creator}</p>
                           <ul className="other-galleries">
-                            {ownGals}
+                            {otherGals}
                           </ul>
                         </div> : '';
+
+    const creatorPics = [];
+     pictures.filter(pic => {
+      if (pic.uploader_id === gallery.creator_id) {
+        creatorPics.push(pic)
+      }
+    });
+
+    const ownGals = [];
+     galleries.filter(gal => {
+      if (gal.creator_id === gallery.creator_id) {
+        ownGals.push(gal)
+      }
+    });
 
     const redirectToGalleryIndex = this.state.redirectToGalleryIndex;
     if (redirectToGalleryIndex) return <Redirect to='/home' />
@@ -102,11 +120,18 @@ class GalleryShow extends React.Component {
         {creatorModal}
         <h1>{gallery.title}</h1>
         <p>Curated by&nbsp; {gallery.creator === session ? <p>you</p> : <button 
-                                                                          onClick={openModal} 
+                                                                          onClick={() => this.setState({ showModal: true })} 
                                                                           className={'gal-creator'}
                                                                           creator={creator}>
                                                                             {creator}
                                                                         </button>}
+          <TestModal
+            creator={creator}
+            userName={gallery.creatorUsername}
+            pics={creatorPics}
+            galleries={ownGals}
+            showModal={showModal}
+            closeModal={() => this.setState({ showModal: false })} />
         </p>
         {/* <p>Curated by {creator}</p> */}
         {ownGallery()}
