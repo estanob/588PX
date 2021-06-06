@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function TestModal (props) {
   let [whichContent, setWhichContent] = useState('');
@@ -20,7 +21,9 @@ export default function TestModal (props) {
   let modalPics = pics.map((pic, i) => {
     return (
       <li key={i} className="crt-mdl-pic-li">
-        <img src={pic.photoUrl} alt={pic.title} />
+        <Link to={`/pictures/${pic.id}`}>
+          <img src={pic.photoUrl} alt={pic.title} />
+        </Link>
       </li>
     )
   });

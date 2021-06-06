@@ -34,3 +34,7 @@
 .crt-mdl-pic-li img {
   height: 100px;
 }
+
+.crt-mdl-pic-li img:hover {
+  filter: brightness(50%);
+}

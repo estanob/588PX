@@ -69,17 +69,20 @@ class PictureShow extends React.Component {
       pictures,
       galleries,
       users, 
+      currentUser,
       picUploader,
       thisUser,
       creatorModal, 
       openModal, 
       closeModal } = this.props;
     let { showModal } = this.state;
+    console.log("Pic Show Props")
+    console.log(this.props)
     picture = picture ? picture : {};
     pictures = pictures ? pictures : {};
+    users = users ? users : [];
     galleries = galleries ? galleries : {};
-    let currentUser = users[session];
-    
+    debugger
     const ownPicture = () => {
       if (session === picture.uploader_id) {
         return (
