@@ -1,18 +1,35 @@
 import React, { useState } from 'react'
 
 export default function TestModal (props) {
-  let { userName, creator, showModal, closeModal, modalContent } = props;
+  let [whichContent, setWhichContent] = useState('pics');
+  let { 
+    userName, 
+    creator, 
+    showModal, 
+    closeModal, 
+    modalContent, 
+    galleries, 
+    pics } = props;
   if (!showModal) return null;
   console.log("Test Modal's Props")
   console.log(props)
-  let content = modalContent === 'pics' ? <p>pics</p> : <p>gals</p>;
-  const toggleContent = () => {
-    if (modalContent === 'pics') {
-      modalContent = 'gals'
-    } else {
-      modalContent = 'pics'
-    }
-  }
+  // const toggleContent = () => {
+  //   if (whichContent === 'pics') {
+  //     whichContent = 'gals'
+  //     console.log("Which Content")
+  //     console.log(whichContent)
+  //     return;
+  //   } else {
+  //     whichContent = 'pics'
+  //     console.log("Which Content")
+  //     console.log(whichContent)
+  //     return;
+  //   }
+  // }
+
+  let picsOrGals = whichContent === 'pics' ? 'gals' : 'pics';
+  let userGals = galleries.length;
+  let userPics = pics.length;
   return (
     <div className="modal-background">
       <div className='crt-mdl'>
@@ -22,9 +39,10 @@ export default function TestModal (props) {
           </svg>
         </button>
         <div className="crt-mdl-content">
-          <button onClick={toggleContent()}>Toggle Pics vs Gals</button>
+          <button onClick={() => setWhichContent(picsOrGals)}>Toggle Pics vs Gals</button>
+          {/* <button onClick={toggleContent()}>Toggle Pics vs Gals</button> */}
           ({creator}) {userName}'s Content:
-          {content}
+          {whichContent === 'pics' ? <p>{`${userPics} Pictures`}</p> : <p>{`${userGals} Galleries`}</p>} 
         </div>
       </div>
     </div>
