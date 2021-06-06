@@ -13,7 +13,7 @@ const mSTP = ( state, ownProps ) => {
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
   let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
   let creator = picture ? picture.uploader_id : '';
-  let users = state.entities.user ? state.entities.user : {};
+  let users = state.entities.user ? Object.values(state.entities.user) : {};
   let picUploader = state.entities.users ? state.entities.users[creator] : {};
   return {
     picture: picture,

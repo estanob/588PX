@@ -6,6 +6,7 @@ export default function TestModal (props) {
     userName, 
     owner,
     creator, 
+    users,
     showModal, 
     closeModal, 
     galleries, 
@@ -13,19 +14,29 @@ export default function TestModal (props) {
   if (!showModal) return null;
   console.log("Test Modal's Props")
   console.log(props)
-  
+  users = users ? users : [];
   let picsOrGals = whichContent === 'pics' ? 'gals' : 'pics';
   let userGals = galleries.length;
   let userPics = pics.length;
-  const modalPics = [];
-  const modalGals = [];
+  let modalPics = [];
+  let modalGals = [];
+  let modalFollowers = users.map((usr, i) => {
+    if (owner.followers.includes(usr.id)) {
+      return <li className="crt-mdl-follows-li">{usr.username}</li>
+    }
+  });
+  let modalFollowing = [];
   const modalContent = () => {
     if (whichContent === 'pics') {
       return <p>Pics</p>
     } else if (whichContent === 'gals') {
       return <p>Gals</p>
     } else if (whichContent === 'followers') {
-      return <p>Followers</p>
+      return (
+        <ul className="crt-mdl-flrs">
+          {modalFollowers}
+        </ul>
+      )
     } else {
       return <p>Following</p>
     }

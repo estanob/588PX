@@ -155,6 +155,7 @@ class PictureShow extends React.Component {
                   owner={picUploader}
                   userName={picture.uploader}
                   pics={userPics}
+                  users={users}
                   galleries={creatorGals}
                   showModal={showModal} 
                   closeModal={() => this.setState({ showModal: false })} />

@@ -45,6 +45,7 @@ class GalleryShow extends React.Component {
       galleries, 
       pictures,
       galCreator,
+      users,
       openModal,
       creatorModal
     } = this.props;
@@ -132,6 +133,7 @@ class GalleryShow extends React.Component {
             owner={galCreator}
             userName={gallery.creatorUsername}
             pics={creatorPics}
+            users={users}
             galleries={ownGals}
             showModal={showModal}
             closeModal={() => this.setState({ showModal: false })} />

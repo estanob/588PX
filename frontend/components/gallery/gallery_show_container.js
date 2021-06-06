@@ -11,7 +11,7 @@ const mSTP = ( state, ownProps ) => {
   let gallery = state.entities.galleries ? state.entities.galleries[ownProps.match.params.id] : {};
   let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
   let creator = gallery ? gallery.creator_id : '';
-  let users = state.entities.user ? state.entities.user : [];
+  let users = state.entities.user ? Object.values(state.entities.user) : [];
   let galCreator = state.entities.user ? state.entities.user[creator] : [];
   let session = state.session.id ? state.session.id : '';
   let thisUser = state.entities.users ? state.entities.users[session] : {};
