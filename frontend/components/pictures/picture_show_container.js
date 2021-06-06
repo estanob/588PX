@@ -8,15 +8,17 @@ import PictureShow from './picture_show';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mSTP = ( state, ownProps ) => {
+  let session = state.session.id ? state.session.id : '';
   let picture = state.entities.pictures ? state.entities.pictures[ownProps.match.params.id] : {};
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
   let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
   let creator = picture ? picture.uploader_id : '';
-  let users = state.entities.users ? state.entities.users : {};
-  let session = state.session.id ? state.session.id : '';
+  let users = state.entities.user ? state.entities.user : {};
+  let picUploader = state.entities.users ? state.entities.users[creator] : {};
   return {
     picture: picture,
     pictures: pictures,
+    picUploader: picUploader,
     galleries: galleries,
     creator: creator,
     users: users,

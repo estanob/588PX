@@ -20,6 +20,7 @@ class GalleryShow extends React.Component {
     this.props.fetchGallery();
     this.props.fetchGalleries();
     this.props.fetchPictures();
+    this.props.fetchAllUsers();
     this.props.fetchPicturesToGalleries();
   };
   
@@ -43,6 +44,7 @@ class GalleryShow extends React.Component {
       thisUser, 
       galleries, 
       pictures,
+      galCreator,
       openModal,
       creatorModal
     } = this.props;
@@ -127,6 +129,7 @@ class GalleryShow extends React.Component {
                                                                         </button>}
           <TestModal
             creator={creator}
+            owner={galCreator}
             userName={gallery.creatorUsername}
             pics={creatorPics}
             galleries={ownGals}

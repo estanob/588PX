@@ -4,11 +4,6 @@ import { Link } from 'react-router-dom';
 import HeaderContainer from '../header/header_container';
 import TestModal from '../modal/test_modal';
 
-const TEST_MODAL_STYLE = {
-  position: 'relative',
-  zIndex: 1
-}
-
 class PictureShow extends React.Component {
   constructor(props) {
     super(props)
@@ -74,6 +69,8 @@ class PictureShow extends React.Component {
       pictures,
       galleries,
       users, 
+      picUploader,
+      thisUser,
       creatorModal, 
       openModal, 
       closeModal } = this.props;
@@ -155,6 +152,7 @@ class PictureShow extends React.Component {
                 <div><button onClick={() => this.setState({ showModal: true })}>{picture.uploaderName}</button>&nbsp; {otherUploader()}</div>}
                 <TestModal 
                   creator={picture.uploaderName}
+                  owner={picUploader}
                   userName={picture.uploader}
                   pics={userPics}
                   galleries={creatorGals}

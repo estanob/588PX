@@ -4,19 +4,32 @@ export default function TestModal (props) {
   let [whichContent, setWhichContent] = useState('pics');
   let { 
     userName, 
+    owner,
     creator, 
     showModal, 
     closeModal, 
-    modalContent, 
     galleries, 
     pics } = props;
   if (!showModal) return null;
   console.log("Test Modal's Props")
   console.log(props)
-
+  
   let picsOrGals = whichContent === 'pics' ? 'gals' : 'pics';
   let userGals = galleries.length;
   let userPics = pics.length;
+  const modalPics = [];
+  const modalGals = [];
+  const modalContent = () => {
+    if (whichContent === 'pics') {
+      return <p>Pics</p>
+    } else if (whichContent === 'gals') {
+      return <p>Gals</p>
+    } else if (whichContent === 'followers') {
+      return <p>Followers</p>
+    } else {
+      return <p>Following</p>
+    }
+  }
   return (
     <div className="modal-background">
       <div className='crt-mdl'>
@@ -27,8 +40,22 @@ export default function TestModal (props) {
         </button>
         <div className="crt-mdl-content">
           <button onClick={() => setWhichContent(picsOrGals)}>Toggle Pics vs Gals</button>
-          ({creator}) {userName}'s Content:
+          ({creator}) {userName}'s Information and Posts:
+          <div className='crt-mdl-follows'>
+            <button>
+              <p>{`${owner.followers.length} Followers`}</p>&nbsp;
+            </button>
+            <button>
+              <p>{`${owner.followees.length} Following`}</p>
+            </button>
+          </div>
           {whichContent === 'pics' ? <p>{`${userPics} Pictures`}</p> : <p>{`${userGals} Galleries`}</p>} 
+          <p>Another Test</p>
+          <button onClick={() => setWhichContent('pics')}>Pictures Toggle</button>
+          <button onClick={() => setWhichContent('gals')}>Galleries Toggle</button>
+          <button onClick={() => setWhichContent('followers')}>Followers Toggle</button>
+          <button onClick={() => setWhichContent('following')}>Following Toggle</button>
+          {modalContent()}
         </div>
       </div>
     </div>
