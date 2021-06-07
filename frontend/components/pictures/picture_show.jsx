@@ -19,6 +19,7 @@ class PictureShow extends React.Component {
   };
 
   componentDidMount() {
+    this.props.fetchUser(this.props.session);
     this.props.fetchAllUsers();
     this.props.fetchPicture();
     this.props.fetchPictures();
@@ -72,16 +73,18 @@ class PictureShow extends React.Component {
       currentUser,
       picUploader,
       thisUser,
-      creatorModal, 
-      openModal, 
+      followingIds,
       closeModal } = this.props;
-    let { showModal } = this.state;
+    let { showModal, redirectToHomeFeed } = this.state;
+    picture = picture ? picture : {};
+    users = users ? users : [];
+    session = session ? session : '';
+    currentUser = currentUser ? currentUser : {};
+    thisUser = thisUser ? thisUser : {};
+    pictures = pictures ? pictures : {};
+    galleries = galleries ? galleries : {};
     console.log("Pic Show Props")
     console.log(this.props)
-    picture = picture ? picture : {};
-    pictures = pictures ? pictures : {};
-    users = users ? users : [];
-    galleries = galleries ? galleries : {};
     debugger
     const ownPicture = () => {
       if (session === picture.uploader_id) {
@@ -103,23 +106,41 @@ class PictureShow extends React.Component {
       }
     };
 
+    // const otherUploader = () => {
+    //   if (picture.uploader_id !== session) {
+    //     if (!currentUser.followees.includes(picture.uploader_id)) {
+    //       return <button 
+    //                 className='follow-button' 
+    //                 onClick={this.handleNewFollow}>Follow
+    //               </button>;
+    //     } else {
+    //       return <button 
+    //                 className='follow-button' 
+    //                 onClick={this.handleUnfollow}>Unfollow
+    //               </button>;
+    //     }
+    //   } else {
+    //     return '';
+    //   }
+    // };
+
     const otherUploader = () => {
-      if (picture.uploader_id!== session) {
-        if (!currentUser.followees.includes(picture.uploader_id)) {
-          return <button 
-                    className='follow-button' 
-                    onClick={this.handleNewFollow}>Follow
-                  </button>;
+      if (picture.uploader_id !== session) {
+        if (!followingIds.includes(picture.uploader_id)) {
+          return <button
+                    className='follow-button'
+                    onClick={this.handleNewFollow}>
+                      Follow
+                 </button>
         } else {
-          return <button 
-                    className='follow-button' 
-                    onClick={this.handleUnfollow}>Unfollow
-                  </button>;
+          return <button
+                    className='follow-button'
+                    onClick={this.handleUnfollow}>
+                      Unfollow
+                 </button>
         }
-      } else {
-        return '';
       }
-    };
+    }
 
     const userPics = [];
      pictures.filter(pic => {
@@ -135,7 +156,6 @@ class PictureShow extends React.Component {
       }
     });
 
-    const redirectToHomeFeed = this.state.redirectToHomeFeed;
     if (redirectToHomeFeed) return <Redirect to='/home' />
 
     return(
@@ -152,7 +172,13 @@ class PictureShow extends React.Component {
             <h1>{picture.title}</h1>
             <p className='uploader'>
               by&nbsp; {picture.uploader_id === session ? <p>you</p> : 
-                <div><button onClick={() => this.setState({ showModal: true })}>{picture.uploaderName}</button>&nbsp; {otherUploader()}</div>}
+                // <div><button onClick={() => this.setState({ showModal: true })}>{picture.uploaderName}</button></div>}
+                <div>
+                  <button onClick={() => this.setState({ showModal: true })}>
+                    {picture.uploaderName}
+                  {/* </button>&nbsp; */}
+                  </button>&nbsp; {otherUploader()}
+                </div>}
                 <TestModal 
                   creator={picture.uploaderName}
                   owner={picUploader}

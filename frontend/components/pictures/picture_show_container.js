@@ -13,15 +13,20 @@ const mSTP = ( state, ownProps ) => {
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
   let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
   let creator = picture ? picture.uploader_id : '';
-  let currentUser = state.entities.user ? state.entities.user[creator] : {};
-  let users = state.entities.user ? Object.values(state.entities.user) : {};
+  let thisUser = (state.entities.user && creator) ? state.entities.user[creator] : {}
+  let currentUser = (state.entities.user && session) ? state.entities.user[session] : {};
+  let followingIds = currentUser ? currentUser.followees : [];
+  let users = state.entities.user ? Object.values(state.entities.user) : [];
   let picUploader = state.entities.users ? state.entities.users[creator] : {};
+  debugger
   return {
     picture: picture,
     pictures: pictures,
     picUploader: picUploader,
     galleries: galleries,
+    followingIds: followingIds,
     creator: creator,
+    thisUser: thisUser,
     currentUser: currentUser,
     users: users,
     session: session,
