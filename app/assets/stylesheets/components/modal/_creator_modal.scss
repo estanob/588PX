@@ -2,11 +2,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 60vw;
-  height: 80vh;
+  width: 40vw;
+  height: 60vh;
   transform: translate(-50%, -50%);
   border-radius: 4px;
   background-color: white;
+  overflow-y: auto;
 }
 
 .crt-mdl-content {
@@ -16,6 +17,12 @@
 .crt-mdl-follows {
   display: flex;
   justify-content: center;
+}
+
+.crt-mdl-flrs {
+  background-color: #f7f8fa;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 .crt-mdl-pics {
@@ -28,11 +35,14 @@
 
 .crt-mdl-pic-li {
   flex-grow: 1;
-  height: 100px;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .crt-mdl-pic-li img {
-  height: 100px;
+  height: 150px;
+  min-width: 100%;
+  object-fit: fill;
 }
 
 .crt-mdl-pic-li img:hover {

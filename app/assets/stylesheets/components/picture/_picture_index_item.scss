@@ -16,10 +16,14 @@
   object-fit: cover;
 }
 
-.pic-link img:hover {
-  filter: brightness(50%);
+
+.pic-idx-itm-title {
+  display: none;
 }
 
-.display-img:hover {
-  filter: brightness(50%);
+.index-img:hover + .pic-idx-itm-title {
+  display: block;
+  margin-top: -30px;
+  margin-left: 10px;
+  color: #ffffff99;
 }

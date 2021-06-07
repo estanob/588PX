@@ -15,6 +15,8 @@ export default function TestModal (props) {
     galleries, 
     pics } = props;
   if (!showModal) return null;
+  owner = owner ? owner : {};
+  creator = creator ? creator : {};
   console.log("Test Modal's Props")
   console.log(props)
   users = users ? users : [];

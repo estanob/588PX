@@ -10,10 +10,10 @@ const PictureIndexItem = (props) => {
         to={`/pictures/${picture.id}`} 
         style={{ color: ownPic, textDecoration: 'none' }}
         className='pic-link'>
-        <img 
+        <img className='index-img'
           src={`${picture.photoUrl}`} 
           alt={`${picture.title}`} />
-        <p className='pic-idx-itm-title'>{picture.title}</p>
+        <p className='pic-idx-itm-title'>{picture.uploaderName}</p>
       </Link>
     </div>
   )
