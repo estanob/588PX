@@ -8,21 +8,39 @@ class GalleryShow extends React.Component {
   constructor(props) {
     super(props)
 
+    let followRelation = this.props.followRelation ? this.props.followRelation : null;
     this.state = {
       showModal: false,
       redirectToGalleryIndex: false,
+      followRelation: followRelation,
+      isFollowing: followRelation ? true : false,
     }
 
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleNewFollow = this.handleNewFollow.bind(this);
+    this.handleUnfollow = this.handleUnfollow.bind(this);
+    this.otherUploader = this.otherUploader.bind(this);
   };
 
   componentDidMount() {
+    this.props.fetchUser(this.props.session);
+    this.props.fetchAllUsers();
     this.props.fetchGallery();
     this.props.fetchGalleries();
     this.props.fetchPictures();
-    this.props.fetchAllUsers();
     this.props.fetchPicturesToGalleries();
+    this.props.fetchFollows();
   };
+
+  componentDidUpdate(prevProps) {
+    let followRelation = this.props.followRelation ? this.props.followRelation : null;
+    if (prevProps.followRelation !== this.props.followRelation) {
+      this.setState({
+        followRelation: followRelation, 
+        isFollowing: followRelation ? true : false,
+       })
+    }
+  }
   
   handleDelete(e) {
     e.preventDefault();
@@ -37,6 +55,56 @@ class GalleryShow extends React.Component {
       )
   };
 
+  handleNewFollow(e) {
+    e.preventDefault();
+    let followRelation = this.props.followRelation ? this.props.followRelation : {};
+    const followForm = new FormData();
+    followForm.append('follow[user_id]', this.props.session);
+    followForm.append('follow[followee_id]', this.props.gallery.creator_id);
+    this.props.createFollow(followForm)
+      .then(() => {
+        console.log("Follow changed!")
+        this.setState({
+          followRelation: followRelation,
+          isFollowing: true,
+        })
+      })
+  };
+
+  handleUnfollow(e) {
+    e.preventDefault();
+    let followRelation = this.props.followRelation ? this.props.followRelation : {};
+    this.props.deleteFollow({ 
+      user_id: this.props.session, 
+      followee_id: this.props.gallery.creator_id,
+    })
+      .then(() => {
+        console.log("Follow changed!")
+        this.setState({
+          followRelation: followRelation,
+          isFollowing: false,
+        })
+      })
+  };
+
+  otherUploader(gallery, session, followingIds, isFollowing) {
+      if (gallery.creator_id !== session) {
+        if (!isFollowing || !followingIds.includes(gallery.creator_id)) {
+          return <button
+                    className='follow-button'
+                    onClick={this.handleNewFollow}>
+                      Follow
+                 </button>
+        } else {
+          return <button
+                    className='follow-button'
+                    onClick={this.handleUnfollow}>
+                      Unfollow
+                 </button>
+        }
+      }
+    }
+
   render() {
     let { 
       gallery, 
@@ -46,10 +114,12 @@ class GalleryShow extends React.Component {
       pictures,
       galCreator,
       users,
+      followRelation,
+      followingIds,
       openModal,
       creatorModal
     } = this.props;
-    let { showModal } = this.state;
+    let { showModal, isFollowing } = this.state;
 
     pictures = pictures ? pictures : [];
     gallery = gallery ? gallery : {};
@@ -122,23 +192,26 @@ class GalleryShow extends React.Component {
       <div className='gallery-show'>
         {creatorModal}
         <h1>{gallery.title}</h1>
-        <p>Curated by&nbsp; {gallery.creator === session ? <p>you</p> : <button 
-                                                                          onClick={() => this.setState({ showModal: true })} 
-                                                                          className={'gal-creator'}
-                                                                          creator={creator}>
-                                                                            {creator}
-                                                                        </button>}
-          <TestModal
-            creator={creator}
-            owner={galCreator}
-            userName={gallery.creatorUsername}
-            pics={creatorPics}
-            users={users}
-            galleries={ownGals}
-            showModal={showModal}
-            closeModal={() => this.setState({ showModal: false })} />
-        </p>
-        {/* <p>Curated by {creator}</p> */}
+        <div>
+          <p className="gallery-curated-by">Curated by&nbsp; {gallery.creator_id === session ? <p>you</p> : 
+            <button 
+              onClick={() => this.setState({ showModal: true })} 
+                className="creator-button"
+              creator={creator}>
+                  {creator}
+            </button>}
+            {this.otherUploader(gallery, session, followingIds, isFollowing)}
+            <TestModal
+              creator={creator}
+              owner={galCreator}
+              userName={gallery.creatorUsername}
+              pics={creatorPics}
+              users={users}
+              galleries={ownGals}
+              showModal={showModal}
+              closeModal={() => this.setState({ showModal: false })} />
+          </p>
+        </div>
         {ownGallery()}
         <div className='gallery-show-pics'>
           <ul className='pics-in-gallery'>

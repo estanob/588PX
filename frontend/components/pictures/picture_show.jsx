@@ -176,12 +176,14 @@ class PictureShow extends React.Component {
             <h1>{picture.title}</h1>
             <p className='uploader'>
               by&nbsp; {picture.uploader_id === session ? <p>you</p> : 
-                <div>
-                  <button onClick={() => this.setState({ showModal: true })}>
+              <div>
+                <button 
+                  className="creator-button" 
+                  onClick={() => this.setState({ showModal: true })}>
                     {picture.uploaderName}
-                  </button>
-                  &nbsp; {this.otherUploader(picture, session, followingIds, isFollowing)}
-                </div>}
+                </button>
+                {this.otherUploader(picture, session, followingIds, isFollowing)}
+              </div>}
                 <TestModal 
                   creator={picture.uploaderName}
                   owner={owner}

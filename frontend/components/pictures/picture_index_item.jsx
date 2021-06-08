@@ -13,7 +13,9 @@ const PictureIndexItem = (props) => {
         <img className='index-img'
           src={`${picture.photoUrl}`} 
           alt={`${picture.title}`} />
-        <p className='pic-idx-itm-title'>{picture.uploaderName}</p>
+        <p className='pic-idx-itm-title'>
+          {picture.uploader_id === currentId ? 'you' : picture.uploaderName}
+        </p>
       </Link>
     </div>
   )

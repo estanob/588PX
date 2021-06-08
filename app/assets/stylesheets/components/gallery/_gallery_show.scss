@@ -2,11 +2,17 @@
   margin-top: 100px;
   text-align: center;
   font-size: 21px;
+  justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
   color: black;
   margin-bottom: 15px;
   line-height: 110%;
+}
+
+.gallery-curated-by {
+  display: flex;
+  justify-content: center;
 }
 
 .gallery-show > p {
@@ -67,8 +73,8 @@
 
 .own-gallery {
   display: flex;
-  width: 12%;
-  margin: 0 auto;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .more-galleries > h4 {

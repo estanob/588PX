@@ -17,6 +17,21 @@
 .crt-mdl-follows {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
+}
+
+.crt-mdl-follows > button {
+  background-color: white;
+  border: 0px;
+}
+
+.creator-tab-selected {
+  color: #0870D1;
+  box-shadow: #0870D1 0px -2px inset;
+}
+
+.modal-follows-tabs {
+  text-align: center;
 }
 
 .crt-mdl-flrs {
@@ -47,4 +62,16 @@
 
 .crt-mdl-pic-li img:hover {
   filter: brightness(50%);
+}
+
+.crt-mdl-gals {
+  background-color: #f7f8fa;
+  padding: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.modal-gal-link > p:hover {
+// .modal-gal-link:hover {
+  color: #089fd1;
 }
