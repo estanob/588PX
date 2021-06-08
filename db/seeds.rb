@@ -248,7 +248,7 @@ follow3 = Follow.create!(
 
 follow4 = Follow.create!(
   followee: user5,
-  follower: user5
+  follower: user4
 )
 
 follow5 = Follow.create!(

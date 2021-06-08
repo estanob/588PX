@@ -41,8 +41,6 @@ export const createPicturesToGallery = picturesToGallery => dispatch => {
 };
 
 export const deletePicturesToGallery = picturesToGallery => dispatch => {
-  console.log("PTG to delete")
-  console.log(picturesToGallery)
   return PicToGalUtil.deletePicturesToGallery(picturesToGallery)
     .then(() => dispatch(removePicturesToGallery(picturesToGallery)))
 };

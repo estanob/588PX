@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, withRouter } from 'react-router';
-import TestModal from '../modal/test_modal';
+import CreatorModal from '../modal/creator_modal';
 import PictureIndexPhotos from '../pictures/picture_index_photos';
 import GalleryIndexItem from './gallery_index_item';
 
@@ -63,7 +63,6 @@ class GalleryShow extends React.Component {
     followForm.append('follow[followee_id]', this.props.gallery.creator_id);
     this.props.createFollow(followForm)
       .then(() => {
-        console.log("Follow changed!")
         this.setState({
           followRelation: followRelation,
           isFollowing: true,
@@ -79,7 +78,6 @@ class GalleryShow extends React.Component {
       followee_id: this.props.gallery.creator_id,
     })
       .then(() => {
-        console.log("Follow changed!")
         this.setState({
           followRelation: followRelation,
           isFollowing: false,
@@ -201,7 +199,7 @@ class GalleryShow extends React.Component {
                   {creator}
             </button>}
             {this.otherUploader(gallery, session, followingIds, isFollowing)}
-            <TestModal
+            <CreatorModal
               creator={creator}
               owner={galCreator}
               userName={gallery.creatorUsername}
@@ -212,6 +210,7 @@ class GalleryShow extends React.Component {
               closeModal={() => this.setState({ showModal: false })} />
           </p>
         </div>
+        <p>{gallery.description}</p>
         {ownGallery()}
         <div className='gallery-show-pics'>
           <ul className='pics-in-gallery'>

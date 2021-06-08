@@ -6,8 +6,6 @@ const ProfileDropdown = ({ logout, currentUserId, users }) => {
   const triggerDropdown = () => {
     $('#profiledropdown').toggleClass('trigger')
   };
-  console.log(currentUserId)
-  console.log(users)
   return (
     <div id="profilepointer" onClick={triggerDropdown}>
       <span className='user-pic'></span>
@@ -21,10 +19,6 @@ const ProfileDropdown = ({ logout, currentUserId, users }) => {
         <br/>
         <li onClick={logout}>Logout</li>
       </ul>
-      {/* <ul id="profiledropdown">
-        <Link to='/profile'>Profile</Link>
-        <button id="profiledropdown" onClick={logout}>Logout</button>
-      </ul> */}
     </div>
   );
 };

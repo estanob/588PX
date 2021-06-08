@@ -3,18 +3,14 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import FollowersModal from './followers_modal';
 import FollowingModal from './following_modal';
-import CreatorModal from './creator_modal';
 
 function Modal (props) {
   const { 
-    creator,
     session, 
     thisUser,
     allUsers, 
     modal, 
-    closeModal, 
-    pictures, 
-    galleries, } = props;
+    closeModal } = props;
   if (!modal) {
     return null;
   }
@@ -34,15 +30,6 @@ function Modal (props) {
                     closeModal={closeModal}
                     session={session} />;
       break;
-    // case 'creator':
-    //   component = <CreatorModal
-    //                 creator={creator}
-    //                 allUsers={allUsers} 
-    //                 closeModal={closeModal}
-    //                 session={session}
-    //                 pictures={pictures}
-    //                 galleries={galleries} />;
-    //   break;
     default:
       return null;
   }

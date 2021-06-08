@@ -47,7 +47,8 @@
 .modal-close {
   border-radius: 50%;
   background-color: white;
-  border-color: white;
+  border: 0;
+  margin-top: 5px;
 }
 
 .followers-mdl > h1 {

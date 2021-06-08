@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import HeaderContainer from '../header/header_container';
-import TestModal from '../modal/test_modal';
+import CreatorModal from '../modal/creator_modal';
 
 class PictureShow extends React.Component {
   constructor(props) {
@@ -60,7 +60,6 @@ class PictureShow extends React.Component {
     followForm.append('follow[followee_id]', this.props.picture.uploader_id);
     this.props.createFollow(followForm)
       .then(() => {
-        console.log("Follow changed!")
         this.setState({
           followRelation: followRelation,
           isFollowing: true,
@@ -76,7 +75,6 @@ class PictureShow extends React.Component {
       followee_id: this.props.picture.uploader_id,
     })
       .then(() => {
-        console.log("Follow changed!")
         this.setState({
           followRelation: followRelation,
           isFollowing: false,
@@ -122,10 +120,6 @@ class PictureShow extends React.Component {
     followRelation = followRelation ? followRelation : {};
     pictures = pictures ? pictures : {};
     galleries = galleries ? galleries : {};
-    console.log("Pic Show Props")
-    console.log(this.props)
-    console.log("Pic Show State")
-    console.log(this.state)
     const ownPicture = () => {
       if (session === picture.uploader_id) {
         return (
@@ -184,7 +178,7 @@ class PictureShow extends React.Component {
                 </button>
                 {this.otherUploader(picture, session, followingIds, isFollowing)}
               </div>}
-                <TestModal 
+                <CreatorModal 
                   creator={picture.uploaderName}
                   owner={owner}
                   userName={picture.uploader}

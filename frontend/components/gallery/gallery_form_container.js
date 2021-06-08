@@ -6,7 +6,6 @@ import { fetchPictures } from '../../actions/picture_actions';
 import GalleryForm from './gallery_form';
 
 const mSTP = (state) => {
-  debugger
   let session = state.session.id ? state.session.id : '';
   let thisUser = state.entities.users ? state.entities.users[session] : {};
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : {};

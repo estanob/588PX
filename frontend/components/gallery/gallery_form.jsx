@@ -61,6 +61,7 @@ class GalleryForm extends React.Component {
 
     const galForm = new FormData();
     galForm.append('gallery[title]', this.state.title);
+    galForm.append('gallery[description]', this.state.description);
     galForm.append('gallery[creator_id]', this.props.session);
 
 
