@@ -165,19 +165,19 @@ class PictureShow extends React.Component {
               <img src={picture.photoUrl} alt={picture.title} />
             </div>
           </div>
-          <div className='show img-info'>
-            {ownPicture()}
+          {ownPicture()}
+          <div className='pic-info'>
             <h1>{picture.title}</h1>
-            <p className='uploader'>
-              by&nbsp; {picture.uploader_id === session ? <p>you</p> : 
-              <div>
-                <button 
-                  className="creator-button" 
-                  onClick={() => this.setState({ showModal: true })}>
-                    {picture.uploaderName}
-                </button>
-                {this.otherUploader(picture, session, followingIds, isFollowing)}
-              </div>}
+            <div className='uploader'>
+              <p className='picture-show-by'>by&nbsp; {picture.uploader_id === session ? <p className="picture-show-by">you</p> : 
+                <div>
+                  <button 
+                    className="creator-button" 
+                    onClick={() => this.setState({ showModal: true })}>
+                      {picture.uploaderName}
+                  </button>
+                  {this.otherUploader(picture, session, followingIds, isFollowing)}
+                </div>}</p>
                 <CreatorModal 
                   creator={picture.uploaderName}
                   owner={owner}
@@ -188,7 +188,7 @@ class PictureShow extends React.Component {
                   galleries={creatorGals}
                   showModal={showModal} 
                   closeModal={() => this.setState({ showModal: false })} />
-            </p>
+            </div>
             <p>Uploaded: {picture.created_at}</p>
             <p>Location: {picture.location}</p>
             <p>{picture.caption ? picture.caption : ''}</p>
