@@ -7,15 +7,18 @@ import { fetchPicturesToGalleries } from "../../actions/pictures_to_gallery_acti
 
 const mSTP = state => {
   let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
+  let session = state.session.id ? state.session.id : '';
+  let currentUser = state.entities.user ? state.entities.user : {};
   return {
     galleries: galleries,
     pictures: Object.values(state.entities.pictures),
     picturesToGalleries: Object.values(state.entities.picturesToGalleries),
-    session: state.session.id,
+    session: session,
+    currentUser: currentUser,
   };
 };
 
-const mDTP = dispatch => {
+const mDTP = (dispatch, ownProps) => {
   return {
     fetchGallery: galleryId => dispatch(fetchGallery(galleryId)),
     fetchGalleries: () => dispatch(fetchGalleries()),
