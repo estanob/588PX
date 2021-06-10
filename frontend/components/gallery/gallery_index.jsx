@@ -8,7 +8,7 @@ class GalleryIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.session)
+    this.props.fetchUser()
     this.props.fetchGalleries();
     this.props.fetchGallery(this.props.galleryId);
     this.props.fetchPictures();
@@ -16,15 +16,13 @@ class GalleryIndex extends React.Component {
   }
   
   render() {
-    let { currentUser, galleries, pictures, session } = this.props;
+    let { galleries, pictures, session, userPics } = this.props;
     pictures ? pictures : [];
+    userPics ? userPics : [];
     session ? session : '';
-    currentUser ? currentUser : {};
-    const numUserPics = currentUser.pics ? currentUser.pics.length : '';
-    console.log("How Many Pics")
-    console.log(numUserPics)
+    console.log("Gallery Index Props")
+    console.log(this.props)
     galleries = galleries.sort(() => Math.random() - 0.5);
-    debugger
     return (
       <div className='galleries'>
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +33,7 @@ class GalleryIndex extends React.Component {
         </svg>
         <h1>Curate photos using Galleries</h1>
         <p>Build a Gallery to show off your style or to keep track of what inspires you!</p>
-        {numUserPics.length > 0 ? 
+        {userPics.length > 0 ? 
           <Link 
             to='/galleries/new'
             className='new-gallery'>
@@ -48,10 +46,6 @@ class GalleryIndex extends React.Component {
                   Upload
               </Link> some first!</p>
             </div>}
-        {/* <Link to='/galleries/new'
-              className='new-gallery'>
-          Create New Gallery
-        </Link> */}
         <ul className='gallery-index'>
           {galleries.map((gal, i) => {
             return (

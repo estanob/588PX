@@ -7,14 +7,16 @@ import { fetchPicturesToGalleries } from "../../actions/pictures_to_gallery_acti
 
 const mSTP = state => {
   let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
+  let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
+  let picturesToGalleries = state.entities.picturesToGalleries ? Object.values(state.entities.picturesToGalleries) : [];
   let session = state.session.id ? state.session.id : '';
-  let currentUser = state.entities.user ? state.entities.user : {};
+  let userPics = pictures ? pictures.filter(picture => picture.uploader_id === session) : [];
   return {
     galleries: galleries,
-    pictures: Object.values(state.entities.pictures),
-    picturesToGalleries: Object.values(state.entities.picturesToGalleries),
+    pictures: pictures,
+    picturesToGalleries: picturesToGalleries,
     session: session,
-    currentUser: currentUser,
+    userPics: userPics,
   };
 };
 

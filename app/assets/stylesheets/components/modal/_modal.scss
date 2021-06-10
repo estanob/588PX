@@ -36,8 +36,8 @@
 
 .followers-mdl > button {
   position: absolute;
-  left: 24px;
-  top: 10px;
+  left: 5px;
+  top: 5px;
 }
 
 .followers-mdl > button:hover {
@@ -51,6 +51,12 @@
   margin-top: 5px;
 }
 
+.modal-close:hover {
+  filter: brightness(50%);
+}
+
+
 .followers-mdl > h1 {
+  margin-top: 30px;
   font-weight: bold;
 }

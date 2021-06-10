@@ -349,6 +349,31 @@ follow8 = Follow.create!(
   follower: user4
 )
 
+follow9 = Follow.create!(
+  followee: user4,
+  follower: user1
+)
+
+follow10 = Follow.create!(
+  followee: user4,
+  follower: user2
+)
+
+follow11 = Follow.create!(
+  followee: user3,
+  follower: user4
+)
+
+follow12 = Follow.create!(
+  followee: user2,
+  follower: user4
+)
+
+follow12 = Follow.create!(
+  followee: user4,
+  follower: user3
+)
+
 picToGal1 = PicturesToGallery.create!(
   gallery_id: gallery4.id,
   picture_id: picture9.id
@@ -467,4 +492,24 @@ picToGal23 = PicturesToGallery.create!(
 picToGal24 = PicturesToGallery.create!(
   gallery_id: gallery6.id,
   picture_id: picture27.id
+)
+
+picToGal25 = PicturesToGallery.create!(
+  gallery_id: gallery7.id,
+  picture_id: picture25.id
+)
+
+picToGal26 = PicturesToGallery.create!(
+  gallery_id: gallery7.id,
+  picture_id: picture26.id
+)
+
+picToGal27 = PicturesToGallery.create!(
+  gallery_id: gallery7.id,
+  picture_id: picture27.id
+)
+
+picToGal28 = PicturesToGallery.create!(
+  gallery_id: gallery7.id,
+  picture_id: picture21.id
 )

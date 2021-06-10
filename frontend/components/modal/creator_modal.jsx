@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function CreatorModal (props) {
   let [whichContent, setWhichContent] = useState('');
+  
   let { 
     userName, 
     owner,
@@ -12,6 +13,7 @@ export default function CreatorModal (props) {
     closeModal, 
     galleries, 
     pics } = props;
+    
   if (!showModal) return null;
   owner = owner ? owner : {};
   creator = creator ? creator : {};

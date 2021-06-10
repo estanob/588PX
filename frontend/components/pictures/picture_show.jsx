@@ -32,6 +32,7 @@ class PictureShow extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
+    debugger
     let followRelation = this.props.followRelation ? this.props.followRelation : null;
     if (prevProps.followRelation !== this.props.followRelation) {
       this.setState({
@@ -39,6 +40,7 @@ class PictureShow extends React.Component {
         isFollowing: followRelation ? true : false,
        })
     }
+    debugger
   }
 
   handleDelete(e) {
