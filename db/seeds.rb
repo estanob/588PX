@@ -194,7 +194,7 @@ picture19 = Picture.create(
   uploader_id: user5.id
 )
 file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/next+uploads/%E6%BF%B1%E6%B5%B7%E7%81%A3%E9%87%91%E6%B2%99%E9%85%92%E5%BA%97.jpeg")
-picture19.photo.attach(io: file, filename: 'marina bay sands.png')
+picture19.photo.attach(io: file, filename: 'marina bay sands.jpeg')
 picture19.save!
 
 picture20 = Picture.create(
@@ -203,8 +203,74 @@ picture20 = Picture.create(
   uploader_id: user5.id
 )
 file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/next+uploads/%E5%85%84%E5%BC%9F.jpeg")
-picture20.photo.attach(io: file, filename: 'mission peak.png')
+picture20.photo.attach(io: file, filename: 'mission peak.jpeg')
 picture20.save!
+
+picture21 = Picture.create(
+  title: 'Mask', 
+  location: "Loay, Bohol, Philippines", 
+  caption: 'Sambat Mascara y Regatta',
+  uploader_id: user4.id
+)
+file = open("https://five88px-dev.s3.us-west-1.amazonaws.com/IMG-1560.jpg")
+picture21.photo.attach(io: file, filename: 'xmas bohol mask pic.jpg')
+picture21.save!
+
+picture22 = Picture.create(
+  title: 'Japanese Garden', 
+  location: "Bellevue Botanical Garden, Bellevue, WA, USA", 
+  caption: 'First time taking gf on a trip to Seattle',
+  uploader_id: user5.id
+)
+file = open("https://five88px-dev.s3.us-west-1.amazonaws.com/after+check+uploads/bellevue+garden+w+gf+.jpeg")
+picture22.photo.attach(io: file, filename: 'gf bellevue garden.jpg')
+picture22.save!
+
+picture23 = Picture.create(
+  title: 'Outside', 
+  location: "Chihuly Garden and Glass, Uptown, Seattle, WA, USA", 
+  uploader_id: user4.id
+)
+file = open("https://five88px-dev.s3.us-west-1.amazonaws.com/after+check+uploads/chihuly+glass+garden+outside.jpeg")
+picture23.photo.attach(io: file, filename: 'glass garden outside.jpg')
+picture23.save!
+
+picture24 = Picture.create(
+  title: 'Stone', 
+  location: "Bellevue Botanical Garden, Bellevue, WA, USA", 
+  uploader_id: user4.id
+)
+file = open("https://five88px-dev.s3.us-west-1.amazonaws.com/after+check+uploads/bellevue+garden+stone.jpeg")
+picture24.photo.attach(io: file, filename: 'bellevue garden stone.jpg')
+picture24.save!
+
+picture25 = Picture.create(
+  title: 'Estaño Family Estate', 
+  caption: 'Crazy Rich Asians: Philippines Edition',
+  location: "Barangay Alegria, Loboc, Bohol, Philippines", 
+  uploader_id: user4.id
+)
+file = open("https://five88px-dev.s3.us-west-1.amazonaws.com/fspimagespti/IMG-8347.JPG")
+picture25.photo.attach(io: file, filename: 'philippines estate.jpg')
+picture25.save!
+
+picture26 = Picture.create(
+  title: 'Resort', 
+  location: "Bellevue Resort, Barangay Doljo, Panglao, Panglao Island, Bohol, Philippines", 
+  uploader_id: user4.id
+)
+file = open("https://five88px-dev.s3.us-west-1.amazonaws.com/fspimagesptii/IMG-1706.JPG")
+picture26.photo.attach(io: file, filename: 'bellevue resort.jpg')
+picture26.save!
+
+picture27 = Picture.create(
+  title: 'Pool Side', 
+  location: "Bellevue Resort, Barangay Doljo, Panglao, Panglao Island, Bohol, Philippines", 
+  uploader_id: user4.id
+)
+file = open("https://five88px-dev.s3.us-west-1.amazonaws.com/fspimagespti/IMG-1708.JPG")
+picture27.photo.attach(io: file, filename: 'pool bellevue resort.jpg')
+picture27.save!
 
 gallery1 = Gallery.create!(
   title: 'TaiWan Trip', 
@@ -228,7 +294,19 @@ gallery4 = Gallery.create!(
 
 gallery5 = Gallery.create!(
   title: "Asia Travel",
+  description: "Japan & Singapore",
   creator_id: user5.id
+)
+
+gallery6 = Gallery.create!(
+  title: "All Photos",
+  creator_id: user4.id
+)
+
+gallery7 = Gallery.create!(
+  title: "Philippines",
+  description: "2017 and 2018",
+  creator_id: user4.id
 )
 
 follow1 = Follow.create!(
@@ -355,3 +433,38 @@ picToGal17 = PicturesToGallery.create!(
   gallery_id: gallery2.id,
   picture_id: picture16.id
 ) 
+
+picToGal18 = PicturesToGallery.create!(
+  gallery_id: gallery4.id,
+  picture_id: picture22.id
+)
+
+picToGal19 = PicturesToGallery.create!(
+  gallery_id: gallery6.id,
+  picture_id: picture21.id
+)
+
+picToGal20 = PicturesToGallery.create!(
+  gallery_id: gallery6.id,
+  picture_id: picture23.id
+)
+
+picToGal21 = PicturesToGallery.create!(
+  gallery_id: gallery6.id,
+  picture_id: picture24.id
+)
+
+picToGal22 = PicturesToGallery.create!(
+  gallery_id: gallery6.id,
+  picture_id: picture25.id
+)
+
+picToGal23 = PicturesToGallery.create!(
+  gallery_id: gallery6.id,
+  picture_id: picture26.id
+)
+
+picToGal24 = PicturesToGallery.create!(
+  gallery_id: gallery6.id,
+  picture_id: picture27.id
+)

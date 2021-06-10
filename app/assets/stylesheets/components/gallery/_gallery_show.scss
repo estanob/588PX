@@ -59,6 +59,10 @@
   object-fit: cover;
 }
 
+.pics-in-gallery-li img:hover {
+  filter: brightness(15%);
+}
+
 .more-galleries {
   margin-top: 10px;
 }

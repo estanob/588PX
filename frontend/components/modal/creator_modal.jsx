@@ -27,12 +27,11 @@ export default function CreatorModal (props) {
   });
   let modalGals = galleries.map((gal, i) => {
     return (
-      <li className='creator-gals-li'>
+      <li key={i} className='creator-gals-li'>
         <Link 
           to={`/galleries/${gal.id}`} 
           style={{ color: 'black', textDecoration: 'none' }}
-          className='modal-gal-link'
-          key={i}>
+          className='modal-gal-link'>
             <p>{gal.title}</p>
         </Link>
       </li>
@@ -45,7 +44,7 @@ export default function CreatorModal (props) {
   });
   let modalFollowing = users.map((usr, i) => {
     if (owner.followees.includes(usr.id)) {
-      return <li className="crt-mdl-follows-li">{usr.username}</li>
+      return <li key={i} className="crt-mdl-follows-li">{usr.username}</li>
     }
   });
   const modalContent = () => {
@@ -79,6 +78,8 @@ export default function CreatorModal (props) {
       return ''
     }
   }
+  console.log("Creator Modal Props")
+  console.log(props)
   return (
     <div className="modal-background">
       <div className='crt-mdl'>
@@ -121,8 +122,8 @@ export default function CreatorModal (props) {
             <button className={whichContent === "following" ? 'creator-tab-selected' : ''} onClick={() => setWhichContent('following')}>
               {`${owner.followees.length} Following`}
             </button>
-            <button className={whichContent === "pics" ? 'creator-tab-selected' : ''} onClick={() => setWhichContent('pics')}>Pictures Toggle</button>
-            <button className={whichContent === "gals" ? 'creator-tab-selected' : ''} onClick={() => setWhichContent('gals')}>Galleries Toggle</button>
+            <button className={whichContent === "pics" ? 'creator-tab-selected' : ''} onClick={() => setWhichContent('pics')}>{`${owner.pics.length} Pictures`}</button>
+            <button className={whichContent === "gals" ? 'creator-tab-selected' : ''} onClick={() => setWhichContent('gals')}>{`${owner.galleries.length} Galleries`}</button>
           </div>
           {modalContent()}
         </div>
