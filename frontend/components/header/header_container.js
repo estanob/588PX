@@ -3,9 +3,11 @@ import { clearErrors, logout } from '../../actions/session_actions';
 import Header from './header';
 
 const mSTP = (state, ownProps) => {
+  let session = state.session ? state.session.id : '';
+  let currentUser = state.entities.users ? state.entities.users[session] : [];
   return {
-    currentUserId: state.session.id,
-    users: state.entities.users,
+    session: session,
+    currentUser: currentUser,
   };
 };
 

@@ -32,7 +32,6 @@ class PictureShow extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
-    debugger
     let followRelation = this.props.followRelation ? this.props.followRelation : null;
     if (prevProps.followRelation !== this.props.followRelation) {
       this.setState({
@@ -40,7 +39,6 @@ class PictureShow extends React.Component {
         isFollowing: followRelation ? true : false,
        })
     }
-    debugger
   }
 
   handleDelete(e) {
@@ -170,6 +168,7 @@ class PictureShow extends React.Component {
           {ownPicture()}
           <div className='pic-info'>
             <h1>{picture.title}</h1>
+            <p>{picture.caption ? picture.caption : ''}</p>
             <div className='uploader'>
               <p className='picture-show-by'>by&nbsp; {picture.uploader_id === session ? <p className="picture-show-by">you</p> : 
                 <div>
@@ -193,7 +192,6 @@ class PictureShow extends React.Component {
             </div>
             <p>Uploaded: {picture.created_at}</p>
             <p>Location: {picture.location}</p>
-            <p>{picture.caption ? picture.caption : ''}</p>
           </div>
           {redirectToHomeFeed}
         </div>

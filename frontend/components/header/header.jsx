@@ -6,10 +6,11 @@ class Header extends React.Component {
   isLoggedIn() {
     return (
       <div className="header">
+        <p>{this.props.currentUser.username}</p>
         <ProfileDropdown 
           logout={this.props.logout} 
-          currentUserId={this.props.currentUserId}
-          users={this.props.users} />
+          session={this.props.session}
+          currentUser={this.props.currentUser} />
         <Link onClick={this.props.createPicture} 
           to='/upload'
           className='header_comps sign-up upload'>
@@ -32,7 +33,7 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        {this.props.currentUserId ? this.isLoggedIn() : this.isLoggedOut()}
+        {this.props.session ? this.isLoggedIn() : this.isLoggedOut()}
       </div>
     )
   }
