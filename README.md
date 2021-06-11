@@ -79,6 +79,8 @@ const modalContent = () => {
 ### Dynamic Picture Index
 ![final-picture-index-smaller](https://user-images.githubusercontent.com/68726214/121225513-71573400-c83e-11eb-846b-1ae8a0d00a76.gif)
 <br/>
+![Screen-Recording-2021-06-10-at-17 10 26](https://user-images.githubusercontent.com/68726214/121612400-30fae000-ca0f-11eb-90e3-ca7825fd058c.gif)
+<br/>
 The picture index is a react component that renders pictures through the React-Redux cycle. New pictures are added to the index upon successful upload. Each picture index item uses css flex and flex-wrap so that they are dynamically sized and will change according to the size of the window.
 
 ```javascript
