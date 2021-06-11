@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const ProfileDropdown = ({ logout, session, currentUser }) => {
+const ProfileDropdown = ({ logout, currentUser }) => {
   const triggerDropdown = () => {
     $('#profiledropdown').toggleClass('trigger')
   };
