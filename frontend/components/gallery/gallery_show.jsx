@@ -111,6 +111,7 @@ class GalleryShow extends React.Component {
     let { 
       gallery, 
       session, 
+      creator,
       thisUser, 
       galleries, 
       pictures,
@@ -125,9 +126,11 @@ class GalleryShow extends React.Component {
     followRelation = followRelation ? followRelation : {};
     pictures = pictures ? pictures : [];
     gallery = gallery ? gallery : {};
+    galCreator = galCreator ? galCreator : {};
     thisUser = thisUser ? thisUser : {};
     let galPics = gallery.pics ? gallery.pics : [];
-    let creator = gallery ? gallery.creator : '';
+    session = session ? session : '';
+    creator = creator ? creator : '';
     galleries = galleries ? galleries : [];
     let picIds = [];
     galPics.forEach(pic => picIds.push(pic.id));
@@ -135,9 +138,11 @@ class GalleryShow extends React.Component {
       if (picIds.includes(pic.id)) {
         return <li className="pics-in-gallery-li" key={i}>
               <PictureIndexPhotos picture={pic} />
-             </li>
-      }
-    })
+             </li>;
+      };
+    });
+
+    pix = pix.sort(() => Math.random() - 0.5);
 
     const ownGallery = () => {
       if (session === gallery.creator_id) {
@@ -167,7 +172,7 @@ class GalleryShow extends React.Component {
 
     const twoPlusGals = gallery.totalGalsFromUser > 1 ? 
                         <div className='more-galleries'>
-                          <p>More Galleries by {creator}</p>
+                          <p>More Galleries by {session === creator ? 'you' : gallery.creator}</p>
                           <ul className="other-galleries">
                             {otherGals}
                           </ul>

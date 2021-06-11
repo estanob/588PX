@@ -70,3 +70,31 @@
   margin-right: 5px;
   margin-bottom: 5px;
 }
+
+.profile-no-content {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  padding: 24px 16px;
+  color: white;
+  background: black;
+  margin: 0px auto;
+  height: auto;
+  width: 100%;
+  max-width: 560px;
+  min-height: 290px;
+}
+
+.link-no-content {
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid white;
+  text-decoration: none;
+  color: white;
+  line-height: 30px;
+}
+
+.link-no-content:hover {
+  color: #0870D1;
+}

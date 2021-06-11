@@ -2,6 +2,7 @@ import React from 'react'
 import GalleryIndexItem from '../gallery/gallery_index_item';
 import ProfilePictureIndexItem from '../pictures/profile-picture-index-item';
 import Modal from '../modal/modal';
+import { Link } from 'react-router-dom';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -64,26 +65,47 @@ class Profile extends React.Component {
       }
     });
 
-    ownPics = ownPics.sort(() => Math.random() -0.5)
 
     let picCount = 0;
     pictures.forEach(picture => {
       if (picture.uploader_id === session) picCount++;
     });
+
+    const noContent = <div className='profile-no-content'>
+                      <p>You don't have any photos yet.</p>
+                      <p>
+                        <Link 
+                          className="link-no-content" 
+                          to="/upload">
+                            Upload Photos
+                        </Link>
+                      </p>
+                    </div>;
+    ownPics = picCount > 0 ? ownPics.sort(() => Math.random() -0.5) : noContent;
+      
     let followers = users[session].followers.length;
     let following = users[session].followees.length;
     let galleryCount = users[session].galleries.length;
     
-    const ownGals = galleries.map((gallery, i) => {
-      if (gallery.creator_id === session) {
-        return <li className="gals-on-profile-li" key={i}>
-                  <GalleryIndexItem 
-                    gallery={gallery}
-                    pics={pictures} />
-                </li>
-      }
-    });
+    let ownGals;
 
+    if (galleryCount === 0 && picCount === 0) {
+      ownGals = noContent
+    } else if (galleryCount === 0 && picCount > 0) {
+      ownGals = <Link 
+                  to='/galleries/new'
+                  className='new-gallery'>
+                    Create New Gallery
+                </Link>
+    } else {
+      ownGals = galleries.map((gallery, i) => {
+                  if (gallery.creator_id === session) return <li className="gals-on-profile-li" key={i}>
+                              <GalleryIndexItem 
+                                gallery={gallery}
+                                pics={pictures} />
+                            </li>
+                  })
+    }
     const picsOrGals = profileContent === 'Pictures' ? 'profile-pic-index' : 'profile-pic-index profile-gals';
     return (
       <div className="profile">
