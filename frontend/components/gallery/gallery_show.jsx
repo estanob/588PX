@@ -33,15 +33,13 @@ class GalleryShow extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
-    debugger
     let followRelation = this.props.followRelation ? this.props.followRelation : null;
     if (prevProps.followRelation !== this.props.followRelation) {
       this.setState({
-        followRelation: followRelation, 
+        followRelation: followRelation,
         isFollowing: followRelation ? true : false,
-       })
+      })
     }
-    debugger
   }
   
   handleDelete(e) {
@@ -58,10 +56,11 @@ class GalleryShow extends React.Component {
   };
 
   handleNewFollow(e) {
+    // debugger
     e.preventDefault();
     let followRelation = this.props.followRelation ? this.props.followRelation : {};
     const followForm = new FormData();
-    followForm.append('follow[user_id]', this.props.session);
+    followForm.append('follow[user_id]', this.props.session.id);
     followForm.append('follow[followee_id]', this.props.gallery.creator_id);
     this.props.createFollow(followForm)
       .then(() => {
@@ -70,9 +69,11 @@ class GalleryShow extends React.Component {
           isFollowing: true,
         })
       })
+      // debugger
   };
 
   handleUnfollow(e) {
+    // debugger
     e.preventDefault();
     let followRelation = this.props.followRelation ? this.props.followRelation : {};
     this.props.deleteFollow({ 
@@ -85,6 +86,7 @@ class GalleryShow extends React.Component {
           isFollowing: false,
         })
       })
+      // debugger
   };
 
   otherUploader(gallery, session, followingIds, isFollowing) {
@@ -120,7 +122,7 @@ class GalleryShow extends React.Component {
       creatorModal
     } = this.props;
     let { showModal, isFollowing } = this.state;
-
+    followRelation = followRelation ? followRelation : {};
     pictures = pictures ? pictures : [];
     gallery = gallery ? gallery : {};
     thisUser = thisUser ? thisUser : {};

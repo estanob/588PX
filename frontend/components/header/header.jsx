@@ -6,7 +6,7 @@ class Header extends React.Component {
   isLoggedIn() {
     return (
       <div className="header">
-        <p>{this.props.currentUser.username}</p>
+        <p>{`Hello ${this.props.currentUser.username}!`}</p>
         <ProfileDropdown 
           logout={this.props.logout} 
           session={this.props.session}
