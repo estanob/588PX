@@ -205,7 +205,7 @@ class GalleryShow extends React.Component {
               onClick={() => this.setState({ showModal: true })} 
                 className="creator-button"
               creator={creator}>
-                  {creator}
+                  {gallery.creator}
             </button>}
             {this.otherUploader(gallery, session, followingIds, isFollowing)}
             <CreatorModal

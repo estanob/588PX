@@ -20,8 +20,6 @@ class GalleryIndex extends React.Component {
     pictures ? pictures : [];
     userPics ? userPics : [];
     session ? session : '';
-    console.log("Gallery Index Props")
-    console.log(this.props)
     galleries = galleries.sort(() => Math.random() - 0.5);
     return (
       <div className='galleries'>

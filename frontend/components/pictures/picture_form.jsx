@@ -116,7 +116,6 @@ class PictureForm extends React.Component{
       return <Redirect to='/home' />
     }
 
-    // console.log(errors)
     return (
       <div className='picture'>
         <form onSubmit={this.handleSubmit}>

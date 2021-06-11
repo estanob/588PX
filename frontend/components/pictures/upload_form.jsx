@@ -2,7 +2,6 @@ import React from 'react';
 import CreatePictureFormContainer from './create_picture_form_container';
 
 const UploadForm = props => {
-  console.log(props)
   return (
     <div>
       <CreatePictureFormContainer />

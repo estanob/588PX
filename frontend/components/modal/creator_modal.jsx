@@ -80,8 +80,6 @@ export default function CreatorModal (props) {
       return ''
     }
   }
-  console.log("Creator Modal Props")
-  console.log(props)
   return (
     <div className="modal-background">
       <div className='crt-mdl'>

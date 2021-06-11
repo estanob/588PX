@@ -30,7 +30,6 @@ export const fetchPicturesToGalleries = () => dispatch => {
     .then(picturesToGalleries => {
       dispatch(receiveAllPicturesToGalleries(picturesToGalleries))
     })
-    .fail(error => console.log(error))
 };
 
 export const createPicturesToGallery = picturesToGallery => dispatch => {
