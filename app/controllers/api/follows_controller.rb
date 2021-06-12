@@ -30,10 +30,7 @@ class Api::FollowsController < ApplicationController
   end
 
   private
-  def follow_params
-    params.require(:follow).permit(:user_id, :followee_id)
-  end
-
+  
   def delete_params
     params.except(:follow, :format).permit(:id, :user_id, :followee_id)
   end
