@@ -10,9 +10,11 @@ Rails.application.routes.draw do
     resources :pictures_to_galleries, only: [:create, :index, :show]
     resources :galleries, only: [:index, :show, :create, :update, :destroy]
     resources :follows, only: [:index, :create,:show]
+    resources :picture_likes, only: [:index, :create,:show]
     resource :session, only: [:create, :destroy]
 
     delete '/follows', to: 'follows#destroy'
+    delete '/picture_likes', to: 'picture_likes#destroy'
     delete '/pictures_to_galleries', to: 'pictures_to_galleries#destroy'
   end
 end

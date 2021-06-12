@@ -1,0 +1,1 @@
+json.partial! "picture_like", picture_like: @picture_like
