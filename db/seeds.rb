@@ -548,3 +548,83 @@ picToGal28 = PicturesToGallery.create!(
   gallery_id: gallery7.id,
   picture_id: picture21.id
 )
+
+picLike1 = PictureLike.create!(
+  liker_id: user6.id,
+  picture_id: picture11.id
+)
+
+picLike2 = PictureLike.create!(
+  liker_id: user4.id,
+  picture_id: picture11.id
+)
+
+picLike3 = PictureLike.create!(
+  liker_id: user3.id,
+  picture_id: picture11.id
+)
+
+picLike4 = PictureLike.create!(
+  liker_id: user2.id,
+  picture_id: picture11.id
+)
+
+picLike5 = PictureLike.create!(
+  liker_id: user1.id,
+  picture_id: picture11.id
+)
+
+picLike6 = PictureLike.create!(
+  liker_id: user2.id,
+  picture_id: picture4.id
+)
+
+picLike7 = PictureLike.create!(
+  liker_id: user3.id,
+  picture_id: picture4.id
+)
+
+picLike8 = PictureLike.create!(
+  liker_id: user4.id,
+  picture_id: picture4.id
+)
+
+picLike9 = PictureLike.create!(
+  liker_id: user5.id,
+  picture_id: picture4.id
+)
+
+picLike10 = PictureLike.create!(
+  liker_id: user6.id,
+  picture_id: picture4.id
+)
+
+picLike11 = PictureLike.create!(
+  liker_id: ,
+  picture_id: 
+)
+
+picLike12 = PictureLike.create!(
+  liker_id: user1.id,
+  picture_id: picture5.id
+)
+
+picLike13 = PictureLike.create!(
+  liker_id: user2.id,
+  picture_id: picture5.id
+)
+
+picLike14 = PictureLike.create!(
+  liker_id: user4.id,
+  picture_id: picture5.id
+)
+
+picLike15 = PictureLike.create!(
+  liker_id: user5.id,
+  picture_id: picture5.id
+)
+
+picLike16 = PictureLike.create!(
+  liker_id: user6.id,
+  picture_id: picture5.id
+)
