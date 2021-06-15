@@ -9,10 +9,14 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import { fetchPictureLikes } from '../../actions/picture_like_actions';
 
 const mSTP = ( state, ownProps ) => {
+  debugger
   let session = state.session.id ? state.session.id : '';
   let picture = state.entities.pictures ? state.entities.pictures[ownProps.match.params.id] : {};
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
   let pictureLikes = state.entities.pictureLikes ? Object.values(state.entities.pictureLikes) : [];
+  let likedByUser = (pictureLikes && picture && session) ? pictureLikes.find(like => {
+    if (like.liker_id === session && like.picture_id === picture.id) return like
+  }) : {};
   let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
   let follows = state.entities.follows ? Object.values(state.entities.follows) : [];
   let creator = picture ? picture.uploader_id : '';
@@ -24,11 +28,13 @@ const mSTP = ( state, ownProps ) => {
   let followRelation = follows ? follows.find(follow => {
     if (follow.user_id === session && follow.followee_id === creator) return follow
   }) : {};
+  debugger
   return {
     picture: picture,
     pictures: pictures,
     picUploader: picUploader,
     pictureLikes: pictureLikes,
+    likedByUser: likedByUser,
     galleries: galleries,
     follows: follows,
     followRelation: followRelation,

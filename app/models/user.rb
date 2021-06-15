@@ -54,7 +54,9 @@ class User < ApplicationRecord
     source: :follower,
     dependent: :destroy
 
-  
+  has_many :likes,
+    through: :pictures,
+    source: :likers
     
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
