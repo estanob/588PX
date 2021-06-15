@@ -27,6 +27,7 @@ class PictureShow extends React.Component {
     this.props.fetchAllUsers();
     this.props.fetchPicture();
     this.props.fetchPictures();
+    this.props.fetchPictureLikes();
     this.props.fetchGalleries();
     this.props.fetchFollows();
   };

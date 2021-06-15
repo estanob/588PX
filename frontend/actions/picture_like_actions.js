@@ -4,36 +4,49 @@ export const RECEIVE_ALL_PICTURE_LIKES = 'RECEIVE_ALL_PICTURE_LIKES';
 export const RECEIVE_PICTURE_LIKE = 'RECEIVE_PICTURE_LIKE';
 export const REMOVE_PICTURE_LIKE = 'REMOVE_PICTURE_LIKE';
 
-const receivePictureLikes = picLikes => {
+const receivePictureLikes = pictureLikes => {
   return {
     type: RECEIVE_ALL_PICTURE_LIKES,
-    picLikes,
+    pictureLikes,
   };
 };
 
-const receivePictureLike = picLike => {
+const receivePictureLike = pictureLike => {
   return {
     type: RECEIVE_PICTURE_LIKE,
-    picLike,
+    pictureLike,
   };
 };
 
-const removePictureLike = picLike => {
+const removePictureLike = pictureLike => {
   return {
     type: REMOVE_PICTURE_LIKE,
-    picLike,
+    pictureLike,
   };
 };
 
-export const fetchPictureLike = picLikeId => dispatch => {
-  return PictureLikeAPIUtil.fetchPictureLIke(picLikeId)
+export const fetchPictureLike = pictureLikeId => dispatch => {
+  return PictureLikeAPIUtil.fetchPictureLIke(pictureLikeId)
     .then(like => {
       dispatch(receivePictureLike(like))
     });
 };
 
-export const;
+export const fetchPictureLikes = () => dispatch => {
+  return PictureLikeAPIUtil.fetchPictureLikes()
+    .then(pictureLikes => {
+      dispatch(receivePictureLikes(pictureLikes))
+    })
+};
 
-export const;
+export const createPictureLike = pictureLike => dispatch => {
+  return PictureLikeAPIUtil.createPictureLike(pictureLike)
+    .then(newPictureLike => {
+      dispatch(receivePictureLike(newPictureLike))
+    })
+};
 
-export const;
+export const deletePictureLike = pictureLike => dispatch => {
+  return PictureLikeAPIUtil.deletePictureLike(pictureLike)
+    .then(() => dispatch(removePictureLike(pictureLike)))
+};

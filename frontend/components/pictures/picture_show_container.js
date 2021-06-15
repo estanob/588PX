@@ -6,11 +6,13 @@ import { fetchAllUsers, fetchUser } from '../../actions/profile_actions';
 import { createFollow, deleteFollow, fetchFollows } from '../../actions/follow_actions';
 import PictureShow from './picture_show';
 import { openModal, closeModal } from '../../actions/modal_actions';
+import { fetchPictureLikes } from '../../actions/picture_like_actions';
 
 const mSTP = ( state, ownProps ) => {
   let session = state.session.id ? state.session.id : '';
   let picture = state.entities.pictures ? state.entities.pictures[ownProps.match.params.id] : {};
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
+  let pictureLikes = state.entities.pictureLikes ? Object.values(state.entities.pictureLikes) : [];
   let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
   let follows = state.entities.follows ? Object.values(state.entities.follows) : [];
   let creator = picture ? picture.uploader_id : '';
@@ -26,6 +28,7 @@ const mSTP = ( state, ownProps ) => {
     picture: picture,
     pictures: pictures,
     picUploader: picUploader,
+    pictureLikes: pictureLikes,
     galleries: galleries,
     follows: follows,
     followRelation: followRelation,
@@ -42,6 +45,7 @@ const mDTP = (dispatch, ownProps)=> {
   return {
     fetchPicture: () => dispatch(fetchPicture(parseInt(ownProps.match.params.id))),
     fetchPictures: () => dispatch(fetchPictures()),
+    fetchPictureLikes: () => dispatch(fetchPictureLikes()),
     fetchGalleries: () => dispatch(fetchGalleries()),
     deletePicture: () => dispatch(deletePicture(parseInt(ownProps.match.params.id))),
     fetchUser: userId => dispatch(fetchUser(userId)),
