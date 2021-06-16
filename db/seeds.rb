@@ -158,7 +158,7 @@ picture11 = Picture.create(
 file = open("https://five88px-dev.s3-us-west-1.amazonaws.com/estanob/seattle+ferris+wheel.png")
 picture11.photo.attach(io: file, filename: 'ferris_wheel.png')
 picture11.save!
-
+3
 picture12 = Picture.create(
   title: 'Cheese Board', 
   location: "Elk Grove, CA, USA", 

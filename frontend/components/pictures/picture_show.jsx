@@ -113,6 +113,7 @@ class PictureShow extends React.Component {
       currentUser,
       followRelation,
       owner,
+      newGalleryButton,
       followingIds 
     } = this.props;
     
@@ -128,6 +129,7 @@ class PictureShow extends React.Component {
     users = users ? users : [];
     session = session ? session : '';
     currentUser = currentUser ? currentUser : {};
+    newGalleryButton = newGalleryButton ? newGalleryButton : {};
     likedByCurrentUser = likedByCurrentUser ? likedByCurrentUser : false;
     owner = owner ? owner : {};
     followRelation = followRelation ? followRelation : {};
@@ -232,10 +234,6 @@ class PictureShow extends React.Component {
                           </defs>
                         </svg>;
     debugger
-    console.log("Does the Like exist?")
-    console.log(this.props.likedByUser)
-    console.log("True or False")
-    console.log(this.state.likedByCurrentUser)
     return(
       <div>
         <HeaderContainer />
@@ -248,11 +246,14 @@ class PictureShow extends React.Component {
           {ownPicture()}
           <div className='pic-info'>
             <div className="pic-title-and-likes">
-              {notLikedButton}
-              {likedButton}
+              <button>
+                {likedByCurrentUser ? likedButton : notLikedButton} &nbsp;
+              </button>
+              <Link to="galleries/new">
+                {newGalleryButton}
+              </Link>
               <h1>{picture.title}</h1>
             </div>
-            {/* <h1>{picture.title}</h1> */}
             <p>{picture.caption ? picture.caption : ''}</p>
             <div className='uploader'>
               <p className='picture-show-by'>by&nbsp; {picture.uploader_id === session ? <p className="picture-show-by">you</p> : 

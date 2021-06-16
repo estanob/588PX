@@ -1,6 +1,7 @@
 import React from 'react'
 import GalleryIndexItem from '../gallery/gallery_index_item';
 import ProfilePictureIndexItem from '../pictures/profile-picture-index-item';
+import LikesModal from '../modal/likes_modal';
 import Modal from '../modal/modal';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +11,7 @@ class Profile extends React.Component {
 
     let profileContent = this.props.profileContent ? this.props.profileContent : '';
     this.state = {
+      showModal: false,
       profileContent: profileContent,
     }
 
@@ -39,7 +41,7 @@ class Profile extends React.Component {
   };
 
   render() {
-    const { 
+    let { 
       allUsers, 
       users, 
       session, 
@@ -49,13 +51,12 @@ class Profile extends React.Component {
       followingModal, 
     } = this.props;
 
-    let profileContent = this.state.profileContent;
+    let { showModal, profileContent } = this.state;
 
-    const currentUser = users[session];
+    const currentUser = users[session] ? users[session] : {};
     const username = currentUser.username;
     allUsers ? allUsers : [];
     pictures ? pictures : [];
-    currentUser ? currentUser : {};
     username ? username: '';
     let ownPics = pictures.map((ownPic, i) => {
       if (ownPic.uploader_id === session) {
@@ -107,13 +108,24 @@ class Profile extends React.Component {
                   })
     }
     const picsOrGals = profileContent === 'Pictures' ? 'profile-pic-index' : 'profile-pic-index profile-gals';
+
+    let photoLikes = currentUser.likedPics ? currentUser.likedPics.length : 0;
+    
     return (
       <div className="profile">
         <div className="user-info">
           <h1>{`${currentUser.firstName} ${currentUser.lastName}`}</h1>
           <p>
-            {followers} {followersModal} {following} {followingModal}
+            {followers} {followersModal} {following} {followingModal} <button 
+                                                                        className="creator-button"
+                                                                        onClick={() => this.setState({ showModal: true })}>
+                                                                        {photoLikes} Photo Likes     
+                                                                      </button>
           </p>
+          <LikesModal 
+            allUsers={allUsers}
+            showModal={showModal}
+            closeModal={() => this.setState({ showModal: false })} />
           
         </div>
         <div className="profile-nav-tabs">
