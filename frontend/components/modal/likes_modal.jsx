@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function LikesModal (props) {
+  let [whichContent, setWhichContent] = useState('inward likes');
+  
   let { allUsers, showModal, closeModal } = props;
   
   if (!showModal) return null;
   allUsers = allUsers ? allUsers : [];
+  const modalContent = () => {
+    if (whichContent === 'inward likes') {
+      return (
+        <ul>
+          <p>pics with likes will go here</p>
+        </ul>
+      )
+    } else {
+      return (
+        <ul>
+          <p>outward likes will go here</p>
+        </ul>
+      )
+    }
+  }
+  
+  console.log("Like Modal Props")
+  console.log(props)
   return (
     <div className="modal-background">
       <div className="crt-mdl">
@@ -34,6 +54,14 @@ export default function LikesModal (props) {
           </svg>
         </button>
         <p>HELLO WORLD</p>
+        <div className="crt-mdl-content">
+          <h1>Your Likes</h1>
+          <div className='crt-mdl-follows'>
+            <button className={whichContent === "inward likes" ? 'creator-tab-selected' : ''} onClick={() => setWhichContent('inward likes')}>Likes</button>&nbsp;
+            <button className={whichContent !== "inward likes" ? 'creator-tab-selected' : ''} onClick={() => setWhichContent('outward likes')}>Pictures You Like</button>
+          </div>
+          {modalContent()}
+        </div>
       </div>
     </div>
   )

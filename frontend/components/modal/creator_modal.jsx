@@ -83,8 +83,6 @@ export default function CreatorModal (props) {
   }
 
   let likes = owner ? owner.likes.length : 0;
-  console.log("Creator Modal Props")
-  console.log(props)
   return (
     <div className="modal-background">
       <div className='crt-mdl'>
