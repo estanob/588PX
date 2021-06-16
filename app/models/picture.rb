@@ -40,6 +40,17 @@ class Picture < ApplicationRecord
     source: :gallery,
     dependent: :destroy
 
+  has_many :likes,
+    primary_key: :id,
+    foreign_key: :picture_id,
+    class_name: :PictureLike,
+    dependent: :destroy
+
+  has_many :likers,
+    through: :likes,
+    source: :liker,
+    dependent: :destroy
+
   def ensure_photo
     unless self.photo.attached?
       errors[:photo] << "must be attached"

@@ -6,3 +6,4 @@ json.photoUrl url_for(picture.photo)
 json.location picture.location
 json.galleries picture.galleries
 json.picsToGals picture.pictures_to_galleries
+json.likes picture.likes

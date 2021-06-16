@@ -12,7 +12,8 @@ export default function CreatorModal (props) {
     showModal, 
     closeModal, 
     galleries, 
-    pics } = props;
+    pics 
+  } = props;
     
   if (!showModal) return null;
   owner = owner ? owner : {};
@@ -80,6 +81,8 @@ export default function CreatorModal (props) {
       return ''
     }
   }
+
+  let likes = owner ? owner.likes.length : 0;
   return (
     <div className="modal-background">
       <div className='crt-mdl'>
@@ -115,6 +118,9 @@ export default function CreatorModal (props) {
           <h3>
             {`${userName}'s Information and Posts:`}
           </h3>
+          <h2>
+            {`${likes} Photo Likes`}
+          </h2>
           <div className='crt-mdl-follows'>
             <button className={whichContent === "followers" ? 'creator-tab-selected' : ''} onClick={() => setWhichContent('followers')}>
               {`${owner.followers.length} Followers`}&nbsp;
