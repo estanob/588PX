@@ -6,6 +6,7 @@ export const fetchPictureLikes = () => {
 };
 
 export const createPictureLike = picLike => {
+  debugger
   return $.ajax({
     method: 'POST',
     url: 'api/picture_likes',

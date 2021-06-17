@@ -6,7 +6,7 @@ import { fetchAllUsers, fetchUser } from '../../actions/profile_actions';
 import { createFollow, deleteFollow, fetchFollows } from '../../actions/follow_actions';
 import PictureShow from './picture_show';
 import { openModal, closeModal } from '../../actions/modal_actions';
-import { fetchPictureLikes } from '../../actions/picture_like_actions';
+import { createPictureLike, deletePictureLike, fetchPictureLikes } from '../../actions/picture_like_actions';
 
 const mSTP = ( state, ownProps ) => {
   let session = state.session.id ? state.session.id : '';
@@ -104,6 +104,8 @@ const mDTP = (dispatch, ownProps)=> {
     fetchFollows: () => dispatch(fetchFollows()),
     createFollow: follow => dispatch(createFollow(follow)),
     deleteFollow: follow => dispatch(deleteFollow(follow)),
+    createLike: picLike => dispatch(createPictureLike(picLike)),
+    deleteLike: picLike => dispatch(deletePictureLike(picLike)),
     openModal: () => dispatch(openModal('creator')),
     closeModal: () => dispatch(closeModal()),
   };

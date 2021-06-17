@@ -95,9 +95,18 @@
   filter: brightness(50%);
 }
 
+.pic-title-and-likes {
+  display: flex;
+}
+
 .pic-title-and-likes > h1 {
   font-weight: bold;
   font-size: 21px;
+}
+
+.like-button {
+  background: white;
+  border: 0px;
 }
 
 .follow-button:hover {

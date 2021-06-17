@@ -85,6 +85,34 @@ class PictureShow extends React.Component {
       })
   };
 
+  handleLike(e) {
+    debugger
+    e.preventDefault();
+    const likeForm = new FormData();
+    likeForm.append('picture_like[liker_id]', this.props.session);
+    likeForm.append('picture_like[picture_id]', this.props.picture.id);
+    this.props.createLike(likeForm)
+      .then(() => {
+        this.setState({
+          likedByCurrentUser: true,
+        })
+      })
+    debugger
+  };
+
+  handleUnlike(e) {
+    debugger
+    e.preventDefault();
+    let pictureLike = this.props.likedByUser ? this.props.likedByUser : {};
+    this.props.deleteLike(pictureLike)
+      .then(() => {
+        this.setState({
+          likedByCurrentUser: false,
+        })
+      })
+    debugger
+  };
+
   otherUploader(picture, session, followingIds, isFollowing) {
       if (picture.uploader_id !== session) {
         if (!isFollowing || !followingIds.includes(picture.uploader_id)) {
@@ -233,7 +261,6 @@ class PictureShow extends React.Component {
                             </clipPath>
                           </defs>
                         </svg>;
-    debugger
     return(
       <div>
         <HeaderContainer />
@@ -246,14 +273,14 @@ class PictureShow extends React.Component {
           {ownPicture()}
           <div className='pic-info'>
             <div className="pic-title-and-likes">
-              <button>
+              <button className="like-button">
                 {likedByCurrentUser ? likedButton : notLikedButton} &nbsp;
               </button>
               <Link to="/galleries/new">
                 {newGalleryButton}
               </Link>
-              <h1>{picture.title}</h1>
             </div>
+            <h1>{picture.title}</h1>
             <p>{picture.caption ? picture.caption : ''}</p>
             <div className='uploader'>
               <p className='picture-show-by'>by&nbsp; {picture.uploader_id === session ? <p className="picture-show-by">you</p> : 

@@ -43,10 +43,10 @@ export default function LikesModal (props) {
   console.log(props)
   console.log("Current User")
   console.log(currentUser)
-  console.log("How Many Inward Likes")
-  console.log(inwardLikes.length)
-  console.log("How Many Outward Likes")
-  console.log(outwardLikes.length)
+  console.log("Inward Likes")
+  console.log(inwardLikes)
+  console.log("Outward Likes")
+  console.log(outwardLikes)
   return (
     <div className="modal-background">
       <div className="crt-mdl">

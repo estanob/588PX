@@ -1,5 +1,6 @@
 class Api::PictureLikesController < ApplicationController
   def create
+    debugger
     @picture_like = PictureLike.new(
     liker_id: params[:picture_like][:liker_id],
     picture_id: params[:picture_like][:picture_id]
@@ -11,6 +12,7 @@ class Api::PictureLikesController < ApplicationController
     else
       render json: @picture_like.errors.full_messages, status: 422
     end
+    debugger
   end
 
   def index
@@ -24,9 +26,11 @@ class Api::PictureLikesController < ApplicationController
   end
   
   def destroy
+    debugger
     @picture_like = PictureLike.find_by(delete_params)
     @picture_like.destroy
     render :show
+    debugger
   end
 
   private
