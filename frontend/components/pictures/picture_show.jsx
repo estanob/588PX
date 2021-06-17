@@ -249,7 +249,7 @@ class PictureShow extends React.Component {
               <button>
                 {likedByCurrentUser ? likedButton : notLikedButton} &nbsp;
               </button>
-              <Link to="galleries/new">
+              <Link to="/galleries/new">
                 {newGalleryButton}
               </Link>
               <h1>{picture.title}</h1>

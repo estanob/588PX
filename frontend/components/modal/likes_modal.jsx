@@ -3,28 +3,50 @@ import React, { useState } from 'react';
 export default function LikesModal (props) {
   let [whichContent, setWhichContent] = useState('inward likes');
   
-  let { allUsers, showModal, closeModal } = props;
+  let { session, allUsers, photos, showModal, closeModal } = props;
   
+  let currentUser = allUsers ? allUsers[session] : {};
+  currentUser = currentUser ? currentUser : {};
+  let inwardLikes = currentUser.likedPics ? currentUser.likedPics : [];
+  let outwardLikes = currentUser.picLikes ? currentUser.picLikes : [];
   if (!showModal) return null;
   allUsers = allUsers ? allUsers : [];
+  photos = photos ? photos : [];
   const modalContent = () => {
     if (whichContent === 'inward likes') {
       return (
-        <ul>
-          <p>pics with likes will go here</p>
-        </ul>
+        <>
+          {inwardLikes.length === 0 ? <p>You don't have any likes yet.</p> :
+          <ul>
+            <p>Your pictures are liked</p>
+          </ul>}
+        </>
       )
     } else {
       return (
-        <ul>
+        <>
           <p>outward likes will go here</p>
-        </ul>
+          {outwardLikes.length === 0 ? <p>You haven't liked any photos yet</p> :
+          <ul>
+            {outwardLikes.map(like => {
+              photos.find(photo => {
+                if (photo.id === like.picture_id) return <li>{photo.title}</li>
+              })
+            })}
+          </ul>}
+        </>
       )
     }
   }
   
   console.log("Like Modal Props")
   console.log(props)
+  console.log("Current User")
+  console.log(currentUser)
+  console.log("How Many Inward Likes")
+  console.log(inwardLikes.length)
+  console.log("How Many Outward Likes")
+  console.log(outwardLikes.length)
   return (
     <div className="modal-background">
       <div className="crt-mdl">
