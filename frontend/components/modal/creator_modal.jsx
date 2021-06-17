@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 export default function CreatorModal (props) {
   let [whichContent, setWhichContent] = useState('');
   
-  let { 
-    userName, 
+  let {
+    userName,
     owner,
-    creator, 
+    creator,
     users,
-    showModal, 
-    closeModal, 
-    galleries, 
-    pics 
+    showModal,
+    closeModal,
+    galleries,
+    pics,
   } = props;
     
   if (!showModal) return null;
@@ -111,6 +111,7 @@ export default function CreatorModal (props) {
               </path>
           </svg>
         </button>
+        
         <div className="crt-mdl-content">
           <h1>
             {creator}

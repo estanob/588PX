@@ -125,6 +125,8 @@ class Profile extends React.Component {
           <LikesModal 
             allUsers={allUsers}
             showModal={showModal}
+            session={session}
+            allPhotos={pictures}
             closeModal={() => this.setState({ showModal: false })} />
           
         </div>
