@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function LikesModal (props) {
   let [whichContent, setWhichContent] = useState('inward likes');
   
-  let { session, allUsers, photos, showModal, closeModal } = props;
+  let { session, allUsers, allPhotos, showModal, closeModal } = props;
   
   let currentUser = allUsers ? allUsers[session] : {};
   currentUser = currentUser ? currentUser : {};
@@ -11,7 +12,33 @@ export default function LikesModal (props) {
   let outwardLikes = currentUser.picLikes ? currentUser.picLikes : [];
   if (!showModal) return null;
   allUsers = allUsers ? allUsers : [];
-  photos = photos ? photos : [];
+  allPhotos = allPhotos ? allPhotos : [];
+
+  // outwardLikes = outwardLikes.map(like => {
+  //   allPhotos.filter((photo, i) => {
+  //     <li key={i}>
+  //       {photo.title}
+  //     </li>
+  //   })
+  // })
+  const likedPicTitles = [];
+  
+  allPhotos.filter(photo => {
+    outwardLikes.map((like, i) => {
+      if (like.picture_id === photo.id) {
+          likedPicTitles.push(
+            <li key={i}>
+              <Link 
+                className="liked-pic-link" 
+                to={`/pictures/${photo.id}`}>
+                {photo.title}
+              </Link>
+            </li>
+          )
+      }
+    })
+  });
+
   const modalContent = () => {
     if (whichContent === 'inward likes') {
       return (
@@ -25,14 +52,9 @@ export default function LikesModal (props) {
     } else {
       return (
         <>
-          <p>outward likes will go here</p>
           {outwardLikes.length === 0 ? <p>You haven't liked any photos yet</p> :
-          <ul>
-            {outwardLikes.map(like => {
-              photos.find(photo => {
-                if (photo.id === like.picture_id) return <li>{photo.title}</li>
-              })
-            })}
+          <ul className="like-content">
+            {likedPicTitles}
           </ul>}
         </>
       )
@@ -47,6 +69,8 @@ export default function LikesModal (props) {
   console.log(inwardLikes)
   console.log("Outward Likes")
   console.log(outwardLikes)
+  console.log("Liked Pic Titles")
+  console.log(likedPicTitles)
   return (
     <div className="modal-background">
       <div className="crt-mdl">

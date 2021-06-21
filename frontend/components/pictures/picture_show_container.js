@@ -9,13 +9,14 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import { createPictureLike, deletePictureLike, fetchPictureLikes } from '../../actions/picture_like_actions';
 
 const mSTP = ( state, ownProps ) => {
+  
   let session = state.session.id ? state.session.id : '';
   let picture = state.entities.pictures ? state.entities.pictures[ownProps.match.params.id] : {};
   let pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
   let pictureLikes = state.entities.pictureLikes ? Object.values(state.entities.pictureLikes) : [];
   let likedByUser = (pictureLikes && picture && session) ? pictureLikes.find(like => {
     if (like.liker_id === session && like.picture_id === picture.id) return like
-  }) : {};
+  }) : null;
   let galleries = state.entities.galleries ? Object.values(state.entities.galleries) : [];
   let follows = state.entities.follows ? Object.values(state.entities.follows) : [];
   let creator = picture ? picture.uploader_id : '';
@@ -73,6 +74,7 @@ const mSTP = ( state, ownProps ) => {
                                 fill="#222222">
                               </path>
                            </svg>;
+  debugger
   return {
     picture: picture,
     pictures: pictures,

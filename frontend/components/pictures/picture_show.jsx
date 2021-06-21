@@ -9,18 +9,19 @@ class PictureShow extends React.Component {
     super(props)
 
     let followRelation = this.props.followRelation ? this.props.followRelation : null;
-    let likedByCurrentUser = this.props.likedByUser ? true : false;
     this.state = {
       showModal: false,
       redirectToHomeFeed: false,
       followRelation: followRelation,
       isFollowing: followRelation ? true : false,
-      likedByCurrentUser: likedByCurrentUser,
+      likedByCurrentUser: this.props.likedByUser ? true : false,
     }
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleNewFollow = this.handleNewFollow.bind(this);
     this.handleUnfollow = this.handleUnfollow.bind(this);
+    this.handleLike = this.handleLike.bind(this);
+    this.handleUnlike = this.handleUnlike.bind(this);
     this.otherUploader = this.otherUploader.bind(this);
   };
 
@@ -139,6 +140,7 @@ class PictureShow extends React.Component {
       galleries,
       users, 
       currentUser,
+      likedByUser,
       followRelation,
       owner,
       newGalleryButton,
@@ -158,6 +160,7 @@ class PictureShow extends React.Component {
     session = session ? session : '';
     currentUser = currentUser ? currentUser : {};
     newGalleryButton = newGalleryButton ? newGalleryButton : {};
+    likedByUser = likedByUser ? likedByUser : false;
     likedByCurrentUser = likedByCurrentUser ? likedByCurrentUser : false;
     owner = owner ? owner : {};
     followRelation = followRelation ? followRelation : {};
@@ -261,6 +264,14 @@ class PictureShow extends React.Component {
                             </clipPath>
                           </defs>
                         </svg>;
+
+    let likeOrUnlike = likedByCurrentUser ? ((e) => this.handleLike(e)) : ((e) => this.handleUnfollow(e));
+    console.log("Is this Picture liked?")
+    console.log(likedByCurrentUser)
+    console.log("Picture Like exists?")
+    console.log(likedByUser)
+    console.log("Picture's Likes")
+    console.log(picLikes)
     return(
       <div>
         <HeaderContainer />
@@ -273,8 +284,8 @@ class PictureShow extends React.Component {
           {ownPicture()}
           <div className='pic-info'>
             <div className="pic-title-and-likes">
-              <button className="like-button">
-                {likedByCurrentUser ? likedButton : notLikedButton} &nbsp;
+              <button className="like-button" onClick={likeOrUnlike}>
+                {likedByCurrentUser === true ? likedButton : notLikedButton} &nbsp;
               </button>
               <Link to="/galleries/new">
                 {newGalleryButton}

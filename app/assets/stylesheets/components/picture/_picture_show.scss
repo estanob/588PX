@@ -109,6 +109,10 @@
   border: 0px;
 }
 
+.like-button:hover {
+  filter: brightness(50%);
+}
+
 .follow-button:hover {
   filter: brightness(50%);
 }

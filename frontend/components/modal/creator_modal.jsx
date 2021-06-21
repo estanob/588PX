@@ -82,7 +82,7 @@ export default function CreatorModal (props) {
     }
   }
 
-  let likes = owner ? owner.likes.length : 0;
+  let likes = owner.likes ? owner.likes.length : 0;
   return (
     <div className="modal-background">
       <div className='crt-mdl'>
