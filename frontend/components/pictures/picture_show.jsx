@@ -87,7 +87,7 @@ class PictureShow extends React.Component {
   };
 
   handleLike(e) {
-    debugger
+    // debugger
     e.preventDefault();
     const likeForm = new FormData();
     likeForm.append('picture_like[liker_id]', this.props.session);
@@ -98,11 +98,11 @@ class PictureShow extends React.Component {
           likedByCurrentUser: true,
         })
       })
-    debugger
+    // debugger
   };
 
   handleUnlike(e) {
-    debugger
+    // debugger
     e.preventDefault();
     let pictureLike = this.props.likedByUser ? this.props.likedByUser : {};
     this.props.deleteLike(pictureLike)
@@ -111,7 +111,7 @@ class PictureShow extends React.Component {
           likedByCurrentUser: false,
         })
       })
-    debugger
+    // debugger
   };
 
   otherUploader(picture, session, followingIds, isFollowing) {
@@ -266,7 +266,7 @@ class PictureShow extends React.Component {
                         </svg>;
 
     let likeOrUnlike = likedByCurrentUser ? ((e) => this.handleLike(e)) : ((e) => this.handleUnfollow(e));
-    console.log("Is this Picture liked?")
+    console.log("Do you like this picture?")
     console.log(likedByCurrentUser)
     console.log("Picture Like exists?")
     console.log(likedByUser)
