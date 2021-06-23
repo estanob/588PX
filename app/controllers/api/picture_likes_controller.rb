@@ -5,7 +5,7 @@ class Api::PictureLikesController < ApplicationController
     liker_id: params[:picture_like][:liker_id],
     picture_id: params[:picture_like][:picture_id]
     )
-    @picture_like.liker_id = current_user.picture_id
+    @picture_like.liker_id = current_user.id
 
     if @picture_like && @picture_like.save
       render :show

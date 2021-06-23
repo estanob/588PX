@@ -77,19 +77,6 @@ export default function LikesModal (props) {
     }
   }
   
-  console.log("Like Modal Props")
-  console.log(props)
-  console.log("Current User")
-  console.log(currentUser)
-  console.log("Inward Likes")
-  console.log(inwardLikes)
-  console.log("Outward Likes")
-  console.log(outwardLikes)
-  console.log("Liked Pic Titles")
-  console.log(likedPicTitles)
-  console.log("Pic Titles with Usernames")
-  console.log(picTitlesWithLikerUsernames)
-  debugger
   return (
     <div className="modal-background">
       <div className="crt-mdl">

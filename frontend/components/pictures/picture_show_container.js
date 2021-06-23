@@ -74,7 +74,6 @@ const mSTP = ( state, ownProps ) => {
                                 fill="#222222">
                               </path>
                            </svg>;
-  debugger
   return {
     picture: picture,
     pictures: pictures,

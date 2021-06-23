@@ -265,7 +265,7 @@ class PictureShow extends React.Component {
                           </defs>
                         </svg>;
 
-    let likeOrUnlike = likedByCurrentUser ? ((e) => this.handleLike(e)) : ((e) => this.handleUnfollow(e));
+    let likeOrUnlike = !likedByCurrentUser ? ((e) => this.handleLike(e)) : ((e) => this.handleUnlike(e));
     console.log("Do you like this picture?")
     console.log(likedByCurrentUser)
     console.log("Picture Like exists?")
