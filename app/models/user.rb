@@ -56,7 +56,7 @@ class User < ApplicationRecord
 
   has_many :liked_pics,
     through: :pictures,
-    source: :likers,
+    source: :likes,
     dependent: :destroy
 
   has_many :pic_likes,

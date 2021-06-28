@@ -17,6 +17,7 @@
 .pic-info {
   margin-top: 20px;
   margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 .single-img {
@@ -95,9 +96,22 @@
   filter: brightness(50%);
 }
 
+.pic-title-and-likes {
+  display: flex;
+}
+
 .pic-title-and-likes > h1 {
   font-weight: bold;
   font-size: 21px;
+}
+
+.like-button {
+  background: white;
+  border: 0px;
+}
+
+.like-button:hover {
+  filter: brightness(50%);
 }
 
 .follow-button:hover {

@@ -8,7 +8,7 @@ import { closeModal, openModal } from '../../actions/modal_actions'
 
 const mSTP = (state, ownProps) => {
   const thisUser = state.entities.users ? state.entities.users : {};
-  const allUsers = state.entities.user ? state.entities.user : {};
+  const allUsers = state.entities.user ? Object.values(state.entities.user) : {};
   const session = state.session.id ? state.session.id : '';
   const pictures = state.entities.pictures ? Object.values(state.entities.pictures) : [];
   return {

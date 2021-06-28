@@ -1,52 +1,82 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function LikesModal (props) {
   let [whichContent, setWhichContent] = useState('inward likes');
   
-  let { session, allUsers, photos, showModal, closeModal } = props;
+  let { session, allUsers, allPhotos, showModal, closeModal } = props;
   
-  let currentUser = allUsers ? allUsers[session] : {};
+  session = session ? session : '';
+  allUsers = allUsers ? allUsers : [];
+  allPhotos = allPhotos ? allPhotos : [];
+  let currentUser = (allUsers && session) ? allUsers.find(user => user.id === session) : {};
   currentUser = currentUser ? currentUser : {};
   let inwardLikes = currentUser.likedPics ? currentUser.likedPics : [];
   let outwardLikes = currentUser.picLikes ? currentUser.picLikes : [];
   if (!showModal) return null;
-  allUsers = allUsers ? allUsers : [];
-  photos = photos ? photos : [];
+
+  const likedPicTitles = [];
+  const picTitlesWithLikerUsernames = [];
+  
+  allPhotos.filter(photo => {
+    outwardLikes.map((like, i) => {
+      if (like.picture_id === photo.id) {
+        likedPicTitles.push(
+          <li key={i}>
+            <Link 
+              className="liked-pic-link" 
+              to={`/pictures/${photo.id}`}>
+              {photo.title}
+            </Link>
+          </li>
+        )
+      }
+    })
+  });
+
+  allPhotos.filter(photo => {
+    inwardLikes.map((like, i) => {
+      if (like.picture_id === photo.id) {
+        allUsers.map(user => {
+          if (user.id === like.liker_id) {
+            picTitlesWithLikerUsernames.push(
+              <li key={i}>
+                <Link 
+                  className="liked-pic-link" 
+                  to={`/pictures/${photo.id}`}>
+                  {`${user.username}: ${photo.title}`}
+                </Link>
+              </li>
+            )
+          }
+        })
+      }
+    })
+  });
+
+
   const modalContent = () => {
     if (whichContent === 'inward likes') {
       return (
         <>
           {inwardLikes.length === 0 ? <p>You don't have any likes yet.</p> :
-          <ul>
-            <p>Your pictures are liked</p>
+          <ul className="like-content">
+            {picTitlesWithLikerUsernames}
           </ul>}
         </>
       )
     } else {
       return (
         <>
-          <p>outward likes will go here</p>
           {outwardLikes.length === 0 ? <p>You haven't liked any photos yet</p> :
-          <ul>
-            {outwardLikes.map(like => {
-              photos.find(photo => {
-                if (photo.id === like.picture_id) return <li>{photo.title}</li>
-              })
-            })}
+          <ul className="like-content">
+            {likedPicTitles}
           </ul>}
         </>
       )
     }
   }
   
-  console.log("Like Modal Props")
-  console.log(props)
-  console.log("Current User")
-  console.log(currentUser)
-  console.log("How Many Inward Likes")
-  console.log(inwardLikes.length)
-  console.log("How Many Outward Likes")
-  console.log(outwardLikes.length)
   return (
     <div className="modal-background">
       <div className="crt-mdl">
@@ -75,7 +105,6 @@ export default function LikesModal (props) {
               </path>
           </svg>
         </button>
-        <p>HELLO WORLD</p>
         <div className="crt-mdl-content">
           <h1>Your Likes</h1>
           <div className='crt-mdl-follows'>

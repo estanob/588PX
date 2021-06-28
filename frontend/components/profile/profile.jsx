@@ -111,6 +111,8 @@ class Profile extends React.Component {
 
     let photoLikes = currentUser.likedPics ? currentUser.likedPics.length : 0;
     
+    console.log("Profile Page Props")
+    console.log(this.props)
     return (
       <div className="profile">
         <div className="user-info">
