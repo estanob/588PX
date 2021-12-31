@@ -285,7 +285,7 @@ class PictureShow extends React.Component {
           <div className='pic-info'>
             <div className="pic-title-and-likes">
               <button className="like-button" onClick={likeOrUnlike}>
-                {likedByCurrentUser === true ? likedButton : notLikedButton} &nbsp;
+                {likedByUser ? likedButton : notLikedButton} &nbsp;
               </button>
               <Link to="/galleries/new">
                 {newGalleryButton}

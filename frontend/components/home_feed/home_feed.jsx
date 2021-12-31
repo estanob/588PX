@@ -8,7 +8,7 @@ class HomeFeed extends React.Component {
   
   render() {
     return (
-      <div>
+      <div>                                                                                                                                                                                                                                                                                                                                                                                    
         <div className='home-feed'>
           <h3>Home Feed</h3>
           <PictureIndexContainer />
