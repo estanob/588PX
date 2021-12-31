@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import HomeFeed from "./home_feed";
+import HomeFeed from "./home_feed.jsx";
 import { fetchPictures } from "../../actions/picture_actions";
 
 const mSTP = state => {

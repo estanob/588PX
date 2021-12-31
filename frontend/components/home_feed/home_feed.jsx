@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PictureIndexItem from '../pictures/picture_index_item';
 import PictureIndexContainer from '../pictures/picture_index_container';
 
-class HomeFeed extends React.Component {
-  componentDidMount() {
-    this.props.fetchPictures()
-  }
+const HomeFeed = props => {
+  let { pictures, session, fetchPictures } = props;
+
+  pictures = pictures ? pictures : [];
+  session = session ? session : {};
   
-  render() {
-    return (
-      <div>                                                                                                                                                                                                                                                                                                                                                                                    
-        <div className='home-feed'>
-          <h3>Home Feed</h3>
-          <PictureIndexContainer />
-        </div>
+  return (
+    <div className='home-feed-parent'>
+      <div className="home-feed-child">
+        <div className="home-feed-header">Home Feed</div>
       </div>
-    )
-  }
+
+      <div className="home-feed-pictures">
+        <PictureIndexContainer />
+      </div>
+    </div>
+  )
 }
+
 export default HomeFeed;

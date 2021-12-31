@@ -8,7 +8,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal/modal';
 import LoginFormContainer from '../components/session_form/login_form_container';
 import SignupFormContainer from './session_form/sign_up_form_container';
-import HomeFeed from './home_feed';
+import HomeFeedContainer from './home_feed/home_feed_container';
 import Splash from './splash';
 import HeaderContainer from './header/header_container';
 import Navbar from './navbar/navbar';
@@ -32,7 +32,7 @@ const App = () => {
       </header>
       <Modal/>
       <Switch>
-        <ProtectedRoute path='/home' component={HomeFeed} />
+        <ProtectedRoute path='/home' component={HomeFeedContainer} />
         <ProtectedRoute path='/upload' component={UploadForm} />
         <ProtectedRoute path='/galleries/new' component={NewGallery} />
         <ProtectedRoute exact path='/pictures/:id/edit' component={EditPictureFormContainer} />
