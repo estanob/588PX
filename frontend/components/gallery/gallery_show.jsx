@@ -22,6 +22,7 @@ class GalleryShow extends React.Component {
     this.otherUploader = this.otherUploader.bind(this);
   };
 
+  //useEffect
   componentDidMount() {
     this.props.fetchUser(this.props.session);
     this.props.fetchAllUsers();
@@ -32,6 +33,7 @@ class GalleryShow extends React.Component {
     this.props.fetchFollows();
   };
 
+  // useState
   componentDidUpdate(prevProps) {
     let followRelation = this.props.followRelation ? this.props.followRelation : null;
     if (prevProps.followRelation !== this.props.followRelation) {
