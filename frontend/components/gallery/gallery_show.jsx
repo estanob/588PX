@@ -36,6 +36,7 @@ const GalleryShow = (props) => {
   let [isFollowing, setIsFollowing] = useState(followRelation ? true : false);
   let [existingFollowRelation, setExistingFollowRelation] = useState(followRelation ? followRelation : null);
 
+  session = session ? session : '';
   gallery = gallery ? gallery : {};
   galleries = galleries ? galleries : [];
   pictures = pictures ? pictures : [];
@@ -61,6 +62,7 @@ const GalleryShow = (props) => {
   };
 
   const handleNewFollow = () => {
+
     let newFollowRelation = existingFollowRelation ? existingFollowRelation : {};
     const followForm = new FormData();
     followForm.append('follow[user_id]', session);
