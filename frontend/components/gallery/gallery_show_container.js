@@ -39,7 +39,6 @@ const mSTP = ( state, ownProps ) => {
 };
 
 const mDTP = (dispatch, ownProps)=> {
-  debugger
   return {
     fetchGallery: () => dispatch(fetchGallery(parseInt(ownProps.match.params.id))),
     deleteGallery: () => dispatch(deleteGallery(parseInt(ownProps.match.params.id))),

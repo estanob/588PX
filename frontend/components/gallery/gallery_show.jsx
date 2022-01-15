@@ -9,6 +9,7 @@ const GalleryShow = (props) => {
     gallery,
     galleries,
     creator,
+    creatorModal,
     galCreator,
     followRelation,
     follows,
@@ -37,6 +38,7 @@ const GalleryShow = (props) => {
 
   gallery = gallery ? gallery : {};
   galleries = galleries ? galleries : [];
+  pictures = pictures ? pictures : [];
   let picsToGals = gallery ? gallery.picsToGals : [];
 
   useEffect(() => {
@@ -63,12 +65,13 @@ const GalleryShow = (props) => {
     const followForm = new FormData();
     followForm.append('follow[user_id]', session);
     followForm.append('follow[followee_id]', gallery.creator_id);
+    debugger
     createFollow(followForm)
       .then(() => {
         setExistingFollowRelation(newFollowRelation)
         setIsFollowing(true)
-      })
-  }
+      });
+  };
 
   const handleUnfollow = () => {
     existingFollowRelation = existingFollowRelation ? existingFollowRelation : {};
@@ -79,8 +82,8 @@ const GalleryShow = (props) => {
       .then(() => {
         setExistingFollowRelation(existingFollowRelation)
         setIsFollowing(false)
-      })
-  }
+      });
+  };
 
   const otherUploader = (gallery, session, followingIds, isFollowing) => {
     if (gallery.creator_id !== session) {
@@ -91,7 +94,7 @@ const GalleryShow = (props) => {
             onClick={handleNewFollow}>
               Follow
           </button>
-        )
+        );
       } else {
         return (
           <button 
@@ -99,11 +102,75 @@ const GalleryShow = (props) => {
             onClick={handleUnfollow}>
               Unfollow
           </button>
-        )
-      }
-    }
-  }
+        );
+      };
+    };
+  };
 
+  const ownGallery = () => {
+    if (session === gallery.creator_id) {
+      return (
+        <div className="own-gallery">
+          <button
+            className="edit-delete"
+            onClick={handleDelete}>
+              Delete
+          </button>
+        </div>
+      );
+    };
+  };
+
+  let galPics = gallery.pics ? gallery.pics : [];
+  let picIds = [];
+  galPics.forEach(pic => picIds.push(pic.id));
+  let pix = pictures.map((pic, i) => {
+    if (picIds.includes(pic.id)) {
+      return (
+        <li className="pics-in-gallery-li" key={i}>
+          <PictureIndexPhotos picture={pic} />
+        </li>
+      );
+    };
+  });
+
+  pix = pix.sort(() => Math.random() - 0.5);
+
+  const otherGals = galleries.map((gal, i) => {
+    if (gal.id !== gallery.id && gal.creator_id === gallery.creator_id) {
+      return (
+        <li className='gals-on-profile-li' key={i}>
+          <GalleryIndexItem
+            gallery={gal}
+            pics={pictures}
+            currentId={session} />
+        </li>
+      );
+    };
+  });
+  
+  const twoPlusGals = gallery.totalGalsFromUser > 1 ? 
+                      <div className="more-galleries">
+                        <p>More Galleries by {session === creator ? 'you' : gallery.creator}</p>
+                        <ul className='other-galleries'>
+                          {otherGals}
+                        </ul>
+                      </div> : '';
+
+  const creatorPics = [];
+  pictures.filter(pic => {
+    if(pic.uploader_id === gallery.creator_id) {
+      creatorPics.push(pic);
+    };
+  });
+
+  const ownGals = [];
+  galleries.filter(gal => {
+    if (gal.creator_id === gallery.creator_id) {
+      ownGals.push(gal);
+    };
+  });
+  
   if (redirectToGalleryIndex) return <Redirect to="/home" />
   
   return(
