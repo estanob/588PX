@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 
 const Profile = (props) => {
   let { 
-    users, 
-    session, 
-    allUsers, 
-    pictures, 
+    users,
+    session,
+    allUsers,
+    pictures,
     galleries,
     profileContent,
-    numFollowers, 
+    numFollowers,
     numFollowees,
     followersModal,
     followingModal,
@@ -61,9 +61,11 @@ const Profile = (props) => {
   const picsOrGals = profileContent === 'Pictures' ? 'profile-pic-index' : 'profile-pic-index profile-gals';
   let ownPics = pictures.map((ownPic, i) => {
     if (ownPic.uploader_id === session) {
-      return <li className="pics-on-profile-li" key={i}>
-                <ProfilePictureIndexItem picture={ownPic} id={ownPic.id} />
-              </li>
+      return (
+        <li className="pics-on-profile-li" key={i}>
+          <ProfilePictureIndexItem picture={ownPic} id={ownPic.id} />
+        </li>
+      )
     }
   });
 
